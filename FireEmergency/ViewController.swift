@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     let pad1            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
     let pad2            = UIView(frame: CGRectZero)
     let pad3            = UIView(frame: CGRectZero)
+    let pad4            = UIView(frame: CGRectZero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +74,8 @@ class ViewController: UIViewController {
         self.view.addSubview(pad2)
         pad3.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad3)
+        pad4.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(pad4)
     }
     
     //制約ひな型
@@ -97,33 +100,37 @@ class ViewController: UIViewController {
             Constraint(btnData, .Top, to:self.view, .Top, constant:20),
             Constraint(btnData, .Leading, to:self.view, .Leading, constant:8),
             Constraint(btnData, .Trailing, to:self.view, .TrailingMargin, constant:8),
-            //震災ボタン
-            Constraint(btnEarthquake, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(btnEarthquake, .Leading, to:self.view, .Leading, constant:8),
-            Constraint(btnEarthquake, .Width, to:self.view, .Width, multiplier:0.22, constant:0),
             //pad1
             Constraint(pad1, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(pad1, .Leading, to:btnEarthquake, .Trailing, constant:0),
-            Constraint(pad1, .Width, to:self.view, .Width, multiplier:0.02, constant:0),
-            //風水害ボタン
-            Constraint(btnTyphoon, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(btnTyphoon, .Leading, to:pad1, .Trailing, constant:0),
-            Constraint(btnTyphoon, .Width, to:btnEarthquake, .Width, constant:0),
+            Constraint(pad1, .Leading, to:self.view, .Leading, constant:0),
+            Constraint(pad1, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
+            //震災ボタン
+            Constraint(btnEarthquake, .Top, to:btnData, .Bottom, constant:8),
+            Constraint(btnEarthquake, .Leading, to:pad1, .Trailing, constant:0),
+            Constraint(btnEarthquake, .Width, to:self.view, .Width, multiplier:0.22, constant:0),
             //pad2
             Constraint(pad2, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(pad2, .Leading, to:btnTyphoon, .Trailing, constant:0),
-            Constraint(pad2, .Width, to:self.view, .Width, multiplier:0.02, constant:0),
-            //国民保護ボタン
-            Constraint(btnKokuminhogo, .Top, to:btnData, .Bottom ,constant:8),
-            Constraint(btnKokuminhogo, .Leading, to:pad2, .Trailing, constant:0),
-            Constraint(btnKokuminhogo, .Width, to:btnEarthquake, .Width, constant:0),
+            Constraint(pad2, .Leading, to:btnEarthquake, .Trailing, constant:0),
+            Constraint(pad2, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
+            //風水害ボタン
+            Constraint(btnTyphoon, .Top, to:btnData, .Bottom, constant:8),
+            Constraint(btnTyphoon, .Leading, to:pad2, .Trailing, constant:0),
+            Constraint(btnTyphoon, .Width, to:btnEarthquake, .Width, constant:0),
             //pad3
             Constraint(pad3, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(pad3, .Leading, to:btnKokuminhogo, .Trailing, constant:0),
-            Constraint(pad3, .Width, to:self.view, .Width, multiplier:0.02, constant:0),
+            Constraint(pad3, .Leading, to:btnTyphoon, .Trailing, constant:0),
+            Constraint(pad3, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
+            //国民保護ボタン
+            Constraint(btnKokuminhogo, .Top, to:btnData, .Bottom ,constant:8),
+            Constraint(btnKokuminhogo, .Leading, to:pad3, .Trailing, constant:0),
+            Constraint(btnKokuminhogo, .Width, to:btnEarthquake, .Width, constant:0),
+            //pad4
+            Constraint(pad4, .Top, to:btnData, .Bottom, constant:8),
+            Constraint(pad4, .Leading, to:btnKokuminhogo, .Trailing, constant:0),
+            Constraint(pad4, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
             //緊援隊ボタン
             Constraint(btnKinentai, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(btnKinentai, .Leading, to:pad3, .Trailing, constant:0),
+            Constraint(btnKinentai, .Leading, to:pad4, .Trailing, constant:0),
             Constraint(btnKinentai, .Width, to:btnEarthquake, .Width, constant:0)
         ])
     }
