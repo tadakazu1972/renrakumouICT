@@ -19,6 +19,8 @@ class ViewController: UIViewController {
     let pad2            = UIView(frame: CGRectZero)
     let pad3            = UIView(frame: CGRectZero)
     let pad4            = UIView(frame: CGRectZero)
+    let padY1           = UIView(frame: CGRectZero)
+    let lblEarthquake   = UILabel(frame: CGRectZero)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +34,7 @@ class ViewController: UIViewController {
         btnData.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
-        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
+        //btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         //震災
@@ -76,6 +78,14 @@ class ViewController: UIViewController {
         self.view.addSubview(pad3)
         pad4.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad4)
+        //垂直方向のpad
+        padY1.translatesAutoresizingMaskIntoConstraints = false;
+        self.view.addSubview(padY1)
+        //非常召集基準（震災）
+        lblEarthquake.text = "非常召集基準（震災）"
+        lblEarthquake.textColor = UIColor.whiteColor()
+        lblEarthquake.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblEarthquake)
     }
     
     //制約ひな型
@@ -131,7 +141,14 @@ class ViewController: UIViewController {
             //緊援隊ボタン
             Constraint(btnKinentai, .Top, to:btnData, .Bottom, constant:8),
             Constraint(btnKinentai, .Leading, to:pad4, .Trailing, constant:0),
-            Constraint(btnKinentai, .Width, to:btnEarthquake, .Width, constant:0)
+            Constraint(btnKinentai, .Width, to:btnEarthquake, .Width, constant:0),
+            //padY1
+            Constraint(padY1, .Top, to:btnEarthquake, .Bottom, constant:0),
+            Constraint(padY1, .Leading, to:self.view, .Leading, constant:0),
+            Constraint(padY1, .Height, to:self.view, .Height, multiplier:0.2, constant:0),
+            //非常召集基準（震災）ラベル
+            Constraint(lblEarthquake, .Top, to:padY1, .Bottom, constant:8),
+            Constraint(lblEarthquake, .CenterX, to:self.view, .CenterX, constant:0)
         ])
     }
     
