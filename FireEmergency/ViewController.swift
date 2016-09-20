@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         btnData.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
-        //btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
+        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         //震災
@@ -79,11 +79,13 @@ class ViewController: UIViewController {
         pad4.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad4)
         //垂直方向のpad
-        padY1.translatesAutoresizingMaskIntoConstraints = false;
+        padY1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY1)
         //非常召集基準（震災）
         lblEarthquake.text = "非常召集基準（震災）"
-        lblEarthquake.textColor = UIColor.whiteColor()
+        lblEarthquake.textColor = UIColor.blackColor()
+        lblEarthquake.backgroundColor = UIColor.orangeColor()
+        lblEarthquake.textAlignment = NSTextAlignment.Center
         lblEarthquake.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblEarthquake)
     }
@@ -109,47 +111,68 @@ class ViewController: UIViewController {
             //基礎データ入力ボタン
             Constraint(btnData, .Top, to:self.view, .Top, constant:20),
             Constraint(btnData, .Leading, to:self.view, .Leading, constant:8),
-            Constraint(btnData, .Trailing, to:self.view, .TrailingMargin, constant:8),
+            Constraint(btnData, .Trailing, to:self.view, .TrailingMargin, constant:8)
+            ])
+        self.view.addConstraints([
             //pad1
             Constraint(pad1, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad1, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(pad1, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
+            Constraint(pad1, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            ])
+        self.view.addConstraints([
             //震災ボタン
             Constraint(btnEarthquake, .Top, to:btnData, .Bottom, constant:8),
             Constraint(btnEarthquake, .Leading, to:pad1, .Trailing, constant:0),
-            Constraint(btnEarthquake, .Width, to:self.view, .Width, multiplier:0.22, constant:0),
+            Constraint(btnEarthquake, .Width, to:self.view, .Width, multiplier:0.22, constant:0)
+            ])
+        self.view.addConstraints([
             //pad2
             Constraint(pad2, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad2, .Leading, to:btnEarthquake, .Trailing, constant:0),
-            Constraint(pad2, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
+            Constraint(pad2, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            ])
+        self.view.addConstraints([
             //風水害ボタン
             Constraint(btnTyphoon, .Top, to:btnData, .Bottom, constant:8),
             Constraint(btnTyphoon, .Leading, to:pad2, .Trailing, constant:0),
-            Constraint(btnTyphoon, .Width, to:btnEarthquake, .Width, constant:0),
+            Constraint(btnTyphoon, .Width, to:btnEarthquake, .Width, constant:0)
+            ])
+        self.view.addConstraints([
             //pad3
             Constraint(pad3, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad3, .Leading, to:btnTyphoon, .Trailing, constant:0),
-            Constraint(pad3, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
+            Constraint(pad3, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            ])
+        self.view.addConstraints([
             //国民保護ボタン
             Constraint(btnKokuminhogo, .Top, to:btnData, .Bottom ,constant:8),
             Constraint(btnKokuminhogo, .Leading, to:pad3, .Trailing, constant:0),
-            Constraint(btnKokuminhogo, .Width, to:btnEarthquake, .Width, constant:0),
+            Constraint(btnKokuminhogo, .Width, to:btnEarthquake, .Width, constant:0)
+            ])
+        self.view.addConstraints([
             //pad4
             Constraint(pad4, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad4, .Leading, to:btnKokuminhogo, .Trailing, constant:0),
-            Constraint(pad4, .Width, to:self.view, .Width, multiplier:0.024, constant:0),
+            Constraint(pad4, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            ])
+        self.view.addConstraints([
             //緊援隊ボタン
             Constraint(btnKinentai, .Top, to:btnData, .Bottom, constant:8),
             Constraint(btnKinentai, .Leading, to:pad4, .Trailing, constant:0),
-            Constraint(btnKinentai, .Width, to:btnEarthquake, .Width, constant:0),
+            Constraint(btnKinentai, .Width, to:btnEarthquake, .Width, constant:0)
+            ])
+        self.view.addConstraints([
             //padY1
             Constraint(padY1, .Top, to:btnEarthquake, .Bottom, constant:0),
             Constraint(padY1, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(padY1, .Height, to:self.view, .Height, multiplier:0.2, constant:0),
+            Constraint(padY1, .Height, to:self.view, .Height, multiplier:0.2, constant:0)
+            ])
+        self.view.addConstraints([
             //非常召集基準（震災）ラベル
             Constraint(lblEarthquake, .Top, to:padY1, .Bottom, constant:8),
-            Constraint(lblEarthquake, .CenterX, to:self.view, .CenterX, constant:0)
-        ])
+            Constraint(lblEarthquake, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(lblEarthquake, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
     }
     
     //基礎データ入力画面遷移

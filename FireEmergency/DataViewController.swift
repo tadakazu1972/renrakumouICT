@@ -25,7 +25,7 @@ class DataViewController: UIViewController {
         btnEarthquake.layer.cornerRadius = 8.0
         btnEarthquake.layer.position = CGPoint(x:100, y:self.view.frame.height-40)
         btnEarthquake.tag = 1
-        //btnEarthquake.addTarget(self, action:#selector(DataViewController.onClickbtnEarthquake(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquake.addTarget(self, action:#selector(DataViewController.onClickbtnEarthquake(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquake)
     }
     
