@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
+    //メイン画面
     let btnData         = UIButton(frame: CGRectZero)
     let btnEarthquake   = UIButton(frame: CGRectZero)
     let btnTyphoon      = UIButton(frame: CGRectZero)
@@ -41,6 +41,9 @@ class ViewController: UIViewController {
     let pad31            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
     let pad32            = UIView(frame: CGRectZero)
     let pad33            = UIView(frame: CGRectZero)
+    //ボタン押したら出るUIWindow
+    private var win1: UIWindow!
+    private var btnClose: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -184,8 +187,10 @@ class ViewController: UIViewController {
         btnEarthquakeCaution.layer.masksToBounds = true
         btnEarthquakeCaution.setTitle("留意事項", forState: UIControlState.Normal)
         btnEarthquakeCaution.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquakeCaution.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnEarthquakeCaution.tag=13
         btnEarthquakeCaution.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquakeCaution.addTarget(self, action: #selector(ViewController.onClick(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeCaution)
         //防災ネット
         btnEarthquakeBousaiNet.backgroundColor = UIColor.lightGrayColor()
@@ -209,6 +214,10 @@ class ViewController: UIViewController {
         self.view.addSubview(pad32)
         pad33.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad33)
+        
+        //UIWindow
+        win1 = UIWindow()
+        btnClose = UIButton()
     }
     
     //制約ひな型
@@ -414,7 +423,62 @@ class ViewController: UIViewController {
             Constraint(btnEarthquakeBousaiNet, .Leading, to:pad33, .Trailing, constant:0),
             Constraint(btnEarthquakeBousaiNet, .Width, to:btnEarthquakeTel, .Width, constant:0)
         ])
-
+    }
+    
+    //UIWindow生成
+    internal func createWin1(){
+        //元の画面を暗く
+        self.view.alpha = 0.3
+        //初期設定
+        //Win1
+        win1.backgroundColor = UIColor.whiteColor()
+        win1.frame = CGRectMake(80,80,self.view.frame.width-40,self.view.frame.height-200)
+        win1.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height/2)
+        win1.alpha = 1.0
+        win1.layer.cornerRadius = 10
+        //KeyWindowにする
+        win1.makeKeyWindow()
+        //表示
+        self.win1.makeKeyAndVisible()
+        
+        //TextView生成
+        let text1: UITextView = UITextView(frame: CGRectMake(10,10, self.win1.frame.width - 20, self.win1.frame.height-60))
+        text1.backgroundColor = UIColor.clearColor()
+        text1.font = UIFont.systemFontOfSize(CGFloat(18))
+        text1.textColor = UIColor.blackColor()
+        text1.textAlignment = NSTextAlignment.Left
+        text1.editable = false
+        text1.scrollEnabled = true
+        self.win1.addSubview(text1)
+        //テキストファイル読込
+        let path = NSBundle.mainBundle().pathForResource("caution", ofType: "txt")!
+        if let data = NSData(contentsOfFile: path){
+            text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+        } else {
+            text1.text = "ファイル読込エラー"
+        }
+        
+        //閉じるボタン生成
+        btnClose.frame = CGRectMake(0,0,100,30)
+        btnClose.backgroundColor = UIColor.orangeColor()
+        btnClose.setTitle("閉じる", forState: .Normal)
+        btnClose.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btnClose.layer.masksToBounds = true
+        btnClose.layer.cornerRadius = 10.0
+        btnClose.layer.position = CGPointMake(self.win1.frame.width/2, self.win1.frame.height-20)
+        btnClose.addTarget(self, action: #selector(ViewController.onClick(_:)), forControlEvents: .TouchUpInside)
+        self.win1.addSubview(btnClose)
+    }
+    
+    //ボタンイベント
+    internal func onClick(sender: UIButton){
+        if sender == btnClose {
+            win1.hidden = true //win1隠す
+            self.view.alpha = 1.0 //元の画面明るく
+        }
+        if sender == btnEarthquakeCaution {
+            createWin1()
+        }
     }
     
     //基礎データ入力画面遷移

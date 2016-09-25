@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		594DDA491D9747110078EE72 /* caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 594DDA481D9747110078EE72 /* caution.txt */; };
 		598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8DE1D850AE6006842C8 /* AppDelegate.swift */; };
 		598AC8E11D850AE6006842C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8E01D850AE6006842C8 /* ViewController.swift */; };
 		598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E21D850AE6006842C8 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		594DDA481D9747110078EE72 /* caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = caution.txt; sourceTree = "<group>"; };
 		598AC8DB1D850AE6006842C8 /* FireEmergency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireEmergency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		598AC8DE1D850AE6006842C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		598AC8E01D850AE6006842C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		598AC8DD1D850AE6006842C8 /* FireEmergency */ = {
 			isa = PBXGroup;
 			children = (
+				594DDA481D9747110078EE72 /* caution.txt */,
 				598AC8DE1D850AE6006842C8 /* AppDelegate.swift */,
 				598AC8E01D850AE6006842C8 /* ViewController.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
@@ -129,6 +132,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594DDA491D9747110078EE72 /* caution.txt in Resources */,
 				598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */,
 				598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */,
 				598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */,
