@@ -43,6 +43,7 @@ class ViewController: UIViewController {
     let pad33            = UIView(frame: CGRectZero)
     //ボタン押したら出るUIWindow
     private var win1: UIWindow!
+    private var text1: UITextView!
     private var btnClose: UIButton!
 
     override func viewDidLoad() {
@@ -217,6 +218,7 @@ class ViewController: UIViewController {
         
         //UIWindow
         win1 = UIWindow()
+        text1 = UITextView()
         btnClose = UIButton()
     }
     
@@ -442,7 +444,7 @@ class ViewController: UIViewController {
         self.win1.makeKeyAndVisible()
         
         //TextView生成
-        let text1: UITextView = UITextView(frame: CGRectMake(10,10, self.win1.frame.width - 20, self.win1.frame.height-60))
+        text1.frame = CGRectMake(10,10, self.win1.frame.width - 20, self.win1.frame.height-60)
         text1.backgroundColor = UIColor.clearColor()
         text1.font = UIFont.systemFontOfSize(CGFloat(18))
         text1.textColor = UIColor.blackColor()
@@ -453,7 +455,9 @@ class ViewController: UIViewController {
         //テキストファイル読込
         let path = NSBundle.mainBundle().pathForResource("caution", ofType: "txt")!
         if let data = NSData(contentsOfFile: path){
-            text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+            if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+            }
         } else {
             text1.text = "ファイル読込エラー"
         }
