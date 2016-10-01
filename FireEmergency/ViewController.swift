@@ -41,14 +41,13 @@ class ViewController: UIViewController {
     let pad31            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
     let pad32            = UIView(frame: CGRectZero)
     let pad33            = UIView(frame: CGRectZero)
-    //ボタン押したら出るUIWindow
-    private var win1: UIWindow!
-    private var text1: UITextView!
-    private var btnClose: UIButton!
+    //InfoDialogインスタンス保持用変数
+    private var mInfoDialog: InfoDialog!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor(red:0.9, green:0.7, blue:0.2, alpha:1.0)
         //Button生成
         //基礎データ入力
         btnData.backgroundColor = UIColor.blueColor()
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         //震災
-        btnEarthquake.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake.layer.masksToBounds = true
         btnEarthquake.setTitle("震災", forState: UIControlState.Normal)
         btnEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -70,7 +69,7 @@ class ViewController: UIViewController {
         btnEarthquake.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnEarthquake)
         //風水害
-        btnTyphoon.backgroundColor = UIColor.lightGrayColor()
+        btnTyphoon.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnTyphoon.layer.masksToBounds = true
         btnTyphoon.setTitle("風水害", forState: UIControlState.Normal)
         btnTyphoon.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -78,7 +77,7 @@ class ViewController: UIViewController {
         btnTyphoon.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnTyphoon)
         //国民保護
-        btnKokuminhogo.backgroundColor = UIColor.lightGrayColor()
+        btnKokuminhogo.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogo.layer.masksToBounds = true
         btnKokuminhogo.setTitle("国民保", forState: UIControlState.Normal)
         btnKokuminhogo.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -86,7 +85,7 @@ class ViewController: UIViewController {
         btnKokuminhogo.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKokuminhogo)
         //緊援隊
-        btnKinentai.backgroundColor = UIColor.lightGrayColor()
+        btnKinentai.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKinentai.layer.masksToBounds = true
         btnKinentai.setTitle("緊援隊", forState: UIControlState.Normal)
         btnKinentai.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -104,12 +103,12 @@ class ViewController: UIViewController {
         self.view.addSubview(pad4)
         //非常召集基準（震災）
         lblEarthquake.text = "非常召集基準（震災）"
-        lblEarthquake.textColor = UIColor.blackColor()
+        lblEarthquake.textColor = UIColor.whiteColor()
         lblEarthquake.textAlignment = NSTextAlignment.Center
         lblEarthquake.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblEarthquake)
         //震度５強以上
-        btnEarthquake1.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquake1.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake1.layer.masksToBounds = true
         btnEarthquake1.setTitle("震度５強以上", forState: UIControlState.Normal)
         btnEarthquake1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -117,7 +116,7 @@ class ViewController: UIViewController {
         btnEarthquake1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnEarthquake1)
         //震度５弱
-        btnEarthquake2.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquake2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake2.layer.masksToBounds = true
         btnEarthquake2.setTitle("震度５弱", forState: UIControlState.Normal)
         btnEarthquake2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -125,7 +124,7 @@ class ViewController: UIViewController {
         btnEarthquake2.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnEarthquake2)
         //震度４
-        btnEarthquake3.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquake3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake3.layer.masksToBounds = true
         btnEarthquake3.setTitle("震度４", forState: UIControlState.Normal)
         btnEarthquake3.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -133,7 +132,7 @@ class ViewController: UIViewController {
         btnEarthquake3.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnEarthquake3)
         //震度３以下
-        btnEarthquake4.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquake4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake4.layer.masksToBounds = true
         btnEarthquake4.setTitle("震度３以下", forState: UIControlState.Normal)
         btnEarthquake4.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -152,15 +151,17 @@ class ViewController: UIViewController {
         padY5.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY5)
         //情報（地震）
-        btnEarthquakeEarthquake.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquakeEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeEarthquake.layer.masksToBounds = true
         btnEarthquakeEarthquake.setTitle("情報(地震)", forState: UIControlState.Normal)
         btnEarthquakeEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquakeEarthquake.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnEarthquakeEarthquake.tag=9
         btnEarthquakeEarthquake.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquakeEarthquake.addTarget(self, action: #selector(ViewController.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeEarthquake)
         //情報（停電）
-        btnEarthquakeBlackout.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquakeBlackout.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeBlackout.layer.masksToBounds = true
         btnEarthquakeBlackout.setTitle("情報(停電)", forState: UIControlState.Normal)
         btnEarthquakeBlackout.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -168,15 +169,17 @@ class ViewController: UIViewController {
         btnEarthquakeBlackout.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnEarthquakeBlackout)
         //情報（道路）
-        btnEarthquakeRoad.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquakeRoad.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeRoad.layer.masksToBounds = true
         btnEarthquakeRoad.setTitle("情報(道路)", forState: UIControlState.Normal)
         btnEarthquakeRoad.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquakeRoad.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnEarthquakeRoad.tag=11
         btnEarthquakeRoad.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquakeRoad.addTarget(self, action: #selector(self.showInfoRoad(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeRoad)
         //連絡網
-        btnEarthquakeTel.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquakeTel.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeTel.layer.masksToBounds = true
         btnEarthquakeTel.setTitle("連絡網", forState: UIControlState.Normal)
         btnEarthquakeTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -184,17 +187,17 @@ class ViewController: UIViewController {
         btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnEarthquakeTel)
         //留意事項
-        btnEarthquakeCaution.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquakeCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeCaution.layer.masksToBounds = true
         btnEarthquakeCaution.setTitle("留意事項", forState: UIControlState.Normal)
         btnEarthquakeCaution.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnEarthquakeCaution.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnEarthquakeCaution.tag=13
         btnEarthquakeCaution.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeCaution.addTarget(self, action: #selector(ViewController.onClick(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeCaution.addTarget(self, action: #selector(ViewController.showInfoCaution(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeCaution)
         //防災ネット
-        btnEarthquakeBousaiNet.backgroundColor = UIColor.lightGrayColor()
+        btnEarthquakeBousaiNet.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeBousaiNet.layer.masksToBounds = true
         btnEarthquakeBousaiNet.setTitle("防災ネット", forState: UIControlState.Normal)
         btnEarthquakeBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
@@ -216,10 +219,8 @@ class ViewController: UIViewController {
         pad33.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad33)
         
-        //UIWindow
-        win1 = UIWindow()
-        text1 = UITextView()
-        btnClose = UIButton()
+        //ボタン押したら表示するInfoDialog生成
+        mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
     //制約ひな型
@@ -427,68 +428,25 @@ class ViewController: UIViewController {
         ])
     }
     
-    //UIWindow生成
-    internal func createWin1(){
-        //元の画面を暗く
-        self.view.alpha = 0.3
-        //初期設定
-        //Win1
-        win1.backgroundColor = UIColor.whiteColor()
-        win1.frame = CGRectMake(80,80,self.view.frame.width-40,self.view.frame.height-200)
-        win1.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height/2)
-        win1.alpha = 1.0
-        win1.layer.cornerRadius = 10
-        //KeyWindowにする
-        win1.makeKeyWindow()
-        //表示
-        self.win1.makeKeyAndVisible()
-        
-        //TextView生成
-        text1.frame = CGRectMake(10,10, self.win1.frame.width - 20, self.win1.frame.height-60)
-        text1.backgroundColor = UIColor.clearColor()
-        text1.font = UIFont.systemFontOfSize(CGFloat(18))
-        text1.textColor = UIColor.blackColor()
-        text1.textAlignment = NSTextAlignment.Left
-        text1.editable = false
-        text1.scrollEnabled = true
-        self.win1.addSubview(text1)
-        //テキストファイル読込
-        let path = NSBundle.mainBundle().pathForResource("caution", ofType: "txt")!
-        if let data = NSData(contentsOfFile: path){
-            if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
-            }
-        } else {
-            text1.text = "ファイル読込エラー"
-        }
-        
-        //閉じるボタン生成
-        btnClose.frame = CGRectMake(0,0,100,30)
-        btnClose.backgroundColor = UIColor.orangeColor()
-        btnClose.setTitle("閉じる", forState: .Normal)
-        btnClose.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        btnClose.layer.masksToBounds = true
-        btnClose.layer.cornerRadius = 10.0
-        btnClose.layer.position = CGPointMake(self.win1.frame.width/2, self.win1.frame.height-20)
-        btnClose.addTarget(self, action: #selector(ViewController.onClick(_:)), forControlEvents: .TouchUpInside)
-        self.win1.addSubview(btnClose)
+    //情報(地震)
+    internal func showInfoEarthquake(sender: UIButton){
+        mInfoDialog.showInfo("earthquake")
     }
     
-    //ボタンイベント
-    internal func onClick(sender: UIButton){
-        if sender == btnClose {
-            win1.hidden = true //win1隠す
-            self.view.alpha = 1.0 //元の画面明るく
-        }
-        if sender == btnEarthquakeCaution {
-            createWin1()
-        }
+    //情報（道路）
+    internal func showInfoRoad(sender: UIButton){
+        mInfoDialog.showInfo("road")
+    }
+
+    //留意事項
+    internal func showInfoCaution(sender: UIButton){
+        mInfoDialog.showInfo("caution")
     }
     
     //基礎データ入力画面遷移
     func onClickbtnData(sender : UIButton){
         //dataViewControllerのインスタンス生成
-        let data = DataViewController()
+        let data:DataViewController = DataViewController()
         
         //navigationControllerのrootViewControllerにdataViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
