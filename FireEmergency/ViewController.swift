@@ -43,6 +43,7 @@ class ViewController: UIViewController {
     let pad33            = UIView(frame: CGRectZero)
     //InfoDialogインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
+    private var mSelectDialog: SelectDialog!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,8 +113,10 @@ class ViewController: UIViewController {
         btnEarthquake1.layer.masksToBounds = true
         btnEarthquake1.setTitle("震度５強以上", forState: UIControlState.Normal)
         btnEarthquake1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquake1.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnEarthquake1.tag=5
         btnEarthquake1.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquake1.addTarget(self, action: #selector(self.showSelectEarthquake(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquake1)
         //震度５弱
         btnEarthquake2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -223,6 +226,7 @@ class ViewController: UIViewController {
         
         //ボタン押したら表示するInfoDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
+        mSelectDialog = SelectDialog(parentView: self)
     }
     
     //制約ひな型
@@ -428,6 +432,11 @@ class ViewController: UIViewController {
             Constraint(btnEarthquakeBousaiNet, .Leading, to:pad33, .Trailing, constant:0),
             Constraint(btnEarthquakeBousaiNet, .Width, to:btnEarthquakeTel, .Width, constant:0)
         ])
+    }
+    
+    //震度５強以上
+    func showSelectEarthquake(sender: UIButton){
+        mSelectDialog.showInfo("normal")
     }
     
     //情報(地震)
