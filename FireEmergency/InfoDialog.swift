@@ -66,6 +66,9 @@ class InfoDialog {
             case "road":
                 text1.text="URLをタップしてください\n\n■道路情報\n\n・トヨタ通れた道マップ\n\nhttps://www.toyota.co.jp/jpn/auto/passable_route/map/\n\n・日本道路交通情報センター\n\nhttp://www.jartic.or.jp/index.html"
                 break
+            case "blackout":
+                text1.text="URLをタップしてください\n\n■停電情報\n\n・関西電力\nhttp://www.kepco.co.jp/energy_supply/supply/teiden-info/\n\n・四国電力\nhttp://www.yonden.co.jp/kinkyu/\n\n・中国電力\nhttp://www.teideninfo.energia.co.jp/TI/LWC30010.do?act=goHst&hct=pc\n\n・九州電力\nhttp://www.kyuden.co.jp/info_teiden/fukuoka.html\n\n・中部電力\nhttp://teiden.chuden.jp/p/index.html\n\n・北陸電力\nhttp://www.rikuden.co.jp/teiden/otj010.html\n\n・東京電力\nhttp://teideninfo.tepco.co.jp/sp/00000000000.html\n\n・東北電力\nhttps://www.tohoku-epco.co.jp/teideninfo"
+                break
             case "caution":
                 //テキストファイル読込
                 let path = NSBundle.mainBundle().pathForResource("caution", ofType: "txt")!

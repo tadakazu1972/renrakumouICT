@@ -158,15 +158,17 @@ class ViewController: UIViewController {
         btnEarthquakeEarthquake.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnEarthquakeEarthquake.tag=9
         btnEarthquakeEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeEarthquake.addTarget(self, action: #selector(ViewController.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeEarthquake.addTarget(self, action: #selector(self.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeEarthquake)
         //情報（停電）
         btnEarthquakeBlackout.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeBlackout.layer.masksToBounds = true
         btnEarthquakeBlackout.setTitle("情報(停電)", forState: UIControlState.Normal)
         btnEarthquakeBlackout.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquakeBlackout.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnEarthquakeBlackout.tag=10
         btnEarthquakeBlackout.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquakeBlackout.addTarget(self, action: #selector(self.showInfoBlackout(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeBlackout)
         //情報（道路）
         btnEarthquakeRoad.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -224,7 +226,7 @@ class ViewController: UIViewController {
     }
     
     //制約ひな型
-    internal func Constraint(item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .Equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    func Constraint(item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .Equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
         let ret = NSLayoutConstraint(
             item:       item,
             attribute:  attr,
@@ -429,17 +431,22 @@ class ViewController: UIViewController {
     }
     
     //情報(地震)
-    internal func showInfoEarthquake(sender: UIButton){
+    func showInfoEarthquake(sender: UIButton){
         mInfoDialog.showInfo("earthquake")
     }
     
     //情報（道路）
-    internal func showInfoRoad(sender: UIButton){
+    func showInfoRoad(sender: UIButton){
         mInfoDialog.showInfo("road")
+    }
+    
+    //情報（停電）
+    func showInfoBlackout(sender: UIButton){
+        mInfoDialog.showInfo("blackout")
     }
 
     //留意事項
-    internal func showInfoCaution(sender: UIButton){
+    func showInfoCaution(sender: UIButton){
         mInfoDialog.showInfo("caution")
     }
     
