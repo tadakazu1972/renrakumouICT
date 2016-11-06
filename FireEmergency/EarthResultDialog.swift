@@ -38,7 +38,7 @@ class EarthResultDialog {
         //初期設定
         //Win1
         win1.backgroundColor = UIColor.whiteColor()
-        win1.frame = CGRectMake(80,200,parent.view.frame.width-40,parent.view.frame.height-300)
+        win1.frame = CGRectMake(80,180,parent.view.frame.width-40,parent.view.frame.height-280)
         win1.layer.position = CGPointMake(parent.view.frame.width/2, parent.view.frame.height/2)
         win1.alpha = 1.0
         win1.layer.cornerRadius = 10
@@ -59,6 +59,7 @@ class EarthResultDialog {
         
         //テキストの内容を場合分け
         switch data {
+        //震度５強以上
         case 11:
             text1.text="■大津波警報\n\n１号招集\n\n消防局へ参集"
             break
@@ -68,16 +69,49 @@ class EarthResultDialog {
         case 13:
             text1.text="■警報なし\n\n１号招集\n\n消防局へ参集"
             break
+        //震度５弱
         case 21:
-            //テキストファイル読込
-            let path = NSBundle.mainBundle().pathForResource("caution", ofType: "txt")!
-            if let data = NSData(contentsOfFile: path){
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
-                }
-            } else {
-                text1.text = "ファイル読込エラー"
-            }
+            text1.text="■大津波警報\n\n１号招集\n\n消防局へ参集"
+            break
+        case 22:
+            text1.text="■津波警報\n\n２号招集(非番・日勤)\n\n消防局へ参集"
+            break
+        case 23:
+            text1.text="■警報なし\n\n２号招集(非番・日勤)\n\n消防局へ参集"
+            break
+        //震度４
+        case 31:
+            text1.text="■大津波警報\n\n１号招集\n\n消防局へ参集"
+            break
+        case 32:
+            text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            break
+        case 33:
+            text1.text="■警報なし\n\n３号招集(非番・日勤)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            break
+        //震度３以下
+        case 41:
+            text1.text="■大津波警報\n\n１号招集\n\n消防局へ参集"
+            break
+        case 42:
+            text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            break
+        case 43:
+            text1.text="■津波注意報\n\n第５非常警備(此花,港,大正,西淀川,住之江,西成,水上)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            break
+        case 44:
+            text1.text="■警報なし\n\n招集なし"
+            break
+        //東海地震に伴う非常招集
+        case 51:
+            text1.text="■警戒宣言が発令されたとき（東海地震予知情報）\n\n３号招集(非番・日勤)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            break
+        case 52:
+            text1.text="■東海地震注意報が発表されたとき\n\n４号招集(非番・日勤)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            break
+        case 53:
+            text1.text="■東海地震に関連する調査情報（臨時）が発表されたとき\n\n第５非常警備(全署、消防局)\n\n招集なし"
+            break
             
         default:
             text1.text=""

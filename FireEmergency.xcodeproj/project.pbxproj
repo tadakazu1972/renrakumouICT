@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593C66821DCDB50900405F53 /* EarthResultDialog.swift */; };
+		593C66851DCEAFE000405F53 /* KokuminhogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */; };
+		593C66871DCEB10100405F53 /* KokuminhogoResultDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */; };
+		593C668D1DCEB31500405F53 /* kokuminhogo1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C66881DCEB31500405F53 /* kokuminhogo1.txt */; };
+		593C668E1DCEB31500405F53 /* kokuminhogo2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C66891DCEB31500405F53 /* kokuminhogo2.txt */; };
+		593C668F1DCEB31500405F53 /* kokuminhogo3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C668A1DCEB31500405F53 /* kokuminhogo3.txt */; };
+		593C66901DCEB31500405F53 /* kokuminhogo4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C668B1DCEB31500405F53 /* kokuminhogo4.txt */; };
+		593C66911DCEB31500405F53 /* kokuminhogo5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C668C1DCEB31500405F53 /* kokuminhogo5.txt */; };
 		594DDA491D9747110078EE72 /* caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 594DDA481D9747110078EE72 /* caution.txt */; };
 		594DDA4B1D9F50D40078EE72 /* InfoDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */; };
 		598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8DE1D850AE6006842C8 /* AppDelegate.swift */; };
@@ -17,11 +24,18 @@
 		598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E81D850AE6006842C8 /* Assets.xcassets */; };
 		598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8EA1D850AE6006842C8 /* LaunchScreen.storyboard */; };
 		598AC8F41D8512F3006842C8 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8F31D8512F3006842C8 /* DataViewController.swift */; };
-		59EC66EC1DA0B3C300A95067 /* SelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC66EB1DA0B3C300A95067 /* SelectDialog.swift */; };
+		59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		593C66821DCDB50900405F53 /* EarthResultDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthResultDialog.swift; sourceTree = "<group>"; };
+		593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoViewController.swift; sourceTree = "<group>"; };
+		593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoResultDialog.swift; sourceTree = "<group>"; };
+		593C66881DCEB31500405F53 /* kokuminhogo1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo1.txt; sourceTree = "<group>"; };
+		593C66891DCEB31500405F53 /* kokuminhogo2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo2.txt; sourceTree = "<group>"; };
+		593C668A1DCEB31500405F53 /* kokuminhogo3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo3.txt; sourceTree = "<group>"; };
+		593C668B1DCEB31500405F53 /* kokuminhogo4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo4.txt; sourceTree = "<group>"; };
+		593C668C1DCEB31500405F53 /* kokuminhogo5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo5.txt; sourceTree = "<group>"; };
 		594DDA481D9747110078EE72 /* caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = caution.txt; sourceTree = "<group>"; };
 		594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDialog.swift; sourceTree = "<group>"; };
 		598AC8DB1D850AE6006842C8 /* FireEmergency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireEmergency.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -33,7 +47,7 @@
 		598AC8EB1D850AE6006842C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		598AC8ED1D850AE6006842C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		598AC8F31D8512F3006842C8 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
-		59EC66EB1DA0B3C300A95067 /* SelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectDialog.swift; sourceTree = "<group>"; };
+		59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthSelectDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,12 +80,19 @@
 		598AC8DD1D850AE6006842C8 /* FireEmergency */ = {
 			isa = PBXGroup;
 			children = (
+				593C66881DCEB31500405F53 /* kokuminhogo1.txt */,
+				593C66891DCEB31500405F53 /* kokuminhogo2.txt */,
+				593C668A1DCEB31500405F53 /* kokuminhogo3.txt */,
+				593C668B1DCEB31500405F53 /* kokuminhogo4.txt */,
+				593C668C1DCEB31500405F53 /* kokuminhogo5.txt */,
 				594DDA481D9747110078EE72 /* caution.txt */,
 				598AC8DE1D850AE6006842C8 /* AppDelegate.swift */,
 				598AC8E01D850AE6006842C8 /* ViewController.swift */,
+				593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
-				59EC66EB1DA0B3C300A95067 /* SelectDialog.swift */,
+				59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */,
 				593C66821DCDB50900405F53 /* EarthResultDialog.swift */,
+				593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
 				598AC8E81D850AE6006842C8 /* Assets.xcassets */,
@@ -142,9 +163,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				594DDA491D9747110078EE72 /* caution.txt in Resources */,
+				593C668D1DCEB31500405F53 /* kokuminhogo1.txt in Resources */,
+				593C66911DCEB31500405F53 /* kokuminhogo5.txt in Resources */,
 				598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */,
 				598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */,
+				593C668F1DCEB31500405F53 /* kokuminhogo3.txt in Resources */,
+				593C66901DCEB31500405F53 /* kokuminhogo4.txt in Resources */,
 				598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */,
+				593C668E1DCEB31500405F53 /* kokuminhogo2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,8 +186,10 @@
 				593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */,
 				598AC8E11D850AE6006842C8 /* ViewController.swift in Sources */,
 				598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */,
+				593C66851DCEAFE000405F53 /* KokuminhogoViewController.swift in Sources */,
+				593C66871DCEB10100405F53 /* KokuminhogoResultDialog.swift in Sources */,
 				598AC8E71D850AE6006842C8 /* FireEmergency.xcdatamodeld in Sources */,
-				59EC66EC1DA0B3C300A95067 /* SelectDialog.swift in Sources */,
+				59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

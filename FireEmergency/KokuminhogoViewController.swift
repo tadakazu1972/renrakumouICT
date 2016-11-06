@@ -1,14 +1,14 @@
 //
-//  ViewController.swift
+//  KokuminhogoViewController.swift
 //  FireEmergency
 //
-//  Created by 中道忠和 on 2016/09/11.
+//  Created by 中道忠和 on 2016/11/06.
 //  Copyright © 2016年 tadakazu nakamichi. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class KokuminhogoViewController: UIViewController {
     //メイン画面
     let btnData         = UIButton(frame: CGRectZero)
     let btnEarthquake   = UIButton(frame: CGRectZero)
@@ -19,24 +19,24 @@ class ViewController: UIViewController {
     let pad2            = UIView(frame: CGRectZero)
     let pad3            = UIView(frame: CGRectZero)
     let pad4            = UIView(frame: CGRectZero)
-    let lblEarthquake   = UILabel(frame: CGRectZero)
-    let btnEarthquake1  = UIButton(frame: CGRectZero)
-    let btnEarthquake2  = UIButton(frame: CGRectZero)
-    let btnEarthquake3  = UIButton(frame: CGRectZero)
-    let btnEarthquake4  = UIButton(frame: CGRectZero)
-    let btnEarthquake5  = UIButton(frame: CGRectZero)
+    let lblKokuminhogo   = UILabel(frame: CGRectZero)
+    let btnKokuminhogo1  = UIButton(frame: CGRectZero)
+    let btnKokuminhogo2  = UIButton(frame: CGRectZero)
+    let btnKokuminhogo3  = UIButton(frame: CGRectZero)
+    let btnKokuminhogo4  = UIButton(frame: CGRectZero)
+    let btnKokuminhogo5  = UIButton(frame: CGRectZero)
     let padY1           = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
     let padY2           = UIView(frame: CGRectZero)
     let padY3           = UIView(frame: CGRectZero)
     let padY4           = UIView(frame: CGRectZero)
     let padY5           = UIView(frame: CGRectZero)
     let padY6           = UIView(frame: CGRectZero)
-    let btnEarthquakeEarthquake = UIButton(frame: CGRectZero)
-    let btnEarthquakeBlackout   = UIButton(frame: CGRectZero)
-    let btnEarthquakeRoad       = UIButton(frame: CGRectZero)
-    let btnEarthquakeTel        = UIButton(frame: CGRectZero)
-    let btnEarthquakeCaution    = UIButton(frame: CGRectZero)
-    let btnEarthquakeBousaiNet  = UIButton(frame: CGRectZero)
+    let btnKokuminhogoEarthquake = UIButton(frame: CGRectZero)
+    let btnKokuminhogoBlackout   = UIButton(frame: CGRectZero)
+    let btnKokuminhogoRoad       = UIButton(frame: CGRectZero)
+    let btnKokuminhogoTel        = UIButton(frame: CGRectZero)
+    let btnKokuminhogoCaution    = UIButton(frame: CGRectZero)
+    let btnKokuminhogoBousaiNet  = UIButton(frame: CGRectZero)
     let pad21            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
     let pad22            = UIView(frame: CGRectZero)
     let pad23            = UIView(frame: CGRectZero)
@@ -45,14 +45,13 @@ class ViewController: UIViewController {
     let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
-    private var mEarthSelectDialog: EarthSelectDialog!
     //結果表示用クラス保持用
-    internal var mEarthResultDialog: EarthResultDialog!
-
+    internal var mKokuminhogoResultDialog: KokuminhogoResultDialog!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red:0.9, green:0.7, blue:0.2, alpha:1.0)
+        self.view.backgroundColor = UIColor(red:0.0, green:0.55, blue:0.0, alpha:1.0)
         //Button生成
         //基礎データ入力
         btnData.backgroundColor = UIColor.blueColor()
@@ -62,7 +61,7 @@ class ViewController: UIViewController {
         btnData.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
-        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
+        btnData.addTarget(self, action: #selector(self.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         //震災
@@ -71,6 +70,7 @@ class ViewController: UIViewController {
         btnEarthquake.setTitle("震災", forState: UIControlState.Normal)
         btnEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnEarthquake.tag=1
+        btnEarthquake.addTarget(self, action: #selector(self.onClickbtnKokuminhogo(_:)), forControlEvents: .TouchUpInside)
         btnEarthquake.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnEarthquake)
         //風水害
@@ -87,7 +87,6 @@ class ViewController: UIViewController {
         btnKokuminhogo.setTitle("国民保", forState: UIControlState.Normal)
         btnKokuminhogo.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogo.tag=3
-        btnKokuminhogo.addTarget(self, action: #selector(self.onClickbtnKokuminhogo(_:)), forControlEvents: .TouchUpInside)
         btnKokuminhogo.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKokuminhogo)
         //緊援隊
@@ -107,58 +106,58 @@ class ViewController: UIViewController {
         self.view.addSubview(pad3)
         pad4.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad4)
-        //非常召集基準（震災）
-        lblEarthquake.text = "非常召集基準（震災）"
-        lblEarthquake.textColor = UIColor.whiteColor()
-        lblEarthquake.textAlignment = NSTextAlignment.Center
-        lblEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(lblEarthquake)
-        //震度５強以上
-        btnEarthquake1.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquake1.layer.masksToBounds = true
-        btnEarthquake1.setTitle("震度５強以上", forState: UIControlState.Normal)
-        btnEarthquake1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquake1.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquake1.tag=5
-        btnEarthquake1.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquake1.addTarget(self, action: #selector(self.showSelectEarthquake1(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquake1)
-        //震度５弱
-        btnEarthquake2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquake2.layer.masksToBounds = true
-        btnEarthquake2.setTitle("震度５弱", forState: UIControlState.Normal)
-        btnEarthquake2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquake2.tag=6
-        btnEarthquake2.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquake2.addTarget(self, action: #selector(self.showSelectEarthquake2(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquake2)
-        //震度４
-        btnEarthquake3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquake3.layer.masksToBounds = true
-        btnEarthquake3.setTitle("震度４", forState: UIControlState.Normal)
-        btnEarthquake3.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquake3.tag=7
-        btnEarthquake3.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquake3.addTarget(self, action: #selector(self.showSelectEarthquake3(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquake3)
-        //震度３以下
-        btnEarthquake4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquake4.layer.masksToBounds = true
-        btnEarthquake4.setTitle("震度３以下", forState: UIControlState.Normal)
-        btnEarthquake4.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquake4.tag=8
-        btnEarthquake4.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquake4.addTarget(self, action: #selector(self.showSelectEarthquake4(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquake4)
-        //東海地震に伴う非常召集
-        btnEarthquake5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquake5.layer.masksToBounds = true
-        btnEarthquake5.setTitle("東海地震に伴う非常召集", forState: UIControlState.Normal)
-        btnEarthquake5.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquake5.tag=9
-        btnEarthquake5.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquake5.addTarget(self, action: #selector(self.showSelectEarthquake5(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquake5)
+        //非常警備基準（国民保護）
+        lblKokuminhogo.text = "非常警備基準（国民保護）"
+        lblKokuminhogo.textColor = UIColor.whiteColor()
+        lblKokuminhogo.textAlignment = NSTextAlignment.Center
+        lblKokuminhogo.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblKokuminhogo)
+        //１号非常招集
+        btnKokuminhogo1.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogo1.layer.masksToBounds = true
+        btnKokuminhogo1.setTitle("１号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogo1.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnKokuminhogo1.tag=5
+        btnKokuminhogo1.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogo1.addTarget(self, action: #selector(self.showKokuminhogo1(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogo1)
+        //２号非常招集
+        btnKokuminhogo2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogo2.layer.masksToBounds = true
+        btnKokuminhogo2.setTitle("２号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogo2.tag=6
+        btnKokuminhogo2.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogo2.addTarget(self, action: #selector(self.showKokuminhogo2(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogo2)
+        //３号非常招集
+        btnKokuminhogo3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogo3.layer.masksToBounds = true
+        btnKokuminhogo3.setTitle("３号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo3.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogo3.tag=7
+        btnKokuminhogo3.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogo3.addTarget(self, action: #selector(self.showKokuminhogo3(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogo3)
+        //４号非常招集
+        btnKokuminhogo4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogo4.layer.masksToBounds = true
+        btnKokuminhogo4.setTitle("４号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo4.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogo4.tag=8
+        btnKokuminhogo4.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogo4.addTarget(self, action: #selector(self.showKokuminhogo4(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogo4)
+        //５号非常招集
+        btnKokuminhogo5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogo5.layer.masksToBounds = true
+        btnKokuminhogo5.setTitle("５号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo5.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogo5.tag=9
+        btnKokuminhogo5.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogo5.addTarget(self, action: #selector(self.showKokuminhogo5(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogo5)
         //垂直方向のpad
         padY1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY1)
@@ -173,61 +172,61 @@ class ViewController: UIViewController {
         padY6.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY6)
         //情報（地震）
-        btnEarthquakeEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeEarthquake.layer.masksToBounds = true
-        btnEarthquakeEarthquake.setTitle("情報(地震)", forState: UIControlState.Normal)
-        btnEarthquakeEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeEarthquake.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeEarthquake.tag=9
-        btnEarthquakeEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeEarthquake.addTarget(self, action: #selector(self.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeEarthquake)
+        btnKokuminhogoEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogoEarthquake.layer.masksToBounds = true
+        btnKokuminhogoEarthquake.setTitle("情報(地震)", forState: UIControlState.Normal)
+        btnKokuminhogoEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogoEarthquake.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnKokuminhogoEarthquake.tag=9
+        btnKokuminhogoEarthquake.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogoEarthquake.addTarget(self, action: #selector(self.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogoEarthquake)
         //情報（停電）
-        btnEarthquakeBlackout.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeBlackout.layer.masksToBounds = true
-        btnEarthquakeBlackout.setTitle("情報(停電)", forState: UIControlState.Normal)
-        btnEarthquakeBlackout.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeBlackout.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeBlackout.tag=10
-        btnEarthquakeBlackout.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeBlackout.addTarget(self, action: #selector(self.showInfoBlackout(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeBlackout)
+        btnKokuminhogoBlackout.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogoBlackout.layer.masksToBounds = true
+        btnKokuminhogoBlackout.setTitle("情報(停電)", forState: UIControlState.Normal)
+        btnKokuminhogoBlackout.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogoBlackout.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnKokuminhogoBlackout.tag=10
+        btnKokuminhogoBlackout.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogoBlackout.addTarget(self, action: #selector(self.showInfoBlackout(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogoBlackout)
         //情報（道路）
-        btnEarthquakeRoad.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeRoad.layer.masksToBounds = true
-        btnEarthquakeRoad.setTitle("情報(道路)", forState: UIControlState.Normal)
-        btnEarthquakeRoad.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeRoad.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeRoad.tag=11
-        btnEarthquakeRoad.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeRoad.addTarget(self, action: #selector(self.showInfoRoad(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeRoad)
+        btnKokuminhogoRoad.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogoRoad.layer.masksToBounds = true
+        btnKokuminhogoRoad.setTitle("情報(道路)", forState: UIControlState.Normal)
+        btnKokuminhogoRoad.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogoRoad.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnKokuminhogoRoad.tag=11
+        btnKokuminhogoRoad.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogoRoad.addTarget(self, action: #selector(self.showInfoRoad(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogoRoad)
         //連絡網
-        btnEarthquakeTel.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeTel.layer.masksToBounds = true
-        btnEarthquakeTel.setTitle("連絡網", forState: UIControlState.Normal)
-        btnEarthquakeTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeTel.tag=12
-        btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(btnEarthquakeTel)
+        btnKokuminhogoTel.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogoTel.layer.masksToBounds = true
+        btnKokuminhogoTel.setTitle("連絡網", forState: UIControlState.Normal)
+        btnKokuminhogoTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogoTel.tag=12
+        btnKokuminhogoTel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btnKokuminhogoTel)
         //留意事項
-        btnEarthquakeCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeCaution.layer.masksToBounds = true
-        btnEarthquakeCaution.setTitle("留意事項", forState: UIControlState.Normal)
-        btnEarthquakeCaution.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeCaution.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeCaution.tag=13
-        btnEarthquakeCaution.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeCaution.addTarget(self, action: #selector(ViewController.showInfoCaution(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeCaution)
+        btnKokuminhogoCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogoCaution.layer.masksToBounds = true
+        btnKokuminhogoCaution.setTitle("留意事項", forState: UIControlState.Normal)
+        btnKokuminhogoCaution.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogoCaution.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnKokuminhogoCaution.tag=13
+        btnKokuminhogoCaution.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogoCaution.addTarget(self, action: #selector(ViewController.showInfoCaution(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogoCaution)
         //防災ネット
-        btnEarthquakeBousaiNet.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeBousaiNet.layer.masksToBounds = true
-        btnEarthquakeBousaiNet.setTitle("防災ネット", forState: UIControlState.Normal)
-        btnEarthquakeBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeBousaiNet.tag=9
-        btnEarthquakeBousaiNet.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(btnEarthquakeBousaiNet)
+        btnKokuminhogoBousaiNet.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogoBousaiNet.layer.masksToBounds = true
+        btnKokuminhogoBousaiNet.setTitle("防災ネット", forState: UIControlState.Normal)
+        btnKokuminhogoBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogoBousaiNet.tag=9
+        btnKokuminhogoBousaiNet.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btnKokuminhogoBousaiNet)
         //pad
         pad21.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad21)
@@ -245,7 +244,7 @@ class ViewController: UIViewController {
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
-        mEarthResultDialog = EarthResultDialog(parentView: self) //このViewControllerを渡してあげる
+        mKokuminhogoResultDialog = KokuminhogoResultDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
     //制約ひな型
@@ -270,229 +269,224 @@ class ViewController: UIViewController {
             Constraint(btnData, .Top, to:self.view, .Top, constant:20),
             Constraint(btnData, .Leading, to:self.view, .Leading, constant:8),
             Constraint(btnData, .Trailing, to:self.view, .TrailingMargin, constant:8)
-        ])
+            ])
         self.view.addConstraints([
             //pad1
             Constraint(pad1, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad1, .Leading, to:self.view, .Leading, constant:0),
             Constraint(pad1, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //震災ボタン
             Constraint(btnEarthquake, .Top, to:btnData, .Bottom, constant:8),
             Constraint(btnEarthquake, .Leading, to:pad1, .Trailing, constant:0),
             Constraint(btnEarthquake, .Width, to:self.view, .Width, multiplier:0.22, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //pad2
             Constraint(pad2, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad2, .Leading, to:btnEarthquake, .Trailing, constant:0),
             Constraint(pad2, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //風水害ボタン
             Constraint(btnTyphoon, .Top, to:btnData, .Bottom, constant:8),
             Constraint(btnTyphoon, .Leading, to:pad2, .Trailing, constant:0),
             Constraint(btnTyphoon, .Width, to:btnEarthquake, .Width, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //pad3
             Constraint(pad3, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad3, .Leading, to:btnTyphoon, .Trailing, constant:0),
             Constraint(pad3, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //国民保護ボタン
             Constraint(btnKokuminhogo, .Top, to:btnData, .Bottom ,constant:8),
             Constraint(btnKokuminhogo, .Leading, to:pad3, .Trailing, constant:0),
             Constraint(btnKokuminhogo, .Width, to:btnEarthquake, .Width, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //pad4
             Constraint(pad4, .Top, to:btnData, .Bottom, constant:8),
             Constraint(pad4, .Leading, to:btnKokuminhogo, .Trailing, constant:0),
             Constraint(pad4, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //緊援隊ボタン
             Constraint(btnKinentai, .Top, to:btnData, .Bottom, constant:8),
             Constraint(btnKinentai, .Leading, to:pad4, .Trailing, constant:0),
             Constraint(btnKinentai, .Width, to:btnEarthquake, .Width, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //padY1
             Constraint(padY1, .Top, to:btnEarthquake, .Bottom, constant:0),
             Constraint(padY1, .Leading, to:self.view, .Leading, constant:0),
             Constraint(padY1, .Height, to:self.view, .Height, multiplier:0.05, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //非常召集基準（震災）ラベル
-            Constraint(lblEarthquake, .Bottom, to:padY2, .Top, constant:8),
-            Constraint(lblEarthquake, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(lblEarthquake, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
-        ])
+            Constraint(lblKokuminhogo, .Bottom, to:padY2, .Top, constant:8),
+            Constraint(lblKokuminhogo, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(lblKokuminhogo, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
         self.view.addConstraints([
             //padY2
-            Constraint(padY2, .Bottom, to:btnEarthquake1, .Top, constant:0),
+            Constraint(padY2, .Bottom, to:btnKokuminhogo1, .Top, constant:0),
             Constraint(padY2, .Leading, to:self.view, .Leading, constant:0),
             Constraint(padY2, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //震度５強以上ボタン
-            Constraint(btnEarthquake1, .Bottom, to:padY3, .Top, constant:0),
-            Constraint(btnEarthquake1, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnEarthquake1, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
-        ])
+            Constraint(btnKokuminhogo1, .Bottom, to:padY3, .Top, constant:0),
+            Constraint(btnKokuminhogo1, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(btnKokuminhogo1, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
         self.view.addConstraints([
             //padY3
-            Constraint(padY3, .Bottom, to:btnEarthquake2, .Top, constant:0),
+            Constraint(padY3, .Bottom, to:btnKokuminhogo2, .Top, constant:0),
             Constraint(padY3, .Leading, to:self.view, .Leading, constant:0),
             Constraint(padY3, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //震度５弱ボタン
-            Constraint(btnEarthquake2, .Bottom, to:padY4, .Top, constant:0),
-            Constraint(btnEarthquake2, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnEarthquake2, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
-        ])
+            Constraint(btnKokuminhogo2, .Bottom, to:padY4, .Top, constant:0),
+            Constraint(btnKokuminhogo2, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(btnKokuminhogo2, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
         self.view.addConstraints([
             //padY4
-            Constraint(padY4, .Bottom, to:btnEarthquake3, .Top, constant:0),
+            Constraint(padY4, .Bottom, to:btnKokuminhogo3, .Top, constant:0),
             Constraint(padY4, .Leading, to:self.view, .Leading, constant:0),
             Constraint(padY4, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //震度４ボタン Y座標の中心
-            Constraint(btnEarthquake3, .CenterY, to:self.view, .CenterY, constant:0),
-            Constraint(btnEarthquake3, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnEarthquake3, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
-        ])
+            Constraint(btnKokuminhogo3, .CenterY, to:self.view, .CenterY, constant:0),
+            Constraint(btnKokuminhogo3, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(btnKokuminhogo3, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
         self.view.addConstraints([
             //padY5
-            Constraint(padY5, .Top, to:btnEarthquake3, .Bottom, constant:0),
+            Constraint(padY5, .Top, to:btnKokuminhogo3, .Bottom, constant:0),
             Constraint(padY5, .Leading, to:self.view, .Leading, constant:0),
             Constraint(padY5, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //震度３以下ボタン
-            Constraint(btnEarthquake4, .Top, to:padY5, .Bottom, constant:0),
-            Constraint(btnEarthquake4, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnEarthquake4, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
-        ])
+            Constraint(btnKokuminhogo4, .Top, to:padY5, .Bottom, constant:0),
+            Constraint(btnKokuminhogo4, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(btnKokuminhogo4, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
         self.view.addConstraints([
             //padY6
-            Constraint(padY6, .Top, to:btnEarthquake4, .Bottom, constant:0),
+            Constraint(padY6, .Top, to:btnKokuminhogo4, .Bottom, constant:0),
             Constraint(padY6, .Leading, to:self.view, .Leading, constant:0),
             Constraint(padY6, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //東海地震に伴う非常招集ボタン
-            Constraint(btnEarthquake5, .Top, to:padY6, .Bottom, constant:0),
-            Constraint(btnEarthquake5, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnEarthquake5, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
-        ])
+            Constraint(btnKokuminhogo5, .Top, to:padY6, .Bottom, constant:0),
+            Constraint(btnKokuminhogo5, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(btnKokuminhogo5, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
         self.view.addConstraints([
             //pad21
-            Constraint(pad21, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
+            Constraint(pad21, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
             Constraint(pad21, .Leading, to:self.view, .Leading, constant:0),
             Constraint(pad21, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //情報(地震)ボタン
-            Constraint(btnEarthquakeEarthquake, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(btnEarthquakeEarthquake, .Leading, to:pad21, .Trailing, constant:0),
-            Constraint(btnEarthquakeEarthquake, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
-        ])
+            Constraint(btnKokuminhogoEarthquake, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
+            Constraint(btnKokuminhogoEarthquake, .Leading, to:pad21, .Trailing, constant:0),
+            Constraint(btnKokuminhogoEarthquake, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
+            ])
         self.view.addConstraints([
             //pad22
-            Constraint(pad22, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad22, .Leading, to:btnEarthquakeEarthquake, .Trailing, constant:0),
+            Constraint(pad22, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
+            Constraint(pad22, .Leading, to:btnKokuminhogoEarthquake, .Trailing, constant:0),
             Constraint(pad22, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //情報(停電)ボタン
-            Constraint(btnEarthquakeBlackout, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(btnEarthquakeBlackout, .Leading, to:pad22, .Trailing, constant:0),
-            Constraint(btnEarthquakeBlackout, .Width, to:btnEarthquakeEarthquake, .Width, constant:0)
-        ])
+            Constraint(btnKokuminhogoBlackout, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
+            Constraint(btnKokuminhogoBlackout, .Leading, to:pad22, .Trailing, constant:0),
+            Constraint(btnKokuminhogoBlackout, .Width, to:btnKokuminhogoEarthquake, .Width, constant:0)
+            ])
         self.view.addConstraints([
             //pad23
-            Constraint(pad23, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad23, .Leading, to:btnEarthquakeBlackout, .Trailing, constant:0),
+            Constraint(pad23, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
+            Constraint(pad23, .Leading, to:btnKokuminhogoBlackout, .Trailing, constant:0),
             Constraint(pad23, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //情報(道路)ボタン
-            Constraint(btnEarthquakeRoad, .Bottom, to:btnEarthquakeTel, .Top ,constant:-8),
-            Constraint(btnEarthquakeRoad, .Leading, to:pad23, .Trailing, constant:0),
-            Constraint(btnEarthquakeRoad, .Width, to:btnEarthquakeEarthquake, .Width, constant:0)
-        ])
+            Constraint(btnKokuminhogoRoad, .Bottom, to:btnKokuminhogoTel, .Top ,constant:-8),
+            Constraint(btnKokuminhogoRoad, .Leading, to:pad23, .Trailing, constant:0),
+            Constraint(btnKokuminhogoRoad, .Width, to:btnKokuminhogoEarthquake, .Width, constant:0)
+            ])
         self.view.addConstraints([
             //pad31
-            Constraint(pad31, .Top, to:btnEarthquakeEarthquake, .Bottom, constant:8),
+            Constraint(pad31, .Top, to:btnKokuminhogoEarthquake, .Bottom, constant:8),
             Constraint(pad31, .Leading, to:self.view, .Leading, constant:0),
             Constraint(pad31, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //連絡網ボタン
-            Constraint(btnEarthquakeTel, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(btnEarthquakeTel, .Leading, to:pad31, .Trailing, constant:0),
-            Constraint(btnEarthquakeTel, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
-        ])
+            Constraint(btnKokuminhogoTel, .Bottom, to:self.view, .Bottom, constant:-8),
+            Constraint(btnKokuminhogoTel, .Leading, to:pad31, .Trailing, constant:0),
+            Constraint(btnKokuminhogoTel, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
+            ])
         self.view.addConstraints([
             //pad32
             Constraint(pad32, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(pad32, .Leading, to:btnEarthquakeTel, .Trailing, constant:0),
+            Constraint(pad32, .Leading, to:btnKokuminhogoTel, .Trailing, constant:0),
             Constraint(pad32, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //留意事項ボタン
-            Constraint(btnEarthquakeCaution, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(btnEarthquakeCaution, .Leading, to:pad32, .Trailing, constant:0),
-            Constraint(btnEarthquakeCaution, .Width, to:btnEarthquakeTel, .Width, constant:0)
-        ])
+            Constraint(btnKokuminhogoCaution, .Bottom, to:self.view, .Bottom, constant:-8),
+            Constraint(btnKokuminhogoCaution, .Leading, to:pad32, .Trailing, constant:0),
+            Constraint(btnKokuminhogoCaution, .Width, to:btnKokuminhogoTel, .Width, constant:0)
+            ])
         self.view.addConstraints([
             //pad33
             Constraint(pad33, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(pad33, .Leading, to:btnEarthquakeCaution, .Trailing, constant:0),
+            Constraint(pad33, .Leading, to:btnKokuminhogoCaution, .Trailing, constant:0),
             Constraint(pad33, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-        ])
+            ])
         self.view.addConstraints([
             //防災ネットボタン
-            Constraint(btnEarthquakeBousaiNet, .Bottom, to:self.view, .Bottom ,constant:-8),
-            Constraint(btnEarthquakeBousaiNet, .Leading, to:pad33, .Trailing, constant:0),
-            Constraint(btnEarthquakeBousaiNet, .Width, to:btnEarthquakeTel, .Width, constant:0)
-        ])
+            Constraint(btnKokuminhogoBousaiNet, .Bottom, to:self.view, .Bottom ,constant:-8),
+            Constraint(btnKokuminhogoBousaiNet, .Leading, to:pad33, .Trailing, constant:0),
+            Constraint(btnKokuminhogoBousaiNet, .Width, to:btnKokuminhogoTel, .Width, constant:0)
+            ])
     }
     
-    //震度５強以上
-    func showSelectEarthquake1(sender: UIButton){
-        mEarthSelectDialog = EarthSelectDialog(index: 1, parentView: self)
-        mEarthSelectDialog.showInfo()
+    //１号非常召集
+    func showKokuminhogo1(sender: UIButton){
+        mKokuminhogoResultDialog.showResult(1)
     }
     
-    //震度５弱
-    func showSelectEarthquake2(sender: UIButton){
-        mEarthSelectDialog = EarthSelectDialog(index: 2, parentView: self)
-        mEarthSelectDialog.showInfo()
+    //２号非常召集
+    func showKokuminhogo2(sender: UIButton){
+        mKokuminhogoResultDialog.showResult(2)
     }
-    
-    //震度４
-    func showSelectEarthquake3(sender: UIButton){
-        mEarthSelectDialog = EarthSelectDialog(index: 3, parentView: self)
-        mEarthSelectDialog.showInfo()
+
+    //３号非常召集
+    func showKokuminhogo3(sender: UIButton){
+        mKokuminhogoResultDialog.showResult(3)
     }
-    
-    //震度３以下
-    func showSelectEarthquake4(sender: UIButton){
-        mEarthSelectDialog = EarthSelectDialog(index: 4, parentView: self)
-        mEarthSelectDialog.showInfo()
+
+    //４号非常召集
+    func showKokuminhogo4(sender: UIButton){
+        mKokuminhogoResultDialog.showResult(4)
     }
-    
-    //東海地震に伴う非常招集
-    func showSelectEarthquake5(sender: UIButton){
-        mEarthSelectDialog = EarthSelectDialog(index: 5, parentView: self)
-        mEarthSelectDialog.showInfo()
+
+    //５号非常召集
+    func showKokuminhogo5(sender: UIButton){
+        mKokuminhogoResultDialog.showResult(5)
     }
     
     //情報(地震)
@@ -509,7 +503,7 @@ class ViewController: UIViewController {
     func showInfoBlackout(sender: UIButton){
         mInfoDialog.showInfo("blackout")
     }
-
+    
     //留意事項
     func showInfoCaution(sender: UIButton){
         mInfoDialog.showInfo("caution")
@@ -528,10 +522,10 @@ class ViewController: UIViewController {
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
-    //国民保護画面遷移
+    //震災画面遷移
     func onClickbtnKokuminhogo(sender : UIButton){
-        //KokuminhogoViewControllerのインスタンス生成
-        let data:KokuminhogoViewController = KokuminhogoViewController()
+        //dataViewControllerのインスタンス生成
+        let data:ViewController = ViewController()
         
         //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
@@ -540,12 +534,10 @@ class ViewController: UIViewController {
         //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
-
