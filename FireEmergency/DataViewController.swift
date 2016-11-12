@@ -101,9 +101,9 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         lblKinmu.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblKinmu)
         //勤務消防署PickerView
-        picKinmu.frame = CGRectMake(0,140,self.view.bounds.width, 100.0)
         picKinmu.delegate = self
         picKinmu.dataSource = self
+        picKinmu.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(picKinmu)
         //pad
         pad1.translatesAutoresizingMaskIntoConstraints = false
@@ -213,10 +213,11 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             Constraint(lblKinmu, .Leading, to:self.view, .Leading, constant:16),
             Constraint(lblKinmu, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
             ])
-        /*self.view.addConstraints([
+        self.view.addConstraints([
             //勤務消防署PickerView
-            Constraint(picKinmu, .Top, to:self.view, .Top, constant:20)
-            ])*/
+            Constraint(picKinmu, .Top, to:lblKinmu, .Top, constant:0),
+            Constraint(picKinmu, .Height, to:self.view, .Height, multiplier:0.2, constant:0)
+            ])
     }
     
     //表示例数
