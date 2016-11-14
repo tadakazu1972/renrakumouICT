@@ -23,6 +23,11 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let lblKinmu        = UILabel(frame: CGRectZero)
     let picKinmu        = UIPickerView(frame: CGRectZero)
     let kinmuArray: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
+    let lblTsunami      = UILabel(frame: CGRectZero)
+    let picTsunami      = UIPickerView(frame: CGRectZero)
+    let lblKubun        = UILabel(frame: CGRectZero)
+    let picKubun        = UIPickerView(frame: CGRectZero)
+    let kubunArray: NSArray = ["１号招集","２号招集","３号招集","４号招集"]
     let btnEarthquake1  = UIButton(frame: CGRectZero)
     let btnEarthquake2  = UIButton(frame: CGRectZero)
     let btnEarthquake3  = UIButton(frame: CGRectZero)
@@ -104,7 +109,32 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKinmu.delegate = self
         picKinmu.dataSource = self
         picKinmu.translatesAutoresizingMaskIntoConstraints = false
+        picKinmu.tag = 1
         self.view.addSubview(picKinmu)
+        //大津波・津波警報時参集指定署ラベル
+        lblTsunami.text = "■大津波・津波警報時参集指定署"
+        lblTsunami.adjustsFontSizeToFitWidth = true
+        lblTsunami.textAlignment = NSTextAlignment.Left
+        lblTsunami.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblTsunami)
+        //大津波・津波警報時参集指定署PickerView
+        picTsunami.delegate = self
+        picTsunami.dataSource = self
+        picTsunami.translatesAutoresizingMaskIntoConstraints = false
+        picTsunami.tag = 2
+        self.view.addSubview(picTsunami)
+        //非常招集区分ラベル
+        lblKubun.text = "■非常招集区分"
+        lblKubun.adjustsFontSizeToFitWidth = true
+        lblKubun.textAlignment = NSTextAlignment.Left
+        lblKubun.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(lblKubun)
+        //非常招集区分PickerView
+        picKubun.delegate = self
+        picKubun.dataSource = self
+        picKubun.translatesAutoresizingMaskIntoConstraints = false
+        picKubun.tag = 3
+        self.view.addSubview(picKubun)
         //pad
         pad1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad1)
@@ -218,6 +248,28 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             Constraint(picKinmu, .Top, to:lblKinmu, .Top, constant:0),
             Constraint(picKinmu, .Height, to:self.view, .Height, multiplier:0.2, constant:0)
             ])
+        self.view.addConstraints([
+            //大津波・津波警報時参集指定署ラベル
+            Constraint(lblTsunami, .Top, to:picKinmu, .Bottom, constant:0),
+            Constraint(lblTsunami, .Leading, to:self.view, .Leading, constant:16),
+            Constraint(lblTsunami, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
+        self.view.addConstraints([
+            //大津波・津波警報時参集指定署PickerView
+            Constraint(picTsunami, .Top, to:lblTsunami, .Top, constant:0),
+            Constraint(picTsunami, .Height, to:self.view, .Height, multiplier:0.2, constant:0)
+            ])
+        self.view.addConstraints([
+            //非常招集区分ラベル
+            Constraint(lblKubun, .Top, to:picTsunami, .Bottom, constant:0),
+            Constraint(lblKubun, .Leading, to:self.view, .Leading, constant:16),
+            Constraint(lblKubun, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            ])
+        self.view.addConstraints([
+            //非常招集区分PickerView
+            Constraint(picKubun, .Top, to:lblKubun, .Top, constant:0),
+            Constraint(picKubun, .Height, to:self.view, .Height, multiplier:0.2, constant:0)
+            ])
     }
     
     //表示例数
@@ -227,18 +279,42 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //表示行数
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int)-> Int{
-        return kinmuArray.count
+        //返す行数
+        var rowNum: Int
+        //３種類のピッカーをタグで場合分け
+        if (pickerView.tag==1){
+            rowNum = kinmuArray.count
+        } else if (pickerView.tag==2){
+            rowNum = kinmuArray.count
+        } else {
+            rowNum = kubunArray.count
+        }
+        return rowNum
     }
     
     //表示内容
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String?{
-        return kinmuArray[row] as? String
+        //返す列
+        var picComponent: String?
+        //３種類のピッカーをタグで場合分け
+        if (pickerView.tag==1){
+            picComponent = kinmuArray[row] as? String
+        } else if (pickerView.tag==2){
+            picComponent = kinmuArray[row] as? String
+        } else {
+            picComponent = kubunArray[row] as? String
+        }
+        return picComponent
     }
     
     //選択時
     func pickerView(pickerView: UIPickerView, didSelectRow row:Int, inComponent component:Int) {
         print("列:\(row)")
+        if (pickerView.tag==3){
+            print("値:\(kubunArray[row])")
+        } else {
         print("値:\(kinmuArray[row])")
+        }
     }
     
     //震災画面遷移
