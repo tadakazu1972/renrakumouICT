@@ -48,6 +48,8 @@ class ViewController: UIViewController {
     private var mEarthSelectDialog: EarthSelectDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
+    //データ保存用
+    let userDefaults = NSUserDefaults.standardUserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()

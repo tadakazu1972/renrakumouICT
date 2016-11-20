@@ -41,7 +41,8 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let padY6           = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
-    //結果表示用クラス保持用
+    //データ保存用
+    let userDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,6 +111,8 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKinmu.dataSource = self
         picKinmu.translatesAutoresizingMaskIntoConstraints = false
         picKinmu.tag = 1
+        let row = userDefaults.integerForKey("mainStationRow") //保存した値を呼び出し
+        picKinmu.selectRow(row, inComponent:0, animated:false)
         self.view.addSubview(picKinmu)
         //大津波・津波警報時参集指定署ラベル
         lblTsunami.text = "■大津波・津波警報時参集指定署"
@@ -298,10 +301,17 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         var picComponent: String?
         //３種類のピッカーをタグで場合分け
         if (pickerView.tag==1){
+            //保存
+            userDefaults.setObject(kinmuArray[row], forKey:"mainStation")
+            userDefaults.setInteger(row, forKey:"mainStationRow")
             picComponent = kinmuArray[row] as? String
         } else if (pickerView.tag==2){
+            //保存
+            userDefaults.setObject(kinmuArray[row], forKey:"tsunamiStation")
             picComponent = kinmuArray[row] as? String
         } else {
+            //保存
+            userDefaults.setObject(kubunArray[row], forKey:"kubun")
             picComponent = kubunArray[row] as? String
         }
         return picComponent

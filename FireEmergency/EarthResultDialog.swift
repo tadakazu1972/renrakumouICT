@@ -14,6 +14,11 @@ class EarthResultDialog {
     private var win1: UIWindow!
     private var text1: UITextView!
     private var btnClose: UIButton!
+    //データ保存用
+    let userDefaults = NSUserDefaults.standardUserDefaults()
+    var mainStation: String!
+    var tsunamiStation: String!
+    var kubun: String!
     
     //コンストラクタ
     init(parentView: ViewController){
@@ -33,6 +38,22 @@ class EarthResultDialog {
     
     //表示
     func showResult(data :Int){
+        //勤務消防署が保存されている場合は呼び出して格納
+        if let _mainStation = userDefaults.stringForKey("mainStation"){
+            if _mainStation == "消防局" || _mainStation == "教育訓練センター" {
+                mainStation = _mainStation
+            } else {
+                mainStation = _mainStation + "消防署"
+            }
+        }
+        //大津波・津波警報時参集指定署が保存されている場合は呼び出して格納
+        if let _tsunamiStation = userDefaults.stringForKey("tsunamiStation"){
+            tsunamiStation = _tsunamiStation
+        }
+        //非常招集区分を呼び出して格納
+        if let _kubun = userDefaults.stringForKey("kubun"){
+            kubun = _kubun
+        }
         //元の画面を暗く
         parent.view.alpha = 0.3
         //初期設定
@@ -67,7 +88,7 @@ class EarthResultDialog {
             text1.text="■津波警報\n\n１号招集\n\n消防局へ参集"
             break
         case 13:
-            text1.text="■警報なし\n\n１号招集\n\n消防局へ参集"
+            text1.text="■警報なし\n\n１号招集\n\n\(mainStation)へ参集"
             break
         //震度５弱
         case 21:
@@ -97,7 +118,7 @@ class EarthResultDialog {
             text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             break
         case 43:
-            text1.text="■津波注意報\n\n第５非常警備(此花,港,大正,西淀川,住之江,西成,水上)\n\n消防局へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            text1.text="■津波注意報\n\n第５非常警備(此花,港,大正,西淀川,住之江,西成,水上)\n\n\(tsunamiStation)消防署へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             break
         case 44:
             text1.text="■警報なし\n\n招集なし"
