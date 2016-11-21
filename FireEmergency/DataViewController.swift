@@ -111,8 +111,8 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKinmu.dataSource = self
         picKinmu.translatesAutoresizingMaskIntoConstraints = false
         picKinmu.tag = 1
-        let row = userDefaults.integerForKey("mainStationRow") //保存した値を呼び出し
-        picKinmu.selectRow(row, inComponent:0, animated:false)
+        let mainStationRow = userDefaults.integerForKey("mainStationRow") //保存した値を呼び出し
+        picKinmu.selectRow(mainStationRow, inComponent:0, animated:false)
         self.view.addSubview(picKinmu)
         //大津波・津波警報時参集指定署ラベル
         lblTsunami.text = "■大津波・津波警報時参集指定署"
@@ -125,6 +125,8 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picTsunami.dataSource = self
         picTsunami.translatesAutoresizingMaskIntoConstraints = false
         picTsunami.tag = 2
+        let tsunamiStationRow = userDefaults.integerForKey("tsunamiStationRow")
+        picTsunami.selectRow(tsunamiStationRow, inComponent:0, animated:false)
         self.view.addSubview(picTsunami)
         //非常招集区分ラベル
         lblKubun.text = "■非常招集区分"
@@ -137,6 +139,8 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKubun.dataSource = self
         picKubun.translatesAutoresizingMaskIntoConstraints = false
         picKubun.tag = 3
+        let kubunRow = userDefaults.integerForKey("kubunRow")
+        picKubun.selectRow(kubunRow, inComponent:0, animated:false)
         self.view.addSubview(picKubun)
         //pad
         pad1.translatesAutoresizingMaskIntoConstraints = false
@@ -301,17 +305,10 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         var picComponent: String?
         //３種類のピッカーをタグで場合分け
         if (pickerView.tag==1){
-            //保存
-            userDefaults.setObject(kinmuArray[row], forKey:"mainStation")
-            userDefaults.setInteger(row, forKey:"mainStationRow")
             picComponent = kinmuArray[row] as? String
         } else if (pickerView.tag==2){
-            //保存
-            userDefaults.setObject(kinmuArray[row], forKey:"tsunamiStation")
             picComponent = kinmuArray[row] as? String
         } else {
-            //保存
-            userDefaults.setObject(kubunArray[row], forKey:"kubun")
             picComponent = kubunArray[row] as? String
         }
         return picComponent
@@ -324,6 +321,20 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             print("値:\(kubunArray[row])")
         } else {
         print("値:\(kinmuArray[row])")
+        }
+        //３種類のピッカーをタグで場合分け
+        if (pickerView.tag==1){
+            //保存
+            userDefaults.setObject(kinmuArray[row], forKey:"mainStation")
+            userDefaults.setInteger(row, forKey:"mainStationRow")
+        } else if (pickerView.tag==2){
+            //保存
+            userDefaults.setObject(kinmuArray[row], forKey:"tsunamiStation")
+            userDefaults.setInteger(row, forKey:"tsunamiStationRow")
+        } else {
+            //保存
+            userDefaults.setObject(kubunArray[row], forKey:"kubun")
+            userDefaults.setInteger(row, forKey:"kubunRow")
         }
     }
     
