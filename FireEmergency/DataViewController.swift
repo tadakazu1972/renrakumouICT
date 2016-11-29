@@ -28,6 +28,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let lblKubun        = UILabel(frame: CGRectZero)
     let picKubun        = UIPickerView(frame: CGRectZero)
     let kubunArray: NSArray = ["１号招集","２号招集","３号招集","４号招集"]
+    let btnSave         = UIButton(frame: CGRectZero)
     let btnEarthquake1  = UIButton(frame: CGRectZero)
     let btnEarthquake2  = UIButton(frame: CGRectZero)
     let btnEarthquake3  = UIButton(frame: CGRectZero)
@@ -43,9 +44,23 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     private var mInfoDialog: InfoDialog!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
+    var mainStation: String?
+    var mainStationRow: Int?
+    var tsunamiStation: String?
+    var tsunamiStationRow: Int?
+    var kubun: String?
+    var kubunRow: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //基礎データ一時確保用　初期化
+        mainStation = nil;
+        mainStationRow = 0;
+        tsunamiStation = nil;
+        tsunamiStationRow = 0;
+        kubun = nil;
+        kubunRow = 0;
         
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //Button生成
@@ -94,7 +109,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         btnKinentai.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKinentai)
         //あなたのデータを入力してください
-        lblData.text = "あなたのデータを入力してください"
+        lblData.text = "所属等を設定し、登録ボタンを押してください"
         lblData.adjustsFontSizeToFitWidth = true
         lblData.textColor = UIColor.blackColor()
         lblData.textAlignment = NSTextAlignment.Center
@@ -111,8 +126,8 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKinmu.dataSource = self
         picKinmu.translatesAutoresizingMaskIntoConstraints = false
         picKinmu.tag = 1
-        let mainStationRow = userDefaults.integerForKey("mainStationRow") //保存した値を呼び出し
-        picKinmu.selectRow(mainStationRow, inComponent:0, animated:false)
+        mainStationRow = userDefaults.integerForKey("mainStationRow") //保存した値を呼び出し
+        picKinmu.selectRow(mainStationRow!, inComponent:0, animated:false)
         self.view.addSubview(picKinmu)
         //大津波・津波警報時参集指定署ラベル
         lblTsunami.text = "■大津波・津波警報時参集指定署"
@@ -125,8 +140,8 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picTsunami.dataSource = self
         picTsunami.translatesAutoresizingMaskIntoConstraints = false
         picTsunami.tag = 2
-        let tsunamiStationRow = userDefaults.integerForKey("tsunamiStationRow")
-        picTsunami.selectRow(tsunamiStationRow, inComponent:0, animated:false)
+        tsunamiStationRow = userDefaults.integerForKey("tsunamiStationRow")
+        picTsunami.selectRow(tsunamiStationRow!, inComponent:0, animated:false)
         self.view.addSubview(picTsunami)
         //非常招集区分ラベル
         lblKubun.text = "■非常招集区分"
@@ -139,9 +154,20 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKubun.dataSource = self
         picKubun.translatesAutoresizingMaskIntoConstraints = false
         picKubun.tag = 3
-        let kubunRow = userDefaults.integerForKey("kubunRow")
-        picKubun.selectRow(kubunRow, inComponent:0, animated:false)
+        kubunRow = userDefaults.integerForKey("kubunRow")
+        picKubun.selectRow(kubunRow!, inComponent:0, animated:false)
         self.view.addSubview(picKubun)
+        //データ登録ボタン
+        btnSave.backgroundColor = UIColor.redColor()
+        btnSave.layer.masksToBounds = true
+        btnSave.setTitle("登録", forState: UIControlState.Normal)
+        btnSave.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnSave.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnSave.layer.cornerRadius = 8.0
+        btnSave.tag = 5
+        btnSave.addTarget(self, action: #selector(self.onClickbtnSave(_:)), forControlEvents: .TouchUpInside)
+        btnSave.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btnSave)
         //pad
         pad1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad1)
@@ -277,6 +303,12 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             Constraint(picKubun, .Top, to:lblKubun, .Top, constant:0),
             Constraint(picKubun, .Height, to:self.view, .Height, multiplier:0.2, constant:0)
             ])
+        self.view.addConstraints([
+            //登録ボタン
+            Constraint(btnSave, .Top, to:picKubun, .Bottom, constant:0),
+            Constraint(btnSave, .CenterX, to:self.view, .CenterX, constant:8),
+            Constraint(btnSave, .Width, to:self.view, .Width, multiplier:0.5, constant:8)
+            ])
     }
     
     //表示例数
@@ -324,18 +356,28 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
         //３種類のピッカーをタグで場合分け
         if (pickerView.tag==1){
-            //保存
-            userDefaults.setObject(kinmuArray[row], forKey:"mainStation")
-            userDefaults.setInteger(row, forKey:"mainStationRow")
+            //一時保存
+            mainStation = kinmuArray[row] as? String
+            mainStationRow = row
         } else if (pickerView.tag==2){
-            //保存
-            userDefaults.setObject(kinmuArray[row], forKey:"tsunamiStation")
-            userDefaults.setInteger(row, forKey:"tsunamiStationRow")
+            //一時保存
+            tsunamiStation = kinmuArray[row] as? String
+            tsunamiStationRow = row
         } else {
-            //保存
-            userDefaults.setObject(kubunArray[row], forKey:"kubun")
-            userDefaults.setInteger(row, forKey:"kubunRow")
+            //一時保存
+            kubun = kubunArray[row] as? String
+            kubunRow = row
         }
+    }
+    
+    //登録ボタンクリック
+    func onClickbtnSave(sender : UIButton){
+        userDefaults.setObject(mainStation, forKey:"mainStation")
+        userDefaults.setInteger(mainStationRow!, forKey:"mainStationRow")
+        userDefaults.setObject(tsunamiStation, forKey:"tsunamiStation")
+        userDefaults.setInteger(tsunamiStationRow!, forKey:"tsunamiStationRow")
+        userDefaults.setObject(kubun, forKey:"kubun")
+        userDefaults.setInteger(kubunRow!, forKey:"kubunRow")
     }
     
     //震災画面遷移
