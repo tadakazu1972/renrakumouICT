@@ -54,6 +54,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //初回起動判定
+        if userDefaults.boolForKey("firstLaunch"){
+            //初回起動時処理 一度も基礎データ入力されないorデータ入力画面でもスピナーをさわらない場合はセットされない=結果でnilが表示される　それを防止
+            userDefaults.setObject("消防局", forKey: "mainStation")
+            userDefaults.setObject("消防局", forKey: "tsunamiStation")
+            userDefaults.setObject("１号招集", forKey: "kubun")
+            
+            //２回目以降ではfalseに
+            userDefaults.setBool(false, forKey: "firstLaunch")
+        }
+        
         self.view.backgroundColor = UIColor(red:0.9, green:0.7, blue:0.2, alpha:1.0)
         //Button生成
         //基礎データ入力

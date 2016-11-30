@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        //初回起動時　デフォルト値設定　このメソッドで初期値を登録すると、既に同じキーが存在する場合は初期値をセットせず、キーが存在しない場合だけ値をセットしてくれますので大変便利
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let dic = ["firstLaunch": true]
+        userDefaults.registerDefaults(dic)
+        
         return true
     }
 

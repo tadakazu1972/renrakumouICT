@@ -54,14 +54,6 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //基礎データ一時確保用　初期化
-        mainStation = nil;
-        mainStationRow = 0;
-        tsunamiStation = nil;
-        tsunamiStationRow = 0;
-        kubun = nil;
-        kubunRow = 0;
-        
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //Button生成
         //基礎データ入力
@@ -126,8 +118,9 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKinmu.dataSource = self
         picKinmu.translatesAutoresizingMaskIntoConstraints = false
         picKinmu.tag = 1
+        mainStation = userDefaults.stringForKey("mainStation") //保存した値を呼び出し
         mainStationRow = userDefaults.integerForKey("mainStationRow") //保存した値を呼び出し
-        picKinmu.selectRow(mainStationRow!, inComponent:0, animated:false)
+        picKinmu.selectRow(mainStationRow!, inComponent:0, animated:false) //呼び出したrow値でピッカー初期化
         self.view.addSubview(picKinmu)
         //大津波・津波警報時参集指定署ラベル
         lblTsunami.text = "■大津波・津波警報時参集指定署"
@@ -140,6 +133,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picTsunami.dataSource = self
         picTsunami.translatesAutoresizingMaskIntoConstraints = false
         picTsunami.tag = 2
+        tsunamiStation = userDefaults.stringForKey("tsunamiStation")
         tsunamiStationRow = userDefaults.integerForKey("tsunamiStationRow")
         picTsunami.selectRow(tsunamiStationRow!, inComponent:0, animated:false)
         self.view.addSubview(picTsunami)
@@ -154,6 +148,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         picKubun.dataSource = self
         picKubun.translatesAutoresizingMaskIntoConstraints = false
         picKubun.tag = 3
+        kubun = userDefaults.stringForKey("kubun")
         kubunRow = userDefaults.integerForKey("kubunRow")
         picKubun.selectRow(kubunRow!, inComponent:0, animated:false)
         self.view.addSubview(picKubun)
