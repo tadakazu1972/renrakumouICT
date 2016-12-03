@@ -15,6 +15,9 @@
 		593C668F1DCEB31500405F53 /* kokuminhogo3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C668A1DCEB31500405F53 /* kokuminhogo3.txt */; };
 		593C66901DCEB31500405F53 /* kokuminhogo4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C668B1DCEB31500405F53 /* kokuminhogo4.txt */; };
 		593C66911DCEB31500405F53 /* kokuminhogo5.txt in Resources */ = {isa = PBXBuildFile; fileRef = 593C668C1DCEB31500405F53 /* kokuminhogo5.txt */; };
+		594CA33A1DF0540200FF8714 /* TyphoonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594CA3391DF0540200FF8714 /* TyphoonViewController.swift */; };
+		594CA33C1DF0567600FF8714 /* TyphoonSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594CA33B1DF0567600FF8714 /* TyphoonSelectDialog.swift */; };
+		594CA33E1DF057ED00FF8714 /* TyphoonResultDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594CA33D1DF057ED00FF8714 /* TyphoonResultDialog.swift */; };
 		594DDA491D9747110078EE72 /* caution.txt in Resources */ = {isa = PBXBuildFile; fileRef = 594DDA481D9747110078EE72 /* caution.txt */; };
 		594DDA4B1D9F50D40078EE72 /* InfoDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */; };
 		598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8DE1D850AE6006842C8 /* AppDelegate.swift */; };
@@ -36,6 +39,9 @@
 		593C668A1DCEB31500405F53 /* kokuminhogo3.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo3.txt; sourceTree = "<group>"; };
 		593C668B1DCEB31500405F53 /* kokuminhogo4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo4.txt; sourceTree = "<group>"; };
 		593C668C1DCEB31500405F53 /* kokuminhogo5.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo5.txt; sourceTree = "<group>"; };
+		594CA3391DF0540200FF8714 /* TyphoonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TyphoonViewController.swift; sourceTree = "<group>"; };
+		594CA33B1DF0567600FF8714 /* TyphoonSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TyphoonSelectDialog.swift; sourceTree = "<group>"; };
+		594CA33D1DF057ED00FF8714 /* TyphoonResultDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TyphoonResultDialog.swift; sourceTree = "<group>"; };
 		594DDA481D9747110078EE72 /* caution.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = caution.txt; sourceTree = "<group>"; };
 		594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDialog.swift; sourceTree = "<group>"; };
 		598AC8DB1D850AE6006842C8 /* FireEmergency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireEmergency.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,11 +94,14 @@
 				594DDA481D9747110078EE72 /* caution.txt */,
 				598AC8DE1D850AE6006842C8 /* AppDelegate.swift */,
 				598AC8E01D850AE6006842C8 /* ViewController.swift */,
+				594CA3391DF0540200FF8714 /* TyphoonViewController.swift */,
 				593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
 				59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */,
+				594CA33B1DF0567600FF8714 /* TyphoonSelectDialog.swift */,
 				593C66821DCDB50900405F53 /* EarthResultDialog.swift */,
+				594CA33D1DF057ED00FF8714 /* TyphoonResultDialog.swift */,
 				593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
 				598AC8E81D850AE6006842C8 /* Assets.xcassets */,
@@ -181,8 +190,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594CA33E1DF057ED00FF8714 /* TyphoonResultDialog.swift in Sources */,
 				594DDA4B1D9F50D40078EE72 /* InfoDialog.swift in Sources */,
+				594CA33C1DF0567600FF8714 /* TyphoonSelectDialog.swift in Sources */,
 				598AC8F41D8512F3006842C8 /* DataViewController.swift in Sources */,
+				594CA33A1DF0540200FF8714 /* TyphoonViewController.swift in Sources */,
 				593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */,
 				598AC8E11D850AE6006842C8 /* ViewController.swift in Sources */,
 				598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */,
