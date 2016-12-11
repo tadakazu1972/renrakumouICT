@@ -85,8 +85,16 @@ class TyphoonResultDialog {
         //テキストの内容を場合分け
         switch data {
         //震度５強以上
-        case 11:
-            text1.text="■大津波警報\n\n１号招集\n\n\(tsunamiStation)へ参集"
+        case 1:
+            //テキストファイル読込
+            let path = NSBundle.mainBundle().pathForResource("typhoon1", ofType: "txt")!
+            if let data = NSData(contentsOfFile: path){
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                }
+            } else {
+                text1.text = "ファイル読込エラー"
+            }
             break
         case 12:
             text1.text="■津波警報\n\n１号招集\n\n\(tsunamiStation)へ参集"
