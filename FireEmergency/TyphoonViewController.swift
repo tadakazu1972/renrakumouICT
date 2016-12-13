@@ -431,7 +431,7 @@ class TyphoonViewController: UIViewController {
     
     //非常警備の基準(全て)
     func showSelectTyphoon1(sender: UIButton){
-        mTyphoonResultDialog.showResult(1)
+        mTyphoonResultDialog.showResult(11)
     }
     
     //気象警報による非常招集

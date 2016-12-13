@@ -29,23 +29,14 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         mIndex = index
         //itemsの内容を場合分け
         switch index {
-        case 1:
-            items = ["■大津波警報","■津波警報","■警報なし"]
-            break
         case 2:
-            items = ["■大津波警報","■津波警報","■警報なし"]
+            items = ["■特別警報", "■暴風（雪）警報", "■大雨警報", "■大雪警報", "■洪水警報", "■波浪警報", "■高潮警報", "■高潮注意報"]
             break
         case 3:
-            items = ["■大津波警報","■津波警報","■警報なし"]
-            break
-        case 4:
-            items = ["■大津波警報","■津波警報","■津波注意報","■警報なし"]
-            break
-        case 5:
-            items = ["■警戒宣言が発令されたとき（東海地震予知情報）","■東海地震注意報が発表されたとき","■東海地震に関連する調査情報（臨時）が発表されたとき"]
+            items = ["■淀川（枚方）", "■大和川（柏原）", "■神崎川（三国）", "■安威川（千歳橋）", "■寝屋川（京橋）", "■第二寝屋川（昭明橋）", "■平野川（剣橋）", "■平野川分水路（今里大橋）", "■古川（桑才）", "■東除川（大堀上小橋）","■高潮区域"]
             break
         default:
-            items = ["■大津波警報","■津波警報","■警報なし"]
+            items = ["■特別警報", "■暴風（雪）警報", "■大雨警報", "■大雪警報", "■洪水警報", "■波浪警報", "■高潮警報", "■高潮注意報"]
             break
         }
     }
@@ -73,7 +64,7 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         //初期設定
         //Win1
         win1.backgroundColor = UIColor.whiteColor()
-        win1.frame = CGRectMake(80,200,parent.view.frame.width-40,parent.view.frame.height-300)
+        win1.frame = CGRectMake(80,200,parent.view.frame.width-40,parent.view.frame.height-150)
         win1.layer.position = CGPointMake(parent.view.frame.width/2, parent.view.frame.height/2)
         win1.alpha = 1.0
         win1.layer.cornerRadius = 10
@@ -89,7 +80,11 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         text1.textColor = UIColor.blackColor()
         text1.textAlignment = NSTextAlignment.Left
         text1.editable = false
-        text1.text="発令されている警報は？"
+        if (mIndex==3){
+            text1.text="河川を選択してください"
+        } else {
+            text1.text="発令されている警報は？"
+        }
         self.win1.addSubview(text1)
         
         //TableView生成
@@ -140,12 +135,6 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
             case 0:
                 parent.mTyphoonResultDialog.showResult(11)
                 break
-            case 1:
-                parent.mTyphoonResultDialog.showResult(12)
-                break
-            case 2:
-                parent.mTyphoonResultDialog.showResult(13)
-                break
             default:
                 break
             }
@@ -160,6 +149,21 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
                 break
             case 2:
                 parent.mTyphoonResultDialog.showResult(23)
+                break
+            case 3:
+                parent.mTyphoonResultDialog.showResult(24)
+                break
+            case 4:
+                parent.mTyphoonResultDialog.showResult(25)
+                break
+            case 5:
+                parent.mTyphoonResultDialog.showResult(26)
+                break
+            case 6:
+                parent.mTyphoonResultDialog.showResult(27)
+                break
+            case 7:
+                parent.mTyphoonResultDialog.showResult(28)
                 break
             default:
                 break

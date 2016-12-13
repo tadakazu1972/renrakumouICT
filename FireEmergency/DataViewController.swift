@@ -81,6 +81,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         btnTyphoon.setTitle("風水害", forState: UIControlState.Normal)
         btnTyphoon.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnTyphoon.tag=2
+        btnTyphoon.addTarget(self, action: #selector(self.onClickbtnTyphoon(_:)), forControlEvents: .TouchUpInside)
         btnTyphoon.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnTyphoon)
         //国民保護
@@ -381,6 +382,19 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let data:ViewController = ViewController()
         
         //navigationControllerのrootViewControllerにdataViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    //風水害画面遷移
+    func onClickbtnTyphoon(sender : UIButton){
+        //インスタンス生成
+        let data:TyphoonViewController = TyphoonViewController()
+        
+        //navigationControllerのrootViewControllerにTyphoonViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         
