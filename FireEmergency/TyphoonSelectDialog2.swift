@@ -1,14 +1,14 @@
 //
-//  TyphoonSelectDialog.swift
+//  TyphoonSelectDialog2.swift
 //  FireEmergency
 //
-//  Created by 中道忠和 on 2016/12/01.
+//  Created by 中道忠和 on 2016/12/13.
 //  Copyright © 2016年 tadakazu nakamichi. All rights reserved.
 //
 
 import UIKit
 
-class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
+class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
     //ボタン押したら出るUIWindow
     private var parent: TyphoonViewController!
     private var win1: UIWindow!
@@ -16,7 +16,6 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
     private var table: UITableView!
     private var items:[String] = ["","","",""]
     private var btnClose: UIButton!
-    private var mTyphoonSelectDialog2: TyphoonSelectDialog2!
     //自分が何番目のダイアログが保存用
     private var mIndex: Int!
     
@@ -30,14 +29,38 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         mIndex = index
         //itemsの内容を場合分け
         switch index {
+        case 1:
+            items = ["■氾濫注意水位(水位4.5m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位5.4mに到達)", "■避難準備情報(水位5.4m)", "■避難勧告(水位5.5m)", "■避難指示(水位8.3m)"] //淀川（枚方）
+            break
         case 2:
-            items = ["■特別警報", "■暴風（雪）警報", "■大雨警報", "■大雪警報", "■洪水警報", "■波浪警報", "■高潮警報", "■高潮注意報"]
+            items = ["■氾濫注意水位(水位3.2m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位4.7mに到達)", "■避難準備情報(水位4.7m)", "■避難勧告(水位5.3m)", "■避難指示(水位6.8m)"] //大和川（柏原）
             break
         case 3:
-            items = ["■淀川（枚方）", "■大和川（柏原）", "■神崎川（三国）", "■安威川（千歳橋）", "■寝屋川（京橋）", "■第二寝屋川（昭明橋）", "■平野川（剣橋）", "■平野川分水路（今里大橋）", "■古川（桑才）", "■東除川（大堀上小橋）","■高潮区域"]
+            items = ["■氾濫注意水位(水位3.8m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位4.8mに到達)", "■避難準備情報(水位4.8m)", "■避難勧告(水位5m)", "■避難指示(水位5.8m)"] //神崎川（三国）
+            break
+        case 4:
+            items = ["■氾濫注意水位(水位3.25m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位3.5mに到達)", "■避難準備情報(水位3.5m)", "■避難勧告(水位4.25m)", "■避難指示(水位5.1m)"] //安威川（千歳橋）
+            break
+        case 5:
+            items = ["■氾濫注意水位(水位3m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位3.1mに到達)", "■避難準備情報(水位3.1m)", "■避難勧告(水位3.3m)", "■避難指示(水位3.5m)"] //寝屋川（京橋）
+            break
+        case 6:
+            items = ["■氾濫注意水位(水位3.4m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位4.25mに到達)", "■避難準備情報(水位4.25m)", "■避難勧告(水位4.55m)", "■避難指示(水位4.85m)"] //第二寝屋川（昭明橋）
+            break
+        case 7:
+            items = ["■氾濫注意水位(水位3.3m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位3.9mに到達)", "■避難準備情報(水位3.9m)", "■避難勧告(水位4.15m)", "■避難指示(水位4.4m)"] //平野川（剣橋）
+            break
+        case 8:
+            items = ["■氾濫注意水位(水位3.3m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位3.4mに到達)", "■避難準備情報(水位3.4m)", "■避難勧告(水位3.85m)", "■避難指示(水位4.63m)"] //平野川分水路（今里大橋）
+            break
+        case 9:
+            items = ["■氾濫注意水位(水位3.2m)、水防警報(出動)"] //古川（桑才）
+            break
+        case 10:
+            items = ["■氾濫注意水位(水位2.9m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位3.2mに到達)", "■避難準備情報(水位3.2m)", "■避難勧告(水位3.9m)", "■避難指示(水位5.3m)"] //東除川（大堀上小橋）
             break
         default:
-            items = ["■特別警報", "■暴風（雪）警報", "■大雨警報", "■大雪警報", "■洪水警報", "■波浪警報", "■高潮警報", "■高潮注意報"]
+            items = [""]
             break
         }
     }
@@ -81,11 +104,7 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         text1.textColor = UIColor.blackColor()
         text1.textAlignment = NSTextAlignment.Left
         text1.editable = false
-        if (mIndex==3){
-            text1.text="河川を選択してください"
-        } else {
-            text1.text="発令されている警報は？"
-        }
+        text1.text="水位の状況は？"
         self.win1.addSubview(text1)
         
         //TableView生成
@@ -173,47 +192,13 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         case 3:
             switch indexPath.row {
             case 0:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 1, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
+                parent.mTyphoonResultDialog.showResult(31)
                 break
             case 1:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 2, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
+                parent.mTyphoonResultDialog.showResult(32)
                 break
             case 2:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 3, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 3:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 4, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 4:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 5, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 5:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 6, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 6:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 7, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 7:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 8, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 8:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 9, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 9:
-                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 10, parentView: parent)
-                mTyphoonSelectDialog2.showInfo()
-                break
-            case 10:
-                //Resultを呼ぶ
+                parent.mTyphoonResultDialog.showResult(33)
                 break
             default:
                 break
