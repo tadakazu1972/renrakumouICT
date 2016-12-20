@@ -151,19 +151,34 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("セルを選択 #\(indexPath.row)!")
         switch mIndex{
+        //淀川
         case 1:
             switch indexPath.row {
             case 0:
-                mTyphoonResultDialog2 = TyphoonResultDialog2(parentView: parent)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
                 mTyphoonResultDialog2.showResult(11)
                 break
             case 1:
-                mTyphoonResultDialog2 = TyphoonResultDialog2(parentView: parent)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
                 mTyphoonResultDialog2.showResult(12)
+                break
+            case 2:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(13)
+                break
+            case 3:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(14)
+                break
+            case 4:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(15)
+                break
             default:
                 break
             }
             break
+        //大和川
         case 2:
             switch indexPath.row {
             case 0:
@@ -197,11 +212,11 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
         case 3:
             switch indexPath.row {
             case 0:
-                mTyphoonResultDialog2 = TyphoonResultDialog2(parentView: parent)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:1, parentView: parent)
                 mTyphoonResultDialog2.showResult(11)
                 break
             case 1:
-                mTyphoonResultDialog2 = TyphoonResultDialog2(parentView: parent)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:2, parentView: parent)
                 mTyphoonResultDialog2.showResult(12)
                 break
             case 2:
