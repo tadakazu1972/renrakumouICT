@@ -182,30 +182,26 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
         case 2:
             switch indexPath.row {
             case 0:
-                parent.mTyphoonResultDialog.showResult(21)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(21)
                 break
             case 1:
-                parent.mTyphoonResultDialog.showResult(22)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(22)
                 break
             case 2:
-                parent.mTyphoonResultDialog.showResult(23)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(23)
                 break
             case 3:
-                parent.mTyphoonResultDialog.showResult(24)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(24)
                 break
             case 4:
-                parent.mTyphoonResultDialog.showResult(25)
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(25)
                 break
-            case 5:
-                parent.mTyphoonResultDialog.showResult(26)
-                break
-            case 6:
-                parent.mTyphoonResultDialog.showResult(27)
-                break
-            case 7:
-                parent.mTyphoonResultDialog.showResult(28)
-                break
-            default:
+default:
                 break
             }
             break
