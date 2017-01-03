@@ -259,6 +259,114 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
                 break
             }
             break
+        //寝屋川
+        case 5:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(51)
+                break
+            case 1:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(52)
+                break
+            case 2:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(53)
+                break
+            case 3:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(54)
+                break
+            case 4:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(55)
+                break
+            default:
+                break
+            }
+            break
+        //第二寝屋川
+        case 6:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(61)
+                break
+            case 1:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(62)
+                break
+            case 2:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(63)
+                break
+            case 3:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(64)
+                break
+            case 4:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(65)
+                break
+            default:
+                break
+            }
+            break
+        //平野川
+        case 7:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(71)
+                break
+            case 1:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(72)
+                break
+            case 2:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(73)
+                break
+            case 3:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(74)
+                break
+            case 4:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(75)
+                break
+            default:
+                break
+            }
+            break
+        //平野川分水路
+        case 8:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(81)
+                break
+            case 1:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(82)
+                break
+            case 2:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(83)
+                break
+            case 3:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(84)
+                break
+            case 4:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(85)
+                break
+            default:
+                break
+            }
+            break
         default:
             break
         }
