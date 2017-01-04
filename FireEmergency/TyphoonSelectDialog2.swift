@@ -60,6 +60,9 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
         case 10:
             items = ["■氾濫注意水位(水位2.9m)、水防警報(出動)", "■避難準備情報発令の見込み(1時間以内に水位3.2mに到達)", "■避難準備情報(水位3.2m)", "■避難勧告(水位3.9m)", "■避難指示(水位5.3m)"] //東除川（大堀上小橋）
             break
+        case 11:
+            items = ["■高潮区域"] //高潮区域
+            break
         default:
             items = [""]
             break
@@ -367,6 +370,56 @@ class TyphoonSelectDialog2: NSObject, UITableViewDelegate, UITableViewDataSource
                 break
             }
             break
+        //古川
+        case 9:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(91)
+                break
+            default:
+                break
+            }
+            break
+        //東除川分水路
+        case 10:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(101)
+                break
+            case 1:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(102)
+                break
+            case 2:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(103)
+                break
+            case 3:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(104)
+                break
+            case 4:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(105)
+                break
+            default:
+                break
+            }
+            break
+        //高潮区域
+        case 11:
+            switch indexPath.row {
+            case 0:
+                mTyphoonResultDialog2 = TyphoonResultDialog2(index:mIndex, parentView: parent)
+                mTyphoonResultDialog2.showResult(111)
+                break
+            default:
+                break
+            }
+            break
+
         default:
             break
         }

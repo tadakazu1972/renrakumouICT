@@ -17,6 +17,7 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
     private var items:[String] = ["","","",""]
     private var btnClose: UIButton!
     private var mTyphoonSelectDialog2: TyphoonSelectDialog2!
+    private var mTyphoonResultDialog2: TyphoonResultDialog2!
     //自分が何番目のダイアログが保存用
     private var mIndex: Int!
     
@@ -213,7 +214,8 @@ class TyphoonSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
                 mTyphoonSelectDialog2.showInfo()
                 break
             case 10:
-                //Resultを呼ぶ
+                mTyphoonSelectDialog2 = TyphoonSelectDialog2(index: 11, parentView: parent)
+                mTyphoonSelectDialog2.showInfo()
                 break
             default:
                 break
