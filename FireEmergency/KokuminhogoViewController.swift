@@ -31,12 +31,12 @@ class KokuminhogoViewController: UIViewController {
     let padY4           = UIView(frame: CGRectZero)
     let padY5           = UIView(frame: CGRectZero)
     let padY6           = UIView(frame: CGRectZero)
-    let btnKokuminhogoEarthquake = UIButton(frame: CGRectZero)
-    let btnKokuminhogoBlackout   = UIButton(frame: CGRectZero)
-    let btnKokuminhogoRoad       = UIButton(frame: CGRectZero)
-    let btnKokuminhogoTel        = UIButton(frame: CGRectZero)
-    let btnKokuminhogoCaution    = UIButton(frame: CGRectZero)
-    let btnKokuminhogoBousaiNet  = UIButton(frame: CGRectZero)
+    let btnKokuminhogoKankeikikan = UIButton(frame: CGRectZero)
+    let btnKokuminhogoBlackout    = UIButton(frame: CGRectZero)
+    let btnKokuminhogoRoad        = UIButton(frame: CGRectZero)
+    let btnKokuminhogoTel         = UIButton(frame: CGRectZero)
+    let btnKokuminhogoCaution     = UIButton(frame: CGRectZero)
+    let btnKokuminhogoBousaiNet   = UIButton(frame: CGRectZero)
     let pad21            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
     let pad22            = UIView(frame: CGRectZero)
     let pad23            = UIView(frame: CGRectZero)
@@ -96,6 +96,7 @@ class KokuminhogoViewController: UIViewController {
         btnKinentai.setTitle("緊援隊", forState: UIControlState.Normal)
         btnKinentai.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKinentai.tag=4
+        btnKinentai.addTarget(self, action: #selector(self.onClickbtnKinentai(_:)), forControlEvents: .TouchUpInside)
         btnKinentai.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKinentai)
         //pad
@@ -172,16 +173,17 @@ class KokuminhogoViewController: UIViewController {
         self.view.addSubview(padY5)
         padY6.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY6)
-        //情報（地震）
-        btnKokuminhogoEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnKokuminhogoEarthquake.layer.masksToBounds = true
-        btnKokuminhogoEarthquake.setTitle("情報(地震)", forState: UIControlState.Normal)
-        btnKokuminhogoEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnKokuminhogoEarthquake.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnKokuminhogoEarthquake.tag=9
-        btnKokuminhogoEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        btnKokuminhogoEarthquake.addTarget(self, action: #selector(self.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnKokuminhogoEarthquake)
+        //情報（関係機関）
+        btnKokuminhogoKankeikikan.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
+        btnKokuminhogoKankeikikan.layer.masksToBounds = true
+        btnKokuminhogoKankeikikan.setTitle("情報(関係機関)", forState: UIControlState.Normal)
+        btnKokuminhogoKankeikikan.titleLabel!.adjustsFontSizeToFitWidth = true
+        btnKokuminhogoKankeikikan.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogoKankeikikan.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnKokuminhogoKankeikikan.tag=9
+        btnKokuminhogoKankeikikan.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogoKankeikikan.addTarget(self, action: #selector(self.showInfoKankeikikan(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(btnKokuminhogoKankeikikan)
         //情報（停電）
         btnKokuminhogoBlackout.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogoBlackout.layer.masksToBounds = true
@@ -398,22 +400,22 @@ class KokuminhogoViewController: UIViewController {
             Constraint(pad21, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
             ])
         self.view.addConstraints([
-            //情報(地震)ボタン
-            Constraint(btnKokuminhogoEarthquake, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
-            Constraint(btnKokuminhogoEarthquake, .Leading, to:pad21, .Trailing, constant:0),
-            Constraint(btnKokuminhogoEarthquake, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
+            //情報(関係機関)ボタン
+            Constraint(btnKokuminhogoKankeikikan, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
+            Constraint(btnKokuminhogoKankeikikan, .Leading, to:pad21, .Trailing, constant:0),
+            Constraint(btnKokuminhogoKankeikikan, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
             ])
         self.view.addConstraints([
             //pad22
             Constraint(pad22, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
-            Constraint(pad22, .Leading, to:btnKokuminhogoEarthquake, .Trailing, constant:0),
+            Constraint(pad22, .Leading, to:btnKokuminhogoKankeikikan, .Trailing, constant:0),
             Constraint(pad22, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
             ])
         self.view.addConstraints([
             //情報(停電)ボタン
             Constraint(btnKokuminhogoBlackout, .Bottom, to:btnKokuminhogoTel, .Top, constant:-8),
             Constraint(btnKokuminhogoBlackout, .Leading, to:pad22, .Trailing, constant:0),
-            Constraint(btnKokuminhogoBlackout, .Width, to:btnKokuminhogoEarthquake, .Width, constant:0)
+            Constraint(btnKokuminhogoBlackout, .Width, to:btnKokuminhogoKankeikikan, .Width, constant:0)
             ])
         self.view.addConstraints([
             //pad23
@@ -425,11 +427,11 @@ class KokuminhogoViewController: UIViewController {
             //情報(道路)ボタン
             Constraint(btnKokuminhogoRoad, .Bottom, to:btnKokuminhogoTel, .Top ,constant:-8),
             Constraint(btnKokuminhogoRoad, .Leading, to:pad23, .Trailing, constant:0),
-            Constraint(btnKokuminhogoRoad, .Width, to:btnKokuminhogoEarthquake, .Width, constant:0)
+            Constraint(btnKokuminhogoRoad, .Width, to:btnKokuminhogoKankeikikan, .Width, constant:0)
             ])
         self.view.addConstraints([
             //pad31
-            Constraint(pad31, .Top, to:btnKokuminhogoEarthquake, .Bottom, constant:8),
+            Constraint(pad31, .Top, to:btnKokuminhogoKankeikikan, .Bottom, constant:8),
             Constraint(pad31, .Leading, to:self.view, .Leading, constant:0),
             Constraint(pad31, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
             ])
@@ -490,14 +492,9 @@ class KokuminhogoViewController: UIViewController {
         mKokuminhogoResultDialog.showResult(5)
     }
     
-    //情報(地震)
-    func showInfoEarthquake(sender: UIButton){
-        mInfoDialog.showInfo("earthquake")
-    }
-    
-    //情報（道路）
-    func showInfoRoad(sender: UIButton){
-        mInfoDialog.showInfo("road")
+    //情報(関係機関)
+    func showInfoKankeikikan(sender: UIButton){
+        mInfoDialog.showInfo("kankeikikan")
     }
     
     //情報（停電）
@@ -505,9 +502,14 @@ class KokuminhogoViewController: UIViewController {
         mInfoDialog.showInfo("blackout")
     }
     
+    //情報（道路）
+    func showInfoRoad(sender: UIButton){
+        mInfoDialog.showInfo("road")
+    }
+    
     //留意事項
     func showInfoCaution(sender: UIButton){
-        mInfoDialog.showInfo("caution")
+        mInfoDialog.showInfo("kokuminhogo_caution")
     }
     
     //基礎データ入力画面遷移
@@ -542,6 +544,19 @@ class KokuminhogoViewController: UIViewController {
         let data:TyphoonViewController = TyphoonViewController()
         
         //navigationControllerのrootViewControllerにTyphoonViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    //緊援隊画面遷移
+    func onClickbtnKinentai(sender : UIButton){
+        //KinentaiViewControllerのインスタンス生成
+        let data:KinentaiViewController = KinentaiViewController()
+        
+        //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         

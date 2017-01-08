@@ -96,6 +96,7 @@ class TyphoonViewController: UIViewController {
         btnKinentai.setTitle("緊援隊", forState: UIControlState.Normal)
         btnKinentai.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKinentai.tag=4
+        btnKinentai.addTarget(self, action: #selector(self.onClickbtnKinentai(_:)), forControlEvents: .TouchUpInside)
         btnKinentai.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKinentai)
         //pad
@@ -157,7 +158,7 @@ class TyphoonViewController: UIViewController {
         //情報（気象）
         btnTyphoonWeather.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnTyphoonWeather.layer.masksToBounds = true
-        btnTyphoonWeather.setTitle("情報(地震)", forState: UIControlState.Normal)
+        btnTyphoonWeather.setTitle("情報(気象)", forState: UIControlState.Normal)
         btnTyphoonWeather.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnTyphoonWeather.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnTyphoonWeather.tag=9
@@ -167,7 +168,7 @@ class TyphoonViewController: UIViewController {
         //情報（河川）
         btnTyphoonRiver.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnTyphoonRiver.layer.masksToBounds = true
-        btnTyphoonRiver.setTitle("情報(停電)", forState: UIControlState.Normal)
+        btnTyphoonRiver.setTitle("情報(河川)", forState: UIControlState.Normal)
         btnTyphoonRiver.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnTyphoonRiver.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnTyphoonRiver.tag=10
@@ -448,22 +449,22 @@ class TyphoonViewController: UIViewController {
     
     //情報(気象)
     func showInfoWeather(sender: UIButton){
-        mInfoDialog.showInfo("earthquake")
+        mInfoDialog.showInfo("weather")
     }
     
     //情報（河川）
     func showInfoRiver(sender: UIButton){
-        mInfoDialog.showInfo("road")
+        mInfoDialog.showInfo("river")
     }
     
     //情報（道路）
     func showInfoRoad(sender: UIButton){
-        mInfoDialog.showInfo("blackout")
+        mInfoDialog.showInfo("road")
     }
     
     //留意事項
     func showInfoCaution(sender: UIButton){
-        mInfoDialog.showInfo("caution")
+        mInfoDialog.showInfo("typhoon_caution")
     }
 
     //基礎データ入力画面遷移
@@ -498,6 +499,19 @@ class TyphoonViewController: UIViewController {
         let data:KokuminhogoViewController = KokuminhogoViewController()
         
         //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    //緊援隊画面遷移
+    func onClickbtnKinentai(sender : UIButton){
+        //KinentaiViewControllerのインスタンス生成
+        let data:KinentaiViewController = KinentaiViewController()
+        
+        //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         

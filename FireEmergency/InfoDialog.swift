@@ -68,6 +68,15 @@ class InfoDialog {
             case "blackout":
                 text1.text="URLをタップしてください\n\n■停電情報\n\n・関西電力\nhttp://www.kepco.co.jp/energy_supply/supply/teiden-info/\n\n・四国電力\nhttp://www.yonden.co.jp/kinkyu/\n\n・中国電力\nhttp://www.teideninfo.energia.co.jp/TI/LWC30010.do?act=goHst&hct=pc\n\n・九州電力\nhttp://www.kyuden.co.jp/info_teiden/fukuoka.html\n\n・中部電力\nhttp://teiden.chuden.jp/p/index.html\n\n・北陸電力\nhttp://www.rikuden.co.jp/teiden/otj010.html\n\n・東京電力\nhttp://teideninfo.tepco.co.jp/sp/00000000000.html\n\n・東北電力\nhttps://www.tohoku-epco.co.jp/teideninfo"
                 break
+            case "weather":
+                text1.text="URLをタップしてください\n\n■気象庁\n\nhttp://www.jma.go.jp/jma/index.html\n\n■建設局　降雨情報\n\nhttp://www.ame.city.osaka.lg.jp/pweb/\n\n■気象庁　潮位情報\n\nhttp://www.data.jma.go.jp/gmd/kaiyou/db/tide/suisan/suisan.php?stn=OS"
+                break
+            case "river":
+                text1.text="URLをタップしてください\n\n■国交省　川の防災情報\n\nhttp://www.river.go.jp/kawabou/ipRadar.do?areaCd=86&amp;prefCd=&amp;townCd=&amp;gamenId=01-0706&amp;fldCtlParty=no\n\n■大阪府　河川情報\n\nhttp://www.osaka-kasen-portal.net/suibou/index.html\n\n■気象庁　洪水予報\n\nhttp://www.jma.go.jp/jp/flood/"
+                break
+            case "kankeikikan":
+                text1.text="URLをタップしてください\n\n■総務省消防庁\n\nhttp://www.fdma.go.jp/\n\n■官房長官記者会見\n\nhttp://www.kantei.go.jp/jp/tyoukanpress/index.html\n\n■総理指示\n\nhttp://www.kantei.go.jp/jp/97_abe/discource/index.html\n\n■総理記者会見\n\nhttp://www.kantei.go.jp/jp/97_abe/statement/index.html\n\n■首相官邸(災害・危機管理ツイッター)\n\nhttps://twitter.com/Kantei_Saigai"
+                break
             case "caution":
                 //テキストファイル読込
                 let path = NSBundle.mainBundle().pathForResource("caution", ofType: "txt")!
@@ -77,7 +86,30 @@ class InfoDialog {
                     }
                 } else {
                     text1.text = "ファイル読込エラー"
-            }
+                }
+                break
+            case "typhoon_caution":
+                //テキストファイル読込
+                let path = NSBundle.mainBundle().pathForResource("typhoon_caution", ofType: "txt")!
+                if let data = NSData(contentsOfFile: path){
+                    if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                        text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                    }
+                } else {
+                    text1.text = "ファイル読込エラー"
+                }
+                break
+            case "kokuminhogo_caution":
+                //テキストファイル読込
+                let path = NSBundle.mainBundle().pathForResource("kokuminhogo_caution", ofType: "txt")!
+                if let data = NSData(contentsOfFile: path){
+                    if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                        text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                    }
+                } else {
+                    text1.text = "ファイル読込エラー"
+                }
+                break
 
             default:
                 text1.text=""
