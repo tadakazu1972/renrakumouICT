@@ -45,7 +45,8 @@ class KinentaiViewController: UIViewController {
     let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
-    private var mEarthSelectDialog: EarthSelectDialog!
+    private var mKinentaiSelectDialog: KinentaiSelectDialog!
+    private var mKinentaiSelectDialog2: KinentaiSelectDialog2!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
@@ -130,7 +131,7 @@ class KinentaiViewController: UIViewController {
         //地震(震央「海」)
         btnKinentai2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKinentai2.layer.masksToBounds = true
-        btnKinentai2.setTitle("地震(震央「海」)", forState: UIControlState.Normal)
+        btnKinentai2.setTitle("地震(震央「海域」)", forState: UIControlState.Normal)
         btnKinentai2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKinentai2.tag=6
         btnKinentai2.translatesAutoresizingMaskIntoConstraints = false
@@ -471,32 +472,33 @@ class KinentaiViewController: UIViewController {
     
     //地震(震央「陸」)
     func showSelectKinentai1(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 1, parentView: self)
-        //mEarthSelectDialog.showInfo()
+        mKinentaiSelectDialog = KinentaiSelectDialog(index: 1, parentView: self)
+        mKinentaiSelectDialog.showInfo()
     }
     
-    //地震(震央「海」)
+    //地震(震央「海域」)
     func showSelectKinentai2(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 2, parentView: self)
-        //mEarthSelectDialog.showInfo()
+        mKinentaiSelectDialog = KinentaiSelectDialog(index: 2, parentView: self)
+        mKinentaiSelectDialog.showInfo()
     }
     
     //アクションプラン
     func showSelectKinentai3(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 3, parentView: self)
-        //mEarthSelectDialog.showInfo()
+        mKinentaiSelectDialog = KinentaiSelectDialog(index: 3, parentView: self)
+        mKinentaiSelectDialog.showInfo()
     }
     
     //大津波警報・噴火
     func showSelectKinentai4(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 4, parentView: self)
-        //mEarthSelectDialog.showInfo()
+        mKinentaiSelectDialog = KinentaiSelectDialog(index: 4, parentView: self)
+        mKinentaiSelectDialog.showInfo()
     }
     
     //特殊災害(NBC含む)
     func showSelectKinentai5(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 5, parentView: self)
-        //mEarthSelectDialog.showInfo()
+        //特殊災害はKinentaiSelectDialogをすっとばしていきなり都道府県選択のKinentaiSelectDIalog2を呼び出す
+        mKinentaiSelectDialog2 = KinentaiSelectDialog2(index: 51, parentView: self)
+        mKinentaiSelectDialog2.showInfo()
     }
     
     //情報(地震)

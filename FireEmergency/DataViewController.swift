@@ -99,6 +99,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         btnKinentai.setTitle("緊援隊", forState: UIControlState.Normal)
         btnKinentai.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKinentai.tag=4
+        btnKinentai.addTarget(self, action: #selector(self.onClickbtnKinentai(_:)), forControlEvents: .TouchUpInside)
         btnKinentai.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKinentai)
         //あなたのデータを入力してください
@@ -408,6 +409,19 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let data:KokuminhogoViewController = KokuminhogoViewController()
         
         //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    //緊援隊画面遷移
+    func onClickbtnKinentai(sender : UIButton){
+        //KinentaiViewControllerのインスタンス生成
+        let data:KinentaiViewController = KinentaiViewController()
+        
+        //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         
