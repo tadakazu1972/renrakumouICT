@@ -86,146 +86,181 @@ class KinentaiResultDialog {
                 text1.text = "csvファイル読み込みエラー"
             }
             break
-        //特別警報
+        case 12:
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("riku6strong", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
+            } else {
+                text1.text = "csvファイル読み込みエラー"
+            }
+            break
+        case 13:
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("riku6weak", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■最大震度6弱(特別区5強,政令市5強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
+            } else {
+                text1.text = "csvファイル読み込みエラー"
+            }
+            break
+        //地震(震央「海域」)
         case 21:
-            text1.text="■特別警報\n\n１号招集\n\n\(mainStation)へ参集"
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("kaiiki7", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■最大震度７(特別区６強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
+            } else {
+                text1.text = "csvファイル読み込みエラー"
+            }
             break
-        //暴風（雪）警報
         case 22:
-            //４号招集なので、１号、２号、３号は参集なしの判定する
-            if kubun == "４号招集" {
-                text1.text="■暴風(雪)警報\n\n４号招集(非番・日勤)\n\n\(mainStation)へ参集　所属担当者に確認すること\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("rkaiiki6strong", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■最大震度６強(特別区６弱)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
             } else {
-                text1.text="■暴風(雪)警報\n\n４号招集(非番・日勤)\n\n招集なし"
+                text1.text = "csvファイル読み込みエラー"
             }
             break
-        //大雨警報
         case 23:
-            if mainStation == "教育訓練センター" {
-                text1.text="■大雨警報\n\n第５非常警備(全署、消防局)\n\nー\n\n招集なし"
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("kaiiki6weak", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■最大震度6弱(特別区5強,政令市5強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
             } else {
-                text1.text="■大雨警報\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"
+                text1.text = "csvファイル読み込みエラー"
             }
             break
-        //大雪警報
-        case 24:
-            if mainStation == "教育訓練センター" {
-                text1.text="■大雪警報\n\n第５非常警備(全署、消防局)\n\nー\n\n招集なし"
-            } else {
-                text1.text="■大雪警報\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"
-            }
-            break
-        //洪水警報
-        case 25:
-            //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
-            let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西淀川", "淀川", "東淀川", "東成", "生野", "旭", "城東", "鶴見", "住之江", "住吉", "東住吉", "平野", "消防局")
-            //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
-                text1.text="■洪水警報\n\n第５非常警備(北、都島、福島、此花、中央、西淀川、淀川、東淀川、東成、生野、旭、城東、鶴見、住之江、住吉、東住吉、平野、消防局)\n\n\(mainStation)\n\n招集なし"
-            } else {
-                text1.text="■洪水警報\n\n第５非常警備(北、都島、福島、此花、中央、西淀川、淀川、東淀川、東成、生野、旭、城東、鶴見、住之江、住吉、東住吉、平野、消防局)\n\nー\n\n招集なし"
-            }
-            break
-        //波浪警報
-        case 26:
-            //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
-            let gaitousyo = Set(arrayLiteral: "此花", "港", "大正", "西淀川", "住之江", "水上", "消防局")
-            //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
-                text1.text="■波浪警報\n\n第５非常警備(此花、港、大正、西淀川、住之江、水上、消防局)\n\n\(mainStation)\n\n招集なし"
-            } else {
-                text1.text="■洪水警報\n\n第５非常警備(此花、港、大正、西淀川、住之江、水上、消防局)\n\nー\n\n招集なし"
-            }
-            break
-        //高潮警報
-        case 27:
-            //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
-            let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西", "港", "大正", "浪速", "西淀川", "淀川", "住之江", "西成", "水上", "消防局")
-            //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
-                text1.text="■高潮警報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\n\(mainStation)\n\n招集なし"
-            } else {
-                text1.text="■高潮警報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\nー\n\n招集なし"
-            }
-            break
-        //高潮注意報
-        case 28:
-            //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
-            let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西", "港", "大正", "浪速", "西淀川", "淀川", "住之江", "西成", "水上", "消防局")
-            //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
-                text1.text="■高潮注意報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\n\(mainStation)\n\n招集なし"
-            } else {
-                text1.text="■高潮注意報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\nー\n\n招集なし"
-            }
-            break
-        //
-        case 31:
-            text1.text="■大津波警報\n\n１号招集\n\n\(tsunamiStation)へ参集"
-            break
-        case 32:
-            //３号招集なので、１号、２号は参集なしの判定する
-            if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n招集なし"
-            } else {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n\(tsunamiStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            }
-            break
-        case 33:
-            //３号招集なので、１号、２号は参集なしの判定する
-            if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■警報なし\n\n３号招集(非番・日勤)\n\n招集なし"
-            } else {
-                text1.text="■警報なし\n\n３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            }
-            break
-        //
+        //アクションプラン　case 3xは欠番
+        //大津波警報・噴火
         case 41:
-            text1.text="■大津波警報\n\n１号招集\n\n\(tsunamiStation)へ参集"
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("otsunami", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■大津波警報\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
+            } else {
+                text1.text = "csvファイル読み込みエラー"
+            }
             break
         case 42:
-            //３号招集なので、１号、２号は参集なしの判定する
-            if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n招集なし"
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("hunka", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■噴火\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
             } else {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n\(tsunamiStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text = "csvファイル読み込みエラー"
             }
             break
-        case 43:
-            //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
-            let gaitousyo = Set(arrayLiteral: "此花消防署","港消防署","大正消防署","西淀川消防署","住之江消防署","西成消防署","水上消防署","消防局")
-            if gaitousyo.contains(mainStation){
-                text1.text="■津波注意報\n\n第５非常警備(此花,港,大正,西淀川,住之江,西成,水上,消防局)\n\n\(mainStation)"
-            } else {
-                text1.text="■津波注意報\n\n第５非常警備(此花,港,大正,西淀川,住之江,西成,水上,消防局)\n\n招集なし"
-            }
-            break
-        case 44:
-            text1.text="■警報なし\n\n招集なし"
-            break
-        //
+        //特殊災害(NBC含む)
         case 51:
-            //３号招集なので、１号、２号は参集なしの判定する
-            if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■警戒宣言が発令されたとき（東海地震予知情報）\n\n３号招集(非番・日勤)\n\n招集なし"
+            //csvファイル読込
+            var result: [[String]] = []
+            if let path = NSBundle.mainBundle().pathForResource("nbc", ofType: "csv") {
+                var csvString = ""
+                do {
+                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+                csvString.enumerateLines { (line, stop) -> () in
+                    result.append(line.componentsSeparatedByString(","))
+                }
+                
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = "■特殊災害(NBC含む)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
+                }
             } else {
-                text1.text="■警戒宣言が発令されたとき（東海地震予知情報）\n\n３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text = "csvファイル読み込みエラー"
             }
             break
-        case 52:
-            //４号招集なので、１号、２号、３号は参集なしの判定する
-            if kubun == "４号招集" {
-                text1.text="■東海地震注意報が発表されたとき\n\n４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            } else {
-                text1.text="■東海地震注意報が発表されたとき\n\n４号招集(非番・日勤)\n\n招集なし"
-            }
-            break
-        case 53:
-            text1.text="■東海地震に関連する調査情報（臨時）が発表されたとき\n\n第５非常警備(全署、消防局)\n\n\(mainStation)\n\n招集なし"
-            break
-            
         default:
             text1.text=""
+            break
         }
         
         self.win1.addSubview(text1)

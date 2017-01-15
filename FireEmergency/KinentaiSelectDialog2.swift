@@ -159,7 +159,7 @@ class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionVie
         //csvファイルの結果呼び出し
         let itemNo: Int = indexPath.row + 1 //csvファイルのヘッダの分+1するのを忘れないように
         mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
-        mKinentaiResultDialog.showResult(11, item: itemNo)
+        mKinentaiResultDialog.showResult(mIndex, item: itemNo)
         //自らのダイアログを消去しておく
         win1.hidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア

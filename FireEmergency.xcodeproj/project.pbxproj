@@ -31,6 +31,14 @@
 		597FD1201E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */; };
 		597FD1221E2B1F4F0011ABB1 /* KinentaiResultDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1211E2B1F4F0011ABB1 /* KinentaiResultDialog.swift */; };
 		597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1231E2B210C0011ABB1 /* riku7.csv */; };
+		597FD1281E2BB4080011ABB1 /* otsunami.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1251E2BB4080011ABB1 /* otsunami.csv */; };
+		597FD1291E2BB4080011ABB1 /* riku6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1261E2BB4080011ABB1 /* riku6strong.csv */; };
+		597FD12A1E2BB4080011ABB1 /* riku6weak.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1271E2BB4080011ABB1 /* riku6weak.csv */; };
+		597FD1301E2BB4340011ABB1 /* hunka.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD12B1E2BB4340011ABB1 /* hunka.csv */; };
+		597FD1311E2BB4340011ABB1 /* kaiiki6strong.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD12C1E2BB4340011ABB1 /* kaiiki6strong.csv */; };
+		597FD1321E2BB4340011ABB1 /* kaiiki6weak.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD12D1E2BB4340011ABB1 /* kaiiki6weak.csv */; };
+		597FD1331E2BB4340011ABB1 /* kaiiki7.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD12E1E2BB4340011ABB1 /* kaiiki7.csv */; };
+		597FD1341E2BB4340011ABB1 /* nbc.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD12F1E2BB4340011ABB1 /* nbc.csv */; };
 		598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8DE1D850AE6006842C8 /* AppDelegate.swift */; };
 		598AC8E11D850AE6006842C8 /* KinentaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */; };
 		598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E21D850AE6006842C8 /* Main.storyboard */; };
@@ -66,6 +74,14 @@
 		597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUICollectionViewCell.swift; sourceTree = "<group>"; };
 		597FD1211E2B1F4F0011ABB1 /* KinentaiResultDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiResultDialog.swift; sourceTree = "<group>"; };
 		597FD1231E2B210C0011ABB1 /* riku7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku7.csv; sourceTree = "<group>"; };
+		597FD1251E2BB4080011ABB1 /* otsunami.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = otsunami.csv; sourceTree = "<group>"; };
+		597FD1261E2BB4080011ABB1 /* riku6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6strong.csv; sourceTree = "<group>"; };
+		597FD1271E2BB4080011ABB1 /* riku6weak.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku6weak.csv; sourceTree = "<group>"; };
+		597FD12B1E2BB4340011ABB1 /* hunka.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hunka.csv; sourceTree = "<group>"; };
+		597FD12C1E2BB4340011ABB1 /* kaiiki6strong.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6strong.csv; sourceTree = "<group>"; };
+		597FD12D1E2BB4340011ABB1 /* kaiiki6weak.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki6weak.csv; sourceTree = "<group>"; };
+		597FD12E1E2BB4340011ABB1 /* kaiiki7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kaiiki7.csv; sourceTree = "<group>"; };
+		597FD12F1E2BB4340011ABB1 /* nbc.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nbc.csv; sourceTree = "<group>"; };
 		598AC8DB1D850AE6006842C8 /* FireEmergency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireEmergency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		598AC8DE1D850AE6006842C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +124,14 @@
 		598AC8DD1D850AE6006842C8 /* FireEmergency */ = {
 			isa = PBXGroup;
 			children = (
+				597FD12B1E2BB4340011ABB1 /* hunka.csv */,
+				597FD12C1E2BB4340011ABB1 /* kaiiki6strong.csv */,
+				597FD12D1E2BB4340011ABB1 /* kaiiki6weak.csv */,
+				597FD12E1E2BB4340011ABB1 /* kaiiki7.csv */,
+				597FD12F1E2BB4340011ABB1 /* nbc.csv */,
+				597FD1251E2BB4080011ABB1 /* otsunami.csv */,
+				597FD1261E2BB4080011ABB1 /* riku6strong.csv */,
+				597FD1271E2BB4080011ABB1 /* riku6weak.csv */,
 				597FD1231E2B210C0011ABB1 /* riku7.csv */,
 				594CA33F1DFD87C900FF8714 /* typhoon1.txt */,
 				593C66881DCEB31500405F53 /* kokuminhogo1.txt */,
@@ -204,18 +228,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				597FD1341E2BB4340011ABB1 /* nbc.csv in Resources */,
+				597FD12A1E2BB4080011ABB1 /* riku6weak.csv in Resources */,
 				594DDA491D9747110078EE72 /* caution.txt in Resources */,
+				597FD1331E2BB4340011ABB1 /* kaiiki7.csv in Resources */,
 				593C668D1DCEB31500405F53 /* kokuminhogo1.txt in Resources */,
 				593C66911DCEB31500405F53 /* kokuminhogo5.txt in Resources */,
 				598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */,
 				598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */,
 				593C668F1DCEB31500405F53 /* kokuminhogo3.txt in Resources */,
 				594CA3401DFD87C900FF8714 /* typhoon1.txt in Resources */,
+				597FD1321E2BB4340011ABB1 /* kaiiki6weak.csv in Resources */,
 				597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */,
 				593C66901DCEB31500405F53 /* kokuminhogo4.txt in Resources */,
 				598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */,
 				597FD11A1E21DB820011ABB1 /* kokuminhogo_caution.txt in Resources */,
+				597FD1311E2BB4340011ABB1 /* kaiiki6strong.csv in Resources */,
+				597FD1291E2BB4080011ABB1 /* riku6strong.csv in Resources */,
 				597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */,
+				597FD1301E2BB4340011ABB1 /* hunka.csv in Resources */,
+				597FD1281E2BB4080011ABB1 /* otsunami.csv in Resources */,
 				593C668E1DCEB31500405F53 /* kokuminhogo2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
