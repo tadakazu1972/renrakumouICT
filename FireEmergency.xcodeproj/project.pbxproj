@@ -29,6 +29,8 @@
 		597FD11C1E21E44C0011ABB1 /* KinentaiSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD11B1E21E44C0011ABB1 /* KinentaiSelectDialog.swift */; };
 		597FD11E1E29CD4D0011ABB1 /* KinentaiSelectDialog2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD11D1E29CD4D0011ABB1 /* KinentaiSelectDialog2.swift */; };
 		597FD1201E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */; };
+		597FD1221E2B1F4F0011ABB1 /* KinentaiResultDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1211E2B1F4F0011ABB1 /* KinentaiResultDialog.swift */; };
+		597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1231E2B210C0011ABB1 /* riku7.csv */; };
 		598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8DE1D850AE6006842C8 /* AppDelegate.swift */; };
 		598AC8E11D850AE6006842C8 /* KinentaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */; };
 		598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E21D850AE6006842C8 /* Main.storyboard */; };
@@ -62,6 +64,8 @@
 		597FD11B1E21E44C0011ABB1 /* KinentaiSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiSelectDialog.swift; sourceTree = "<group>"; };
 		597FD11D1E29CD4D0011ABB1 /* KinentaiSelectDialog2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiSelectDialog2.swift; sourceTree = "<group>"; };
 		597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUICollectionViewCell.swift; sourceTree = "<group>"; };
+		597FD1211E2B1F4F0011ABB1 /* KinentaiResultDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiResultDialog.swift; sourceTree = "<group>"; };
+		597FD1231E2B210C0011ABB1 /* riku7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku7.csv; sourceTree = "<group>"; };
 		598AC8DB1D850AE6006842C8 /* FireEmergency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireEmergency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		598AC8DE1D850AE6006842C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		598AC8DD1D850AE6006842C8 /* FireEmergency */ = {
 			isa = PBXGroup;
 			children = (
+				597FD1231E2B210C0011ABB1 /* riku7.csv */,
 				594CA33F1DFD87C900FF8714 /* typhoon1.txt */,
 				593C66881DCEB31500405F53 /* kokuminhogo1.txt */,
 				593C66891DCEB31500405F53 /* kokuminhogo2.txt */,
@@ -127,6 +132,7 @@
 				598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */,
 				597FD11B1E21E44C0011ABB1 /* KinentaiSelectDialog.swift */,
 				597FD11D1E29CD4D0011ABB1 /* KinentaiSelectDialog2.swift */,
+				597FD1211E2B1F4F0011ABB1 /* KinentaiResultDialog.swift */,
 				597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
@@ -209,6 +215,7 @@
 				593C66901DCEB31500405F53 /* kokuminhogo4.txt in Resources */,
 				598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */,
 				597FD11A1E21DB820011ABB1 /* kokuminhogo_caution.txt in Resources */,
+				597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */,
 				593C668E1DCEB31500405F53 /* kokuminhogo2.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				594CA33E1DF057ED00FF8714 /* TyphoonResultDialog.swift in Sources */,
+				597FD1221E2B1F4F0011ABB1 /* KinentaiResultDialog.swift in Sources */,
 				594DDA4B1D9F50D40078EE72 /* InfoDialog.swift in Sources */,
 				597FD1201E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift in Sources */,
 				594CA33C1DF0567600FF8714 /* TyphoonSelectDialog.swift in Sources */,

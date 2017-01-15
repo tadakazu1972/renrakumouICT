@@ -16,6 +16,7 @@ class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionVie
     private var collection: UICollectionView!
     private var items:[String] = ["","","",""]
     private var btnClose: UIButton!
+    private var mKinentaiResultDialog: KinentaiResultDialog!
     //自分が何番目のダイアログか保存用
     private var mIndex: Int!
     
@@ -155,6 +156,10 @@ class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionVie
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("セルを選択 #\(indexPath.row)!")
+        //csvファイルの結果呼び出し
+        let itemNo: Int = indexPath.row + 1 //csvファイルのヘッダの分+1するのを忘れないように
+        mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
+        mKinentaiResultDialog.showResult(11, item: itemNo)
         //自らのダイアログを消去しておく
         win1.hidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
