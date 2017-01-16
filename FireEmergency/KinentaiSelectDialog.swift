@@ -17,6 +17,7 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
     private var items:[String] = ["","","",""]
     private var btnClose: UIButton!
     private var mKinentaiSelectDialog2: KinentaiSelectDialog2!
+    private var mKinentaiResultDialog: KinentaiResultDialog!
     //自分が何番目のダイアログが保存用
     private var mIndex: Int!
     
@@ -177,6 +178,24 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
             break
         //アクションプラン
         case 3:
+            switch indexPath.row {
+            case 0:
+                mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
+                mKinentaiResultDialog.showResult(31, item: 0)
+                break
+            case 1:
+                mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
+                mKinentaiResultDialog.showResult(32, item: 0)
+                break
+            case 2:
+                mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
+                mKinentaiResultDialog.showResult(33, item: 0)
+                break
+            case 3:
+                break
+            default:
+                break
+            }
             break
         //大津波警報・噴火
         case 4:

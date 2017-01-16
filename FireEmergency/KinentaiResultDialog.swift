@@ -192,7 +192,44 @@ class KinentaiResultDialog {
                 text1.text = "csvファイル読み込みエラー"
             }
             break
-        //アクションプラン　case 3xは欠番
+        //アクションプラン
+        case 31:
+            //テキストファイル読込
+            let path = NSBundle.mainBundle().pathForResource("kinentai_toukai", ofType: "txt")!
+            if let data = NSData(contentsOfFile: path){
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                }
+            } else {
+                text1.text = "ファイル読込エラー"
+            }
+            break
+        case 32:
+            //テキストファイル読込
+            let path = NSBundle.mainBundle().pathForResource("kinentai_syutochokka", ofType: "txt")!
+            if let data = NSData(contentsOfFile: path){
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                }
+            } else {
+                text1.text = "ファイル読込エラー"
+            }
+            break
+        case 33:
+            //テキストファイル読込
+            let path = NSBundle.mainBundle().pathForResource("kinentai_tounankai", ofType: "txt")!
+            if let data = NSData(contentsOfFile: path){
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                }
+            } else {
+                text1.text = "ファイル読込エラー"
+            }
+            break
+        case 34:
+            break
+        case 35:
+            break
         //大津波警報・噴火
         case 41:
             //csvファイル読込
