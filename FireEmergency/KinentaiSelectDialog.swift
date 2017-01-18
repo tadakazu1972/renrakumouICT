@@ -16,7 +16,9 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
     private var table: UITableView!
     private var items:[String] = ["","","",""]
     private var btnClose: UIButton!
+    private var mKinentaiSelectDialog: KinentaiSelectDialog!  //南海トラフの場合の自己呼び出し用
     private var mKinentaiSelectDialog2: KinentaiSelectDialog2!
+    private var mKinentaiNankaitraf2: KinentaiNankaitraf2!
     private var mKinentaiResultDialog: KinentaiResultDialog!
     //自分が何番目のダイアログが保存用
     private var mIndex: Int!
@@ -42,6 +44,10 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
         case 3:
             text1.text = "アクションプラン"
             items = ["■東海地震","■首都直下地震","■東南海・南海地震","■南海トラフ"]
+            break
+        case 34:  //南海トラフの場合はもう一度自己呼び出し
+            text1.text = "南海トラフ"
+            items = ["ケース１(条件判定)","ケース２(同程度被害)"]
             break
         case 4:
             text1.text = "大津波警報・噴火"
@@ -192,6 +198,21 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
                 mKinentaiResultDialog.showResult(33, item: 0)
                 break
             case 3:
+                mKinentaiSelectDialog = KinentaiSelectDialog(index: 34, parentView: parent)
+                mKinentaiSelectDialog.showInfo()
+                break
+            default:
+                break
+            }
+            break
+        //南海トラフのケース判定
+        case 34:
+            switch indexPath.row {
+            case 0:
+                break
+            case 1:
+                mKinentaiNankaitraf2 = KinentaiNankaitraf2(parentView: parent)
+                mKinentaiNankaitraf2.showResult()
                 break
             default:
                 break

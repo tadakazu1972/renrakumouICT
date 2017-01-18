@@ -45,6 +45,7 @@ class ViewController: UIViewController {
     let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
+    private var mBousainetDialog: BousainetDialog!
     private var mEarthSelectDialog: EarthSelectDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
@@ -242,6 +243,7 @@ class ViewController: UIViewController {
         btnEarthquakeBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnEarthquakeBousaiNet.tag=15
         btnEarthquakeBousaiNet.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquakeBousaiNet.addTarget(self, action: #selector(ViewController.showInfoBousainet(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeBousaiNet)
         //pad
         pad21.translatesAutoresizingMaskIntoConstraints = false
@@ -260,6 +262,7 @@ class ViewController: UIViewController {
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
+        mBousainetDialog = BousainetDialog(parentView: self)
         mEarthResultDialog = EarthResultDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
@@ -528,6 +531,11 @@ class ViewController: UIViewController {
     //留意事項
     func showInfoCaution(sender: UIButton){
         mInfoDialog.showInfo("caution")
+    }
+    
+    //防災ネット
+    func showInfoBousainet(sender: UIButton){
+        mBousainetDialog.showInfo()
     }
     
     //基礎データ入力画面遷移

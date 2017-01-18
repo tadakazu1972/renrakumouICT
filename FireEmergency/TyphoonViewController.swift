@@ -42,6 +42,7 @@ class TyphoonViewController: UIViewController {
     let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
+    private var mBousainetDialog: BousainetDialog!
     private var mTyphoonSelectDialog: TyphoonSelectDialog!
     //結果表示用クラス保持用
     internal var mTyphoonResultDialog: TyphoonResultDialog!
@@ -210,6 +211,7 @@ class TyphoonViewController: UIViewController {
         btnTyphoonBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnTyphoonBousaiNet.tag=14
         btnTyphoonBousaiNet.translatesAutoresizingMaskIntoConstraints = false
+        btnTyphoonBousaiNet.addTarget(self, action: #selector(self.showInfoBousainet(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnTyphoonBousaiNet)
         //pad
         pad21.translatesAutoresizingMaskIntoConstraints = false
@@ -228,6 +230,7 @@ class TyphoonViewController: UIViewController {
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
+        mBousainetDialog = BousainetDialog(parentView: self)
         mTyphoonResultDialog = TyphoonResultDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
@@ -465,6 +468,11 @@ class TyphoonViewController: UIViewController {
     //留意事項
     func showInfoCaution(sender: UIButton){
         mInfoDialog.showInfo("typhoon_caution")
+    }
+    
+    //防災ネット
+    func showInfoBousainet(sender: UIButton){
+        mBousainetDialog.showInfo()
     }
 
     //基礎データ入力画面遷移

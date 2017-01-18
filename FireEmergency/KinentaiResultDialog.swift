@@ -226,9 +226,29 @@ class KinentaiResultDialog {
                 text1.text = "ファイル読込エラー"
             }
             break
+        //南海トラフ　判定後該当のアクション
         case 34:
+            //テキストファイル読込
+            let path = NSBundle.mainBundle().pathForResource("kinentai_nankaitraf", ofType: "txt")!
+            if let data = NSData(contentsOfFile: path){
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                }
+            } else {
+                text1.text = "ファイル読込エラー"
+            }
             break
+        //南海トラフ　アクションプラン適用なし
         case 35:
+            //テキストファイル読込
+            let path = NSBundle.mainBundle().pathForResource("kinentai_nankaitraf2", ofType: "txt")!
+            if let data = NSData(contentsOfFile: path){
+                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                }
+            } else {
+                text1.text = "ファイル読込エラー"
+            }
             break
         //大津波警報・噴火
         case 41:

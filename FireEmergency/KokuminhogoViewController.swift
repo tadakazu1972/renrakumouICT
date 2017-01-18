@@ -45,6 +45,7 @@ class KokuminhogoViewController: UIViewController {
     let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
+    private var mBousainetDialog: BousainetDialog!
     //結果表示用クラス保持用
     internal var mKokuminhogoResultDialog: KokuminhogoResultDialog!
     
@@ -229,6 +230,7 @@ class KokuminhogoViewController: UIViewController {
         btnKokuminhogoBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogoBousaiNet.tag=9
         btnKokuminhogoBousaiNet.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogoBousaiNet.addTarget(self, action: #selector(self.showInfoBousainet(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnKokuminhogoBousaiNet)
         //pad
         pad21.translatesAutoresizingMaskIntoConstraints = false
@@ -247,6 +249,7 @@ class KokuminhogoViewController: UIViewController {
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
+        mBousainetDialog = BousainetDialog(parentView: self)
         mKokuminhogoResultDialog = KokuminhogoResultDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
@@ -510,6 +513,11 @@ class KokuminhogoViewController: UIViewController {
     //留意事項
     func showInfoCaution(sender: UIButton){
         mInfoDialog.showInfo("kokuminhogo_caution")
+    }
+    
+    //防災ネット
+    func showInfoBousainet(sender: UIButton){
+        mBousainetDialog.showInfo()
     }
     
     //基礎データ入力画面遷移
