@@ -48,6 +48,9 @@
 		597FD1421E2EF3EA0011ABB1 /* KinentaiNankaitraf2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1411E2EF3EA0011ABB1 /* KinentaiNankaitraf2.swift */; };
 		597FD1441E2EFC290011ABB1 /* nankaitraf_case2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1431E2EFC290011ABB1 /* nankaitraf_case2.txt */; };
 		597FD1461E2F053F0011ABB1 /* BousainetDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */; };
+		597FD1481E33218B0011ABB1 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1471E33218B0011ABB1 /* ContactViewController.swift */; };
+		597FD14A1E3329E00011ABB1 /* ContactLoadDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */; };
+		597FD14C1E3330E60011ABB1 /* ic_launcher.png in Resources */ = {isa = PBXBuildFile; fileRef = 597FD14B1E3330E60011ABB1 /* ic_launcher.png */; };
 		598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8DE1D850AE6006842C8 /* AppDelegate.swift */; };
 		598AC8E11D850AE6006842C8 /* KinentaiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */; };
 		598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E21D850AE6006842C8 /* Main.storyboard */; };
@@ -100,6 +103,9 @@
 		597FD1411E2EF3EA0011ABB1 /* KinentaiNankaitraf2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KinentaiNankaitraf2.swift; sourceTree = "<group>"; };
 		597FD1431E2EFC290011ABB1 /* nankaitraf_case2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nankaitraf_case2.txt; sourceTree = "<group>"; };
 		597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BousainetDialog.swift; sourceTree = "<group>"; };
+		597FD1471E33218B0011ABB1 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactLoadDialog.swift; sourceTree = "<group>"; };
+		597FD14B1E3330E60011ABB1 /* ic_launcher.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_launcher.png; sourceTree = "<group>"; };
 		598AC8DB1D850AE6006842C8 /* FireEmergency.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FireEmergency.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		598AC8DE1D850AE6006842C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinentaiViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +132,7 @@
 		598AC8D21D850AE6006842C8 = {
 			isa = PBXGroup;
 			children = (
+				597FD14B1E3330E60011ABB1 /* ic_launcher.png */,
 				598AC8DD1D850AE6006842C8 /* FireEmergency */,
 				598AC8DC1D850AE6006842C8 /* Products */,
 			);
@@ -185,6 +192,8 @@
 				597FD1211E2B1F4F0011ABB1 /* KinentaiResultDialog.swift */,
 				597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
+				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
+				597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
@@ -274,6 +283,7 @@
 				597FD13C1E2D0F550011ABB1 /* kinentai_nankaitraf.txt in Resources */,
 				598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */,
 				597FD11A1E21DB820011ABB1 /* kokuminhogo_caution.txt in Resources */,
+				597FD14C1E3330E60011ABB1 /* ic_launcher.png in Resources */,
 				597FD13A1E2D0F1F0011ABB1 /* kinentai_toukai.txt in Resources */,
 				597FD1311E2BB4340011ABB1 /* kaiiki6strong.csv in Resources */,
 				597FD1291E2BB4080011ABB1 /* riku6strong.csv in Resources */,
@@ -306,6 +316,8 @@
 				593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */,
 				598AC8E11D850AE6006842C8 /* KinentaiViewController.swift in Sources */,
 				597FD11C1E21E44C0011ABB1 /* KinentaiSelectDialog.swift in Sources */,
+				597FD14A1E3329E00011ABB1 /* ContactLoadDialog.swift in Sources */,
+				597FD1481E33218B0011ABB1 /* ContactViewController.swift in Sources */,
 				598AC8DF1D850AE6006842C8 /* AppDelegate.swift in Sources */,
 				593C66851DCEAFE000405F53 /* KokuminhogoViewController.swift in Sources */,
 				593C66871DCEB10100405F53 /* KokuminhogoResultDialog.swift in Sources */,
@@ -377,7 +389,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -418,7 +430,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -15,6 +15,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     let btnTyphoon      = UIButton(frame: CGRectZero)
     let btnKokuminhogo  = UIButton(frame: CGRectZero)
     let btnKinentai     = UIButton(frame: CGRectZero)
+    let btnContact      = UIButton(frame: CGRectZero) //連絡網データ操作起動の入口ボタン
     let pad1            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
     let pad2            = UIView(frame: CGRectZero)
     let pad3            = UIView(frame: CGRectZero)
@@ -180,6 +181,18 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         padY2.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY2)
         
+        //連絡網データ操作
+        btnContact.backgroundColor = UIColor.blueColor()
+        btnContact.layer.masksToBounds = true
+        btnContact.setTitle("連絡網データ操作", forState: UIControlState.Normal)
+        btnContact.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        btnContact.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnContact.layer.cornerRadius = 8.0
+        btnContact.tag = 6
+        btnContact.addTarget(self, action: #selector(self.onClickbtnContact(_:)), forControlEvents: .TouchUpInside)
+        btnContact.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(btnContact)
+        
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
     }
@@ -302,9 +315,15 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             ])
         self.view.addConstraints([
             //登録ボタン
-            Constraint(btnSave, .Top, to:picKubun, .Bottom, constant:0),
+            Constraint(btnSave, .Bottom, to:btnContact, .Top, constant:-10),
             Constraint(btnSave, .CenterX, to:self.view, .CenterX, constant:8),
             Constraint(btnSave, .Width, to:self.view, .Width, multiplier:0.5, constant:8)
+            ])
+        self.view.addConstraints([
+            //アプリ説明書ボタン
+            Constraint(btnContact, .Bottom, to:self.view, .Bottom, constant:-8),
+            Constraint(btnContact, .Leading, to:self.view, .Leading, constant:8),
+            Constraint(btnContact, .Trailing, to:self.view, .TrailingMargin, constant:8)
             ])
     }
     
@@ -420,6 +439,19 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     func onClickbtnKinentai(sender : UIButton){
         //KinentaiViewControllerのインスタンス生成
         let data:KinentaiViewController = KinentaiViewController()
+        
+        //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    //連絡網データ操作遷移
+    func onClickbtnContact(sender : UIButton){
+        //KinentaiViewControllerのインスタンス生成
+        let data:ContactViewController = ContactViewController()
         
         //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
