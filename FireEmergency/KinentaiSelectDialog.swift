@@ -18,6 +18,7 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
     private var btnClose: UIButton!
     private var mKinentaiSelectDialog: KinentaiSelectDialog!  //南海トラフの場合の自己呼び出し用
     private var mKinentaiSelectDialog2: KinentaiSelectDialog2!
+    private var mKinentaiNankaitraf1: KinentaiNankaitraf1!
     private var mKinentaiNankaitraf2: KinentaiNankaitraf2!
     private var mKinentaiResultDialog: KinentaiResultDialog!
     //自分が何番目のダイアログが保存用
@@ -209,6 +210,8 @@ class KinentaiSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource
         case 34:
             switch indexPath.row {
             case 0:
+                mKinentaiNankaitraf1 = KinentaiNankaitraf1(parentView: parent)
+                mKinentaiNankaitraf1.showResult()
                 break
             case 1:
                 mKinentaiNankaitraf2 = KinentaiNankaitraf2(parentView: parent)
