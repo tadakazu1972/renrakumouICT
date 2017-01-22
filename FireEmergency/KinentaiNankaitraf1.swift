@@ -125,7 +125,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         textField1.backgroundColor = UIColor.clearColor()
         textField1.font = UIFont.systemFontOfSize((CGFloat(14)))
         textField1.textAlignment = NSTextAlignment.Center
-        textField1.text = "タップしてください"
+        textField1.text = pic1Array[0] as? String
         textField1.inputView = pic1 //ここでpickerView1と紐付け
         //pickerViewとともにポップアップするツールバーとボタンの設定
         let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
@@ -167,7 +167,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         textField2.backgroundColor = UIColor.clearColor()
         textField2.font = UIFont.systemFontOfSize((CGFloat(14)))
         textField2.textAlignment = NSTextAlignment.Center
-        textField2.text = "タップしてください"
+        textField2.text = pic2Array[0] as? String
         textField2.inputView = pic2 //ここでpic21と紐付け
         //pickerViewとともにポップアップするツールバーとボタンの設定
         textField2.inputAccessoryView = toolbar
@@ -195,7 +195,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         textField3.backgroundColor = UIColor.clearColor()
         textField3.font = UIFont.systemFontOfSize((CGFloat(14)))
         textField3.textAlignment = NSTextAlignment.Center
-        textField3.text = "タップしてください"
+        textField3.text = pic3Array[0] as? String
         textField3.inputView = pic3 //ここでpic21と紐付け
         //pickerViewとともにポップアップするツールバーとボタンの設定
         textField3.inputAccessoryView = toolbar
@@ -223,7 +223,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         textField4.backgroundColor = UIColor.clearColor()
         textField4.font = UIFont.systemFontOfSize((CGFloat(14)))
         textField4.textAlignment = NSTextAlignment.Center
-        textField4.text = "タップしてください"
+        textField4.text = pic4Array[0] as? String
         textField4.inputView = pic4 //ここでpic21と紐付け
         //pickerViewとともにポップアップするツールバーとボタンの設定
         textField4.inputAccessoryView = toolbar
@@ -349,13 +349,18 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         parent.view.alpha = 1.0 //元の画面明るく
     }
     
-    //対応
+    //判定
     @objc func onClickAction(sender: UIButton){
         win1.hidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
         //対応の結果であるアクションプランを表示
-        mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
-        mKinentaiResultDialog.showResult(34, item: 0)
+        if textField1.text != "その他" && textField2.text != "その他" && textField3.text != "その他" && textField4.text != "その他" {
+            mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
+            mKinentaiResultDialog.showResult(34, item: 0)
+        } else {
+            mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
+            mKinentaiResultDialog.showResult(35, item: 0)
+        }
     }
 }
