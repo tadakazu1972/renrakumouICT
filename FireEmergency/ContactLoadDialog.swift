@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ContactLoadDialog {
+class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     //ボタン押したら出るUIWindow
     private var parent: ContactViewController!
     private var win1: UIWindow!
     private var text1: UITextView!
+    private var table: UITableView!
+    var result: [[String]] = []
     private var btnClose: UIButton!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -25,6 +27,7 @@ class ContactLoadDialog {
         parent = parentView
         win1 = UIWindow()
         text1 = UITextView()
+        table = UITableView()
         btnClose = UIButton()
     }
     
@@ -33,6 +36,7 @@ class ContactLoadDialog {
         parent = nil
         win1 = nil
         text1 = nil
+        table = nil
         btnClose = nil
     }
     
@@ -65,7 +69,7 @@ class ContactLoadDialog {
         text1.text=""
         let file_name = "fire.csv"
         
-        if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
+        /*if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
             
             let path_file_name = dir.stringByAppendingPathComponent( file_name )
             
@@ -79,30 +83,36 @@ class ContactLoadDialog {
                 text1.text = "エラー"
             }
         }
+        self.win1.addSubview(text1)*/
         
-            //csvファイル読込
-            /*var result: [[String]] = []
-            if let path = NSHomeDirectory() + "/Documents/Inbox/" {
-                var csvString = ""
-                do {
-                    csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
-                } catch let error as NSError {
-                    print(error.localizedDescription)
-                }
-                csvString.enumerateLines { (line, stop) -> () in
-                    result.append(line.componentsSeparatedByString(","))
-                }
-                
-                if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = "■最大震度７(特別区６強)\n　\(result[item][0])\n\n・指揮支援隊\n　\(result[item][1])\n\n・大阪府大隊(陸上)\n　\(result[item][2])\n\n・大阪府大隊(航空)\n　\(result[item][3])"
-                }
-            } else {
-                text1.text = "csvファイル読み込みエラー"
-            }*/
-        
-        //text1.text=""
-        
-        self.win1.addSubview(text1)
+        //csvファイル読込
+        var csvString = ""
+        if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
+            
+            let path_file_name = dir.stringByAppendingPathComponent( file_name )
+            
+            do {
+                csvString = try String( contentsOfFile: path_file_name, encoding: NSUTF8StringEncoding )
+            } catch let error as NSError {
+                //エラー処理
+                print(error.localizedDescription)
+            }
+            csvString.enumerateLines { (line, stop) -> () in
+                self.result.append(line.componentsSeparatedByString(","))
+            }
+        } else {
+            text1.text = "csvファイル読み込みエラー"
+        }
+
+        //TableView生成
+        table.frame = CGRectMake(10, 41, self.win1.frame.width-20, self.win1.frame.height-60)
+        table.delegate = self
+        table.dataSource = self
+        table.estimatedRowHeight = 10 //下とあわせこの２行で複数表示されるときの間がひらくように
+        table.rowHeight = UITableViewAutomaticDimension
+        table.registerClass(UITableViewCell.self, forCellReuseIdentifier:"cell")
+        table.separatorColor = UIColor.clearColor()
+        self.win1.addSubview(table)
         
         //閉じるボタン生成
         btnClose.frame = CGRectMake(0,0,100,30)
@@ -121,5 +131,23 @@ class ContactLoadDialog {
         win1.hidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection sction:Int)-> Int {
+        return self.result.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
+        let cell:UITableViewCell = table.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        cell.textLabel?.numberOfLines = 0 //これをしないと複数表示されない
+        cell.textLabel?.text = self.result[indexPath.row][0]+" "+self.result[indexPath.row][1]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("セルを選択 #\(indexPath.row)")
+        //自らのダイアログを消去しておく
+        win1.hidden = true      //win1隠す
+        text1.text = ""
     }
 }
