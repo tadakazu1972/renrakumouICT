@@ -139,7 +139,7 @@ class ContactViewController: UIViewController {
         btnContact1.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnContact1.tag=5
         btnContact1.translatesAutoresizingMaskIntoConstraints = false
-        btnContact1.addTarget(self, action: #selector(self.showSelectEarthquake1(_:)), forControlEvents: .TouchUpInside)
+        btnContact1.addTarget(self, action: #selector(self.showSelectContact1(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact1)
         //新規
         btnContact2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -148,7 +148,7 @@ class ContactViewController: UIViewController {
         btnContact2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnContact2.tag=6
         btnContact2.translatesAutoresizingMaskIntoConstraints = false
-        btnContact2.addTarget(self, action: #selector(self.showSelectEarthquake2(_:)), forControlEvents: .TouchUpInside)
+        btnContact2.addTarget(self, action: #selector(self.showSelectContact2(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact2)
         //修正
         btnContact3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -157,7 +157,7 @@ class ContactViewController: UIViewController {
         btnContact3.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnContact3.tag=7
         btnContact3.translatesAutoresizingMaskIntoConstraints = false
-        btnContact3.addTarget(self, action: #selector(self.showSelectEarthquake3(_:)), forControlEvents: .TouchUpInside)
+        btnContact3.addTarget(self, action: #selector(self.showSelectContact3(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact3)
         //削除
         btnContact4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -166,7 +166,7 @@ class ContactViewController: UIViewController {
         btnContact4.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnContact4.tag=8
         btnContact4.translatesAutoresizingMaskIntoConstraints = false
-        btnContact4.addTarget(self, action: #selector(self.showSelectEarthquake4(_:)), forControlEvents: .TouchUpInside)
+        btnContact4.addTarget(self, action: #selector(self.showSelectContact4(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact4)
         //CSVファイル読込
         btnContact5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -486,25 +486,25 @@ class ContactViewController: UIViewController {
     }
     
     //一覧
-    func showSelectEarthquake1(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 1, parentView: self)
-        //mEarthSelectDialog.showInfo()
+    func showSelectContact1(sender: UIButton){
+        mContactLoadDialog = ContactLoadDialog(parentView: self)
+        mContactLoadDialog.showResult()
     }
     
     //新規
-    func showSelectEarthquake2(sender: UIButton){
+    func showSelectContact2(sender: UIButton){
         //mEarthSelectDialog = EarthSelectDialog(index: 2, parentView: self)
         //mEarthSelectDialog.showInfo()
     }
     
     //修正
-    func showSelectEarthquake3(sender: UIButton){
+    func showSelectContact3(sender: UIButton){
         //mEarthSelectDialog = EarthSelectDialog(index: 3, parentView: self)
         //mEarthSelectDialog.showInfo()
     }
     
     //削除
-    func showSelectEarthquake4(sender: UIButton){
+    func showSelectContact4(sender: UIButton){
         //mEarthSelectDialog = EarthSelectDialog(index: 4, parentView: self)
         //mEarthSelectDialog.showInfo()
     }

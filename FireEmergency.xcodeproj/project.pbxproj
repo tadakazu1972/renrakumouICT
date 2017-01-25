@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		590157681E38CC6800928154 /* ContactCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590157671E38CC6800928154 /* ContactCell1.swift */; };
 		593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593C66821DCDB50900405F53 /* EarthResultDialog.swift */; };
 		593C66851DCEAFE000405F53 /* KokuminhogoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */; };
 		593C66871DCEB10100405F53 /* KokuminhogoResultDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */; };
@@ -61,6 +62,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		590157671E38CC6800928154 /* ContactCell1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCell1.swift; sourceTree = "<group>"; };
 		593C66821DCDB50900405F53 /* EarthResultDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthResultDialog.swift; sourceTree = "<group>"; };
 		593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoViewController.swift; sourceTree = "<group>"; };
 		593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoResultDialog.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
 				597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */,
+				590157671E38CC6800928154 /* ContactCell1.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
@@ -318,6 +321,7 @@
 				593C66851DCEAFE000405F53 /* KokuminhogoViewController.swift in Sources */,
 				593C66871DCEB10100405F53 /* KokuminhogoResultDialog.swift in Sources */,
 				597FD1401E2EF3CF0011ABB1 /* KinentaiNankaitraf1.swift in Sources */,
+				590157681E38CC6800928154 /* ContactCell1.swift in Sources */,
 				597FD1161E2113E50011ABB1 /* ViewController.swift in Sources */,
 				594CA3421E002F8900FF8714 /* TyphoonSelectDialog2.swift in Sources */,
 				598AC8E71D850AE6006842C8 /* FireEmergency.xcdatamodeld in Sources */,

@@ -110,7 +110,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         table.dataSource = self
         table.estimatedRowHeight = 10 //下とあわせこの２行で複数表示されるときの間がひらくように
         table.rowHeight = UITableViewAutomaticDimension
-        table.registerClass(UITableViewCell.self, forCellReuseIdentifier:"cell")
+        table.registerClass(ContactCell1.self, forCellReuseIdentifier:"contactCell1")
         table.separatorColor = UIColor.clearColor()
         self.win1.addSubview(table)
         
@@ -138,9 +138,20 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
-        let cell:UITableViewCell = table.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        let cell:ContactCell1 = table.dequeueReusableCellWithIdentifier("contactCell1")! as! ContactCell1
         cell.textLabel?.numberOfLines = 0 //これをしないと複数表示されない
-        cell.textLabel?.text = self.result[indexPath.row][0]+" "+self.result[indexPath.row][1]
+        cell.name!.text = self.result[indexPath.row][0]
+        cell.tel!.text  = self.result[indexPath.row][1]
+        cell.kubun!.text = self.result[indexPath.row][3]
+        cell.syozoku!.text = self.result[indexPath.row][4]
+        cell.kinmu!.text = self.result[indexPath.row][5]
+        cell.mail!.text = self.result[indexPath.row][2]
+        
+        //let result1 = self.result[indexPath.row][0]+" "+self.result[indexPath.row][1]
+        //let result2 = self.result[indexPath.row][2]+" "+self.result[indexPath.row][3]
+        //let result3 = self.result[indexPath.row][4]+" "+self.result[indexPath.row][5]
+        //cell.textLabel?.text = result1 + "\n" + result2 + " " + result3
+        //cell.textLabel?.text = self.result[indexPath.row][2]
         return cell
     }
     
