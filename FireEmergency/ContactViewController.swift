@@ -605,6 +605,19 @@ class ContactViewController: UIViewController {
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
+    //メール送信 MailViewController遷移
+    func sendMail(){
+        //MailViewControllerのインスタンス生成
+        let data:MailViewController = MailViewController()
+        
+        //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

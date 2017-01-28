@@ -58,6 +58,8 @@
 		598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E81D850AE6006842C8 /* Assets.xcassets */; };
 		598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8EA1D850AE6006842C8 /* LaunchScreen.storyboard */; };
 		598AC8F41D8512F3006842C8 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8F31D8512F3006842C8 /* DataViewController.swift */; };
+		59B7FC8E1E3AC07E002D4392 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */; };
+		59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7FC8F1E3CF106002D4392 /* MailViewController.swift */; };
 		59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +117,8 @@
 		598AC8EB1D850AE6006842C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		598AC8ED1D850AE6006842C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		598AC8F31D8512F3006842C8 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		59B7FC8F1E3CF106002D4392 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthSelectDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59B7FC8E1E3AC07E002D4392 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +139,7 @@
 			children = (
 				598AC8DD1D850AE6006842C8 /* FireEmergency */,
 				598AC8DC1D850AE6006842C8 /* Products */,
+				59B7FC8C1E3AC07E002D4392 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +200,7 @@
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
 				597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */,
 				590157671E38CC6800928154 /* ContactCell1.swift */,
+				59B7FC8F1E3CF106002D4392 /* MailViewController.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
@@ -203,6 +210,14 @@
 				598AC8E51D850AE6006842C8 /* FireEmergency.xcdatamodeld */,
 			);
 			path = FireEmergency;
+			sourceTree = "<group>";
+		};
+		59B7FC8C1E3AC07E002D4392 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +325,7 @@
 				597FD1461E2F053F0011ABB1 /* BousainetDialog.swift in Sources */,
 				594CA33A1DF0540200FF8714 /* TyphoonViewController.swift in Sources */,
 				597FD11E1E29CD4D0011ABB1 /* KinentaiSelectDialog2.swift in Sources */,
+				59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */,
 				594CA3441E017D6E00FF8714 /* TyphoonResultDialog2.swift in Sources */,
 				597FD1421E2EF3EA0011ABB1 /* KinentaiNankaitraf2.swift in Sources */,
 				593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */,
@@ -395,6 +411,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -435,6 +452,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -453,6 +471,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -469,6 +488,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};

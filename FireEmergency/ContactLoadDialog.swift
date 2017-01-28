@@ -16,6 +16,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     private var table: UITableView!
     var result: [[String]] = []
     private var btnClose: UIButton!
+    private var btnMail: UIButton!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
     var mainStation: String!
@@ -24,12 +25,15 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     //コンストラクタ
     init(parentView: ContactViewController){
+        super.init()
         parent = parentView
         win1 = UIWindow()
         text1 = UITextView()
         table = UITableView()
         btnClose = UIButton()
+        btnMail = UIButton()
     }
+    
     
     //デコンストラクタ
     deinit{
@@ -38,6 +42,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         text1 = nil
         table = nil
         btnClose = nil
+        btnMail = nil
     }
     
     //表示
@@ -121,9 +126,20 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         btnClose.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         btnClose.layer.masksToBounds = true
         btnClose.layer.cornerRadius = 10.0
-        btnClose.layer.position = CGPointMake(self.win1.frame.width/2, self.win1.frame.height-20)
+        btnClose.layer.position = CGPointMake(self.win1.frame.width/2-60, self.win1.frame.height-20)
         btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), forControlEvents: .TouchUpInside)
         self.win1.addSubview(btnClose)
+        
+        //メール送信ボタン生成
+        btnMail.frame = CGRectMake(0,0,100,30)
+        btnMail.backgroundColor = UIColor.redColor()
+        btnMail.setTitle("メール送信", forState: .Normal)
+        btnMail.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btnMail.layer.masksToBounds = true
+        btnMail.layer.cornerRadius = 10.0
+        btnMail.layer.position = CGPointMake(self.win1.frame.width/2+60, self.win1.frame.height-20)
+        btnMail.addTarget(self, action: #selector(self.onClickMail(_:)), forControlEvents: .TouchUpInside)
+        self.win1.addSubview(btnMail)
     }
     
     //閉じる
@@ -131,6 +147,16 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         win1.hidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
+    }
+    
+    //メール送信
+    @objc func onClickMail(sender: UIButton){
+        win1.hidden = true
+        text1.text = ""
+        parent.view.alpha = 1.0
+        
+        //ContactViewControllerのメソッドでMailViewControllerを生成して遷移してsendMailを呼び出す
+        parent.sendMail()        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection sction:Int)-> Int {
@@ -145,13 +171,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         cell.kubun!.text = self.result[indexPath.row][3]
         cell.syozoku!.text = self.result[indexPath.row][4]
         cell.kinmu!.text = self.result[indexPath.row][5]
-        cell.mail!.text = self.result[indexPath.row][2]
-        
-        //let result1 = self.result[indexPath.row][0]+" "+self.result[indexPath.row][1]
-        //let result2 = self.result[indexPath.row][2]+" "+self.result[indexPath.row][3]
-        //let result3 = self.result[indexPath.row][4]+" "+self.result[indexPath.row][5]
-        //cell.textLabel?.text = result1 + "\n" + result2 + " " + result3
-        //cell.textLabel?.text = self.result[indexPath.row][2]
+        cell.mail!.text = self.result[indexPath.row][2]        
         return cell
     }
     
