@@ -72,25 +72,9 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         text1.dataDetectorTypes = .Link
         
         text1.text=""
-        let file_name = "fire.csv"
-        
-        /*if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
-            
-            let path_file_name = dir.stringByAppendingPathComponent( file_name )
-            
-            do {
-                
-                let text = try NSString( contentsOfFile: path_file_name, encoding: NSUTF8StringEncoding )
-                text1.text = text as String
-                
-            } catch {
-                //エラー処理
-                text1.text = "エラー"
-            }
-        }
-        self.win1.addSubview(text1)*/
         
         //csvファイル読込
+        let file_name = "fire.csv"
         var csvString = ""
         if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
             
@@ -151,12 +135,22 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     //メール送信
     @objc func onClickMail(sender: UIButton){
+        //ダイアログ消去
         win1.hidden = true
         text1.text = ""
         parent.view.alpha = 1.0
         
+        //メールアドレス集約
+        var addressArray: [String] = []
+        let line = result.count //countで２次元配列の行数をカウントしてくれる！なんてこった！
+        for index in 0..<line {
+            addressArray.append(result[index][2])
+        }
+        
+        print(addressArray)
+        
         //ContactViewControllerのメソッドでMailViewControllerを生成して遷移してsendMailを呼び出す
-        parent.sendMail()        
+        parent.sendMail(addressArray)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection sction:Int)-> Int {

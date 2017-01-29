@@ -606,9 +606,9 @@ class ContactViewController: UIViewController {
     }
     
     //メール送信 MailViewController遷移
-    func sendMail(){
+    func sendMail(addressArray: [String]){
         //MailViewControllerのインスタンス生成
-        let data:MailViewController = MailViewController()
+        let data:MailViewController = MailViewController(addressArray: addressArray)
         
         //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
         let nav = UINavigationController(rootViewController: data)

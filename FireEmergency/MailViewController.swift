@@ -11,6 +11,18 @@ import MessageUI
 
 class MailViewController: UIViewController, MFMailComposeViewControllerDelegate {
     
+    var mAddressArray: [String] = []
+    
+    init(addressArray: [String]) {
+        super.init(nibName: nil, bundle: nil)
+        mAddressArray = addressArray
+    }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sendMail()
@@ -27,7 +39,8 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
         }
         
         let mailViewController = MFMailComposeViewController()
-        let recipients = ["tadakazu1972@gmail.com"]
+        //let recipients = ["tadakazu1972@gmail.com"]
+        let recipients = mAddressArray
         
         mailViewController.mailComposeDelegate = self
         mailViewController.setSubject("緊急連絡")
@@ -55,7 +68,7 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
         self.dismissViewControllerAnimated(true, completion: nil)
         
         //dataViewControllerのインスタンス生成
-        let data:ViewController = ViewController()
+        let data:ContactViewController = ContactViewController()
         
         //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
