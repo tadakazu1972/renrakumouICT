@@ -153,7 +153,7 @@ class KinentaiResultDialog {
         case 22:
             //csvファイル読込
             var result: [[String]] = []
-            if let path = NSBundle.mainBundle().pathForResource("rkaiiki6strong", ofType: "csv") {
+            if let path = NSBundle.mainBundle().pathForResource("kaiiki6strong", ofType: "csv") {
                 var csvString = ""
                 do {
                     csvString = try String(contentsOfFile: path, encoding: NSUTF8StringEncoding)
