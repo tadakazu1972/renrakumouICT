@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import FMDB
 
 class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
+    
     //ボタン押したら出るUIWindow
     private var parent: ContactViewController!
     private var win1: UIWindow!
