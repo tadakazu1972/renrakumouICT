@@ -605,7 +605,7 @@ class ContactViewController: UIViewController {
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
-    //メール送信 MailViewController遷移
+    /*//メール送信 MailViewController遷移
     func sendMail(addressArray: [String]){
         //MailViewControllerのインスタンス生成
         let data:MailViewController = MailViewController(addressArray: addressArray)
@@ -616,7 +616,7 @@ class ContactViewController: UIViewController {
         
         //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
-    }
+    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

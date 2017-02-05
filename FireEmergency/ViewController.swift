@@ -47,6 +47,7 @@ class ViewController: UIViewController {
     private var mInfoDialog: InfoDialog!
     private var mBousainetDialog: BousainetDialog!
     private var mEarthSelectDialog: EarthSelectDialog!
+    private var mContactLoadDialog: ContactLoadDialog2!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
@@ -227,6 +228,7 @@ class ViewController: UIViewController {
         btnEarthquakeTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnEarthquakeTel.tag=13
         btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquakeTel.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeTel)
         //留意事項
         btnEarthquakeCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -270,6 +272,9 @@ class ViewController: UIViewController {
         //DB生成
         mDBHelper = DBHelper()
         mDBHelper.createTable()
+        //ダミーデータ生成
+        mDBHelper.insert("大阪　太郎",tel: "09066080765",mail: "tadakazu1972@gmail.com",kubun: "４号招集",syozoku0: "消防局",syozoku: "警防課",kinmu: "日勤")
+        mDBHelper.insert("難波　二郎",tel: "07077777777",mail: "ta-nakamichi@city.osaka.lg.jp",kubun: "３号招集",syozoku0: "北消防署",syozoku: "与力",kinmu: "１部")
     }
     
     //制約ひな型
@@ -527,6 +532,14 @@ class ViewController: UIViewController {
     //情報（道路）
     func showInfoRoad(sender: UIButton){
         mInfoDialog.showInfo("road")
+    }
+    
+    //連絡網
+    func showContactLoad(sender: UIButton){
+        //まずは全部検索実施
+        mDBHelper.selectAll()
+        mContactLoadDialog = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactLoadDialog.showResult()
     }
     
     //情報（停電）

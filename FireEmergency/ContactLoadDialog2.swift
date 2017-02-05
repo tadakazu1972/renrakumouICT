@@ -1,14 +1,14 @@
 //
-//  ContactLoadDialog.swift
+//  ContactLoadDialog2.swift
 //  FireEmergency
 //
-//  Created by 中道忠和 on 2017/01/21.
+//  Created by 中道忠和 on 2017/02/05.
 //  Copyright © 2017年 tadakazu nakamichi. All rights reserved.
 //
 
 import UIKit
 
-class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
+class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     //ボタン押したら出るUIWindow
     private var parent: UIViewController!
@@ -25,7 +25,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     var kubun: String!
     
     //コンストラクタ
-    init(parentView: UIViewController){
+    init(parentView: UIViewController, resultFrom: [[String]]){
         super.init()
         parent = parentView
         win1 = UIWindow()
@@ -33,6 +33,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         table = UITableView()
         btnClose = UIButton()
         btnMail = UIButton()
+        result = resultFrom
     }
     
     //デコンストラクタ
@@ -70,10 +71,9 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         text1.editable = false
         text1.scrollEnabled = true
         text1.dataDetectorTypes = .Link
-        
         text1.text=""
         
-        //csvファイル読込
+        /*//csvファイル読込
         let file_name = "fire.csv"
         var csvString = ""
         if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
@@ -91,8 +91,8 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
             }
         } else {
             text1.text = "csvファイル読み込みエラー"
-        }
-
+        }*/
+        
         //TableView生成
         table.frame = CGRectMake(10, 41, self.win1.frame.width-20, self.win1.frame.height-60)
         table.delegate = self
@@ -178,7 +178,7 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         cell.kubun!.text = self.result[indexPath.row][3]
         cell.syozoku!.text = self.result[indexPath.row][4]
         cell.kinmu!.text = self.result[indexPath.row][5]
-        cell.mail!.text = self.result[indexPath.row][2]        
+        cell.mail!.text = self.result[indexPath.row][2]
         return cell
     }
     
