@@ -51,6 +51,8 @@ class ViewController: UIViewController {
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
+    //SQLite用
+    private var mDBHelper: DBHelper!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -264,6 +266,10 @@ class ViewController: UIViewController {
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
         mEarthResultDialog = EarthResultDialog(parentView: self) //このViewControllerを渡してあげる
+        
+        //DB生成
+        mDBHelper = DBHelper()
+        mDBHelper.createTable()
     }
     
     //制約ひな型
