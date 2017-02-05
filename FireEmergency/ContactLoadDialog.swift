@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FMDB
 
 class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
