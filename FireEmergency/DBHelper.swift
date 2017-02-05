@@ -13,8 +13,7 @@ class DBHelper {
     //コンストラクタ
     init(){
         db = FMDatabase.init()
-        //resultArray = []
-        resultArray = [[String]](count: 100, repeatedValue: [String](count: 100, repeatedValue: ""))
+        resultArray = []
         connectDB()
     }
     
@@ -51,19 +50,20 @@ class DBHelper {
     }
     
     func selectAll(){
+        //前の検索結果が残っているので全削除
+        resultArray.removeAll()
         let sql = "SELECT * FROM records ORDER BY _id;"
         db.open()
         let results = db.executeQuery(sql, withArgumentsInArray: nil)
-        var i = 0
         while results.next(){
-            resultArray[i][0] = results.stringForColumn("name")
-            resultArray[i][1] = results.stringForColumn("tel")
-            resultArray[i][2] = results.stringForColumn("mail")
-            resultArray[i][3] = results.stringForColumn("kubun")
-            resultArray[i][4] = results.stringForColumn("syozoku0")
-            resultArray[i][5] = results.stringForColumn("syozoku")
-            resultArray[i][6] = results.stringForColumn("kinmu")
-            i = i + 1
+            let _name: String = results.stringForColumn("name")
+            let _tel: String = results.stringForColumn("tel")
+            let _mail: String = results.stringForColumn("mail")
+            let _kubun: String = results.stringForColumn("kubun")
+            let _syozoku0: String = results.stringForColumn("syozoku0")
+            let _syozoku: String = results.stringForColumn("syozoku")
+            let _kinmu: String = results.stringForColumn("kinmu")
+            resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu])
         }
         db.close()
     }

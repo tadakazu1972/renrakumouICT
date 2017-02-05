@@ -58,12 +58,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //DB生成
+        mDBHelper = DBHelper()
+        mDBHelper.createTable()
+        
         //初回起動判定
         if userDefaults.boolForKey("firstLaunch"){
             //初回起動時処理 一度も基礎データ入力されないorデータ入力画面でもスピナーをさわらない場合はセットされない=結果でnilが表示される　それを防止
             userDefaults.setObject("消防局", forKey: "mainStation")
             userDefaults.setObject("消防局", forKey: "tsunamiStation")
             userDefaults.setObject("１号招集", forKey: "kubun")
+            
+            //DBダミーデータ生成
+            mDBHelper.insert("大阪　太郎",tel: "09066080765",mail: "tadakazu1972@gmail.com",kubun: "４号招集",syozoku0: "消防局",syozoku: "警防課",kinmu: "日勤")
+            mDBHelper.insert("難波　二郎",tel: "07077777777",mail: "ta-nakamichi@city.osaka.lg.jp",kubun: "３号招集",syozoku0: "北消防署",syozoku: "与力",kinmu: "１部")
             
             //２回目以降ではfalseに
             userDefaults.setBool(false, forKey: "firstLaunch")
@@ -268,13 +276,6 @@ class ViewController: UIViewController {
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
         mEarthResultDialog = EarthResultDialog(parentView: self) //このViewControllerを渡してあげる
-        
-        //DB生成
-        mDBHelper = DBHelper()
-        mDBHelper.createTable()
-        //ダミーデータ生成
-        mDBHelper.insert("大阪　太郎",tel: "09066080765",mail: "tadakazu1972@gmail.com",kubun: "４号招集",syozoku0: "消防局",syozoku: "警防課",kinmu: "日勤")
-        mDBHelper.insert("難波　二郎",tel: "07077777777",mail: "ta-nakamichi@city.osaka.lg.jp",kubun: "３号招集",syozoku0: "北消防署",syozoku: "与力",kinmu: "１部")
     }
     
     //制約ひな型
