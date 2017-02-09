@@ -13,6 +13,7 @@ class ContactCell1: UITableViewCell {
     var tel  : UILabel?
     var mail : UILabel?
     var kubun: UILabel?
+    var syozoku0: UILabel?
     var syozoku : UILabel?
     var kinmu : UILabel?
     
@@ -33,24 +34,29 @@ class ContactCell1: UITableViewCell {
         tel?.font = UIFont.systemFontOfSize(18)
         self.contentView.addSubview(tel!)
         
-        kubun = UILabel(frame: CGRectMake(0, 25, 50, 16))
+        kubun = UILabel(frame: CGRectMake(0, 28, 60, 16))
         kubun?.text = "nil"
-        kubun?.font = UIFont.systemFontOfSize(12)
+        kubun?.font = UIFont.systemFontOfSize(16)
         self.contentView.addSubview(kubun!)
         
-        syozoku = UILabel(frame: CGRectMake(51, 25, 40, 16))
+        syozoku0 = UILabel(frame: CGRectMake(68, 28, 100, 16))
+        syozoku0?.text = "nil"
+        syozoku0?.font = UIFont.systemFontOfSize(16)
+        self.contentView.addSubview(syozoku0!)
+        
+        syozoku = UILabel(frame: CGRectMake(160, 28, 60, 16))
         syozoku?.text = "nil"
-        syozoku?.font = UIFont.systemFontOfSize(12)
+        syozoku?.font = UIFont.systemFontOfSize(16)
         self.contentView.addSubview(syozoku!)
         
-        kinmu = UILabel(frame: CGRectMake(86, 25, 40, 16))
+        kinmu = UILabel(frame: CGRectMake(220, 28, 40, 16))
         kinmu?.text = "nil"
-        kinmu?.font = UIFont.systemFontOfSize(12)
+        kinmu?.font = UIFont.systemFontOfSize(16)
         self.contentView.addSubview(kinmu!)
         
-        mail = UILabel(frame: CGRectMake(116, 25, 160, 16))
+        mail = UILabel(frame: CGRectMake(0, 48, 300, 18))
         mail?.text = "nil"
-        mail?.font = UIFont.systemFontOfSize(12)
+        mail?.font = UIFont.systemFontOfSize(16)
         self.contentView.addSubview(mail!)
     }
     

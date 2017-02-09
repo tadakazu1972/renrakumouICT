@@ -170,6 +170,10 @@ class ContactLoadDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         return self.result.count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80 // セルの高さ
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
         let cell:ContactCell1 = table.dequeueReusableCellWithIdentifier("contactCell1")! as! ContactCell1
         cell.textLabel?.numberOfLines = 0 //これをしないと複数表示されない

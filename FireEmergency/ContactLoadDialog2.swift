@@ -53,7 +53,7 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         //初期設定
         //Win1
         win1.backgroundColor = UIColor.whiteColor()
-        win1.frame = CGRectMake(80,180,parent.view.frame.width-40,parent.view.frame.height-100)
+        win1.frame = CGRectMake(80,180,parent.view.frame.width-20,parent.view.frame.height-100)
         win1.layer.position = CGPointMake(parent.view.frame.width/2, parent.view.frame.height/2)
         win1.alpha = 1.0
         win1.layer.cornerRadius = 10
@@ -97,11 +97,14 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         table.frame = CGRectMake(10, 41, self.win1.frame.width-20, self.win1.frame.height-60)
         table.delegate = self
         table.dataSource = self
-        table.estimatedRowHeight = 10 //下とあわせこの２行で複数表示されるときの間がひらくように
+        table.estimatedRowHeight = 60 //下とあわせこの２行で複数表示されるときの間がひらくように
         table.rowHeight = UITableViewAutomaticDimension
         table.registerClass(ContactCell1.self, forCellReuseIdentifier:"contactCell1")
         table.separatorColor = UIColor.clearColor()
         self.win1.addSubview(table)
+        
+        func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat { return UITableViewAutomaticDimension }
+
         
         //閉じるボタン生成
         btnClose.frame = CGRectMake(0,0,100,30)
@@ -170,14 +173,19 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         return self.result.count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 80 // セルの高さ
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
         let cell:ContactCell1 = table.dequeueReusableCellWithIdentifier("contactCell1")! as! ContactCell1
         cell.textLabel?.numberOfLines = 0 //これをしないと複数表示されない
         cell.name!.text = self.result[indexPath.row][0]
         cell.tel!.text  = self.result[indexPath.row][1]
         cell.kubun!.text = self.result[indexPath.row][3]
-        cell.syozoku!.text = self.result[indexPath.row][4]
-        cell.kinmu!.text = self.result[indexPath.row][5]
+        cell.syozoku0!.text = self.result[indexPath.row][4]
+        cell.syozoku!.text = self.result[indexPath.row][5]
+        cell.kinmu!.text = self.result[indexPath.row][6]
         cell.mail!.text = self.result[indexPath.row][2]
         return cell
     }
