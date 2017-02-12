@@ -70,6 +70,8 @@
 		598AC8F41D8512F3006842C8 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8F31D8512F3006842C8 /* DataViewController.swift */; };
 		59B7FC8E1E3AC07E002D4392 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */; };
 		59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7FC8F1E3CF106002D4392 /* MailViewController.swift */; };
+		59D8AED91E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */; };
+		59D8AEDB1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59D8AEDA1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt */; };
 		59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +148,8 @@
 		598AC8F31D8512F3006842C8 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
 		59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		59B7FC8F1E3CF106002D4392 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
+		59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoSelectDialog.swift; sourceTree = "<group>"; };
+		59D8AEDA1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo_keikakutaisyo.txt; sourceTree = "<group>"; };
 		59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthSelectDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -226,6 +230,7 @@
 				594DDA481D9747110078EE72 /* caution.txt */,
 				597FD1171E21DB780011ABB1 /* typhoon_caution.txt */,
 				597FD1191E21DB820011ABB1 /* kokuminhogo_caution.txt */,
+				59D8AEDA1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt */,
 				598AC8DE1D850AE6006842C8 /* AppDelegate.swift */,
 				597FD1151E2113E50011ABB1 /* ViewController.swift */,
 				59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */,
@@ -236,6 +241,7 @@
 				594CA33D1DF057ED00FF8714 /* TyphoonResultDialog.swift */,
 				594CA3431E017D6E00FF8714 /* TyphoonResultDialog2.swift */,
 				593C66841DCEAFE000405F53 /* KokuminhogoViewController.swift */,
+				59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */,
 				593C66861DCEB10100405F53 /* KokuminhogoResultDialog.swift */,
 				598AC8E01D850AE6006842C8 /* KinentaiViewController.swift */,
 				597FD11B1E21E44C0011ABB1 /* KinentaiSelectDialog.swift */,
@@ -345,6 +351,7 @@
 				597FD13E1E2D0F620011ABB1 /* kinentai_nankaitraf2.txt in Resources */,
 				593C668F1DCEB31500405F53 /* kokuminhogo3.txt in Resources */,
 				594CA3401DFD87C900FF8714 /* typhoon1.txt in Resources */,
+				59D8AEDB1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt in Resources */,
 				597FD1321E2BB4340011ABB1 /* kaiiki6weak.csv in Resources */,
 				597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */,
 				597FD1441E2EFC290011ABB1 /* nankaitraf_case2.txt in Resources */,
@@ -387,6 +394,7 @@
 				5960EB7C1E47443500D1917A /* ContactLoadDialog2.swift in Sources */,
 				59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */,
 				594CA3441E017D6E00FF8714 /* TyphoonResultDialog2.swift in Sources */,
+				59D8AED91E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift in Sources */,
 				597FD1421E2EF3EA0011ABB1 /* KinentaiNankaitraf2.swift in Sources */,
 				5960EB781E46C52900D1917A /* DBHelper.swift in Sources */,
 				5960E60D1E45F8D000D1917A /* FMDatabase.m in Sources */,

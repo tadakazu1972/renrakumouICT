@@ -44,9 +44,9 @@ class KokuminhogoViewController: UIViewController {
     let pad32            = UIView(frame: CGRectZero)
     let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
-    private var mInfoDialog: InfoDialog!
+    internal var mInfoDialog: InfoDialog!
     private var mBousainetDialog: BousainetDialog!
-    //結果表示用クラス保持用
+    private var mKokuminhogoSelectDialog: KokuminhogoSelectDialog!
     internal var mKokuminhogoResultDialog: KokuminhogoResultDialog!
     
     override func viewDidLoad() {
@@ -216,7 +216,7 @@ class KokuminhogoViewController: UIViewController {
         //留意事項
         btnKokuminhogoCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogoCaution.layer.masksToBounds = true
-        btnKokuminhogoCaution.setTitle("留意事項", forState: UIControlState.Normal)
+        btnKokuminhogoCaution.setTitle("留意事項等", forState: UIControlState.Normal)
         btnKokuminhogoCaution.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogoCaution.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnKokuminhogoCaution.tag=13
@@ -250,6 +250,7 @@ class KokuminhogoViewController: UIViewController {
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
+        mKokuminhogoSelectDialog = KokuminhogoSelectDialog(parentView: self)
         mKokuminhogoResultDialog = KokuminhogoResultDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
@@ -510,9 +511,9 @@ class KokuminhogoViewController: UIViewController {
         mInfoDialog.showInfo("road")
     }
     
-    //留意事項
+    //留意事項等
     func showInfoCaution(sender: UIButton){
-        mInfoDialog.showInfo("kokuminhogo_caution")
+        mKokuminhogoSelectDialog.showInfo()
     }
     
     //防災ネット

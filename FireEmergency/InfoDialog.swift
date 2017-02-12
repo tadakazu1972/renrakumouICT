@@ -110,6 +110,17 @@ class InfoDialog {
                     text1.text = "ファイル読込エラー"
                 }
                 break
+            case "kokuminhogo_caution2":
+                //テキストファイル読込
+                let path = NSBundle.mainBundle().pathForResource("kokuminhogo_keikakutaisyo", ofType: "txt")!
+                if let data = NSData(contentsOfFile: path){
+                    if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
+                        text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                    }
+                } else {
+                    text1.text = "ファイル読込エラー"
+                }
+                break
 
             default:
                 text1.text=""

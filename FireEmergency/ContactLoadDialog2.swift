@@ -101,6 +101,7 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         table.rowHeight = UITableViewAutomaticDimension
         table.registerClass(ContactCell1.self, forCellReuseIdentifier:"contactCell1")
         table.separatorColor = UIColor.clearColor()
+        table.allowsMultipleSelection = true
         self.win1.addSubview(table)
         
         func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat { return UITableViewAutomaticDimension }
@@ -190,10 +191,13 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //セルを選択
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("セルを選択 #\(indexPath.row)")
-        //自らのダイアログを消去しておく
-        win1.hidden = true      //win1隠す
-        text1.text = ""
+        //選択されたセルを取得
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        // チェックマークを入れる
+        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
     }
+
 }
