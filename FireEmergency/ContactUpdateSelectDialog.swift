@@ -1,14 +1,14 @@
 //
-//  ContactDeleteDialog.swift
+//  ContactUpdateSelectDialog.swift
 //  FireEmergency
 //
-//  Created by 中道忠和 on 2017/02/14.
+//  Created by 中道忠和 on 2017/02/19.
 //  Copyright © 2017年 tadakazu nakamichi. All rights reserved.
 //
 
 import UIKit
 
-class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
+class ContactUpdateSelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     //ボタン押したら出るUIWindow
     private var parent: UIViewController!
@@ -17,7 +17,6 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
     private var table: UITableView!
     var result: [[String]] = []
     private var btnClose: UIButton!
-    private var btnMail: UIButton!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
     var mainStation: String!
@@ -32,7 +31,6 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         text1 = UITextView()
         table = UITableView()
         btnClose = UIButton()
-        btnMail = UIButton()
         result = resultFrom
     }
     
@@ -43,7 +41,6 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         text1 = nil
         table = nil
         btnClose = nil
-        btnMail = nil
     }
     
     //表示
@@ -63,15 +60,13 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         self.win1.makeKeyAndVisible()
         
         //TextView生成
-        text1.frame = CGRectMake(10,0, self.win1.frame.width - 20, self.win1.frame.height-60)
+        text1.frame = CGRectMake(10,0, self.win1.frame.width-20, 40)
         text1.backgroundColor = UIColor.clearColor()
         text1.font = UIFont.systemFontOfSize(CGFloat(18))
         text1.textColor = UIColor.blackColor()
         text1.textAlignment = NSTextAlignment.Left
         text1.editable = false
-        text1.scrollEnabled = true
-        text1.dataDetectorTypes = .Link
-        text1.text="削除するデータを選択"
+        text1.text="修正するデータを選択"
         self.win1.addSubview(text1)
         
         //TableView生成
@@ -95,20 +90,9 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         btnClose.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         btnClose.layer.masksToBounds = true
         btnClose.layer.cornerRadius = 10.0
-        btnClose.layer.position = CGPointMake(self.win1.frame.width/2-60, self.win1.frame.height-20)
+        btnClose.layer.position = CGPointMake(self.win1.frame.width/2, self.win1.frame.height-20)
         btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), forControlEvents: .TouchUpInside)
         self.win1.addSubview(btnClose)
-        
-        //削除ボタン生成
-        btnMail.frame = CGRectMake(0,0,100,30)
-        btnMail.backgroundColor = UIColor.redColor()
-        btnMail.setTitle("削除", forState: .Normal)
-        btnMail.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        btnMail.layer.masksToBounds = true
-        btnMail.layer.cornerRadius = 10.0
-        btnMail.layer.position = CGPointMake(self.win1.frame.width/2+60, self.win1.frame.height-20)
-        btnMail.addTarget(self, action: #selector(self.onClickMail(_:)), forControlEvents: .TouchUpInside)
-        self.win1.addSubview(btnMail)
     }
     
     //閉じる
@@ -116,39 +100,6 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         win1.hidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
-    }
-    
-    //メール送信
-    @objc func onClickMail(sender: UIButton){
-        //ダイアログ消去
-        win1.hidden = true
-        text1.text = ""
-        parent.view.alpha = 1.0
-        
-        //メールアドレス集約
-        var addressArray: [String] = []
-        let line = result.count //countで２次元配列の行数をカウントしてくれる！なんてこった！
-        for index in 0..<line {
-            addressArray.append(result[index][2])
-        }
-        
-        print(addressArray)
-        
-        //次の関数でMailViewControllerを生成して画面遷移する
-        sendMail(addressArray)
-    }
-    
-    //メール送信 MailViewController遷移
-    func sendMail(addressArray: [String]){
-        //MailViewControllerのインスタンス生成
-        let data:MailViewController = MailViewController(addressArray: addressArray)
-        
-        //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
-        parent.presentViewController(nav, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection sction:Int)-> Int {
@@ -179,6 +130,30 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         // チェックマークを入れる
         cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+        
+        //選択されたセルの各データを渡し用に文字配列に放り込む
+        var _selected : [String] = []
+        _selected.append(self.result[indexPath.row][0])
+        _selected.append(self.result[indexPath.row][1])
+        _selected.append(self.result[indexPath.row][2])
+        _selected.append(self.result[indexPath.row][3])
+        _selected.append(self.result[indexPath.row][4])
+        _selected.append(self.result[indexPath.row][5])
+        _selected.append(self.result[indexPath.row][6])
+        //最後に_id要素分として選択されたrowを入れておく。そうしないとあとでSQL文で_id指定してUpdateできない
+        //さらに、SQliteで自動附番号される_idは1から開始のため、rowに１足さないとおかしくなる
+        _selected.append(String(indexPath.row+1)) //Int->String変換
+        
+        //選択したレコードのデータを引数にしながら、ContactUpdateViewControllerを立ち上げ
+        let data:ContactUpdateViewController = ContactUpdateViewController(selected: _selected)
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        parent.presentViewController(nav, animated: true, completion: nil)
+        
+        //消去
+        win1.hidden = true      //win1隠す
+        text1.text = ""         //使い回しするのでテキスト内容クリア
+        parent.view.alpha = 1.0 //元の画面明るく
     }
     
 }

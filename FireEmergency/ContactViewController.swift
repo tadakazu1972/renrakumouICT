@@ -49,6 +49,7 @@ class ContactViewController: UIViewController {
     private var mEarthSelectDialog: EarthSelectDialog!
     private var mContactLoadDialog: ContactLoadDialog!
     private var mContactLoadDialog2: ContactLoadDialog2!
+    private var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
     private var mContactDeleteDialog: ContactDeleteDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
@@ -513,8 +514,9 @@ class ContactViewController: UIViewController {
     
     //修正
     func showSelectContact3(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 3, parentView: self)
-        //mEarthSelectDialog.showInfo()
+        mDBHelper.selectAll()
+        mContactUpdateSelectDialog = ContactUpdateSelectDialog(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactUpdateSelectDialog.showResult()        
     }
     
     //削除

@@ -42,6 +42,13 @@ class DBHelper {
         db.close()
     }
     
+    func update(name: String, tel: String, mail: String, kubun: String, syozoku0: String, syozoku: String, kinmu: String, _id: String){
+        let sql = "UPDATE records SET name = ?, tel = ?, mail = ?, kubun = ?, syozoku0 = ?, syozoku = ?, kinmu = ? WHERE _id = ?;"
+        db.open()
+        db.executeUpdate(sql, withArgumentsInArray: [name, tel, mail, kubun, syozoku0, syozoku, kinmu, _id])
+        db.close()
+    }
+    
     func delete(_id: Int){
         let sql = "DELETE FROM records WHERE _id = ?;"
         db.open()
