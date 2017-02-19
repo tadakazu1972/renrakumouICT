@@ -168,7 +168,7 @@ class KinentaiNankaitraf1 : UITextField, UIPickerViewDelegate, UIPickerViewDataS
         textField2.font = UIFont.systemFontOfSize((CGFloat(14)))
         textField2.textAlignment = NSTextAlignment.Center
         textField2.text = pic2Array[0] as? String
-        textField2.inputView = pic2 //ここでpic21と紐付け
+        textField2.inputView = pic2 //ここでpic2と紐付け
         //pickerViewとともにポップアップするツールバーとボタンの設定
         textField2.inputAccessoryView = toolbar
         self.win1.addSubview(textField2)
