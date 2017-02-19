@@ -62,9 +62,13 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
     private var mInfoDialog: InfoDialog!
     //所属(大分類)のインデックス保存用
     private var syozoku0Index : Int = 0
+    //SQLite用
+    internal var mDBHelper: DBHelper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mDBHelper = DBHelper()
         
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //あなたのデータを入力してください
@@ -153,7 +157,7 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
         self.view.addSubview(lblSyozoku)
         //所属(小分類)テキストフィールド
         txtSyozoku.borderStyle = UITextBorderStyle.Bezel
-        txtSyozoku.text = syozokuArray[0][0] as? String
+        txtSyozoku.text = (syozokuArray[0] as! NSArray)[0] as? String
         txtSyozoku.inputView = picSyozoku
         txtSyozoku.inputAccessoryView = toolbar
         txtSyozoku.translatesAutoresizingMaskIntoConstraints = false
@@ -357,7 +361,7 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
             picComponent = syozoku0Array[row] as? String
             break
         case 3:
-            picComponent = syozokuArray[syozoku0Index][row] as? String
+            picComponent = (syozokuArray[syozoku0Index] as! NSArray)[row] as? String
             break
         case 4:
             picComponent = kinmuArray[row] as? String
@@ -381,10 +385,10 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
             txtSyozoku0.text = syozoku0Array[row] as? String
             //所属(小分類)の表示を変更
             syozoku0Index = row
-            txtSyozoku.text = syozokuArray[syozoku0Index][0] as? String
+            txtSyozoku.text = (syozokuArray[syozoku0Index] as! NSArray)[0] as? String
             break
         case 3:
-            txtSyozoku.text = syozokuArray[syozoku0Index][row] as? String
+            txtSyozoku.text = (syozokuArray[syozoku0Index] as! NSArray)[row] as? String
             break
         case 4:
             txtKinmu.text = kinmuArray[row] as? String
@@ -405,6 +409,14 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
     //登録ボタンクリック
     func onClickbtnSave(sender : UIButton){
         
+        //DBに書き込み
+        mDBHelper.insert(txtName.text!, tel: txtTel.text!, mail: txtMail.text!, kubun: txtKubun.text!, syozoku0: txtSyozoku0.text!, syozoku: txtSyozoku.text!, kinmu: txtKinmu.text!)
+
+        //画面遷移
+        let data:ContactViewController = ContactViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //キャンセルボタンクリック
