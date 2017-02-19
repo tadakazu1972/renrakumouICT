@@ -61,14 +61,12 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
             break
         case .Failed:
             break
-        default:
-            break
         }
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
         //dataViewControllerのインスタンス生成
-        let data:ContactViewController = ContactViewController()
+        let data:ViewController = ViewController()
         
         //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
         let nav = UINavigationController(rootViewController: data)

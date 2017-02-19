@@ -51,7 +51,7 @@ class KinentaiViewController: UIViewController {
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

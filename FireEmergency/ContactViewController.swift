@@ -48,13 +48,19 @@ class ContactViewController: UIViewController {
     private var mBousainetDialog: BousainetDialog!
     private var mEarthSelectDialog: EarthSelectDialog!
     private var mContactLoadDialog: ContactLoadDialog!
+    private var mContactLoadDialog2: ContactLoadDialog2!
+    private var mContactDeleteDialog: ContactDeleteDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
+    //SQLite用
+    internal var mDBHelper: DBHelper!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mDBHelper = DBHelper()
         
         //初回起動判定
         if userDefaults.boolForKey("firstLaunch"){
@@ -148,7 +154,7 @@ class ContactViewController: UIViewController {
         btnContact2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnContact2.tag=6
         btnContact2.translatesAutoresizingMaskIntoConstraints = false
-        btnContact2.addTarget(self, action: #selector(self.showSelectContact2(_:)), forControlEvents: .TouchUpInside)
+        btnContact2.addTarget(self, action: #selector(self.showSelectContactNew(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact2)
         //修正
         btnContact3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -487,14 +493,22 @@ class ContactViewController: UIViewController {
     
     //一覧
     func showSelectContact1(sender: UIButton){
-        mContactLoadDialog = ContactLoadDialog(parentView: self)
-        mContactLoadDialog.showResult()
+        mDBHelper.selectAll()
+        mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactLoadDialog2.showResult()
     }
     
     //新規
-    func showSelectContact2(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 2, parentView: self)
-        //mEarthSelectDialog.showInfo()
+    func showSelectContactNew(sender: UIButton){
+        //dataViewControllerのインスタンス生成
+        let data:ContactNewViewController = ContactNewViewController()
+        
+        //navigationControllerのrootViewControllerにdataViewControllerをセット
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        
+        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //修正
@@ -505,8 +519,9 @@ class ContactViewController: UIViewController {
     
     //削除
     func showSelectContact4(sender: UIButton){
-        //mEarthSelectDialog = EarthSelectDialog(index: 4, parentView: self)
-        //mEarthSelectDialog.showInfo()
+        mDBHelper.selectAll()
+        mContactDeleteDialog = ContactDeleteDialog(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactDeleteDialog.showResult()        
     }
     
     //CSVファイル読込

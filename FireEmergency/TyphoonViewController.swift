@@ -48,7 +48,7 @@ class TyphoonViewController: UIViewController {
     internal var mTyphoonResultDialog: TyphoonResultDialog!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

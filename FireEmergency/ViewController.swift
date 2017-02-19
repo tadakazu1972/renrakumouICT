@@ -44,6 +44,7 @@ class ViewController: UIViewController {
     let pad32            = UIView(frame: CGRectZero)
     let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
+    private var mViewController: ViewController!
     private var mInfoDialog: InfoDialog!
     private var mBousainetDialog: BousainetDialog!
     private var mEarthSelectDialog: EarthSelectDialog!
@@ -53,7 +54,7 @@ class ViewController: UIViewController {
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
     //SQLite用
-    private var mDBHelper: DBHelper!
+    internal var mDBHelper: DBHelper!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +88,7 @@ class ViewController: UIViewController {
         btnData.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
-        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
+        btnData.addTarget(self, action: #selector(self.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         //震災

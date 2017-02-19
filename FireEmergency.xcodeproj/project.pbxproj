@@ -72,6 +72,8 @@
 		59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7FC8F1E3CF106002D4392 /* MailViewController.swift */; };
 		59D8AED91E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */; };
 		59D8AEDB1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59D8AEDA1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt */; };
+		59D8AEDD1E53452600A3EDE2 /* ContactDeleteDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEDC1E53452600A3EDE2 /* ContactDeleteDialog.swift */; };
+		59D8AEDF1E59224700A3EDE2 /* ContactNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */; };
 		59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,6 +152,8 @@
 		59B7FC8F1E3CF106002D4392 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoSelectDialog.swift; sourceTree = "<group>"; };
 		59D8AEDA1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = kokuminhogo_keikakutaisyo.txt; sourceTree = "<group>"; };
+		59D8AEDC1E53452600A3EDE2 /* ContactDeleteDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDeleteDialog.swift; sourceTree = "<group>"; };
+		59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactNewViewController.swift; sourceTree = "<group>"; };
 		59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthSelectDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,8 +256,10 @@
 				597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */,
 				598AC8F31D8512F3006842C8 /* DataViewController.swift */,
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
+				59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */,
 				597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */,
 				5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */,
+				59D8AEDC1E53452600A3EDE2 /* ContactDeleteDialog.swift */,
 				590157671E38CC6800928154 /* ContactCell1.swift */,
 				59B7FC8F1E3CF106002D4392 /* MailViewController.swift */,
 				5960EB791E46C7BD00D1917A /* StringExtensions.swift */,
@@ -385,10 +391,12 @@
 				5960E60F1E45F8D000D1917A /* FMDatabasePool.m in Sources */,
 				5960E6101E45F8D000D1917A /* FMDatabaseQueue.m in Sources */,
 				5960EB7A1E46C7BD00D1917A /* StringExtensions.swift in Sources */,
+				59D8AEDF1E59224700A3EDE2 /* ContactNewViewController.swift in Sources */,
 				594CA33C1DF0567600FF8714 /* TyphoonSelectDialog.swift in Sources */,
 				598AC8F41D8512F3006842C8 /* DataViewController.swift in Sources */,
 				597FD1461E2F053F0011ABB1 /* BousainetDialog.swift in Sources */,
 				594CA33A1DF0540200FF8714 /* TyphoonViewController.swift in Sources */,
+				59D8AEDD1E53452600A3EDE2 /* ContactDeleteDialog.swift in Sources */,
 				597FD11E1E29CD4D0011ABB1 /* KinentaiSelectDialog2.swift in Sources */,
 				5960E6111E45F8D000D1917A /* FMResultSet.m in Sources */,
 				5960EB7C1E47443500D1917A /* ContactLoadDialog2.swift in Sources */,

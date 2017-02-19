@@ -1,14 +1,14 @@
 //
-//  ContactLoadDialog2.swift
+//  ContactDeleteDialog.swift
 //  FireEmergency
 //
-//  Created by 中道忠和 on 2017/02/05.
+//  Created by 中道忠和 on 2017/02/14.
 //  Copyright © 2017年 tadakazu nakamichi. All rights reserved.
 //
 
 import UIKit
 
-class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
+class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     //ボタン押したら出るUIWindow
     private var parent: UIViewController!
@@ -71,7 +71,8 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         text1.editable = false
         text1.scrollEnabled = true
         text1.dataDetectorTypes = .Link
-        text1.text=""
+        text1.text="削除するデータを選択"
+        self.win1.addSubview(text1)
         
         //TableView生成
         table.frame = CGRectMake(10, 41, self.win1.frame.width-20, self.win1.frame.height-60)
@@ -85,7 +86,7 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         self.win1.addSubview(table)
         
         func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat { return UITableViewAutomaticDimension }
-
+        
         
         //閉じるボタン生成
         btnClose.frame = CGRectMake(0,0,100,30)
@@ -98,10 +99,10 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), forControlEvents: .TouchUpInside)
         self.win1.addSubview(btnClose)
         
-        //メール送信ボタン生成
+        //削除ボタン生成
         btnMail.frame = CGRectMake(0,0,100,30)
         btnMail.backgroundColor = UIColor.redColor()
-        btnMail.setTitle("メール送信", forState: .Normal)
+        btnMail.setTitle("削除", forState: .Normal)
         btnMail.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         btnMail.layer.masksToBounds = true
         btnMail.layer.cornerRadius = 10.0
@@ -179,5 +180,5 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         // チェックマークを入れる
         cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
     }
-
+    
 }
