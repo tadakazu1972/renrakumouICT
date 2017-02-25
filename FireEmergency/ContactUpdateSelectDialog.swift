@@ -126,10 +126,6 @@ class ContactUpdateSelectDialog: NSObject, UITableViewDelegate, UITableViewDataS
     //セルを選択
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("セルを選択 #\(indexPath.row)")
-        //選択されたセルを取得
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        // チェックマークを入れる
-        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         //選択されたセルの各データを渡し用に文字配列に放り込む
         var _selected : [String] = []
@@ -140,9 +136,7 @@ class ContactUpdateSelectDialog: NSObject, UITableViewDelegate, UITableViewDataS
         _selected.append(self.result[indexPath.row][4])
         _selected.append(self.result[indexPath.row][5])
         _selected.append(self.result[indexPath.row][6])
-        //最後に_id要素分として選択されたrowを入れておく。そうしないとあとでSQL文で_id指定してUpdateできない
-        //さらに、SQliteで自動附番号される_idは1から開始のため、rowに１足さないとおかしくなる
-        _selected.append(String(indexPath.row+1)) //Int->String変換
+        _selected.append(self.result[indexPath.row][7])
         
         //選択したレコードのデータを引数にしながら、ContactUpdateViewControllerを立ち上げ
         let data:ContactUpdateViewController = ContactUpdateViewController(selected: _selected)

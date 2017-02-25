@@ -164,7 +164,7 @@ class ContactViewController: UIViewController {
         btnContact3.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnContact3.tag=7
         btnContact3.translatesAutoresizingMaskIntoConstraints = false
-        btnContact3.addTarget(self, action: #selector(self.showSelectContact3(_:)), forControlEvents: .TouchUpInside)
+        btnContact3.addTarget(self, action: #selector(self.showSelectContactUpdate(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact3)
         //削除
         btnContact4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -513,8 +513,8 @@ class ContactViewController: UIViewController {
     }
     
     //修正
-    func showSelectContact3(sender: UIButton){
-        mDBHelper.selectAll()
+    func showSelectContactUpdate(sender: UIButton){
+        mDBHelper.selectAll2() //_idを含む呼び出す。後でその_idをもって上書きするデータを指定するから。
         mContactUpdateSelectDialog = ContactUpdateSelectDialog(parentView: self, resultFrom: mDBHelper.resultArray)
         mContactUpdateSelectDialog.showResult()        
     }

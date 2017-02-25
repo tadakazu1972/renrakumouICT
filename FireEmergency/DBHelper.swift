@@ -46,6 +46,7 @@ class DBHelper {
         let sql = "UPDATE records SET name = ?, tel = ?, mail = ?, kubun = ?, syozoku0 = ?, syozoku = ?, kinmu = ? WHERE _id = ?;"
         db.open()
         db.executeUpdate(sql, withArgumentsInArray: [name, tel, mail, kubun, syozoku0, syozoku, kinmu, _id])
+        print("DBの _id =\(_id)をupdateしました")
         db.close()
     }
     

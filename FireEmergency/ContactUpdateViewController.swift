@@ -83,7 +83,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         mDBHelper = DBHelper()
         
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-        //あなたのデータを入力してください
+        //データ修正ラベル
         lblData.text = "データ修正"
         lblData.adjustsFontSizeToFitWidth = true
         lblData.textColor = UIColor.blackColor()
