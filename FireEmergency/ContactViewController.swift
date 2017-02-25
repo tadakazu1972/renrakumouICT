@@ -173,7 +173,7 @@ class ContactViewController: UIViewController {
         btnContact4.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnContact4.tag=8
         btnContact4.translatesAutoresizingMaskIntoConstraints = false
-        btnContact4.addTarget(self, action: #selector(self.showSelectContact4(_:)), forControlEvents: .TouchUpInside)
+        btnContact4.addTarget(self, action: #selector(self.showSelectContactDelete(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact4)
         //CSVファイル読込
         btnContact5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -520,8 +520,8 @@ class ContactViewController: UIViewController {
     }
     
     //削除
-    func showSelectContact4(sender: UIButton){
-        mDBHelper.selectAll()
+    func showSelectContactDelete(sender: UIButton){
+        mDBHelper.selectAll2() //_idを含む2を呼び出し
         mContactDeleteDialog = ContactDeleteDialog(parentView: self, resultFrom: mDBHelper.resultArray)
         mContactDeleteDialog.showResult()        
     }

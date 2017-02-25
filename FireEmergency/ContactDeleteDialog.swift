@@ -11,29 +11,32 @@ import UIKit
 class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     //ボタン押したら出るUIWindow
-    private var parent: UIViewController!
+    private var parent: ContactViewController!
     private var win1: UIWindow!
     private var text1: UITextView!
     private var table: UITableView!
     var result: [[String]] = []
     private var btnClose: UIButton!
-    private var btnMail: UIButton!
+    private var btnDelete: UIButton!
     //データ保存用
     let userDefaults = NSUserDefaults.standardUserDefaults()
     var mainStation: String!
     var tsunamiStation: String!
     var kubun: String!
+    //選択_id保存用配列
+    var checkArray: [Bool] = []
     
     //コンストラクタ
-    init(parentView: UIViewController, resultFrom: [[String]]){
+    init(parentView: ContactViewController, resultFrom: [[String]]){
         super.init()
         parent = parentView
         win1 = UIWindow()
         text1 = UITextView()
         table = UITableView()
         btnClose = UIButton()
-        btnMail = UIButton()
+        btnDelete = UIButton()
         result = resultFrom
+        checkArray = Array(count: result.count, repeatedValue: false) //抽出件数だけ初期化
     }
     
     //デコンストラクタ
@@ -43,7 +46,8 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         text1 = nil
         table = nil
         btnClose = nil
-        btnMail = nil
+        btnDelete = nil
+        checkArray.removeAll()
     }
     
     //表示
@@ -80,7 +84,7 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         table.dataSource = self
         table.estimatedRowHeight = 60 //下とあわせこの２行で複数表示されるときの間がひらくように
         table.rowHeight = UITableViewAutomaticDimension
-        table.registerClass(ContactCell1.self, forCellReuseIdentifier:"contactCell1")
+        table.registerClass(ContactCellCheckbox.self, forCellReuseIdentifier:"contactCellCheckbox")
         table.separatorColor = UIColor.clearColor()
         table.allowsMultipleSelection = true
         self.win1.addSubview(table)
@@ -100,15 +104,15 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         self.win1.addSubview(btnClose)
         
         //削除ボタン生成
-        btnMail.frame = CGRectMake(0,0,100,30)
-        btnMail.backgroundColor = UIColor.redColor()
-        btnMail.setTitle("削除", forState: .Normal)
-        btnMail.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        btnMail.layer.masksToBounds = true
-        btnMail.layer.cornerRadius = 10.0
-        btnMail.layer.position = CGPointMake(self.win1.frame.width/2+60, self.win1.frame.height-20)
-        btnMail.addTarget(self, action: #selector(self.onClickMail(_:)), forControlEvents: .TouchUpInside)
-        self.win1.addSubview(btnMail)
+        btnDelete.frame = CGRectMake(0,0,100,30)
+        btnDelete.backgroundColor = UIColor.redColor()
+        btnDelete.setTitle("削除", forState: .Normal)
+        btnDelete.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btnDelete.layer.masksToBounds = true
+        btnDelete.layer.cornerRadius = 10.0
+        btnDelete.layer.position = CGPointMake(self.win1.frame.width/2+60, self.win1.frame.height-20)
+        btnDelete.addTarget(self, action: #selector(self.onClickDelete(_:)), forControlEvents: .TouchUpInside)
+        self.win1.addSubview(btnDelete)
     }
     
     //閉じる
@@ -118,37 +122,26 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
         parent.view.alpha = 1.0 //元の画面明るく
     }
     
-    //メール送信
-    @objc func onClickMail(sender: UIButton){
+    //削除
+    @objc func onClickDelete(sender: UIButton){
+        let line = result.count //countで２次元配列の行数をカウントしてくれる！なんてこった！
+        for index in 0..<line {
+            //チェック配列を上から順に見ていって、チェックされていたら同じインデックスの_idを放り投て削除
+            if self.checkArray[index] {
+                parent.mDBHelper.delete(result[index][7])
+            }
+        }
+        
+        //アラート表示
+        let alert = UIAlertController(title:"", message: "データを削除しました", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertCancel = UIAlertAction(title:"閉じる", style: UIAlertActionStyle.Cancel, handler:nil)
+        alert.addAction(alertCancel)
+        parent.presentViewController(alert, animated:true, completion: nil)
+        
         //ダイアログ消去
         win1.hidden = true
         text1.text = ""
         parent.view.alpha = 1.0
-        
-        //メールアドレス集約
-        var addressArray: [String] = []
-        let line = result.count //countで２次元配列の行数をカウントしてくれる！なんてこった！
-        for index in 0..<line {
-            addressArray.append(result[index][2])
-        }
-        
-        print(addressArray)
-        
-        //次の関数でMailViewControllerを生成して画面遷移する
-        sendMail(addressArray)
-    }
-    
-    //メール送信 MailViewController遷移
-    func sendMail(addressArray: [String]){
-        //MailViewControllerのインスタンス生成
-        let data:MailViewController = MailViewController(addressArray: addressArray)
-        
-        //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
-        parent.presentViewController(nav, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection sction:Int)-> Int {
@@ -160,8 +153,9 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
-        let cell:ContactCell1 = table.dequeueReusableCellWithIdentifier("contactCell1")! as! ContactCell1
+        let cell:ContactCellCheckbox = table.dequeueReusableCellWithIdentifier("contactCellCheckbox")! as! ContactCellCheckbox
         cell.textLabel?.numberOfLines = 0 //これをしないと複数表示されない
+        cell.checkbox!.selected = self.checkArray[indexPath.row]
         cell.name!.text = self.result[indexPath.row][0]
         cell.tel!.text  = self.result[indexPath.row][1]
         cell.kubun!.text = self.result[indexPath.row][3]
@@ -175,10 +169,10 @@ class ContactDeleteDialog: NSObject, UITableViewDelegate, UITableViewDataSource 
     //セルを選択
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("セルを選択 #\(indexPath.row)")
-        //選択されたセルを取得
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        // チェックマークを入れる
-        cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
+        //チェックを反転
+        self.checkArray[indexPath.row] = !self.checkArray[indexPath.row]
+        //状態を即刻反映するためリロードして再描画
+        table.reloadData()
     }
     
 }

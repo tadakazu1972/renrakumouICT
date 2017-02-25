@@ -49,7 +49,7 @@ class DBHelper {
         db.close()
     }
     
-    func delete(_id: Int){
+    func delete(_id: String){
         let sql = "DELETE FROM records WHERE _id = ?;"
         db.open()
         db.executeUpdate(sql, withArgumentsInArray: [_id])
@@ -71,6 +71,27 @@ class DBHelper {
             let _syozoku: String = results.stringForColumn("syozoku")
             let _kinmu: String = results.stringForColumn("kinmu")
             resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu])
+        }
+        db.close()
+    }
+    
+    // _idも取得するバージョン
+    func selectAll2(){
+        //前の検索結果が残っているので全削除
+        resultArray.removeAll()
+        let sql = "SELECT * FROM records ORDER BY _id;"
+        db.open()
+        let results = db.executeQuery(sql, withArgumentsInArray: nil)
+        while results.next(){
+            let _name: String = results.stringForColumn("name")
+            let _tel: String = results.stringForColumn("tel")
+            let _mail: String = results.stringForColumn("mail")
+            let _kubun: String = results.stringForColumn("kubun")
+            let _syozoku0: String = results.stringForColumn("syozoku0")
+            let _syozoku: String = results.stringForColumn("syozoku")
+            let _kinmu: String = results.stringForColumn("kinmu")
+            let _id: String = results.stringForColumn("_id")
+            resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu, _id])
         }
         db.close()
     }
