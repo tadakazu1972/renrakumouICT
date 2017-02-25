@@ -51,6 +51,7 @@ class ContactViewController: UIViewController {
     private var mContactLoadDialog2: ContactLoadDialog2!
     private var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
     private var mContactDeleteDialog: ContactDeleteDialog!
+    private var mContactImportCSVDialog: ContactImportCSVDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
@@ -528,8 +529,10 @@ class ContactViewController: UIViewController {
     
     //CSVファイル読込
     func showContactLoad(sender: UIButton){
-        mContactLoadDialog = ContactLoadDialog(parentView: self)
-        mContactLoadDialog.showResult()
+        mContactImportCSVDialog = ContactImportCSVDialog(parentView: self)
+        mContactImportCSVDialog.showResult()
+        //mContactLoadDialog = ContactLoadDialog(parentView: self)
+        //mContactLoadDialog.showResult()
     }
     
     //情報(地震)

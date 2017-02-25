@@ -79,6 +79,7 @@
 		59D8AEF31E6126C200A3EDE2 /* ContactCellCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEF21E6126C200A3EDE2 /* ContactCellCheckbox.swift */; };
 		59D8AEF61E6131C800A3EDE2 /* ic_check_box_outline_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 59D8AEF41E6131C800A3EDE2 /* ic_check_box_outline_blank.png */; };
 		59D8AEF71E6131C800A3EDE2 /* ic_check_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 59D8AEF51E6131C800A3EDE2 /* ic_check_box.png */; };
+		59D8AEF91E61A16300A3EDE2 /* ContactImportCSVDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEF81E61A16300A3EDE2 /* ContactImportCSVDialog.swift */; };
 		59EC66EC1DA0B3C300A95067 /* EarthSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */; };
 /* End PBXBuildFile section */
 
@@ -164,6 +165,7 @@
 		59D8AEF21E6126C200A3EDE2 /* ContactCellCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactCellCheckbox.swift; sourceTree = "<group>"; };
 		59D8AEF41E6131C800A3EDE2 /* ic_check_box_outline_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box_outline_blank.png; sourceTree = "<group>"; };
 		59D8AEF51E6131C800A3EDE2 /* ic_check_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box.png; sourceTree = "<group>"; };
+		59D8AEF81E61A16300A3EDE2 /* ContactImportCSVDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactImportCSVDialog.swift; sourceTree = "<group>"; };
 		59EC66EB1DA0B3C300A95067 /* EarthSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EarthSelectDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,6 +276,7 @@
 				59D8AEE01E59AF5F00A3EDE2 /* ContactUpdateSelectDialog.swift */,
 				59D8AEE21E59B64A00A3EDE2 /* ContactUpdateViewController.swift */,
 				59D8AEDC1E53452600A3EDE2 /* ContactDeleteDialog.swift */,
+				59D8AEF81E61A16300A3EDE2 /* ContactImportCSVDialog.swift */,
 				590157671E38CC6800928154 /* ContactCell1.swift */,
 				59D8AEF21E6126C200A3EDE2 /* ContactCellCheckbox.swift */,
 				59B7FC8F1E3CF106002D4392 /* MailViewController.swift */,
@@ -424,6 +427,7 @@
 				59D8AED91E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift in Sources */,
 				597FD1421E2EF3EA0011ABB1 /* KinentaiNankaitraf2.swift in Sources */,
 				5960EB781E46C52900D1917A /* DBHelper.swift in Sources */,
+				59D8AEF91E61A16300A3EDE2 /* ContactImportCSVDialog.swift in Sources */,
 				5960E60D1E45F8D000D1917A /* FMDatabase.m in Sources */,
 				593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */,
 				598AC8E11D850AE6006842C8 /* KinentaiViewController.swift in Sources */,
