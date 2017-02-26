@@ -68,6 +68,7 @@
 		598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E81D850AE6006842C8 /* Assets.xcassets */; };
 		598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8EA1D850AE6006842C8 /* LaunchScreen.storyboard */; };
 		598AC8F41D8512F3006842C8 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8F31D8512F3006842C8 /* DataViewController.swift */; };
+		59AC16601E6267A100BBB28F /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AC165F1E6267A100BBB28F /* GuideViewController.swift */; };
 		59B7FC8E1E3AC07E002D4392 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */; };
 		59B7FC901E3CF106002D4392 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B7FC8F1E3CF106002D4392 /* MailViewController.swift */; };
 		59D8AED91E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */; };
@@ -155,6 +156,7 @@
 		598AC8EB1D850AE6006842C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		598AC8ED1D850AE6006842C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		598AC8F31D8512F3006842C8 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		59AC165F1E6267A100BBB28F /* GuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		59B7FC8D1E3AC07E002D4392 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		59B7FC8F1E3CF106002D4392 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		59D8AED81E508A7D00A3EDE2 /* KokuminhogoSelectDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KokuminhogoSelectDialog.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				5960EB771E46C52900D1917A /* DBHelper.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
+				59AC165F1E6267A100BBB28F /* GuideViewController.swift */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
 				598AC8E81D850AE6006842C8 /* Assets.xcassets */,
 				598AC8EA1D850AE6006842C8 /* LaunchScreen.storyboard */,
@@ -433,6 +436,7 @@
 				5960EB781E46C52900D1917A /* DBHelper.swift in Sources */,
 				59D8AEF91E61A16300A3EDE2 /* ContactImportCSVDialog.swift in Sources */,
 				5960E60D1E45F8D000D1917A /* FMDatabase.m in Sources */,
+				59AC16601E6267A100BBB28F /* GuideViewController.swift in Sources */,
 				593C66831DCDB50900405F53 /* EarthResultDialog.swift in Sources */,
 				598AC8E11D850AE6006842C8 /* KinentaiViewController.swift in Sources */,
 				597FD11C1E21E44C0011ABB1 /* KinentaiSelectDialog.swift in Sources */,

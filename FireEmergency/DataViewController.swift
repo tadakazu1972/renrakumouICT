@@ -57,7 +57,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //Button生成
-        //基礎データ入力
+        //アプリ説明書
         btnData.backgroundColor = UIColor.blueColor()
         btnData.layer.masksToBounds = true
         btnData.setTitle("アプリ説明書", forState: UIControlState.Normal)
@@ -66,6 +66,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
         btnData.translatesAutoresizingMaskIntoConstraints = false
+        btnData.addTarget(self, action: #selector(self.onClickbtnGuide(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnData)
         //震災
         btnEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -398,71 +399,53 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //震災画面遷移
     func onClickbtnEarthquake(sender : UIButton){
-        //dataViewControllerのインスタンス生成
         let data:ViewController = ViewController()
-        
-        //navigationControllerのrootViewControllerにdataViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //風水害画面遷移
     func onClickbtnTyphoon(sender : UIButton){
-        //インスタンス生成
         let data:TyphoonViewController = TyphoonViewController()
-        
-        //navigationControllerのrootViewControllerにTyphoonViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //国民保護画面遷移
     func onClickbtnKokuminhogo(sender : UIButton){
-        //KokuminhogoViewControllerのインスタンス生成
         let data:KokuminhogoViewController = KokuminhogoViewController()
-        
-        //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //緊援隊画面遷移
     func onClickbtnKinentai(sender : UIButton){
-        //KinentaiViewControllerのインスタンス生成
         let data:KinentaiViewController = KinentaiViewController()
-        
-        //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //連絡網データ操作遷移
     func onClickbtnContact(sender : UIButton){
-        //KinentaiViewControllerのインスタンス生成
         let data:ContactViewController = ContactViewController()
-        
-        //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+    
+    //アプリ説明書
+    func onClickbtnGuide(sender : UIButton){
+        let data:GuideViewController = GuideViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false)
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
