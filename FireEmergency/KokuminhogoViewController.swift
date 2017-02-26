@@ -212,6 +212,7 @@ class KokuminhogoViewController: UIViewController {
         btnKokuminhogoTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogoTel.tag=12
         btnKokuminhogoTel.translatesAutoresizingMaskIntoConstraints = false
+        btnKokuminhogoTel.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnKokuminhogoTel)
         //留意事項
         btnKokuminhogoCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -509,6 +510,14 @@ class KokuminhogoViewController: UIViewController {
     //情報（道路）
     func showInfoRoad(sender: UIButton){
         mInfoDialog.showInfo("road")
+    }
+    
+    //連絡網
+    func showContactLoad(sender: UIButton){
+        let data:ContactSearchViewController = ContactSearchViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //留意事項等

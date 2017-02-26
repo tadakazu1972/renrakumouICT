@@ -96,4 +96,41 @@ class DBHelper {
         }
         db.close()
     }
+    
+    func select(kubun: String, syozoku0: String, syozoku: String, kinmu: String){
+        //前の検索結果が残っているので全削除
+        resultArray.removeAll()
+
+        //SQL文作成準備
+        var kubunSQL : String = "IS NOT NULL"
+        if kubun != "すべて" {
+            kubunSQL = "='" + kubun + "'"
+        }
+        var syozoku0SQL : String = "IS NOT NULL"
+        if syozoku0 != "すべて" {
+            syozoku0SQL = "='" + syozoku0 + "'"
+        }
+        var syozokuSQL : String = "IS NOT NULL"
+        if syozoku != "すべて" {
+            syozokuSQL = "='" + syozoku + "'"
+        }
+        var kinmuSQL : String = "IS NOT NULL"
+        if kinmu != "すべて" {
+            kinmuSQL = "='" + kinmu + "'"
+        }
+        let sql = "SELECT * FROM records where kubun " + kubunSQL + " and syozoku0 " + syozoku0SQL + " and syozoku " + syozokuSQL + " and kinmu " + kinmuSQL + " ORDER BY _id;"
+        db.open()
+        let results = db.executeQuery(sql, withArgumentsInArray: nil)
+        while results.next(){
+            let _name: String = results.stringForColumn("name")
+            let _tel: String = results.stringForColumn("tel")
+            let _mail: String = results.stringForColumn("mail")
+            let _kubun: String = results.stringForColumn("kubun")
+            let _syozoku0: String = results.stringForColumn("syozoku0")
+            let _syozoku: String = results.stringForColumn("syozoku")
+            let _kinmu: String = results.stringForColumn("kinmu")
+            resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu])
+        }
+        db.close()
+    }
 }

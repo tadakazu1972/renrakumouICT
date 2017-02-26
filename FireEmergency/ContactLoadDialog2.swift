@@ -78,7 +78,8 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         text1.editable = false
         text1.scrollEnabled = true
         text1.dataDetectorTypes = .Link
-        text1.text=""
+        text1.text="選択してメール送信"
+        self.win1.addSubview(text1)
         
         //TableView生成
         table.frame = CGRectMake(10, 41, self.win1.frame.width-20, self.win1.frame.height-60)
@@ -109,7 +110,7 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         btnMail.frame = CGRectMake(0,0,90,30)
         btnMail.backgroundColor = UIColor.redColor()
         btnMail.setTitle("メール送信", forState: .Normal)
-        btnMail.titleLabel?.font = UIFont.systemFontOfSize(14)
+        btnMail.titleLabel?.font = UIFont.systemFontOfSize(13)
         btnMail.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         btnMail.layer.masksToBounds = true
         btnMail.layer.cornerRadius = 10.0
@@ -121,7 +122,7 @@ class ContactLoadDialog2: NSObject, UITableViewDelegate, UITableViewDataSource {
         btnAll.frame = CGRectMake(0,0,90,30)
         btnAll.backgroundColor = UIColor.magentaColor()
         btnAll.setTitle("全て選択/解除", forState: .Normal)
-        btnAll.titleLabel?.font = UIFont.systemFontOfSize(14)
+        btnAll.titleLabel?.font = UIFont.systemFontOfSize(13)
         btnAll.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         btnAll.layer.masksToBounds = true
         btnAll.layer.cornerRadius = 10.0

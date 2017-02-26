@@ -538,10 +538,10 @@ class ViewController: UIViewController {
     
     //連絡網
     func showContactLoad(sender: UIButton){
-        //まずは全部検索実施
-        mDBHelper.selectAll()
-        mContactLoadDialog = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
-        mContactLoadDialog.showResult()
+        let data:ContactSearchViewController = ContactSearchViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //情報（停電）

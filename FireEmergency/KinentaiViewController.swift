@@ -214,6 +214,7 @@ class KinentaiViewController: UIViewController {
         btnKinentaiTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKinentaiTel.tag=13
         btnKinentaiTel.translatesAutoresizingMaskIntoConstraints = false
+        btnKinentaiTel.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnKinentaiTel)
         //情報(河川)
         btnKinentaiRiver.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -509,6 +510,14 @@ class KinentaiViewController: UIViewController {
     //情報（道路）
     func showInfoRoad(sender: UIButton){
         mInfoDialog.showInfo("road")
+    }
+    
+    //連絡網
+    func showContactLoad(sender: UIButton){
+        let data:ContactSearchViewController = ContactSearchViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //情報（停電）

@@ -183,7 +183,7 @@ class ContactViewController: UIViewController {
         btnContact5.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnContact5.tag=9
         btnContact5.translatesAutoresizingMaskIntoConstraints = false
-        btnContact5.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
+        btnContact5.addTarget(self, action: #selector(self.showContactImportCSV(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnContact5)
         //垂直方向のpad
         padY1.translatesAutoresizingMaskIntoConstraints = false
@@ -235,6 +235,7 @@ class ContactViewController: UIViewController {
         btnEarthquakeTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnEarthquakeTel.tag=13
         btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
+        btnEarthquakeTel.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnEarthquakeTel)
         //留意事項
         btnEarthquakeCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -273,7 +274,6 @@ class ContactViewController: UIViewController {
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
-        //mEarthResultDialog = EarthResultDialog(parentView: self) //このViewControllerを渡してあげる
     }
     
     //制約ひな型
@@ -502,14 +502,9 @@ class ContactViewController: UIViewController {
     
     //新規
     func showSelectContactNew(sender: UIButton){
-        //dataViewControllerのインスタンス生成
         let data:ContactNewViewController = ContactNewViewController()
-        
-        //navigationControllerのrootViewControllerにdataViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
@@ -528,11 +523,9 @@ class ContactViewController: UIViewController {
     }
     
     //CSVファイル読込
-    func showContactLoad(sender: UIButton){
+    func showContactImportCSV(sender: UIButton){
         mContactImportCSVDialog = ContactImportCSVDialog(parentView: self)
         mContactImportCSVDialog.showResult()
-        //mContactLoadDialog = ContactLoadDialog(parentView: self)
-        //mContactLoadDialog.showResult()
     }
     
     //情報(地震)
@@ -540,14 +533,22 @@ class ContactViewController: UIViewController {
         mInfoDialog.showInfo("earthquake")
     }
     
+    //情報（停電）
+    func showInfoBlackout(sender: UIButton){
+        mInfoDialog.showInfo("blackout")
+    }
+    
     //情報（道路）
     func showInfoRoad(sender: UIButton){
         mInfoDialog.showInfo("road")
     }
     
-    //情報（停電）
-    func showInfoBlackout(sender: UIButton){
-        mInfoDialog.showInfo("blackout")
+    //連絡網
+    func showContactLoad(sender: UIButton){
+        let data:ContactSearchViewController = ContactSearchViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //留意事項
@@ -562,86 +563,45 @@ class ContactViewController: UIViewController {
     
     //基礎データ入力画面遷移
     func onClickbtnData(sender : UIButton){
-        //dataViewControllerのインスタンス生成
         let data:DataViewController = DataViewController()
-        
-        //navigationControllerのrootViewControllerにdataViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //震災画面遷移
     func onClickbtnEarthquake(sender : UIButton){
-        //dataViewControllerのインスタンス生成
         let data:ViewController = ViewController()
-        
-        //navigationControllerのrootViewControllerにdataViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //風水害画面遷移
     func onClickbtnTyphoon(sender : UIButton){
-        //インスタンス生成
         let data:TyphoonViewController = TyphoonViewController()
-        
-        //navigationControllerのrootViewControllerにTyphoonViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //国民保護画面遷移
     func onClickbtnKokuminhogo(sender : UIButton){
-        //KokuminhogoViewControllerのインスタンス生成
         let data:KokuminhogoViewController = KokuminhogoViewController()
-        
-        //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
     
     //緊援隊画面遷移
     func onClickbtnKinentai(sender : UIButton){
-        //KinentaiViewControllerのインスタンス生成
         let data:KinentaiViewController = KinentaiViewController()
-        
-        //navigationControllerのrootViewControllerにKinentaiViewControllerをセット
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
         self.presentViewController(nav, animated: true, completion: nil)
     }
-    
-    /*//メール送信 MailViewController遷移
-    func sendMail(addressArray: [String]){
-        //MailViewControllerのインスタンス生成
-        let data:MailViewController = MailViewController(addressArray: addressArray)
-        
-        //navigationControllerのrootViewControllerにKokuminhogoViewControllerをセット
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        
-        //画面遷移
-        self.presentViewController(nav, animated: true, completion: nil)
-    }*/
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    
 }

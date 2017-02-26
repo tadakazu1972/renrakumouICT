@@ -193,6 +193,7 @@ class TyphoonViewController: UIViewController {
         btnTyphoonTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnTyphoonTel.tag=12
         btnTyphoonTel.translatesAutoresizingMaskIntoConstraints = false
+        btnTyphoonTel.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(btnTyphoonTel)
         //留意事項
         btnTyphoonCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
@@ -465,6 +466,14 @@ class TyphoonViewController: UIViewController {
         mInfoDialog.showInfo("road")
     }
     
+    //連絡網
+    func showContactLoad(sender: UIButton){
+        let data:ContactSearchViewController = ContactSearchViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+
     //留意事項
     func showInfoCaution(sender: UIButton){
         mInfoDialog.showInfo("typhoon_caution")
