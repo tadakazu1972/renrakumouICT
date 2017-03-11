@@ -32,18 +32,6 @@ class GuideViewController: UIViewController {
     let padY4           = UIView(frame: CGRectZero)
     let padY5           = UIView(frame: CGRectZero)
     let padY6           = UIView(frame: CGRectZero)
-    let btnEarthquakeEarthquake = UIButton(frame: CGRectZero)
-    let btnEarthquakeBlackout   = UIButton(frame: CGRectZero)
-    let btnEarthquakeRoad       = UIButton(frame: CGRectZero)
-    let btnEarthquakeTel        = UIButton(frame: CGRectZero)
-    let btnEarthquakeCaution    = UIButton(frame: CGRectZero)
-    let btnEarthquakeBousaiNet  = UIButton(frame: CGRectZero)
-    let pad21            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
-    let pad22            = UIView(frame: CGRectZero)
-    let pad23            = UIView(frame: CGRectZero)
-    let pad31            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
-    let pad32            = UIView(frame: CGRectZero)
-    let pad33            = UIView(frame: CGRectZero)
     //別クラスのインスタンス保持用変数
     private var mInfoDialog: InfoDialog!
     private var mBousainetDialog: BousainetDialog!
@@ -53,6 +41,11 @@ class GuideViewController: UIViewController {
     private var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
     private var mContactDeleteDialog: ContactDeleteDialog!
     private var mContactImportCSVDialog: ContactImportCSVDialog!
+    private var mGuide1Dialog: Guide1Dialog!
+    private var mGuide2SelectDialog: Guide2SelectDialog!
+    private var mGuide3Dialog: Guide3Dialog!
+    private var mGuide4SelectDialog: Guide4SelectDialog!
+    private var mGuide5Dialog: Guide5Dialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     
@@ -69,7 +62,7 @@ class GuideViewController: UIViewController {
         btnData.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
-        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
+        btnData.addTarget(self, action: #selector(self.showPurpose(_:)), forControlEvents: .TouchUpInside)
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         //震災
@@ -187,82 +180,15 @@ class GuideViewController: UIViewController {
         self.view.addSubview(padY5)
         padY6.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY6)
-        //情報（地震）
-        btnEarthquakeEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeEarthquake.layer.masksToBounds = true
-        btnEarthquakeEarthquake.setTitle("情報(地震)", forState: UIControlState.Normal)
-        btnEarthquakeEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeEarthquake.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeEarthquake.tag=10
-        btnEarthquakeEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeEarthquake.addTarget(self, action: #selector(self.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeEarthquake)
-        //情報（停電）
-        btnEarthquakeBlackout.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeBlackout.layer.masksToBounds = true
-        btnEarthquakeBlackout.setTitle("情報(停電)", forState: UIControlState.Normal)
-        btnEarthquakeBlackout.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeBlackout.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeBlackout.tag=11
-        btnEarthquakeBlackout.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeBlackout.addTarget(self, action: #selector(self.showInfoBlackout(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeBlackout)
-        //情報（道路）
-        btnEarthquakeRoad.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeRoad.layer.masksToBounds = true
-        btnEarthquakeRoad.setTitle("情報(道路)", forState: UIControlState.Normal)
-        btnEarthquakeRoad.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeRoad.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeRoad.tag=12
-        btnEarthquakeRoad.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeRoad.addTarget(self, action: #selector(self.showInfoRoad(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeRoad)
-        //連絡網
-        btnEarthquakeTel.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeTel.layer.masksToBounds = true
-        btnEarthquakeTel.setTitle("連絡網", forState: UIControlState.Normal)
-        btnEarthquakeTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeTel.tag=13
-        btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeTel.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeTel)
-        //留意事項
-        btnEarthquakeCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeCaution.layer.masksToBounds = true
-        btnEarthquakeCaution.setTitle("留意事項", forState: UIControlState.Normal)
-        btnEarthquakeCaution.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeCaution.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
-        btnEarthquakeCaution.tag=14
-        btnEarthquakeCaution.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeCaution.addTarget(self, action: #selector(self.showInfoCaution(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeCaution)
-        //防災ネット
-        btnEarthquakeBousaiNet.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquakeBousaiNet.layer.masksToBounds = true
-        btnEarthquakeBousaiNet.setTitle("防災ネット", forState: UIControlState.Normal)
-        btnEarthquakeBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeBousaiNet.tag=15
-        btnEarthquakeBousaiNet.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeBousaiNet.addTarget(self, action: #selector(self.showInfoBousainet(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(btnEarthquakeBousaiNet)
-        //pad
-        pad21.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(pad21)
-        pad22.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(pad22)
-        pad23.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(pad23)
-        //pad
-        pad31.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(pad31)
-        pad32.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(pad32)
-        pad33.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(pad33)
         
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
+        mGuide1Dialog = Guide1Dialog(parentView: self)
+        mGuide2SelectDialog = Guide2SelectDialog(parentView: self)
+        mGuide3Dialog = Guide3Dialog(parentView: self)
+        mGuide4SelectDialog = Guide4SelectDialog(parentView: self)
+        mGuide5Dialog = Guide5Dialog(parentView: self)
     }
     
     //制約ひな型
@@ -414,98 +340,36 @@ class GuideViewController: UIViewController {
             Constraint(btnGuide6, .CenterX, to:self.view, .CenterX, constant:8),
             Constraint(btnGuide6, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
             ])
-        self.view.addConstraints([
-            //pad21
-            Constraint(pad21, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad21, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(pad21, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-            ])
-        self.view.addConstraints([
-            //情報(地震)ボタン
-            Constraint(btnEarthquakeEarthquake, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(btnEarthquakeEarthquake, .Leading, to:pad21, .Trailing, constant:0),
-            Constraint(btnEarthquakeEarthquake, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
-            ])
-        self.view.addConstraints([
-            //pad22
-            Constraint(pad22, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad22, .Leading, to:btnEarthquakeEarthquake, .Trailing, constant:0),
-            Constraint(pad22, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-            ])
-        self.view.addConstraints([
-            //情報(停電)ボタン
-            Constraint(btnEarthquakeBlackout, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(btnEarthquakeBlackout, .Leading, to:pad22, .Trailing, constant:0),
-            Constraint(btnEarthquakeBlackout, .Width, to:btnEarthquakeEarthquake, .Width, constant:0)
-            ])
-        self.view.addConstraints([
-            //pad23
-            Constraint(pad23, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad23, .Leading, to:btnEarthquakeBlackout, .Trailing, constant:0),
-            Constraint(pad23, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-            ])
-        self.view.addConstraints([
-            //情報(道路)ボタン
-            Constraint(btnEarthquakeRoad, .Bottom, to:btnEarthquakeTel, .Top ,constant:-8),
-            Constraint(btnEarthquakeRoad, .Leading, to:pad23, .Trailing, constant:0),
-            Constraint(btnEarthquakeRoad, .Width, to:btnEarthquakeEarthquake, .Width, constant:0)
-            ])
-        self.view.addConstraints([
-            //pad31
-            Constraint(pad31, .Top, to:btnEarthquakeEarthquake, .Bottom, constant:8),
-            Constraint(pad31, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(pad31, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-            ])
-        self.view.addConstraints([
-            //連絡網ボタン
-            Constraint(btnEarthquakeTel, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(btnEarthquakeTel, .Leading, to:pad31, .Trailing, constant:0),
-            Constraint(btnEarthquakeTel, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
-            ])
-        self.view.addConstraints([
-            //pad32
-            Constraint(pad32, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(pad32, .Leading, to:btnEarthquakeTel, .Trailing, constant:0),
-            Constraint(pad32, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-            ])
-        self.view.addConstraints([
-            //留意事項ボタン
-            Constraint(btnEarthquakeCaution, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(btnEarthquakeCaution, .Leading, to:pad32, .Trailing, constant:0),
-            Constraint(btnEarthquakeCaution, .Width, to:btnEarthquakeTel, .Width, constant:0)
-            ])
-        self.view.addConstraints([
-            //pad33
-            Constraint(pad33, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(pad33, .Leading, to:btnEarthquakeCaution, .Trailing, constant:0),
-            Constraint(pad33, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
-            ])
-        self.view.addConstraints([
-            //防災ネットボタン
-            Constraint(btnEarthquakeBousaiNet, .Bottom, to:self.view, .Bottom ,constant:-8),
-            Constraint(btnEarthquakeBousaiNet, .Leading, to:pad33, .Trailing, constant:0),
-            Constraint(btnEarthquakeBousaiNet, .Width, to:btnEarthquakeTel, .Width, constant:0)
-            ])
+    }
+    
+    //参集アプリの使用目的
+    func showPurpose(sender: UIButton){
+        mInfoDialog.showInfo("purpose")
     }
     
     //説明１
     func showGuide1(sender: UIButton){
+        mGuide1Dialog.showInfo()
     }
     
     //説明２
     func showGuide2(sender: UIButton){
+        mGuide2SelectDialog.showInfo()
     }
     
     //説明３
     func showGuide3(sender: UIButton){
+        mGuide3Dialog.showInfo()
     }
     
     //説明４
     func showGuide4(sender: UIButton){
+        mGuide4SelectDialog.showInfo()
     }
     
     //説明５
     func showGuide5(sender: UIButton){
+        mGuide5Dialog.showInfo()
     }
     
     //説明６
