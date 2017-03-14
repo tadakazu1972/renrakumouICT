@@ -46,6 +46,7 @@ class GuideViewController: UIViewController {
     private var mGuide3Dialog: Guide3Dialog!
     private var mGuide4SelectDialog: Guide4SelectDialog!
     private var mGuide5Dialog: Guide5Dialog!
+    private var mGuide6Dialog: Guide6Dialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     
@@ -189,6 +190,7 @@ class GuideViewController: UIViewController {
         mGuide3Dialog = Guide3Dialog(parentView: self)
         mGuide4SelectDialog = Guide4SelectDialog(parentView: self)
         mGuide5Dialog = Guide5Dialog(parentView: self)
+        mGuide6Dialog = Guide6Dialog(parentView: self)
     }
     
     //制約ひな型
@@ -374,7 +376,7 @@ class GuideViewController: UIViewController {
     
     //説明６
     func showGuide6(sender: UIButton){
-        
+        mGuide6Dialog.showInfo()
     }
     
     //情報(地震)

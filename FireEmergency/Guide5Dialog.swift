@@ -84,7 +84,7 @@ class Guide5Dialog {
         //image1生成
         let img1 = UIImage(named: "guide51.png")
         image1.image = img1
-        image1.frame = CGRectMake(0, 40, 300, 113)
+        image1.frame = CGRectMake(0, 40, 300, 96)
         scroll.addSubview(image1)
         
         //image2生成
