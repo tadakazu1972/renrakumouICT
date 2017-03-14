@@ -52,6 +52,7 @@ class ContactViewController: UIViewController {
     private var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
     private var mContactDeleteDialog: ContactDeleteDialog!
     private var mContactImportCSVDialog: ContactImportCSVDialog!
+    private var mPassInputDialog: PassInputDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
@@ -274,6 +275,10 @@ class ContactViewController: UIViewController {
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
+        mPassInputDialog = PassInputDialog(parentView: self)
+        
+        //passCheckをfalseで初期化
+        userDefaults.setBool(false, forKey: "passCheck")
     }
     
     //制約ひな型
@@ -495,9 +500,21 @@ class ContactViewController: UIViewController {
     
     //一覧
     func showSelectContact1(sender: UIButton){
-        mDBHelper.selectAll()
-        mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
-        mContactLoadDialog2.showResult()
+        //初期設定のままだと設定画面に遷移
+        if userDefaults.stringForKey("password") == "nil" {
+            //PasViewController呼び出し
+            let data:PassViewController = PassViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        } else if !userDefaults.boolForKey("passCheck"){
+            //パスワードチェック呼び出し
+            mPassInputDialog.showResult()
+        } else {
+            mDBHelper.selectAll()
+            mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+            mContactLoadDialog2.showResult()
+        }
     }
     
     //新規
@@ -510,16 +527,40 @@ class ContactViewController: UIViewController {
     
     //修正
     func showSelectContactUpdate(sender: UIButton){
-        mDBHelper.selectAll2() //_idを含む呼び出す。後でその_idをもって上書きするデータを指定するから。
-        mContactUpdateSelectDialog = ContactUpdateSelectDialog(parentView: self, resultFrom: mDBHelper.resultArray)
-        mContactUpdateSelectDialog.showResult()        
+        //初期設定のままだと設定画面に遷移
+        if userDefaults.stringForKey("password") == "nil" {
+            //PasViewController呼び出し
+            let data:PassViewController = PassViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        } else if !userDefaults.boolForKey("passCheck"){
+            //パスワードチェック呼び出し
+            mPassInputDialog.showResult()
+        } else {
+            mDBHelper.selectAll2() //_idを含む呼び出す。後でその_idをもって上書きするデータを指定するから。
+            mContactUpdateSelectDialog = ContactUpdateSelectDialog(parentView: self, resultFrom: mDBHelper.resultArray)
+            mContactUpdateSelectDialog.showResult()
+        }
     }
     
     //削除
     func showSelectContactDelete(sender: UIButton){
-        mDBHelper.selectAll2() //_idを含む2を呼び出し
-        mContactDeleteDialog = ContactDeleteDialog(parentView: self, resultFrom: mDBHelper.resultArray)
-        mContactDeleteDialog.showResult()        
+        //初期設定のままだと設定画面に遷移
+        if userDefaults.stringForKey("password") == "nil" {
+            //PasViewController呼び出し
+            let data:PassViewController = PassViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        } else if !userDefaults.boolForKey("passCheck"){
+            //パスワードチェック呼び出し
+            mPassInputDialog.showResult()
+        } else {
+            mDBHelper.selectAll2() //_idを含む2を呼び出し
+            mContactDeleteDialog = ContactDeleteDialog(parentView: self, resultFrom: mDBHelper.resultArray)
+            mContactDeleteDialog.showResult()
+        }
     }
     
     //CSVファイル読込
@@ -545,10 +586,23 @@ class ContactViewController: UIViewController {
     
     //連絡網
     func showContactLoad(sender: UIButton){
-        let data:ContactSearchViewController = ContactSearchViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        //初期設定のままだと設定画面に遷移
+        if userDefaults.stringForKey("password") == "nil" {
+            //PasViewController呼び出し
+            let data:PassViewController = PassViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        } else if !userDefaults.boolForKey("passCheck"){
+            //パスワードチェック呼び出し
+            mPassInputDialog.showResult()
+        } else {
+            //合っていれば表示
+            let data:ContactSearchViewController = ContactSearchViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        }
     }
     
     //留意事項

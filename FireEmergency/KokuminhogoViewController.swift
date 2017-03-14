@@ -48,6 +48,9 @@ class KokuminhogoViewController: UIViewController {
     private var mBousainetDialog: BousainetDialog!
     private var mKokuminhogoSelectDialog: KokuminhogoSelectDialog!
     internal var mKokuminhogoResultDialog: KokuminhogoResultDialog!
+    private var mPassInputDialog: PassInputDialog!
+    //データ保存用
+    let userDefaults = NSUserDefaults.standardUserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -253,6 +256,10 @@ class KokuminhogoViewController: UIViewController {
         mBousainetDialog = BousainetDialog(parentView: self)
         mKokuminhogoSelectDialog = KokuminhogoSelectDialog(parentView: self)
         mKokuminhogoResultDialog = KokuminhogoResultDialog(parentView: self) //このViewControllerを渡してあげる
+        mPassInputDialog = PassInputDialog(parentView: self)
+        
+        //passCheckをfalseで初期化
+        userDefaults.setBool(false, forKey: "passCheck")
     }
     
     //制約ひな型
@@ -514,10 +521,23 @@ class KokuminhogoViewController: UIViewController {
     
     //連絡網
     func showContactLoad(sender: UIButton){
-        let data:ContactSearchViewController = ContactSearchViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        //初期設定のままだと設定画面に遷移
+        if userDefaults.stringForKey("password") == "nil" {
+            //PasViewController呼び出し
+            let data:PassViewController = PassViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        } else if !userDefaults.boolForKey("passCheck"){
+            //パスワードチェック呼び出し
+            mPassInputDialog.showResult()
+        } else {
+            //合っていれば表示
+            let data:ContactSearchViewController = ContactSearchViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        }
     }
     
     //留意事項等

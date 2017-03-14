@@ -20,6 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaults = NSUserDefaults.standardUserDefaults()
         let dic = ["firstLaunch": true]
         userDefaults.registerDefaults(dic)
+        //password
+        let pass = ["password": "nil"]
+        userDefaults.registerDefaults(pass)
         
         return true
     }

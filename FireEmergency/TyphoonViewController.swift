@@ -44,6 +44,7 @@ class TyphoonViewController: UIViewController {
     private var mInfoDialog: InfoDialog!
     private var mBousainetDialog: BousainetDialog!
     private var mTyphoonSelectDialog: TyphoonSelectDialog!
+    private var mPassInputDialog: PassInputDialog!
     //結果表示用クラス保持用
     internal var mTyphoonResultDialog: TyphoonResultDialog!
     //データ保存用
@@ -233,6 +234,10 @@ class TyphoonViewController: UIViewController {
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
         mTyphoonResultDialog = TyphoonResultDialog(parentView: self) //このViewControllerを渡してあげる
+        mPassInputDialog = PassInputDialog(parentView: self)
+        
+        //passCheckをfalseで初期化
+        userDefaults.setBool(false, forKey: "passCheck")
     }
     
     //制約ひな型
@@ -468,10 +473,23 @@ class TyphoonViewController: UIViewController {
     
     //連絡網
     func showContactLoad(sender: UIButton){
-        let data:ContactSearchViewController = ContactSearchViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        //初期設定のままだと設定画面に遷移
+        if userDefaults.stringForKey("password") == "nil" {
+            //PasViewController呼び出し
+            let data:PassViewController = PassViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        } else if !userDefaults.boolForKey("passCheck"){
+            //パスワードチェック呼び出し
+            mPassInputDialog.showResult()
+        } else {
+            //合っていれば表示
+            let data:ContactSearchViewController = ContactSearchViewController()
+            let nav = UINavigationController(rootViewController: data)
+            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+            self.presentViewController(nav, animated: true, completion: nil)
+        }
     }
 
     //留意事項
