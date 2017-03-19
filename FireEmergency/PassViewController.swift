@@ -21,15 +21,15 @@ class PassViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
-        //パスワードを入力してください
-        lblPass.text = "パスワード入力"
-        lblPass.adjustsFontSizeToFitWidth = true
+        //lblPass生成
+        lblPass.text = "パスワード登録(変更不可)"
         lblPass.textColor = UIColor.blackColor()
         lblPass.textAlignment = NSTextAlignment.Left
         lblPass.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblPass)
+        
         //テキストフィールド
-        txtPass.placeholder = "パスワードを入力してください"
+        txtPass.placeholder = "文字種別、文字数制限なし"
         txtPass.adjustsFontSizeToFitWidth = true
         txtPass.textColor = UIColor.blackColor()
         txtPass.delegate = self
@@ -79,7 +79,7 @@ class PassViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews(){
         //制約
         self.view.addConstraints([
-            //ラベル
+            //text1
             Constraint(lblPass, .Top, to:self.view, .Top, constant:100),
             Constraint(lblPass, .Leading, to:self.view, .Leading, constant:16),
             Constraint(lblPass, .Width, to:self.view, .Width, multiplier:0.8, constant:0)

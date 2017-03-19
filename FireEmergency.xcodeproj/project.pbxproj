@@ -39,7 +39,8 @@
 		595361061E77A87E00551A0E /* PassInputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595361051E77A87E00551A0E /* PassInputDialog.swift */; };
 		5953610C1E78145100551A0E /* guide63.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953610B1E78145100551A0E /* guide63.png */; };
 		5953610E1E78182100551A0E /* guide61.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953610D1E78182100551A0E /* guide61.png */; };
-		595361101E781B0700551A0E /* guide62.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953610F1E781B0700551A0E /* guide62.png */; };
+		595361121E782D5400551A0E /* guide64.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361111E782D5400551A0E /* guide64.png */; };
+		595361141E796C2C00551A0E /* guide62.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361131E796C2C00551A0E /* guide62.png */; };
 		5960E60D1E45F8D000D1917A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960E6021E45F8D000D1917A /* FMDatabase.m */; };
 		5960E60E1E45F8D000D1917A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960E6041E45F8D000D1917A /* FMDatabaseAdditions.m */; };
 		5960E60F1E45F8D000D1917A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960E6061E45F8D000D1917A /* FMDatabasePool.m */; };
@@ -137,7 +138,8 @@
 		595361051E77A87E00551A0E /* PassInputDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassInputDialog.swift; sourceTree = "<group>"; };
 		5953610B1E78145100551A0E /* guide63.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide63.png; sourceTree = "<group>"; };
 		5953610D1E78182100551A0E /* guide61.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide61.png; sourceTree = "<group>"; };
-		5953610F1E781B0700551A0E /* guide62.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide62.png; sourceTree = "<group>"; };
+		595361111E782D5400551A0E /* guide64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide64.png; sourceTree = "<group>"; };
+		595361131E796C2C00551A0E /* guide62.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide62.png; sourceTree = "<group>"; };
 		5960E6011E45F8D000D1917A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		5960E6021E45F8D000D1917A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		5960E6031E45F8D000D1917A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -345,8 +347,9 @@
 				595233831E741B2E00FC8CE8 /* guide53.png */,
 				59AC16631E6C006C00BBB28F /* Guide6Dialog.swift */,
 				5953610D1E78182100551A0E /* guide61.png */,
-				5953610F1E781B0700551A0E /* guide62.png */,
+				595361131E796C2C00551A0E /* guide62.png */,
 				5953610B1E78145100551A0E /* guide63.png */,
+				595361111E782D5400551A0E /* guide64.png */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
 				598AC8E81D850AE6006842C8 /* Assets.xcassets */,
 				598AC8EA1D850AE6006842C8 /* LaunchScreen.storyboard */,
@@ -430,6 +433,7 @@
 				597FD1341E2BB4340011ABB1 /* nbc.csv in Resources */,
 				597FD12A1E2BB4080011ABB1 /* riku6weak.csv in Resources */,
 				594DDA491D9747110078EE72 /* caution.txt in Resources */,
+				595361141E796C2C00551A0E /* guide62.png in Resources */,
 				597FD1331E2BB4340011ABB1 /* kaiiki7.csv in Resources */,
 				593C668D1DCEB31500405F53 /* kokuminhogo1.txt in Resources */,
 				593C66911DCEB31500405F53 /* kokuminhogo5.txt in Resources */,
@@ -438,11 +442,11 @@
 				5953610E1E78182100551A0E /* guide61.png in Resources */,
 				59AC16621E6BF80B00BBB28F /* purpose.txt in Resources */,
 				598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */,
-				595361101E781B0700551A0E /* guide62.png in Resources */,
 				598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */,
 				595233801E741B2200FC8CE8 /* guide51.png in Resources */,
 				597FD13E1E2D0F620011ABB1 /* kinentai_nankaitraf2.txt in Resources */,
 				593C668F1DCEB31500405F53 /* kokuminhogo3.txt in Resources */,
+				595361121E782D5400551A0E /* guide64.png in Resources */,
 				5953610C1E78145100551A0E /* guide63.png in Resources */,
 				594CA3401DFD87C900FF8714 /* typhoon1.txt in Resources */,
 				59D8AEDB1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt in Resources */,

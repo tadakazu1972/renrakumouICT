@@ -20,6 +20,8 @@ class Guide6Dialog {
     private var text2: UITextView!
     private var image3: UIImageView!
     private var text3: UITextView!
+    private var image4: UIImageView!
+    private var text4: UITextView!
     private var btnClose: UIButton!
     
     //コンストラクタ
@@ -34,6 +36,8 @@ class Guide6Dialog {
         text2 = UITextView()
         image3 = UIImageView()
         text3 = UITextView()
+        image4 = UIImageView()
+        text4 = UITextView()
         btnClose = UIButton()
     }
     
@@ -49,6 +53,8 @@ class Guide6Dialog {
         text2 = nil
         image3 = nil
         text3 = nil
+        image4 = nil
+        text4 = nil
         btnClose = nil
     }
     
@@ -70,7 +76,7 @@ class Guide6Dialog {
         
         //scroll生成
         scroll.frame = CGRectMake(0,0,parent.view.frame.width-20,parent.view.frame.height-50)
-        scroll.contentSize = CGSizeMake(300,1200)
+        scroll.contentSize = CGSizeMake(300,1900)
         self.win1.addSubview(scroll)
         
         //TextView0生成
@@ -106,7 +112,7 @@ class Guide6Dialog {
         image2.frame = CGRectMake(0, 240, 300, 160)
         scroll.addSubview(image2)
         
-        //TextView1生成
+        //TextView2生成
         text2.frame = CGRectMake(0,410, 300, 80)
         text2.backgroundColor = UIColor.clearColor()
         text2.font = UIFont.systemFontOfSize(CGFloat(16))
@@ -123,7 +129,7 @@ class Guide6Dialog {
         image3.frame = CGRectMake(0, 520, 300, 200)
         scroll.addSubview(image3)
         
-        //TextView2生成
+        //TextView3生成
         text3.frame = CGRectMake(0,740, 300, 220)
         text3.backgroundColor = UIColor.clearColor()
         text3.font = UIFont.systemFontOfSize(CGFloat(16))
@@ -133,6 +139,23 @@ class Guide6Dialog {
         text3.scrollEnabled = true
         text3.text="③次回以降、設定したパスワードを入力すると連絡網を使用できます。\n④パスワードは[震災][風水害]などの同一画面では１度の入力で連絡網を使えますが、\n⑤画面を変える（[震災]→[風水害]など）またはアプリを終了すると再度入力する必要があります。\n⑥パスワードは変更できません。変更する場合はアプリを削除し、再度インストールして設定してください。"
         scroll.addSubview(text3)
+        
+        //image4生成
+        let img4 = UIImage(named: "guide64.png")
+        image4.image = img4
+        image4.frame = CGRectMake(0, 990, 300, 426)
+        scroll.addSubview(image4)
+        
+        //TextView4生成
+        text4.frame = CGRectMake(0, 1436, 300, 220)
+        text4.backgroundColor = UIColor.clearColor()
+        text4.font = UIFont.systemFontOfSize(CGFloat(16))
+        text4.textColor = UIColor.blackColor()
+        text4.textAlignment = NSTextAlignment.Left
+        text4.editable = false
+        text4.scrollEnabled = true
+        text4.text="■データ全件一覧表示\n　データ全件一覧を表示され、個別または選択した人にまとめてメール送信することが可能です。(電話はできません)\n\n■グループ検索\n　非常招集区分、所属(大分類)、所属(小分類)、勤務区分を選択し検索します。個別または選択した人にまとめてメール送信することが可能です。(電話はできません)"
+        scroll.addSubview(text4)
         
         //閉じるボタン生成
         btnClose.frame = CGRectMake(0,0,100,30)

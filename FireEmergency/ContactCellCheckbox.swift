@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ContactCellCheckbox: UITableViewCell {
+class ContactCellCheckbox: UITableViewCell, UITextViewDelegate {
     var checkbox: UIButton?
     var name : UILabel?
-    var tel  : UILabel?
-    var mail : UILabel?
+    var tel  : UITextView?
+    var mail : UITextView?
     var kubun: UILabel?
     var syozoku0: UILabel?
     var syozoku : UILabel?
@@ -36,9 +36,15 @@ class ContactCellCheckbox: UITableViewCell {
         name?.font = UIFont.systemFontOfSize(20)
         self.addSubview(name!)
         
-        tel = UILabel(frame: CGRectMake(141, 0, 160, 24))
+        tel = UITextView(frame: CGRectMake(141, -8, 160, 30))
         tel?.text = "nil"
         tel?.font = UIFont.systemFontOfSize(18)
+        tel?.userInteractionEnabled = true
+        tel?.dataDetectorTypes = .PhoneNumber
+        tel?.scrollEnabled = false
+        tel?.editable = false
+        tel?.selectable = true
+        tel?.delegate = self
         self.contentView.addSubview(tel!)
         
         kubun = UILabel(frame: CGRectMake(28, 28, 60, 16))
@@ -61,9 +67,15 @@ class ContactCellCheckbox: UITableViewCell {
         kinmu?.font = UIFont.systemFontOfSize(14)
         self.contentView.addSubview(kinmu!)
         
-        mail = UILabel(frame: CGRectMake(28, 48, 300, 18))
+        mail = UITextView(frame: CGRectMake(28, 44, 300, 24))
         mail?.text = "nil"
-        mail?.font = UIFont.systemFontOfSize(16)
+        mail?.font = UIFont.systemFontOfSize(14)
+        mail?.userInteractionEnabled = true
+        mail?.dataDetectorTypes = .Link
+        mail?.scrollEnabled = false
+        mail?.editable = false
+        mail?.selectable = true
+        mail?.delegate = self
         self.contentView.addSubview(mail!)
     }
     
