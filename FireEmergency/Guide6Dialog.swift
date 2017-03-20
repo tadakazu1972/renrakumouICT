@@ -22,6 +22,8 @@ class Guide6Dialog {
     private var text3: UITextView!
     private var image4: UIImageView!
     private var text4: UITextView!
+    private var image5: UIImageView!
+    private var text5: UITextView!
     private var btnClose: UIButton!
     
     //コンストラクタ
@@ -39,6 +41,8 @@ class Guide6Dialog {
         image4 = UIImageView()
         text4 = UITextView()
         btnClose = UIButton()
+        text5 = UITextView()
+        image5 = UIImageView()
     }
     
     //デコンストラクタ
@@ -55,6 +59,8 @@ class Guide6Dialog {
         text3 = nil
         image4 = nil
         text4 = nil
+        image5 = nil
+        text5 = nil
         btnClose = nil
     }
     
@@ -76,7 +82,7 @@ class Guide6Dialog {
         
         //scroll生成
         scroll.frame = CGRectMake(0,0,parent.view.frame.width-20,parent.view.frame.height-50)
-        scroll.contentSize = CGSizeMake(300,1900)
+        scroll.contentSize = CGSizeMake(300,2500)
         self.win1.addSubview(scroll)
         
         //TextView0生成
@@ -93,11 +99,11 @@ class Guide6Dialog {
         //image1生成
         let img1 = UIImage(named: "guide61.png")
         image1.image = img1
-        image1.frame = CGRectMake(0, 40, 300, 96)
+        image1.frame = CGRectMake((parent.view.frame.width-320)/2, 40, 300, 96)
         scroll.addSubview(image1)
         
         //TextView1生成
-        text1.frame = CGRectMake(0,150, 300, 80)
+        text1.frame = CGRectMake(0,150, parent.view.frame.width-20, 80)
         text1.backgroundColor = UIColor.clearColor()
         text1.font = UIFont.systemFontOfSize(CGFloat(16))
         text1.textColor = UIColor.blackColor()
@@ -109,11 +115,11 @@ class Guide6Dialog {
         //image2生成
         let img2 = UIImage(named: "guide62.png")
         image2.image = img2
-        image2.frame = CGRectMake(0, 240, 300, 160)
+        image2.frame = CGRectMake((parent.view.frame.width-320)/2, 240, 300, 160)
         scroll.addSubview(image2)
         
         //TextView2生成
-        text2.frame = CGRectMake(0,410, 300, 80)
+        text2.frame = CGRectMake(0,410, parent.view.frame.width-20, 80)
         text2.backgroundColor = UIColor.clearColor()
         text2.font = UIFont.systemFontOfSize(CGFloat(16))
         text2.textColor = UIColor.blackColor()
@@ -126,11 +132,11 @@ class Guide6Dialog {
         //image3生成
         let img3 = UIImage(named: "guide63.png")
         image3.image = img3
-        image3.frame = CGRectMake(0, 520, 300, 200)
+        image3.frame = CGRectMake((parent.view.frame.width-320)/2, 520, 300, 200)
         scroll.addSubview(image3)
         
         //TextView3生成
-        text3.frame = CGRectMake(0,740, 300, 220)
+        text3.frame = CGRectMake(0,740, parent.view.frame.width-20, 220)
         text3.backgroundColor = UIColor.clearColor()
         text3.font = UIFont.systemFontOfSize(CGFloat(16))
         text3.textColor = UIColor.blackColor()
@@ -143,20 +149,37 @@ class Guide6Dialog {
         //image4生成
         let img4 = UIImage(named: "guide64.png")
         image4.image = img4
-        image4.frame = CGRectMake(0, 990, 300, 426)
+        image4.frame = CGRectMake((parent.view.frame.width-320)/2, 990, 300, 426)
         scroll.addSubview(image4)
         
         //TextView4生成
-        text4.frame = CGRectMake(0, 1436, 300, 220)
+        text4.frame = CGRectMake(0, 1436, parent.view.frame.width-20, 220)
         text4.backgroundColor = UIColor.clearColor()
         text4.font = UIFont.systemFontOfSize(CGFloat(16))
         text4.textColor = UIColor.blackColor()
         text4.textAlignment = NSTextAlignment.Left
         text4.editable = false
         text4.scrollEnabled = true
-        text4.text="■データ全件一覧表示\n　データ全件一覧を表示され、個別または選択した人にまとめてメール送信することが可能です。(電話はできません)\n\n■グループ検索\n　非常招集区分、所属(大分類)、所属(小分類)、勤務区分を選択し検索します。個別または選択した人にまとめてメール送信することが可能です。(電話はできません)"
+        text4.text="■データ全件一覧表示\n　データ全件一覧を表示させ、個別に電話、メール送信することが可能です。(メールは一斉送信可)\n\n■グループ検索\n　非常招集区分、所属(大分類)、所属(小分類)、勤務区分を選択し検索します。個別に電話、メール送信することが可能です。(メールは一斉送信可)"
         scroll.addSubview(text4)
         
+        //image5生成
+        let img5 = UIImage(named: "guide65.png")
+        image5.image = img5
+        image5.frame = CGRectMake((parent.view.frame.width-320)/2, 1680, 300, 426)
+        scroll.addSubview(image5)
+        
+        //TextView5生成
+        text5.frame = CGRectMake(0, 2120, parent.view.frame.width-20, 320)
+        text5.backgroundColor = UIColor.clearColor()
+        text5.font = UIFont.systemFontOfSize(CGFloat(16))
+        text5.textColor = UIColor.blackColor()
+        text5.textAlignment = NSTextAlignment.Left
+        text5.editable = false
+        text5.scrollEnabled = true
+        text5.text="個別に電話する場合は電話番号をタップ、メール送信する場合はアドレスをタップします。\n\n選択する際には名前付近の行の中心をタップしてください。(チェックボックスはタップに反応しません)\n\n選択した人に一斉にメールすることが可能です。選択してからメール送信をタップすると、選択した人のメールアドレスがまとめて宛先に入った状態で、メール作成画面になります。"
+        scroll.addSubview(text5)
+
         //閉じるボタン生成
         btnClose.frame = CGRectMake(0,0,100,30)
         btnClose.backgroundColor = UIColor.orangeColor()

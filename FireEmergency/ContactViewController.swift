@@ -52,7 +52,7 @@ class ContactViewController: UIViewController {
     private var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
     private var mContactDeleteDialog: ContactDeleteDialog!
     private var mContactImportCSVDialog: ContactImportCSVDialog!
-    private var mPassInputDialog: PassInputDialog!
+    private var mPassInputDialog: ContactPassInputDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
@@ -275,7 +275,7 @@ class ContactViewController: UIViewController {
         //ボタン押したら表示するDialog生成
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
-        mPassInputDialog = PassInputDialog(parentView: self)
+        mPassInputDialog = ContactPassInputDialog(parentView: self)
         
         //passCheckをfalseで初期化
         userDefaults.setBool(false, forKey: "passCheck")
@@ -509,7 +509,7 @@ class ContactViewController: UIViewController {
             self.presentViewController(nav, animated: true, completion: nil)
         } else if !userDefaults.boolForKey("passCheck"){
             //パスワードチェック呼び出し
-            mPassInputDialog.showResult()
+            mPassInputDialog.showResult(0)
         } else {
             mDBHelper.selectAll()
             mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
@@ -536,7 +536,7 @@ class ContactViewController: UIViewController {
             self.presentViewController(nav, animated: true, completion: nil)
         } else if !userDefaults.boolForKey("passCheck"){
             //パスワードチェック呼び出し
-            mPassInputDialog.showResult()
+            mPassInputDialog.showResult(2)
         } else {
             mDBHelper.selectAll2() //_idを含む呼び出す。後でその_idをもって上書きするデータを指定するから。
             mContactUpdateSelectDialog = ContactUpdateSelectDialog(parentView: self, resultFrom: mDBHelper.resultArray)
@@ -555,7 +555,7 @@ class ContactViewController: UIViewController {
             self.presentViewController(nav, animated: true, completion: nil)
         } else if !userDefaults.boolForKey("passCheck"){
             //パスワードチェック呼び出し
-            mPassInputDialog.showResult()
+            mPassInputDialog.showResult(3)
         } else {
             mDBHelper.selectAll2() //_idを含む2を呼び出し
             mContactDeleteDialog = ContactDeleteDialog(parentView: self, resultFrom: mDBHelper.resultArray)
@@ -595,7 +595,7 @@ class ContactViewController: UIViewController {
             self.presentViewController(nav, animated: true, completion: nil)
         } else if !userDefaults.boolForKey("passCheck"){
             //パスワードチェック呼び出し
-            mPassInputDialog.showResult()
+            mPassInputDialog.showResult(0)
         } else {
             //合っていれば表示
             let data:ContactSearchViewController = ContactSearchViewController()

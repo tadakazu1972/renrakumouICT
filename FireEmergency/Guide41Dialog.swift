@@ -1,24 +1,25 @@
 //
-//  Guide5Dialog.swift
+//  Guide41Dialog.swift
 //  FireEmergency
 //
-//  Created by 中道忠和 on 2017/03/11.
+//  Created by 中道忠和 on 2017/03/20.
 //  Copyright © 2017年 tadakazu nakamichi. All rights reserved.
 //
 
 import UIKit
 
-class Guide5Dialog {
+class Guide41Dialog {
     //ボタン押したら出るUIWindow
     private var parent: UIViewController!
     private var win1: UIWindow!
     private var scroll: UIScrollView!
     private var text0: UITextView!
     private var image1: UIImageView!
-    private var image2: UIImageView!
     private var text1: UITextView!
-    private var image3: UIImageView!
+    private var image2: UIImageView!
     private var text2: UITextView!
+    private var image3: UIImageView!
+    private var text3: UITextView!
     private var btnClose: UIButton!
     
     //コンストラクタ
@@ -28,10 +29,11 @@ class Guide5Dialog {
         scroll = UIScrollView()
         text0 = UITextView()
         image1 = UIImageView()
-        image2 = UIImageView()
         text1 = UITextView()
-        image3 = UIImageView()
+        image2 = UIImageView()
         text2 = UITextView()
+        image3 = UIImageView()
+        text3 = UITextView()
         btnClose = UIButton()
     }
     
@@ -42,10 +44,11 @@ class Guide5Dialog {
         scroll = nil
         text0 = nil
         image1 = nil
-        image2 = nil
         text1 = nil
-        image3 = nil
+        image2 = nil
         text2 = nil
+        image3 = nil
+        text3 = nil
         btnClose = nil
     }
     
@@ -67,7 +70,7 @@ class Guide5Dialog {
         
         //scroll生成
         scroll.frame = CGRectMake(0,0,parent.view.frame.width-20,parent.view.frame.height-50)
-        scroll.contentSize = CGSizeMake(300,900)
+        scroll.contentSize = CGSizeMake(300,1400)
         self.win1.addSubview(scroll)
         
         //TextView0生成
@@ -78,48 +81,59 @@ class Guide5Dialog {
         text0.textAlignment = NSTextAlignment.Left
         text0.editable = false
         text0.scrollEnabled = true
-        text0.text="５　情報確認"
+        text0.text="４　非常招集基準確認(震災)"
         scroll.addSubview(text0)
         
         //image1生成
-        let img1 = UIImage(named: "guide51.png")
+        let img1 = UIImage(named: "guide411.png")
         image1.image = img1
-        image1.frame = CGRectMake((parent.view.frame.width-320)/2, 40, 300, 96)
+        image1.frame = CGRectMake((parent.view.frame.width-320)/2, 40, 300, 241)
         scroll.addSubview(image1)
         
-        //image2生成
-        let img2 = UIImage(named: "guide52.png")
-        image2.image = img2
-        image2.frame = CGRectMake((parent.view.frame.width-320)/2, 168, 300, 270)
-        scroll.addSubview(image2)
-        
         //TextView1生成
-        text1.frame = CGRectMake(0,450, 300, 80)
+        text1.frame = CGRectMake(0,300, parent.view.frame.width-20, 240)
         text1.backgroundColor = UIColor.clearColor()
         text1.font = UIFont.systemFontOfSize(CGFloat(16))
         text1.textColor = UIColor.blackColor()
         text1.textAlignment = NSTextAlignment.Left
         text1.editable = false
         text1.scrollEnabled = true
-        text1.text="河川水位、気象情報、渋滞情報サイトなどを閲覧することができます。"
+        text1.text="上のボタンで大阪市域で地震、津波警報等が発生した場合の非常招集基準を確認することができます。\n「大阪市域で震度４、津波警報が発表された場合」の非常招集について確認します。\n\nまず、大阪市域の震度階「震度４」をタップします。\n※震度階については、気象庁が発表した各区の最大震度とします。"
         scroll.addSubview(text1)
         
-        //image3生成
-        let img3 = UIImage(named: "guide53.png")
-        image3.image = img3
-        image3.frame = CGRectMake((parent.view.frame.width-320)/2, 550, 300, 230)
-        scroll.addSubview(image3)
+        //image2生成
+        let img2 = UIImage(named: "guide412.png")
+        image2.image = img2
+        image2.frame = CGRectMake((parent.view.frame.width-320)/2, 540, 300, 228)
+        scroll.addSubview(image2)
         
         //TextView2生成
-        text2.frame = CGRectMake(0,800, 300, 80)
+        text2.frame = CGRectMake(0,788, parent.view.frame.width-20, 140)
         text2.backgroundColor = UIColor.clearColor()
         text2.font = UIFont.systemFontOfSize(CGFloat(16))
         text2.textColor = UIColor.blackColor()
         text2.textAlignment = NSTextAlignment.Left
         text2.editable = false
         text2.scrollEnabled = true
-        text2.text="河川水位、気象情報、渋滞情報サイトなどを閲覧することができます。"
+        text2.text="次に「大津波警報」「津波警報」「警報なし」を選択します。\nここでは「津波警報」をタップします。\n津波警報は、気象庁から大阪府に発表された場合に適用するものとします。"
         scroll.addSubview(text2)
+        
+        //image3生成
+        let img3 = UIImage(named: "guide413.png")
+        image3.image = img3
+        image3.frame = CGRectMake((parent.view.frame.width-320)/2, 948, 300, 240)
+        scroll.addSubview(image3)
+        
+        //TextView3生成
+        text3.frame = CGRectMake(0,1188, parent.view.frame.width-20, 100)
+        text3.backgroundColor = UIColor.clearColor()
+        text3.font = UIFont.systemFontOfSize(CGFloat(16))
+        text3.textColor = UIColor.blackColor()
+        text3.textAlignment = NSTextAlignment.Left
+        text3.editable = false
+        text3.scrollEnabled = true
+        text3.text="津波警報発表時の参集先が表示されます。\nこの例では、津波警報発表時の参集指定署への招集が確認されました。"
+        scroll.addSubview(text3)
         
         //閉じるボタン生成
         btnClose.frame = CGRectMake(0,0,100,30)

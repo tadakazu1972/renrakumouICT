@@ -16,6 +16,11 @@ class Guide4SelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     private var table: UITableView!
     private var items:[String] = ["","","",""]
     private var btnClose: UIButton!
+    //
+    private var mGuide41Dialog: Guide41Dialog!
+    private var mGuide42Dialog: Guide42Dialog!
+    private var mGuide43Dialog: Guide43Dialog!
+    private var mGuide44Dialog: Guide44Dialog!
     
     //コンストラクタ
     init(parentView: GuideViewController){
@@ -105,19 +110,22 @@ class Guide4SelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("セルを選択 #\(indexPath.row)!")
-        //南海トラフのケース判定
         switch indexPath.row {
         case 0:
-            //mKinentaiNankaitraf1 = KinentaiNankaitraf1(parentView: parent)
-            //mKinentaiNankaitraf1.showResult()
+            mGuide41Dialog = Guide41Dialog(parentView: parent)
+            mGuide41Dialog.showInfo()
             break
         case 1:
-            //mKinentaiNankaitraf2 = KinentaiNankaitraf2(parentView: parent)
-            //mKinentaiNankaitraf2.showResult()
+            mGuide42Dialog = Guide42Dialog(parentView: parent)
+            mGuide42Dialog.showInfo()
             break
         case 2:
+            mGuide43Dialog = Guide43Dialog(parentView: parent)
+            mGuide43Dialog.showInfo()
             break
         case 3:
+            mGuide44Dialog = Guide44Dialog(parentView: parent)
+            mGuide44Dialog.showInfo()
             break
         default:
             break

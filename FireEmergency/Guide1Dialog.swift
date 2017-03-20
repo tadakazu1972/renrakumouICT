@@ -81,11 +81,11 @@ class Guide1Dialog {
         //image1生成
         let img1 = UIImage(named: "guide11.png")
         image1.image = img1
-        image1.frame = CGRectMake(0, 40, 300, 86)
+        image1.frame = CGRectMake((parent.view.frame.width-320)/2, 40, 300, 86)
         scroll.addSubview(image1)
         
         //TextView1生成
-        text1.frame = CGRectMake(0,136, 300, 190)
+        text1.frame = CGRectMake(0,136, parent.view.frame.width-20, 190)
         text1.backgroundColor = UIColor.clearColor()
         text1.font = UIFont.systemFontOfSize(CGFloat(16))
         text1.textColor = UIColor.blackColor()
@@ -98,11 +98,11 @@ class Guide1Dialog {
         //image2生成
         let img2 = UIImage(named: "guide12.png")
         image2.image = img2
-        image2.frame = CGRectMake(0, 280, 300, 426)
+        image2.frame = CGRectMake((parent.view.frame.width-320)/2, 280, 300, 426)
         scroll.addSubview(image2)
         
         //TextView2生成
-        text2.frame = CGRectMake(0, 720, 300, 240)
+        text2.frame = CGRectMake(0, 720, parent.view.frame.width-20, 240)
         text2.backgroundColor = UIColor.clearColor()
         text2.font = UIFont.systemFontOfSize(CGFloat(16))
         text2.textColor = UIColor.blackColor()

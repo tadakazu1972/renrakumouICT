@@ -78,5 +78,4 @@ class ContactCellCheckbox: UITableViewCell, UITextViewDelegate {
         mail?.delegate = self
         self.contentView.addSubview(mail!)
     }
-    
 }
