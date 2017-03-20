@@ -16,6 +16,9 @@ class Guide2SelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     private var table: UITableView!
     private var items:[String] = ["","","",""]
     private var btnClose: UIButton!
+    //
+    private var mGuide21Dialog: Guide21Dialog!
+    private var mGuide22Dialog: Guide22Dialog!
     
     //コンストラクタ
     init(parentView: GuideViewController){
@@ -108,12 +111,12 @@ class Guide2SelectDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
         //南海トラフのケース判定
         switch indexPath.row {
             case 0:
-                //mKinentaiNankaitraf1 = KinentaiNankaitraf1(parentView: parent)
-                //mKinentaiNankaitraf1.showResult()
+                mGuide21Dialog = Guide21Dialog(parentView: parent)
+                mGuide21Dialog.showInfo()
                 break
             case 1:
-                //mKinentaiNankaitraf2 = KinentaiNankaitraf2(parentView: parent)
-                //mKinentaiNankaitraf2.showResult()
+                mGuide22Dialog = Guide22Dialog(parentView: parent)
+                mGuide22Dialog.showInfo()
                 break
             default:
                 break
