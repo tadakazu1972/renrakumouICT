@@ -119,20 +119,20 @@ class Guide22Dialog {
         scroll.addSubview(text0)
         
         //TextView1生成
-        text1.frame = CGRectMake(0,40, parent.view.frame.width-20, 180)
+        text1.frame = CGRectMake(0,40, parent.view.frame.width-20, 208)
         text1.backgroundColor = UIColor.clearColor()
         text1.font = UIFont.systemFontOfSize(CGFloat(16))
         text1.textColor = UIColor.blackColor()
         text1.textAlignment = NSTextAlignment.Left
         text1.editable = false
         text1.scrollEnabled = true
-        text1.text="①エクセルデータの作成\n氏名、電話番号、メールアドレス、非常招集区分、所属(大分類)、所属(小分類)、勤務区分を入力してください。\n※非常招集区分、勤務区分の「数字」は必ず【全角】で入力してください。\n※項目の順番は必ず同じにしてください。入力データ以外の項目や番号を入力すると読み込めません。"
+        text1.text="①エクセルデータの作成\n氏名、電話番号、メールアドレス、非常招集区分、所属(大分類)、所属(小分類)、勤務区分を入力してください。\n※非常招集区分、勤務区分の「数字」は必ず【全角】で入力してください。\n※入力データ以外の項目や番号は入力しないでください。\n※勤務場所(大分類)の入力例　旭→正、旭消防署→誤"
         scroll.addSubview(text1)
 
         //image1生成
         let img1 = UIImage(named: "guide221.png")
         image1.image = img1
-        image1.frame = CGRectMake((parent.view.frame.width-320)/2, 240, 300, 173)
+        image1.frame = CGRectMake((parent.view.frame.width-320)/2, 250, 300, 173)
         scroll.addSubview(image1)
         
         //TextView2生成
@@ -149,11 +149,11 @@ class Guide22Dialog {
         //image2生成
         let img2 = UIImage(named: "guide222.png")
         image2.image = img2
-        image2.frame = CGRectMake((parent.view.frame.width-320)/2, 553, 300, 376)
+        image2.frame = CGRectMake((parent.view.frame.width-320)/2, 543, 300, 376)
         scroll.addSubview(image2)
         
         //TextView3生成
-        text3.frame = CGRectMake(0,949, parent.view.frame.width-20, 120)
+        text3.frame = CGRectMake(0,949, parent.view.frame.width-20, 132)
         text3.backgroundColor = UIColor.clearColor()
         text3.font = UIFont.systemFontOfSize(CGFloat(16))
         text3.textColor = UIColor.blackColor()
@@ -164,51 +164,50 @@ class Guide22Dialog {
         scroll.addSubview(text3)
         
         //image3生成
-        let img3 = UIImage(named: "guide213.png")
+        let img3 = UIImage(named: "guide223.png")
         image3.image = img3
-        image3.frame = CGRectMake((parent.view.frame.width-320)/2, 1146, 300, 426)
+        image3.frame = CGRectMake((parent.view.frame.width-320)/2, 1077, 300, 210)
         scroll.addSubview(image3)
         
-        
-        
-        //image4生成
-        let img4 = UIImage(named: "guide214.png")
-        image4.image = img4
-        image4.frame = CGRectMake((parent.view.frame.width-320)/2, 1720, 300, 146)
-        scroll.addSubview(image4)
-        
         //TextView4生成
-        text4.frame = CGRectMake(0, 1886, parent.view.frame.width-20, 80)
+        text4.frame = CGRectMake(0, 1307, parent.view.frame.width-20, 158)
         text4.backgroundColor = UIColor.clearColor()
         text4.font = UIFont.systemFontOfSize(CGFloat(16))
         text4.textColor = UIColor.blackColor()
         text4.textAlignment = NSTextAlignment.Left
         text4.editable = false
         text4.scrollEnabled = true
-        text4.text="登録したデータは一覧ボタンをタップし確認してください。"
+        text4.text="④メモ帳で表示した連絡網データの保存\n連絡網データを表示し「氏名、電話番号、メールアドレス、非常招集区分、勤務場所(大分類)、勤務場所(小分類)、勤務区分」が入力されているのを確認します。\n確認後、文字コードを「UTF-8」に変更し名前を付けて保存します。"
         scroll.addSubview(text4)
         
-        //image5生成
-        let img5 = UIImage(named: "guide63.png")
-        image5.image = img5
-        image5.frame = CGRectMake((parent.view.frame.width-320)/2, 1966, 300, 195)
-        scroll.addSubview(image5)
+        //image4生成
+        let img4 = UIImage(named: "guide224.png")
+        image4.image = img4
+        image4.frame = CGRectMake((parent.view.frame.width-320)/2, 1473, 300, 366)
+        scroll.addSubview(image4)
         
         //TextView5生成
-        text5.frame = CGRectMake(0, 2161, parent.view.frame.width-20, 100)
+        text5.frame = CGRectMake(0, 1853, parent.view.frame.width-20, 100)
         text5.backgroundColor = UIColor.clearColor()
         text5.font = UIFont.systemFontOfSize(CGFloat(16))
         text5.textColor = UIColor.blackColor()
         text5.textAlignment = NSTextAlignment.Left
         text5.editable = false
         text5.scrollEnabled = true
-        text5.text="画面にパスワードを入力します。\n「入力」をタップすると一覧表が表示されます。"
+        text5.text="⑤作成したデータの送信\n④で保存したデータを個人所有のスマートフォンにメール送信します。\niPhone標準の「メール」で受信できるメールアドレスに送信してください。"
         scroll.addSubview(text5)
+        
+        //image5生成
+        let img5 = UIImage(named: "guide225.png")
+        image5.image = img5
+        image5.frame = CGRectMake((parent.view.frame.width-320)/2, 1963, 300, 85)
+        scroll.addSubview(image5)
+        
         
         //image6生成
         let img6 = UIImage(named: "guide65.png")
         image6.image = img6
-        image6.frame = CGRectMake((parent.view.frame.width-320)/2, 2260, 300, 426)
+        image6.frame = CGRectMake((parent.view.frame.width-320)/2, 2058, 300, 426)
         scroll.addSubview(image6)
         
         //TextView6生成

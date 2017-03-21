@@ -68,8 +68,11 @@
 		5953614C1E8002D500551A0E /* guide217.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953614B1E8002D500551A0E /* guide217.png */; };
 		595361501E8007E700551A0E /* guide219.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953614F1E8007E700551A0E /* guide219.png */; };
 		595361521E801B6500551A0E /* Guide22Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595361511E801B6500551A0E /* Guide22Dialog.swift */; };
-		595361541E801E5E00551A0E /* guide221.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361531E801E5E00551A0E /* guide221.png */; };
 		595361561E80203B00551A0E /* guide222.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361551E80203B00551A0E /* guide222.png */; };
+		595361581E815E2900551A0E /* guide221.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361571E815E2900551A0E /* guide221.png */; };
+		5953615A1E815F4900551A0E /* guide223.png in Resources */ = {isa = PBXBuildFile; fileRef = 595361591E815F4900551A0E /* guide223.png */; };
+		5953615C1E81610500551A0E /* guide224.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953615B1E81610500551A0E /* guide224.png */; };
+		5953615E1E81629C00551A0E /* guide225.png in Resources */ = {isa = PBXBuildFile; fileRef = 5953615D1E81629C00551A0E /* guide225.png */; };
 		5960E60D1E45F8D000D1917A /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960E6021E45F8D000D1917A /* FMDatabase.m */; };
 		5960E60E1E45F8D000D1917A /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960E6041E45F8D000D1917A /* FMDatabaseAdditions.m */; };
 		5960E60F1E45F8D000D1917A /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960E6061E45F8D000D1917A /* FMDatabasePool.m */; };
@@ -196,8 +199,11 @@
 		5953614B1E8002D500551A0E /* guide217.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide217.png; sourceTree = "<group>"; };
 		5953614F1E8007E700551A0E /* guide219.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide219.png; sourceTree = "<group>"; };
 		595361511E801B6500551A0E /* Guide22Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide22Dialog.swift; sourceTree = "<group>"; };
-		595361531E801E5E00551A0E /* guide221.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide221.png; sourceTree = "<group>"; };
 		595361551E80203B00551A0E /* guide222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide222.png; sourceTree = "<group>"; };
+		595361571E815E2900551A0E /* guide221.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide221.png; sourceTree = "<group>"; };
+		595361591E815F4900551A0E /* guide223.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide223.png; sourceTree = "<group>"; };
+		5953615B1E81610500551A0E /* guide224.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide224.png; sourceTree = "<group>"; };
+		5953615D1E81629C00551A0E /* guide225.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide225.png; sourceTree = "<group>"; };
 		5960E6011E45F8D000D1917A /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		5960E6021E45F8D000D1917A /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		5960E6031E45F8D000D1917A /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -404,8 +410,11 @@
 				5953614B1E8002D500551A0E /* guide217.png */,
 				5953614F1E8007E700551A0E /* guide219.png */,
 				595361511E801B6500551A0E /* Guide22Dialog.swift */,
-				595361531E801E5E00551A0E /* guide221.png */,
+				595361571E815E2900551A0E /* guide221.png */,
 				595361551E80203B00551A0E /* guide222.png */,
+				595361591E815F4900551A0E /* guide223.png */,
+				5953615B1E81610500551A0E /* guide224.png */,
+				5953615D1E81629C00551A0E /* guide225.png */,
 				595233731E73CF2F00FC8CE8 /* Guide3Dialog.swift */,
 				595233771E73CF6100FC8CE8 /* guide31.png */,
 				595233791E73D28A00FC8CE8 /* guide32.png */,
@@ -529,6 +538,7 @@
 				5952336E1E72F4BA00FC8CE8 /* guide12.png in Resources */,
 				5953610E1E78182100551A0E /* guide61.png in Resources */,
 				5953612A1E7F8F2800551A0E /* guide422.png in Resources */,
+				5953615C1E81610500551A0E /* guide224.png in Resources */,
 				595361561E80203B00551A0E /* guide222.png in Resources */,
 				595361341E7FB72A00551A0E /* guide442.png in Resources */,
 				59AC16621E6BF80B00BBB28F /* purpose.txt in Resources */,
@@ -548,13 +558,14 @@
 				594CA3401DFD87C900FF8714 /* typhoon1.txt in Resources */,
 				595361221E7F80C400551A0E /* guide412.png in Resources */,
 				59D8AEDB1E5090D400A3EDE2 /* kokuminhogo_keikakutaisyo.txt in Resources */,
+				5953615A1E815F4900551A0E /* guide223.png in Resources */,
 				597FD1321E2BB4340011ABB1 /* kaiiki6weak.csv in Resources */,
 				595361501E8007E700551A0E /* guide219.png in Resources */,
 				5952336C1E72E66300FC8CE8 /* guide11.png in Resources */,
-				595361541E801E5E00551A0E /* guide221.png in Resources */,
 				5953611A1E7F76B100551A0E /* guide431.png in Resources */,
 				5953611C1E7F76B700551A0E /* guide432.png in Resources */,
 				5953612E1E7F98B700551A0E /* guide424.png in Resources */,
+				595361581E815E2900551A0E /* guide221.png in Resources */,
 				595361161E7F667600551A0E /* guide65.png in Resources */,
 				595361201E7F7E0000551A0E /* guide411.png in Resources */,
 				597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */,
@@ -576,6 +587,7 @@
 				595361361E7FB72F00551A0E /* guide443.png in Resources */,
 				597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */,
 				597FD1301E2BB4340011ABB1 /* hunka.csv in Resources */,
+				5953615E1E81629C00551A0E /* guide225.png in Resources */,
 				59D8AEF61E6131C800A3EDE2 /* ic_check_box_outline_blank.png in Resources */,
 				595361321E7FB71900551A0E /* guide441.png in Resources */,
 				597FD1281E2BB4080011ABB1 /* otsunami.csv in Resources */,
