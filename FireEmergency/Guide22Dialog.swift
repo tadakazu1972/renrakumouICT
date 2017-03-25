@@ -32,6 +32,12 @@ class Guide22Dialog {
     private var text8: UITextView!
     private var image9: UIImageView!
     private var text9: UITextView!
+    private var image10: UIImageView!
+    private var text10: UITextView!
+    private var image11: UIImageView!
+    private var text11: UITextView!
+    private var image12: UIImageView!
+    private var text12: UITextView!
     private var btnClose: UIButton!
     
     //コンストラクタ
@@ -58,6 +64,12 @@ class Guide22Dialog {
         text8 = UITextView()
         image9 = UIImageView()
         text9 = UITextView()
+        image10 = UIImageView()
+        text10 = UITextView()
+        image11 = UIImageView()
+        text11 = UITextView()
+        image12 = UIImageView()
+        text12 = UITextView()
         btnClose = UIButton()
     }
     
@@ -83,6 +95,14 @@ class Guide22Dialog {
         text7 = nil
         image8 = nil
         text8 = nil
+        image9 = nil
+        text9 = nil
+        image10 = nil
+        text10 = nil
+        image11 = nil
+        text11 = nil
+        image12 = nil
+        text12 = nil
         btnClose = nil
     }
     
@@ -104,7 +124,7 @@ class Guide22Dialog {
         
         //scroll生成
         scroll.frame = CGRectMake(0,0,parent.view.frame.width-20,parent.view.frame.height-50)
-        scroll.contentSize = CGSizeMake(300,4100)
+        scroll.contentSize = CGSizeMake(300,5500)
         self.win1.addSubview(scroll)
         
         //TextView0生成
@@ -203,74 +223,124 @@ class Guide22Dialog {
         image5.frame = CGRectMake((parent.view.frame.width-320)/2, 1963, 300, 85)
         scroll.addSubview(image5)
         
-        
-        //image6生成
-        let img6 = UIImage(named: "guide65.png")
-        image6.image = img6
-        image6.frame = CGRectMake((parent.view.frame.width-320)/2, 2058, 300, 426)
-        scroll.addSubview(image6)
-        
         //TextView6生成
-        text6.frame = CGRectMake(0, 2706, parent.view.frame.width-20, 80)
+        text6.frame = CGRectMake(0, 2068, parent.view.frame.width-20, 80)
         text6.backgroundColor = UIColor.clearColor()
         text6.font = UIFont.systemFontOfSize(CGFloat(16))
         text6.textColor = UIColor.blackColor()
         text6.textAlignment = NSTextAlignment.Left
         text6.editable = false
         text6.scrollEnabled = true
-        text6.text="電話番号、メールアドレスのタップで電話、メール送信が行えます。"
+        text6.text="⑥メールの受信\n「メール」を起動してiPhoneに送信したメールを開きます。"
         scroll.addSubview(text6)
         
+        //image6生成
+        let img6 = UIImage(named: "guide226.png")
+        image6.image = img6
+        image6.frame = CGRectMake((parent.view.frame.width-320)/2, 2148, 300, 426)
+        scroll.addSubview(image6)
+        
         //image7生成
-        let img7 = UIImage(named: "guide217.png")
+        let img7 = UIImage(named: "guide227.png")
         image7.image = img7
-        image7.frame = CGRectMake((parent.view.frame.width-320)/2, 2786, 300, 231)
+        image7.frame = CGRectMake((parent.view.frame.width-320)/2, 2594, 300, 264)
         scroll.addSubview(image7)
         
         //TextView7生成
-        text7.frame = CGRectMake(0, 3016, parent.view.frame.width-20, 80)
+        text7.frame = CGRectMake(0, 2884, parent.view.frame.width-20, 40)
         text7.backgroundColor = UIColor.clearColor()
         text7.font = UIFont.systemFontOfSize(CGFloat(16))
         text7.textColor = UIColor.blackColor()
         text7.textAlignment = NSTextAlignment.Left
         text7.editable = false
         text7.scrollEnabled = true
-        text7.text="連絡網データの修正が必要な場合は「修正」ボタンをタップします。"
+        text7.text="⑦添付ファイルを１秒以上長押します。"
         scroll.addSubview(text7)
         
         //image8生成
-        let img8 = UIImage(named: "guide63.png")
+        let img8 = UIImage(named: "guide228.png")
         image8.image = img8
-        image8.frame = CGRectMake((parent.view.frame.width-320)/2, 3096, 300, 195)
+        image8.frame = CGRectMake((parent.view.frame.width-320)/2, 2924, 300, 300)
         scroll.addSubview(image8)
         
         //TextView8生成
-        text8.frame = CGRectMake(0, 3300, parent.view.frame.width-20, 100)
+        text8.frame = CGRectMake(0, 3244, parent.view.frame.width-20, 100)
         text8.backgroundColor = UIColor.clearColor()
         text8.font = UIFont.systemFontOfSize(CGFloat(16))
         text8.textColor = UIColor.blackColor()
         text8.textAlignment = NSTextAlignment.Left
         text8.editable = false
         text8.scrollEnabled = true
-        text8.text="画面にパスワードを入力します。\n「入力」をタップすると一覧表が表示されます。"
+        text8.text="⑧中段に出てくるアイコン一覧から「非常招集にコピー」を選択しタップします。\n※アイコンが見えない場合は横にスワイプしてください。"
         scroll.addSubview(text8)
         
         //image9生成
-        let img9 = UIImage(named: "guide219.png")
+        let img9 = UIImage(named: "guide229.png")
         image9.image = img9
-        image9.frame = CGRectMake((parent.view.frame.width-320)/2, 3400, 300, 426)
+        image9.frame = CGRectMake((parent.view.frame.width-320)/2, 3350, 300, 426)
         scroll.addSubview(image9)
         
         //TextView9生成
-        text9.frame = CGRectMake(0, 3846, parent.view.frame.width-20, 110)
+        text9.frame = CGRectMake(0, 3796, parent.view.frame.width-20, 100)
         text9.backgroundColor = UIColor.clearColor()
         text9.font = UIFont.systemFontOfSize(CGFloat(16))
         text9.textColor = UIColor.blackColor()
         text9.textAlignment = NSTextAlignment.Left
         text9.editable = false
         text9.scrollEnabled = true
-        text9.text="内容を修正し「登録」をタップします。\n\n削除が必要な場合は前の画面で「削除」をタップし、削除したいデータを選択してください。"
+        text9.text="⑨「非常招集」アプリに切り替わりますので「基礎データ入力」→「連絡網データ操作」に移動し、「CSVファイル読込」をタップしてください。"
         scroll.addSubview(text9)
+        
+        //image10生成
+        let img10 = UIImage(named: "guide2210.png")
+        image10.image = img10
+        image10.frame = CGRectMake((parent.view.frame.width-320)/2, 3900, 300, 426)
+        scroll.addSubview(image10)
+        
+        //TextView10生成
+        text10.frame = CGRectMake(0, 4346, parent.view.frame.width-20, 80)
+        text10.backgroundColor = UIColor.clearColor()
+        text10.font = UIFont.systemFontOfSize(CGFloat(16))
+        text10.textColor = UIColor.blackColor()
+        text10.textAlignment = NSTextAlignment.Left
+        text10.editable = false
+        text10.scrollEnabled = true
+        text10.text="⑨添付ファイルからコピーしたCSVファイルの中身が表示されます。確認した後、「読込」をタップしてください。"
+        scroll.addSubview(text10)
+
+        //image11生成
+        let img11 = UIImage(named: "guide2211.png")
+        image11.image = img11
+        image11.frame = CGRectMake((parent.view.frame.width-320)/2, 4436, 300, 426)
+        scroll.addSubview(image11)
+
+        //TextView11生成
+        text11.frame = CGRectMake(0, 4882, parent.view.frame.width-20, 40)
+        text11.backgroundColor = UIColor.clearColor()
+        text11.font = UIFont.systemFontOfSize(CGFloat(16))
+        text11.textColor = UIColor.blackColor()
+        text11.textAlignment = NSTextAlignment.Left
+        text11.editable = false
+        text11.scrollEnabled = true
+        text11.text="⑩CSVファイルの読込完了です。"
+        scroll.addSubview(text11)
+        
+        //image12生成
+        let img12 = UIImage(named: "guide2212.png")
+        image12.image = img12
+        image12.frame = CGRectMake((parent.view.frame.width-320)/2, 4922, 300, 426)
+        scroll.addSubview(image12)
+        
+        //TextView12生成
+        text12.frame = CGRectMake(0, 5368, parent.view.frame.width-20, 100)
+        text12.backgroundColor = UIColor.clearColor()
+        text12.font = UIFont.systemFontOfSize(CGFloat(16))
+        text12.textColor = UIColor.blackColor()
+        text12.textAlignment = NSTextAlignment.Left
+        text12.editable = false
+        text12.scrollEnabled = true
+        text12.text="※連絡網データを「非常招集アプリ」に取り込んだ後は、メール（添付ファイル）を削除してください。"
+        scroll.addSubview(text12)
         
         //閉じるボタン生成
         btnClose.frame = CGRectMake(0,0,100,30)

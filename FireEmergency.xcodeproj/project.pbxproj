@@ -117,6 +117,13 @@
 		598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8E81D850AE6006842C8 /* Assets.xcassets */; };
 		598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 598AC8EA1D850AE6006842C8 /* LaunchScreen.storyboard */; };
 		598AC8F41D8512F3006842C8 /* DataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598AC8F31D8512F3006842C8 /* DataViewController.swift */; };
+		59973B691E86BCC400C799AA /* guide226.png in Resources */ = {isa = PBXBuildFile; fileRef = 59973B681E86BCC400C799AA /* guide226.png */; };
+		59973B6F1E86C16C00C799AA /* guide227.png in Resources */ = {isa = PBXBuildFile; fileRef = 59973B6E1E86C16C00C799AA /* guide227.png */; };
+		59973B731E86CAD400C799AA /* guide229.png in Resources */ = {isa = PBXBuildFile; fileRef = 59973B721E86CAD400C799AA /* guide229.png */; };
+		59973B751E86CCFE00C799AA /* guide228.png in Resources */ = {isa = PBXBuildFile; fileRef = 59973B741E86CCFE00C799AA /* guide228.png */; };
+		59973B791E86D39A00C799AA /* guide2210.png in Resources */ = {isa = PBXBuildFile; fileRef = 59973B781E86D39A00C799AA /* guide2210.png */; };
+		59973B7B1E86D65400C799AA /* guide2211.png in Resources */ = {isa = PBXBuildFile; fileRef = 59973B7A1E86D65400C799AA /* guide2211.png */; };
+		59973B7D1E86D99500C799AA /* guide2212.png in Resources */ = {isa = PBXBuildFile; fileRef = 59973B7C1E86D99500C799AA /* guide2212.png */; };
 		59AC16601E6267A100BBB28F /* GuideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AC165F1E6267A100BBB28F /* GuideViewController.swift */; };
 		59AC16621E6BF80B00BBB28F /* purpose.txt in Resources */ = {isa = PBXBuildFile; fileRef = 59AC16611E6BF80B00BBB28F /* purpose.txt */; };
 		59AC16641E6C006C00BBB28F /* Guide6Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59AC16631E6C006C00BBB28F /* Guide6Dialog.swift */; };
@@ -257,6 +264,13 @@
 		598AC8EB1D850AE6006842C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		598AC8ED1D850AE6006842C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		598AC8F31D8512F3006842C8 /* DataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataViewController.swift; sourceTree = "<group>"; };
+		59973B681E86BCC400C799AA /* guide226.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide226.png; sourceTree = "<group>"; };
+		59973B6E1E86C16C00C799AA /* guide227.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide227.png; sourceTree = "<group>"; };
+		59973B721E86CAD400C799AA /* guide229.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide229.png; sourceTree = "<group>"; };
+		59973B741E86CCFE00C799AA /* guide228.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide228.png; sourceTree = "<group>"; };
+		59973B781E86D39A00C799AA /* guide2210.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide2210.png; sourceTree = "<group>"; };
+		59973B7A1E86D65400C799AA /* guide2211.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide2211.png; sourceTree = "<group>"; };
+		59973B7C1E86D99500C799AA /* guide2212.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide2212.png; sourceTree = "<group>"; };
 		59AC165F1E6267A100BBB28F /* GuideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuideViewController.swift; sourceTree = "<group>"; };
 		59AC16611E6BF80B00BBB28F /* purpose.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = purpose.txt; sourceTree = "<group>"; };
 		59AC16631E6C006C00BBB28F /* Guide6Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide6Dialog.swift; sourceTree = "<group>"; };
@@ -415,6 +429,13 @@
 				595361591E815F4900551A0E /* guide223.png */,
 				5953615B1E81610500551A0E /* guide224.png */,
 				5953615D1E81629C00551A0E /* guide225.png */,
+				59973B681E86BCC400C799AA /* guide226.png */,
+				59973B6E1E86C16C00C799AA /* guide227.png */,
+				59973B741E86CCFE00C799AA /* guide228.png */,
+				59973B721E86CAD400C799AA /* guide229.png */,
+				59973B781E86D39A00C799AA /* guide2210.png */,
+				59973B7A1E86D65400C799AA /* guide2211.png */,
+				59973B7C1E86D99500C799AA /* guide2212.png */,
 				595233731E73CF2F00FC8CE8 /* Guide3Dialog.swift */,
 				595233771E73CF6100FC8CE8 /* guide31.png */,
 				595233791E73D28A00FC8CE8 /* guide32.png */,
@@ -539,6 +560,7 @@
 				5953610E1E78182100551A0E /* guide61.png in Resources */,
 				5953612A1E7F8F2800551A0E /* guide422.png in Resources */,
 				5953615C1E81610500551A0E /* guide224.png in Resources */,
+				59973B691E86BCC400C799AA /* guide226.png in Resources */,
 				595361561E80203B00551A0E /* guide222.png in Resources */,
 				595361341E7FB72A00551A0E /* guide442.png in Resources */,
 				59AC16621E6BF80B00BBB28F /* purpose.txt in Resources */,
@@ -552,6 +574,7 @@
 				595361281E7F8A4500551A0E /* guide421.png in Resources */,
 				595361461E7FF69400551A0E /* guide213.png in Resources */,
 				595361121E782D5400551A0E /* guide64.png in Resources */,
+				59973B791E86D39A00C799AA /* guide2210.png in Resources */,
 				5953610C1E78145100551A0E /* guide63.png in Resources */,
 				595361441E7FF31B00551A0E /* guide212.png in Resources */,
 				5953614C1E8002D500551A0E /* guide217.png in Resources */,
@@ -565,13 +588,18 @@
 				5953611A1E7F76B100551A0E /* guide431.png in Resources */,
 				5953611C1E7F76B700551A0E /* guide432.png in Resources */,
 				5953612E1E7F98B700551A0E /* guide424.png in Resources */,
+				59973B751E86CCFE00C799AA /* guide228.png in Resources */,
 				595361581E815E2900551A0E /* guide221.png in Resources */,
+				59973B7B1E86D65400C799AA /* guide2211.png in Resources */,
 				595361161E7F667600551A0E /* guide65.png in Resources */,
 				595361201E7F7E0000551A0E /* guide411.png in Resources */,
 				597FD1181E21DB780011ABB1 /* typhoon_caution.txt in Resources */,
 				595361381E7FB73600551A0E /* guide444.png in Resources */,
 				597FD1441E2EFC290011ABB1 /* nankaitraf_case2.txt in Resources */,
+				59973B7D1E86D99500C799AA /* guide2212.png in Resources */,
 				593C66901DCEB31500405F53 /* kokuminhogo4.txt in Resources */,
+				59973B6F1E86C16C00C799AA /* guide227.png in Resources */,
+				59973B731E86CAD400C799AA /* guide229.png in Resources */,
 				595233781E73CF6100FC8CE8 /* guide31.png in Resources */,
 				5952337A1E73D28A00FC8CE8 /* guide32.png in Resources */,
 				597FD13C1E2D0F550011ABB1 /* kinentai_nankaitraf.txt in Resources */,
