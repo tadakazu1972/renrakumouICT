@@ -121,7 +121,7 @@ class KokuminhogoViewController: UIViewController {
         //１号非常招集
         btnKokuminhogo1.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogo1.layer.masksToBounds = true
-        btnKokuminhogo1.setTitle("１号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo1.setTitle("第１非常警備(１号招集)", forState: UIControlState.Normal)
         btnKokuminhogo1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogo1.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
         btnKokuminhogo1.tag=5
@@ -131,7 +131,7 @@ class KokuminhogoViewController: UIViewController {
         //２号非常招集
         btnKokuminhogo2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogo2.layer.masksToBounds = true
-        btnKokuminhogo2.setTitle("２号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo2.setTitle("第２非常警備(２号招集)", forState: UIControlState.Normal)
         btnKokuminhogo2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogo2.tag=6
         btnKokuminhogo2.translatesAutoresizingMaskIntoConstraints = false
@@ -140,7 +140,7 @@ class KokuminhogoViewController: UIViewController {
         //３号非常招集
         btnKokuminhogo3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogo3.layer.masksToBounds = true
-        btnKokuminhogo3.setTitle("３号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo3.setTitle("第３非常警備(３号招集)", forState: UIControlState.Normal)
         btnKokuminhogo3.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogo3.tag=7
         btnKokuminhogo3.translatesAutoresizingMaskIntoConstraints = false
@@ -149,7 +149,7 @@ class KokuminhogoViewController: UIViewController {
         //４号非常招集
         btnKokuminhogo4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogo4.layer.masksToBounds = true
-        btnKokuminhogo4.setTitle("４号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo4.setTitle("第４非常警備(４号招集)", forState: UIControlState.Normal)
         btnKokuminhogo4.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogo4.tag=8
         btnKokuminhogo4.translatesAutoresizingMaskIntoConstraints = false
@@ -158,7 +158,7 @@ class KokuminhogoViewController: UIViewController {
         //５号非常招集
         btnKokuminhogo5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogo5.layer.masksToBounds = true
-        btnKokuminhogo5.setTitle("５号非常招集", forState: UIControlState.Normal)
+        btnKokuminhogo5.setTitle("第５非常警備(５号招集)", forState: UIControlState.Normal)
         btnKokuminhogo5.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnKokuminhogo5.tag=9
         btnKokuminhogo5.translatesAutoresizingMaskIntoConstraints = false

@@ -56,7 +56,7 @@ class TyphoonViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.2, green:0.2, blue:0.9, alpha:1.0)
         //Button生成
         //基礎データ入力
-        btnData.backgroundColor = UIColor.blueColor()
+        btnData.backgroundColor = UIColor.redColor()
         btnData.layer.masksToBounds = true
         btnData.setTitle("基礎データ入力", forState: UIControlState.Normal)
         btnData.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -111,7 +111,7 @@ class TyphoonViewController: UIViewController {
         pad4.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad4)
         //非常召集基準（風水害）
-        lblTyphoon.text = "非常召集基準（風水害）"
+        lblTyphoon.text = "非常招集基準（風水害）"
         lblTyphoon.textColor = UIColor.whiteColor()
         lblTyphoon.textAlignment = NSTextAlignment.Center
         lblTyphoon.translatesAutoresizingMaskIntoConstraints = false

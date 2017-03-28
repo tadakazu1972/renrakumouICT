@@ -123,7 +123,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(北,都島,福島,此花,西淀川,淀川,東淀川,旭,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 12:
@@ -137,17 +137,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報
         case 13:
@@ -161,27 +161,27 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -197,55 +197,54 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo3.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 15:
             let title:String! = "■淀川（枚方） 避難指示(水位8.3m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -264,7 +263,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(住之江,住吉,東住吉,平野,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 22:
@@ -278,17 +277,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報
         case 23:
@@ -302,27 +301,27 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -338,55 +337,54 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo3.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 25:
             let title:String! = "■大和川(柏原) 避難指示(水位6.8m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -405,7 +403,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(淀川,東淀川,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 32:
@@ -419,17 +417,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報　３号しかない　神崎川、東除川
         case 33:
@@ -442,16 +440,16 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else {
-                message = "３号招集(非番・日勤)\n\nー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -466,44 +464,43 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "２号非常招集(非番・日勤)\n\n招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 35:
             let title:String! = "■神崎川(三国) 避難指示(水位5.8m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -522,7 +519,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(東淀川,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 42:
@@ -536,17 +533,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報
         case 43:
@@ -560,27 +557,27 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -596,55 +593,54 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo3.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 45:
             let title:String! = "■安威川(千歳橋) 避難指示(水位5.1m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -663,7 +659,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(都島,中央,城東,鶴見,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 52:
@@ -677,17 +673,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報
         case 53:
@@ -701,27 +697,27 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -737,55 +733,54 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo3.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 55:
             let title:String! = "■寝屋川(京橋) 避難指示(水位3.5m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -795,8 +790,8 @@ class TyphoonResultDialog2 {
         case 61:
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
             let title:String! = "■第二寝屋川(昭明橋) 氾濫注意水位(水位3.4m)、水防警報(出動)\n\n"
-            let gaitousyo = Set(arrayLiteral: "東成", "城東", "鶴見", "消防局")
-            text2.text = "東成,城東,鶴見,消防局"
+            let gaitousyo = Set(arrayLiteral: "中央", "城東", "鶴見", "消防局")
+            text2.text = "中央,城東,鶴見,消防局"
             var message:String! = ""
             //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
             if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
@@ -804,7 +799,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(東成,城東,鶴見,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 62:
@@ -818,17 +813,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報
         case 63:
@@ -842,27 +837,27 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -878,55 +873,54 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo3.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 65:
             let title:String! = "■第二寝屋川(昭明橋) 避難指示(水位4.85m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -945,7 +939,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(東成,生野,城東,東住吉,平野,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 72:
@@ -959,17 +953,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報
         case 73:
@@ -983,27 +977,27 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -1019,55 +1013,54 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo3.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 75:
             let title:String! = "■平野川(剣橋) 避難指示(水位4.4m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -1086,7 +1079,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(東成,生野,城東,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 82:
@@ -1100,17 +1093,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報
         case 83:
@@ -1124,27 +1117,27 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -1160,55 +1153,54 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else if gaitousyo3.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 85:
             let title:String! = "■平野川分水路(今里大橋) 避難指示(水位4.63m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -1227,7 +1219,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(鶴見,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //東除川(大堀上小橋)
         //氾濫注意水位、水防警報(出動)
@@ -1243,7 +1235,7 @@ class TyphoonResultDialog2 {
             } else {
                 message = "ー\n\n招集なし"
             }
-            text1.text = title + "第５非常警備(平野,消防局)\n\n" + message
+            text1.text = title + "第５非常警備\n\n" + message
             break
         //避難準備情報発令の見込み
         case 102:
@@ -1257,17 +1249,17 @@ class TyphoonResultDialog2 {
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "ー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
-            text1.text = title + "４号招集(非番・日勤)\n\n" + message
+            text1.text = title + message
             break
         //避難準備情報　３号しかない　神崎川、東除川
         case 103:
@@ -1280,16 +1272,16 @@ class TyphoonResultDialog2 {
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //３号招集なので、１号、２号は参集なしの判定する
                 if kubun == "１号招集" || kubun == "２号招集" {
-                    message = "３号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 }
             } else {
-                message = "３号招集(非番・日勤)\n\nー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
@@ -1298,50 +1290,49 @@ class TyphoonResultDialog2 {
             let title:String! = "■東除川(大堀上小橋) 避難勧告(水位3.9m)\n\n"
             let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             let gaitousyo1 = Set(arrayLiteral: "平野", "消防局")
-            let gaitousyo2 = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西", "港", "大正", "天王寺", "浪速", "西淀川", "淀川", "東淀川", "東成", "生野", "旭", "城東", "鶴見", "住之江", "住吉", "東住吉", "西成", "水上")
-            text2.text="流域署2号:平野,消防局\nその他の署4号:北,都島,福島,此花,中央,西,港,大正,天王寺,浪速,西淀川,淀川,東淀川,東成,生野,旭,城東,鶴見,住之江,住吉,東住吉,西成,水上"
+            let gaitousyo2 = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西", "港", "大正", "天王寺", "浪速", "西淀川", "淀川", "東淀川", "東成", "生野", "旭", "城東", "鶴見", "阿倍野","住之江", "住吉", "東住吉", "西成", "水上")
+            text2.text="流域署2号:平野,消防局\nその他の署4号:北,都島,福島,此花,中央,西,港,大正,天王寺,浪速,西淀川,淀川,東淀川,東成,生野,旭,城東,鶴見,阿倍野,住之江,住吉,東住吉,西成,水上"
             var message:String! = ""
             if gaitousyo1.contains(userDefaults.stringForKey("mainStation")!){
                 //２号招集なので、１号は参集なしの判定する
                 if kubun == "１号招集" {
-                    message = "２号招集(非番・日勤)\n\n招集なし"
+                    message = "招集なし"
                 } else {
                     if mainStation == "消防局" {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                     } else {
-                        message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                     }
                 }
             } else if gaitousyo2.contains(userDefaults.stringForKey("mainStation")!){
                 //４号招集なので、１号、２号、３号は参集なしの判定する
                 if kubun == "４号招集" {
                     if mainStation == "消防局" {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
                     } else {
-                        message = "４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                        message = "４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
                     }
                 } else {
-                    message = "４号招集(非番・日勤)\n\nー\n\n招集なし"
+                    message = "招集なし"
                 }
             } else {
-                message = "ー\n\n招集なし"
+                message = "招集なし"
             }
             text1.text = title + message
             break
         //避難指示
         case 105:
             let title:String! = "■東除川(大堀上小橋) 避難指示(水位5.3m)\n\n"
-            let hosoku:String! = "※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
-            text2.text="２号:全署"
+            text2.text="２号:全署,消防局"
             var message:String! = ""
             //２号招集なので、１号は参集なしの判定する
             if kubun == "１号招集" {
-                message = "２号招集(非番・日勤)\n\n招集なし"
+                message = "２号非常招集(非番・日勤)\n\n招集なし"
             } else {
                 if mainStation == "消防局" || mainStation == "教育訓練センター" {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集(所属担当者に確認すること)\n\n"
                 } else {
-                    message = "２号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n" + hosoku
+                    message = "２号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n"
                 }
             }
             text1.text = title + message
@@ -1351,7 +1342,7 @@ class TyphoonResultDialog2 {
         case 111:
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
             let title:String! = "■高潮区域\n\n"
-            text1.text = title + "第５非常警備(北,都島,福島,此花,中央,西,港,大正,浪速,西淀川,淀川,住之江,西成,水上,消防局)\n\n招集なし"
+            text1.text = title + "第５非常警備\n\n招集なし"
             text2.text = "北,都島,福島,此花,中央,西,港,大正,浪速,西淀川,淀川,住之江,西成,水上,消防局"
             break
 
@@ -1386,7 +1377,7 @@ class TyphoonResultDialog2 {
         
         //該当署ボタン生成
         btnGaitousyo.frame = CGRectMake(0,0,80,30)
-        btnGaitousyo.backgroundColor = UIColor.grayColor()
+        btnGaitousyo.backgroundColor = UIColor.lightGrayColor()
         btnGaitousyo.setTitle("該当署", forState: .Normal)
         btnGaitousyo.setTitleColor(UIColor.blackColor(), forState: .Normal)
         btnGaitousyo.layer.masksToBounds = true

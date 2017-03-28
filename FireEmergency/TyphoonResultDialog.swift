@@ -98,15 +98,15 @@ class TyphoonResultDialog {
             break
         //特別警報
         case 21:
-            text1.text="■特別警報\n\n１号招集\n\n\(mainStation)へ参集"
+            text1.text="■特別警報\n\n１号非常招集\n\n\(mainStation)へ参集"
             break
         //暴風（雪）警報
         case 22:
             //４号招集なので、１号、２号、３号は参集なしの判定する
             if kubun == "４号招集" {
-                text1.text="■暴風(雪)警報\n\n４号招集(非番・日勤)\n\n\(mainStation)へ参集　所属担当者に確認すること\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text="■暴風(雪)警報\n\n４号非常招集(非番・日勤)\n\n\(mainStation)へ参集　所属担当者に確認すること\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             } else {
-                text1.text="■暴風(雪)警報\n\n４号招集(非番・日勤)\n\n招集なし"
+                text1.text="■暴風(雪)警報\n\n４号非常招集(非番・日勤)\n\n招集なし"
             }
             break
         //大雨警報
@@ -171,34 +171,34 @@ class TyphoonResultDialog {
             break
         //
         case 31:
-            text1.text="■大津波警報\n\n１号招集\n\n\(tsunamiStation)へ参集"
+            text1.text="■大津波警報\n\n１号非常招集\n\n\(tsunamiStation)へ参集"
             break
         case 32:
             //３号招集なので、１号、２号は参集なしの判定する
             if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n招集なし"
+                text1.text="■津波警報\n\n３号非常招集(非番・日勤)\n\n招集なし"
             } else {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n\(tsunamiStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text="■津波警報\n\n３号非常招集(非番・日勤)\n\n\(tsunamiStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             }
             break
         case 33:
             //３号招集なので、１号、２号は参集なしの判定する
             if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■警報なし\n\n３号招集(非番・日勤)\n\n招集なし"
+                text1.text="■警報なし\n\n３号非常招集(非番・日勤)\n\n招集なし"
             } else {
-                text1.text="■警報なし\n\n３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text="■警報なし\n\n３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             }
             break
         //
         case 41:
-            text1.text="■大津波警報\n\n１号招集\n\n\(tsunamiStation)へ参集"
+            text1.text="■大津波警報\n\n１号非常招集\n\n\(tsunamiStation)へ参集"
             break
         case 42:
             //３号招集なので、１号、２号は参集なしの判定する
             if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n招集なし"
+                text1.text="■津波警報\n\n３号非常招集(非番・日勤)\n\n招集なし"
             } else {
-                text1.text="■津波警報\n\n３号招集(非番・日勤)\n\n\(tsunamiStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text="■津波警報\n\n３号非常招集(非番・日勤)\n\n\(tsunamiStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             }
             break
         case 43:
@@ -217,17 +217,17 @@ class TyphoonResultDialog {
         case 51:
             //３号招集なので、１号、２号は参集なしの判定する
             if kubun == "１号招集" || kubun == "２号招集" {
-                text1.text="■警戒宣言が発令されたとき（東海地震予知情報）\n\n３号招集(非番・日勤)\n\n招集なし"
+                text1.text="■警戒宣言が発令されたとき（東海地震予知情報）\n\n３号非常招集(非番・日勤)\n\n招集なし"
             } else {
-                text1.text="■警戒宣言が発令されたとき（東海地震予知情報）\n\n３号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text="■警戒宣言が発令されたとき（東海地震予知情報）\n\n３号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             }
             break
         case 52:
             //４号招集なので、１号、２号、３号は参集なしの判定する
             if kubun == "４号招集" {
-                text1.text="■東海地震注意報が発表されたとき\n\n４号招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
+                text1.text="■東海地震注意報が発表されたとき\n\n４号非常招集(非番・日勤)\n\n\(mainStation)へ参集\n\n※平日の9時～17時30分は、原則、勤務中の毎日勤務者で活動体制を確保する"
             } else {
-                text1.text="■東海地震注意報が発表されたとき\n\n４号招集(非番・日勤)\n\n招集なし"
+                text1.text="■東海地震注意報が発表されたとき\n\n４号非常招集(非番・日勤)\n\n招集なし"
             }
             break
         case 53:

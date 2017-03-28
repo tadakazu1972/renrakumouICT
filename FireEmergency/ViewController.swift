@@ -137,7 +137,7 @@ class ViewController: UIViewController {
         pad4.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad4)
         //非常召集基準（震災）
-        lblEarthquake.text = "非常召集基準（震災）"
+        lblEarthquake.text = "非常招集基準（震災）"
         lblEarthquake.textColor = UIColor.whiteColor()
         lblEarthquake.textAlignment = NSTextAlignment.Center
         lblEarthquake.translatesAutoresizingMaskIntoConstraints = false
@@ -182,7 +182,7 @@ class ViewController: UIViewController {
         //東海地震に伴う非常召集
         btnEarthquake5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake5.layer.masksToBounds = true
-        btnEarthquake5.setTitle("東海地震に伴う非常召集", forState: UIControlState.Normal)
+        btnEarthquake5.setTitle("東海地震に伴う非常招集", forState: UIControlState.Normal)
         btnEarthquake5.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         btnEarthquake5.tag=9
         btnEarthquake5.translatesAutoresizingMaskIntoConstraints = false
