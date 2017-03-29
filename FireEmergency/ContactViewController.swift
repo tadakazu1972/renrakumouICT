@@ -10,53 +10,53 @@ import UIKit
 
 class ContactViewController: UIViewController {
     //メイン画面
-    let btnData         = UIButton(frame: CGRectZero)
-    let btnEarthquake   = UIButton(frame: CGRectZero)
-    let btnTyphoon      = UIButton(frame: CGRectZero)
-    let btnKokuminhogo  = UIButton(frame: CGRectZero)
-    let btnKinentai     = UIButton(frame: CGRectZero)
-    let pad1            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
-    let pad2            = UIView(frame: CGRectZero)
-    let pad3            = UIView(frame: CGRectZero)
-    let pad4            = UIView(frame: CGRectZero)
-    let lblContact      = UILabel(frame: CGRectZero)
-    let btnContact1     = UIButton(frame: CGRectZero)
-    let btnContact2     = UIButton(frame: CGRectZero)
-    let btnContact3     = UIButton(frame: CGRectZero)
-    let btnContact4     = UIButton(frame: CGRectZero)
-    let btnContact5     = UIButton(frame: CGRectZero)
-    let padY1           = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
-    let padY2           = UIView(frame: CGRectZero)
-    let padY3           = UIView(frame: CGRectZero)
-    let padY4           = UIView(frame: CGRectZero)
-    let padY5           = UIView(frame: CGRectZero)
-    let padY6           = UIView(frame: CGRectZero)
-    let btnEarthquakeEarthquake = UIButton(frame: CGRectZero)
-    let btnEarthquakeBlackout   = UIButton(frame: CGRectZero)
-    let btnEarthquakeRoad       = UIButton(frame: CGRectZero)
-    let btnEarthquakeTel        = UIButton(frame: CGRectZero)
-    let btnEarthquakeCaution    = UIButton(frame: CGRectZero)
-    let btnEarthquakeBousaiNet  = UIButton(frame: CGRectZero)
-    let pad21            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
-    let pad22            = UIView(frame: CGRectZero)
-    let pad23            = UIView(frame: CGRectZero)
-    let pad31            = UIView(frame: CGRectZero) //ボタンの間にはさむ見えないpaddingがわり
-    let pad32            = UIView(frame: CGRectZero)
-    let pad33            = UIView(frame: CGRectZero)
+    let btnData         = UIButton(frame: CGRect.zero)
+    let btnEarthquake   = UIButton(frame: CGRect.zero)
+    let btnTyphoon      = UIButton(frame: CGRect.zero)
+    let btnKokuminhogo  = UIButton(frame: CGRect.zero)
+    let btnKinentai     = UIButton(frame: CGRect.zero)
+    let pad1            = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
+    let pad2            = UIView(frame: CGRect.zero)
+    let pad3            = UIView(frame: CGRect.zero)
+    let pad4            = UIView(frame: CGRect.zero)
+    let lblContact      = UILabel(frame: CGRect.zero)
+    let btnContact1     = UIButton(frame: CGRect.zero)
+    let btnContact2     = UIButton(frame: CGRect.zero)
+    let btnContact3     = UIButton(frame: CGRect.zero)
+    let btnContact4     = UIButton(frame: CGRect.zero)
+    let btnContact5     = UIButton(frame: CGRect.zero)
+    let padY1           = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
+    let padY2           = UIView(frame: CGRect.zero)
+    let padY3           = UIView(frame: CGRect.zero)
+    let padY4           = UIView(frame: CGRect.zero)
+    let padY5           = UIView(frame: CGRect.zero)
+    let padY6           = UIView(frame: CGRect.zero)
+    let btnEarthquakeEarthquake = UIButton(frame: CGRect.zero)
+    let btnEarthquakeBlackout   = UIButton(frame: CGRect.zero)
+    let btnEarthquakeRoad       = UIButton(frame: CGRect.zero)
+    let btnEarthquakeTel        = UIButton(frame: CGRect.zero)
+    let btnEarthquakeCaution    = UIButton(frame: CGRect.zero)
+    let btnEarthquakeBousaiNet  = UIButton(frame: CGRect.zero)
+    let pad21            = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
+    let pad22            = UIView(frame: CGRect.zero)
+    let pad23            = UIView(frame: CGRect.zero)
+    let pad31            = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
+    let pad32            = UIView(frame: CGRect.zero)
+    let pad33            = UIView(frame: CGRect.zero)
     //別クラスのインスタンス保持用変数
-    private var mInfoDialog: InfoDialog!
-    private var mBousainetDialog: BousainetDialog!
-    private var mEarthSelectDialog: EarthSelectDialog!
-    private var mContactLoadDialog: ContactLoadDialog!
-    private var mContactLoadDialog2: ContactLoadDialog2!
-    private var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
-    private var mContactDeleteDialog: ContactDeleteDialog!
-    private var mContactImportCSVDialog: ContactImportCSVDialog!
-    private var mPassInputDialog: ContactPassInputDialog!
+    fileprivate var mInfoDialog: InfoDialog!
+    fileprivate var mBousainetDialog: BousainetDialog!
+    fileprivate var mEarthSelectDialog: EarthSelectDialog!
+    fileprivate var mContactLoadDialog: ContactLoadDialog!
+    fileprivate var mContactLoadDialog2: ContactLoadDialog2!
+    fileprivate var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
+    fileprivate var mContactDeleteDialog: ContactDeleteDialog!
+    fileprivate var mContactImportCSVDialog: ContactImportCSVDialog!
+    fileprivate var mPassInputDialog: ContactPassInputDialog!
     //結果表示用クラス保持用
     internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let userDefaults = UserDefaults.standard
     //SQLite用
     internal var mDBHelper: DBHelper!
     
@@ -66,63 +66,63 @@ class ContactViewController: UIViewController {
         mDBHelper = DBHelper()
         
         //初回起動判定
-        if userDefaults.boolForKey("firstLaunch"){
+        if userDefaults.bool(forKey: "firstLaunch"){
             //初回起動時処理 一度も基礎データ入力されないorデータ入力画面でもスピナーをさわらない場合はセットされない=結果でnilが表示される　それを防止
-            userDefaults.setObject("消防局", forKey: "mainStation")
-            userDefaults.setObject("消防局", forKey: "tsunamiStation")
-            userDefaults.setObject("１号招集", forKey: "kubun")
+            userDefaults.set("消防局", forKey: "mainStation")
+            userDefaults.set("消防局", forKey: "tsunamiStation")
+            userDefaults.set("１号招集", forKey: "kubun")
             
             //２回目以降ではfalseに
-            userDefaults.setBool(false, forKey: "firstLaunch")
+            userDefaults.set(false, forKey: "firstLaunch")
         }
         
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //Button生成
         //基礎データ入力
-        btnData.backgroundColor = UIColor.blueColor()
+        btnData.backgroundColor = UIColor.blue
         btnData.layer.masksToBounds = true
-        btnData.setTitle("基礎データ入力", forState: UIControlState.Normal)
-        btnData.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        btnData.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnData.setTitle("基礎データ入力", for: UIControlState())
+        btnData.setTitleColor(UIColor.white, for: UIControlState())
+        btnData.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
-        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), forControlEvents: .TouchUpInside)
+        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), for: .touchUpInside)
         btnData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnData)
         //震災
         btnEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake.layer.masksToBounds = true
-        btnEarthquake.setTitle("震災", forState: UIControlState.Normal)
-        btnEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquake.setTitle("震災", for: UIControlState())
+        btnEarthquake.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquake.tag=1
         btnEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquake.addTarget(self, action: #selector(self.onClickbtnEarthquake(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquake.addTarget(self, action: #selector(self.onClickbtnEarthquake(_:)), for: .touchUpInside)
         self.view.addSubview(btnEarthquake)
         //風水害
         btnTyphoon.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnTyphoon.layer.masksToBounds = true
-        btnTyphoon.setTitle("風水害", forState: UIControlState.Normal)
-        btnTyphoon.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnTyphoon.setTitle("風水害", for: UIControlState())
+        btnTyphoon.setTitleColor(UIColor.black, for: UIControlState())
         btnTyphoon.tag=2
-        btnTyphoon.addTarget(self, action: #selector(self.onClickbtnTyphoon(_:)), forControlEvents: .TouchUpInside)
+        btnTyphoon.addTarget(self, action: #selector(self.onClickbtnTyphoon(_:)), for: .touchUpInside)
         btnTyphoon.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnTyphoon)
         //国民保護
         btnKokuminhogo.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKokuminhogo.layer.masksToBounds = true
-        btnKokuminhogo.setTitle("国民保", forState: UIControlState.Normal)
-        btnKokuminhogo.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKokuminhogo.setTitle("国民保", for: UIControlState())
+        btnKokuminhogo.setTitleColor(UIColor.black, for: UIControlState())
         btnKokuminhogo.tag=3
-        btnKokuminhogo.addTarget(self, action: #selector(self.onClickbtnKokuminhogo(_:)), forControlEvents: .TouchUpInside)
+        btnKokuminhogo.addTarget(self, action: #selector(self.onClickbtnKokuminhogo(_:)), for: .touchUpInside)
         btnKokuminhogo.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKokuminhogo)
         //緊援隊
         btnKinentai.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnKinentai.layer.masksToBounds = true
-        btnKinentai.setTitle("緊援隊", forState: UIControlState.Normal)
-        btnKinentai.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnKinentai.setTitle("緊援隊", for: UIControlState())
+        btnKinentai.setTitleColor(UIColor.black, for: UIControlState())
         btnKinentai.tag=4
-        btnKinentai.addTarget(self, action: #selector(self.onClickbtnKinentai(_:)), forControlEvents: .TouchUpInside)
+        btnKinentai.addTarget(self, action: #selector(self.onClickbtnKinentai(_:)), for: .touchUpInside)
         btnKinentai.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnKinentai)
         //pad
@@ -136,55 +136,55 @@ class ContactViewController: UIViewController {
         self.view.addSubview(pad4)
         //連絡網データ操作
         lblContact.text = "連絡網データ操作"
-        lblContact.textColor = UIColor.blackColor()
-        lblContact.textAlignment = NSTextAlignment.Center
+        lblContact.textColor = UIColor.black
+        lblContact.textAlignment = NSTextAlignment.center
         lblContact.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblContact)
         //一覧
         btnContact1.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnContact1.layer.masksToBounds = true
-        btnContact1.setTitle("一覧", forState: UIControlState.Normal)
-        btnContact1.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnContact1.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnContact1.setTitle("一覧", for: UIControlState())
+        btnContact1.setTitleColor(UIColor.black, for: UIControlState())
+        btnContact1.setTitleColor(UIColor.red, for: UIControlState.highlighted)
         btnContact1.tag=5
         btnContact1.translatesAutoresizingMaskIntoConstraints = false
-        btnContact1.addTarget(self, action: #selector(self.showSelectContact1(_:)), forControlEvents: .TouchUpInside)
+        btnContact1.addTarget(self, action: #selector(self.showSelectContact1(_:)), for: .touchUpInside)
         self.view.addSubview(btnContact1)
         //新規
         btnContact2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnContact2.layer.masksToBounds = true
-        btnContact2.setTitle("新規", forState: UIControlState.Normal)
-        btnContact2.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnContact2.setTitle("新規", for: UIControlState())
+        btnContact2.setTitleColor(UIColor.black, for: UIControlState())
         btnContact2.tag=6
         btnContact2.translatesAutoresizingMaskIntoConstraints = false
-        btnContact2.addTarget(self, action: #selector(self.showSelectContactNew(_:)), forControlEvents: .TouchUpInside)
+        btnContact2.addTarget(self, action: #selector(self.showSelectContactNew(_:)), for: .touchUpInside)
         self.view.addSubview(btnContact2)
         //修正
         btnContact3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnContact3.layer.masksToBounds = true
-        btnContact3.setTitle("修正", forState: UIControlState.Normal)
-        btnContact3.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnContact3.setTitle("修正", for: UIControlState())
+        btnContact3.setTitleColor(UIColor.black, for: UIControlState())
         btnContact3.tag=7
         btnContact3.translatesAutoresizingMaskIntoConstraints = false
-        btnContact3.addTarget(self, action: #selector(self.showSelectContactUpdate(_:)), forControlEvents: .TouchUpInside)
+        btnContact3.addTarget(self, action: #selector(self.showSelectContactUpdate(_:)), for: .touchUpInside)
         self.view.addSubview(btnContact3)
         //削除
         btnContact4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnContact4.layer.masksToBounds = true
-        btnContact4.setTitle("削除", forState: UIControlState.Normal)
-        btnContact4.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnContact4.setTitle("削除", for: UIControlState())
+        btnContact4.setTitleColor(UIColor.black, for: UIControlState())
         btnContact4.tag=8
         btnContact4.translatesAutoresizingMaskIntoConstraints = false
-        btnContact4.addTarget(self, action: #selector(self.showSelectContactDelete(_:)), forControlEvents: .TouchUpInside)
+        btnContact4.addTarget(self, action: #selector(self.showSelectContactDelete(_:)), for: .touchUpInside)
         self.view.addSubview(btnContact4)
         //CSVファイル読込
         btnContact5.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnContact5.layer.masksToBounds = true
-        btnContact5.setTitle("CSVファイル読込", forState: UIControlState.Normal)
-        btnContact5.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnContact5.setTitle("CSVファイル読込", for: UIControlState())
+        btnContact5.setTitleColor(UIColor.black, for: UIControlState())
         btnContact5.tag=9
         btnContact5.translatesAutoresizingMaskIntoConstraints = false
-        btnContact5.addTarget(self, action: #selector(self.showContactImportCSV(_:)), forControlEvents: .TouchUpInside)
+        btnContact5.addTarget(self, action: #selector(self.showContactImportCSV(_:)), for: .touchUpInside)
         self.view.addSubview(btnContact5)
         //垂直方向のpad
         padY1.translatesAutoresizingMaskIntoConstraints = false
@@ -202,60 +202,60 @@ class ContactViewController: UIViewController {
         //情報（地震）
         btnEarthquakeEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeEarthquake.layer.masksToBounds = true
-        btnEarthquakeEarthquake.setTitle("情報(地震)", forState: UIControlState.Normal)
-        btnEarthquakeEarthquake.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeEarthquake.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnEarthquakeEarthquake.setTitle("情報(地震)", for: UIControlState())
+        btnEarthquakeEarthquake.setTitleColor(UIColor.black, for: UIControlState())
+        btnEarthquakeEarthquake.setTitleColor(UIColor.red, for: UIControlState.highlighted)
         btnEarthquakeEarthquake.tag=10
         btnEarthquakeEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeEarthquake.addTarget(self, action: #selector(self.showInfoEarthquake(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeEarthquake.addTarget(self, action: #selector(self.showInfoEarthquake(_:)), for: .touchUpInside)
         self.view.addSubview(btnEarthquakeEarthquake)
         //情報（停電）
         btnEarthquakeBlackout.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeBlackout.layer.masksToBounds = true
-        btnEarthquakeBlackout.setTitle("情報(停電)", forState: UIControlState.Normal)
-        btnEarthquakeBlackout.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeBlackout.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnEarthquakeBlackout.setTitle("情報(停電)", for: UIControlState())
+        btnEarthquakeBlackout.setTitleColor(UIColor.black, for: UIControlState())
+        btnEarthquakeBlackout.setTitleColor(UIColor.red, for: UIControlState.highlighted)
         btnEarthquakeBlackout.tag=11
         btnEarthquakeBlackout.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeBlackout.addTarget(self, action: #selector(self.showInfoBlackout(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeBlackout.addTarget(self, action: #selector(self.showInfoBlackout(_:)), for: .touchUpInside)
         self.view.addSubview(btnEarthquakeBlackout)
         //情報（道路）
         btnEarthquakeRoad.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeRoad.layer.masksToBounds = true
-        btnEarthquakeRoad.setTitle("情報(道路)", forState: UIControlState.Normal)
-        btnEarthquakeRoad.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeRoad.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnEarthquakeRoad.setTitle("情報(道路)", for: UIControlState())
+        btnEarthquakeRoad.setTitleColor(UIColor.black, for: UIControlState())
+        btnEarthquakeRoad.setTitleColor(UIColor.red, for: UIControlState.highlighted)
         btnEarthquakeRoad.tag=12
         btnEarthquakeRoad.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeRoad.addTarget(self, action: #selector(self.showInfoRoad(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeRoad.addTarget(self, action: #selector(self.showInfoRoad(_:)), for: .touchUpInside)
         self.view.addSubview(btnEarthquakeRoad)
         //連絡網
         btnEarthquakeTel.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeTel.layer.masksToBounds = true
-        btnEarthquakeTel.setTitle("連絡網", forState: UIControlState.Normal)
-        btnEarthquakeTel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquakeTel.setTitle("連絡網", for: UIControlState())
+        btnEarthquakeTel.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquakeTel.tag=13
         btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeTel.addTarget(self, action: #selector(self.showContactLoad(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeTel.addTarget(self, action: #selector(self.showContactLoad(_:)), for: .touchUpInside)
         self.view.addSubview(btnEarthquakeTel)
         //留意事項
         btnEarthquakeCaution.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeCaution.layer.masksToBounds = true
-        btnEarthquakeCaution.setTitle("留意事項", forState: UIControlState.Normal)
-        btnEarthquakeCaution.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnEarthquakeCaution.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnEarthquakeCaution.setTitle("留意事項", for: UIControlState())
+        btnEarthquakeCaution.setTitleColor(UIColor.black, for: UIControlState())
+        btnEarthquakeCaution.setTitleColor(UIColor.red, for: UIControlState.highlighted)
         btnEarthquakeCaution.tag=14
         btnEarthquakeCaution.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeCaution.addTarget(self, action: #selector(self.showInfoCaution(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeCaution.addTarget(self, action: #selector(self.showInfoCaution(_:)), for: .touchUpInside)
         self.view.addSubview(btnEarthquakeCaution)
         //防災ネット
         btnEarthquakeBousaiNet.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeBousaiNet.layer.masksToBounds = true
-        btnEarthquakeBousaiNet.setTitle("防災ネット", forState: UIControlState.Normal)
-        btnEarthquakeBousaiNet.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        btnEarthquakeBousaiNet.setTitle("防災ネット", for: UIControlState())
+        btnEarthquakeBousaiNet.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquakeBousaiNet.tag=15
         btnEarthquakeBousaiNet.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquakeBousaiNet.addTarget(self, action: #selector(self.showInfoBousainet(_:)), forControlEvents: .TouchUpInside)
+        btnEarthquakeBousaiNet.addTarget(self, action: #selector(self.showInfoBousainet(_:)), for: .touchUpInside)
         self.view.addSubview(btnEarthquakeBousaiNet)
         //pad
         pad21.translatesAutoresizingMaskIntoConstraints = false
@@ -278,11 +278,11 @@ class ContactViewController: UIViewController {
         mPassInputDialog = ContactPassInputDialog(parentView: self)
         
         //passCheckをfalseで初期化
-        userDefaults.setBool(false, forKey: "passCheck")
+        userDefaults.set(false, forKey: "passCheck")
     }
     
     //制約ひな型
-    func Constraint(item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .Equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    func Constraint(_ item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
         let ret = NSLayoutConstraint(
             item:       item,
             attribute:  attr,
@@ -300,214 +300,214 @@ class ContactViewController: UIViewController {
         //制約
         self.view.addConstraints([
             //基礎データ入力ボタン
-            Constraint(btnData, .Top, to:self.view, .Top, constant:20),
-            Constraint(btnData, .Leading, to:self.view, .Leading, constant:8),
-            Constraint(btnData, .Trailing, to:self.view, .TrailingMargin, constant:8)
+            Constraint(btnData, .top, to:self.view, .top, constant:20),
+            Constraint(btnData, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnData, .trailing, to:self.view, .trailingMargin, constant:8)
             ])
         self.view.addConstraints([
             //pad1
-            Constraint(pad1, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(pad1, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(pad1, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad1, .top, to:btnData, .bottom, constant:8),
+            Constraint(pad1, .leading, to:self.view, .leading, constant:0),
+            Constraint(pad1, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //震災ボタン
-            Constraint(btnEarthquake, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(btnEarthquake, .Leading, to:pad1, .Trailing, constant:0),
-            Constraint(btnEarthquake, .Width, to:self.view, .Width, multiplier:0.22, constant:0)
+            Constraint(btnEarthquake, .top, to:btnData, .bottom, constant:8),
+            Constraint(btnEarthquake, .leading, to:pad1, .trailing, constant:0),
+            Constraint(btnEarthquake, .width, to:self.view, .width, constant:0, multiplier:0.22)
             ])
         self.view.addConstraints([
             //pad2
-            Constraint(pad2, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(pad2, .Leading, to:btnEarthquake, .Trailing, constant:0),
-            Constraint(pad2, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad2, .top, to:btnData, .bottom, constant:8),
+            Constraint(pad2, .leading, to:btnEarthquake, .trailing, constant:0),
+            Constraint(pad2, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //風水害ボタン
-            Constraint(btnTyphoon, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(btnTyphoon, .Leading, to:pad2, .Trailing, constant:0),
-            Constraint(btnTyphoon, .Width, to:btnEarthquake, .Width, constant:0)
+            Constraint(btnTyphoon, .top, to:btnData, .bottom, constant:8),
+            Constraint(btnTyphoon, .leading, to:pad2, .trailing, constant:0),
+            Constraint(btnTyphoon, .width, to:btnEarthquake, .width, constant:0)
             ])
         self.view.addConstraints([
             //pad3
-            Constraint(pad3, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(pad3, .Leading, to:btnTyphoon, .Trailing, constant:0),
-            Constraint(pad3, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad3, .top, to:btnData, .bottom, constant:8),
+            Constraint(pad3, .leading, to:btnTyphoon, .trailing, constant:0),
+            Constraint(pad3, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //国民保護ボタン
-            Constraint(btnKokuminhogo, .Top, to:btnData, .Bottom ,constant:8),
-            Constraint(btnKokuminhogo, .Leading, to:pad3, .Trailing, constant:0),
-            Constraint(btnKokuminhogo, .Width, to:btnEarthquake, .Width, constant:0)
+            Constraint(btnKokuminhogo, .top, to:btnData, .bottom ,constant:8),
+            Constraint(btnKokuminhogo, .leading, to:pad3, .trailing, constant:0),
+            Constraint(btnKokuminhogo, .width, to:btnEarthquake, .width, constant:0)
             ])
         self.view.addConstraints([
             //pad4
-            Constraint(pad4, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(pad4, .Leading, to:btnKokuminhogo, .Trailing, constant:0),
-            Constraint(pad4, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad4, .top, to:btnData, .bottom, constant:8),
+            Constraint(pad4, .leading, to:btnKokuminhogo, .trailing, constant:0),
+            Constraint(pad4, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //緊援隊ボタン
-            Constraint(btnKinentai, .Top, to:btnData, .Bottom, constant:8),
-            Constraint(btnKinentai, .Leading, to:pad4, .Trailing, constant:0),
-            Constraint(btnKinentai, .Width, to:btnEarthquake, .Width, constant:0)
+            Constraint(btnKinentai, .top, to:btnData, .bottom, constant:8),
+            Constraint(btnKinentai, .leading, to:pad4, .trailing, constant:0),
+            Constraint(btnKinentai, .width, to:btnEarthquake, .width, constant:0)
             ])
         self.view.addConstraints([
             //padY1
-            Constraint(padY1, .Top, to:btnEarthquake, .Bottom, constant:0),
-            Constraint(padY1, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(padY1, .Height, to:self.view, .Height, multiplier:0.05, constant:0)
+            Constraint(padY1, .top, to:btnEarthquake, .bottom, constant:0),
+            Constraint(padY1, .leading, to:self.view, .leading, constant:0),
+            Constraint(padY1, .height, to:self.view, .height, constant:0, multiplier:0.05)
             ])
         self.view.addConstraints([
             //連絡網データ操作ラベル
-            Constraint(lblContact, .Bottom, to:padY2, .Top, constant:8),
-            Constraint(lblContact, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(lblContact, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblContact, .bottom, to:padY2, .top, constant:8),
+            Constraint(lblContact, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(lblContact, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //padY2
-            Constraint(padY2, .Bottom, to:btnContact1, .Top, constant:0),
-            Constraint(padY2, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(padY2, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
+            Constraint(padY2, .bottom, to:btnContact1, .top, constant:0),
+            Constraint(padY2, .leading, to:self.view, .leading, constant:0),
+            Constraint(padY2, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
             //一覧ボタン
-            Constraint(btnContact1, .Bottom, to:padY3, .Top, constant:0),
-            Constraint(btnContact1, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnContact1, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(btnContact1, .bottom, to:padY3, .top, constant:0),
+            Constraint(btnContact1, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact1, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //padY3
-            Constraint(padY3, .Bottom, to:btnContact2, .Top, constant:0),
-            Constraint(padY3, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(padY3, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
+            Constraint(padY3, .bottom, to:btnContact2, .top, constant:0),
+            Constraint(padY3, .leading, to:self.view, .leading, constant:0),
+            Constraint(padY3, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
             //新規ボタン
-            Constraint(btnContact2, .Bottom, to:padY4, .Top, constant:0),
-            Constraint(btnContact2, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnContact2, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(btnContact2, .bottom, to:padY4, .top, constant:0),
+            Constraint(btnContact2, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact2, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //padY4
-            Constraint(padY4, .Bottom, to:btnContact3, .Top, constant:0),
-            Constraint(padY4, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(padY4, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
+            Constraint(padY4, .bottom, to:btnContact3, .top, constant:0),
+            Constraint(padY4, .leading, to:self.view, .leading, constant:0),
+            Constraint(padY4, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
             //修正ボタン Y座標の中心
-            Constraint(btnContact3, .CenterY, to:self.view, .CenterY, constant:0),
-            Constraint(btnContact3, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnContact3, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(btnContact3, .centerY, to:self.view, .centerY, constant:0),
+            Constraint(btnContact3, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact3, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //padY5
-            Constraint(padY5, .Top, to:btnContact3, .Bottom, constant:0),
-            Constraint(padY5, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(padY5, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
+            Constraint(padY5, .top, to:btnContact3, .bottom, constant:0),
+            Constraint(padY5, .leading, to:self.view, .leading, constant:0),
+            Constraint(padY5, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
             //削除ボタン
-            Constraint(btnContact4, .Top, to:padY5, .Bottom, constant:0),
-            Constraint(btnContact4, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnContact4, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(btnContact4, .top, to:padY5, .bottom, constant:0),
+            Constraint(btnContact4, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact4, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //padY6
-            Constraint(padY6, .Top, to:btnContact4, .Bottom, constant:0),
-            Constraint(padY6, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(padY6, .Height, to:self.view, .Height, multiplier:0.03, constant:0)
+            Constraint(padY6, .top, to:btnContact4, .bottom, constant:0),
+            Constraint(padY6, .leading, to:self.view, .leading, constant:0),
+            Constraint(padY6, .height, to:self.view, .height, constant:0, multiplier:0.03)
             ])
         self.view.addConstraints([
             //CSVファイル読込ボタン
-            Constraint(btnContact5, .Top, to:padY6, .Bottom, constant:0),
-            Constraint(btnContact5, .CenterX, to:self.view, .CenterX, constant:8),
-            Constraint(btnContact5, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(btnContact5, .top, to:padY6, .bottom, constant:0),
+            Constraint(btnContact5, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact5, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //pad21
-            Constraint(pad21, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad21, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(pad21, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad21, .bottom, to:btnEarthquakeTel, .top, constant:-8),
+            Constraint(pad21, .leading, to:self.view, .leading, constant:0),
+            Constraint(pad21, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //情報(地震)ボタン
-            Constraint(btnEarthquakeEarthquake, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(btnEarthquakeEarthquake, .Leading, to:pad21, .Trailing, constant:0),
-            Constraint(btnEarthquakeEarthquake, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
+            Constraint(btnEarthquakeEarthquake, .bottom, to:btnEarthquakeTel, .top, constant:-8),
+            Constraint(btnEarthquakeEarthquake, .leading, to:pad21, .trailing, constant:0),
+            Constraint(btnEarthquakeEarthquake, .width, to:self.view, .width, constant:0, multiplier:0.3)
             ])
         self.view.addConstraints([
             //pad22
-            Constraint(pad22, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad22, .Leading, to:btnEarthquakeEarthquake, .Trailing, constant:0),
-            Constraint(pad22, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad22, .bottom, to:btnEarthquakeTel, .top, constant:-8),
+            Constraint(pad22, .leading, to:btnEarthquakeEarthquake, .trailing, constant:0),
+            Constraint(pad22, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //情報(停電)ボタン
-            Constraint(btnEarthquakeBlackout, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(btnEarthquakeBlackout, .Leading, to:pad22, .Trailing, constant:0),
-            Constraint(btnEarthquakeBlackout, .Width, to:btnEarthquakeEarthquake, .Width, constant:0)
+            Constraint(btnEarthquakeBlackout, .bottom, to:btnEarthquakeTel, .top, constant:-8),
+            Constraint(btnEarthquakeBlackout, .leading, to:pad22, .trailing, constant:0),
+            Constraint(btnEarthquakeBlackout, .width, to:btnEarthquakeEarthquake, .width, constant:0)
             ])
         self.view.addConstraints([
             //pad23
-            Constraint(pad23, .Bottom, to:btnEarthquakeTel, .Top, constant:-8),
-            Constraint(pad23, .Leading, to:btnEarthquakeBlackout, .Trailing, constant:0),
-            Constraint(pad23, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad23, .bottom, to:btnEarthquakeTel, .top, constant:-8),
+            Constraint(pad23, .leading, to:btnEarthquakeBlackout, .trailing, constant:0),
+            Constraint(pad23, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //情報(道路)ボタン
-            Constraint(btnEarthquakeRoad, .Bottom, to:btnEarthquakeTel, .Top ,constant:-8),
-            Constraint(btnEarthquakeRoad, .Leading, to:pad23, .Trailing, constant:0),
-            Constraint(btnEarthquakeRoad, .Width, to:btnEarthquakeEarthquake, .Width, constant:0)
+            Constraint(btnEarthquakeRoad, .bottom, to:btnEarthquakeTel, .top ,constant:-8),
+            Constraint(btnEarthquakeRoad, .leading, to:pad23, .trailing, constant:0),
+            Constraint(btnEarthquakeRoad, .width, to:btnEarthquakeEarthquake, .width, constant:0)
             ])
         self.view.addConstraints([
             //pad31
-            Constraint(pad31, .Top, to:btnEarthquakeEarthquake, .Bottom, constant:8),
-            Constraint(pad31, .Leading, to:self.view, .Leading, constant:0),
-            Constraint(pad31, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad31, .top, to:btnEarthquakeEarthquake, .bottom, constant:8),
+            Constraint(pad31, .leading, to:self.view, .leading, constant:0),
+            Constraint(pad31, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //連絡網ボタン
-            Constraint(btnEarthquakeTel, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(btnEarthquakeTel, .Leading, to:pad31, .Trailing, constant:0),
-            Constraint(btnEarthquakeTel, .Width, to:self.view, .Width, multiplier:0.3, constant:0)
+            Constraint(btnEarthquakeTel, .bottom, to:self.view, .bottom, constant:-8),
+            Constraint(btnEarthquakeTel, .leading, to:pad31, .trailing, constant:0),
+            Constraint(btnEarthquakeTel, .width, to:self.view, .width, constant:0, multiplier:0.3)
             ])
         self.view.addConstraints([
             //pad32
-            Constraint(pad32, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(pad32, .Leading, to:btnEarthquakeTel, .Trailing, constant:0),
-            Constraint(pad32, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad32, .bottom, to:self.view, .bottom, constant:-8),
+            Constraint(pad32, .leading, to:btnEarthquakeTel, .trailing, constant:0),
+            Constraint(pad32, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //留意事項ボタン
-            Constraint(btnEarthquakeCaution, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(btnEarthquakeCaution, .Leading, to:pad32, .Trailing, constant:0),
-            Constraint(btnEarthquakeCaution, .Width, to:btnEarthquakeTel, .Width, constant:0)
+            Constraint(btnEarthquakeCaution, .bottom, to:self.view, .bottom, constant:-8),
+            Constraint(btnEarthquakeCaution, .leading, to:pad32, .trailing, constant:0),
+            Constraint(btnEarthquakeCaution, .width, to:btnEarthquakeTel, .width, constant:0)
             ])
         self.view.addConstraints([
             //pad33
-            Constraint(pad33, .Bottom, to:self.view, .Bottom, constant:-8),
-            Constraint(pad33, .Leading, to:btnEarthquakeCaution, .Trailing, constant:0),
-            Constraint(pad33, .Width, to:self.view, .Width, multiplier:0.024, constant:0)
+            Constraint(pad33, .bottom, to:self.view, .bottom, constant:-8),
+            Constraint(pad33, .leading, to:btnEarthquakeCaution, .trailing, constant:0),
+            Constraint(pad33, .width, to:self.view, .width, constant:0, multiplier:0.024)
             ])
         self.view.addConstraints([
             //防災ネットボタン
-            Constraint(btnEarthquakeBousaiNet, .Bottom, to:self.view, .Bottom ,constant:-8),
-            Constraint(btnEarthquakeBousaiNet, .Leading, to:pad33, .Trailing, constant:0),
-            Constraint(btnEarthquakeBousaiNet, .Width, to:btnEarthquakeTel, .Width, constant:0)
+            Constraint(btnEarthquakeBousaiNet, .bottom, to:self.view, .bottom ,constant:-8),
+            Constraint(btnEarthquakeBousaiNet, .leading, to:pad33, .trailing, constant:0),
+            Constraint(btnEarthquakeBousaiNet, .width, to:btnEarthquakeTel, .width, constant:0)
             ])
     }
     
     //一覧
-    func showSelectContact1(sender: UIButton){
+    func showSelectContact1(_ sender: UIButton){
         //初期設定のままだと設定画面に遷移
-        if userDefaults.stringForKey("password") == "nil" {
+        if userDefaults.string(forKey: "password") == "nil" {
             //PasViewController呼び出し
             let data:PassViewController = PassViewController()
             let nav = UINavigationController(rootViewController: data)
             nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.presentViewController(nav, animated: true, completion: nil)
-        } else if !userDefaults.boolForKey("passCheck"){
+            self.present(nav, animated: true, completion: nil)
+        } else if !userDefaults.bool(forKey: "passCheck"){
             //パスワードチェック呼び出し
             mPassInputDialog.showResult(0)
         } else {
@@ -518,23 +518,23 @@ class ContactViewController: UIViewController {
     }
     
     //新規
-    func showSelectContactNew(sender: UIButton){
+    func showSelectContactNew(_ sender: UIButton){
         let data:ContactNewViewController = ContactNewViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     //修正
-    func showSelectContactUpdate(sender: UIButton){
+    func showSelectContactUpdate(_ sender: UIButton){
         //初期設定のままだと設定画面に遷移
-        if userDefaults.stringForKey("password") == "nil" {
+        if userDefaults.string(forKey: "password") == "nil" {
             //PasViewController呼び出し
             let data:PassViewController = PassViewController()
             let nav = UINavigationController(rootViewController: data)
             nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.presentViewController(nav, animated: true, completion: nil)
-        } else if !userDefaults.boolForKey("passCheck"){
+            self.present(nav, animated: true, completion: nil)
+        } else if !userDefaults.bool(forKey: "passCheck"){
             //パスワードチェック呼び出し
             mPassInputDialog.showResult(2)
         } else {
@@ -545,15 +545,15 @@ class ContactViewController: UIViewController {
     }
     
     //削除
-    func showSelectContactDelete(sender: UIButton){
+    func showSelectContactDelete(_ sender: UIButton){
         //初期設定のままだと設定画面に遷移
-        if userDefaults.stringForKey("password") == "nil" {
+        if userDefaults.string(forKey: "password") == "nil" {
             //PasViewController呼び出し
             let data:PassViewController = PassViewController()
             let nav = UINavigationController(rootViewController: data)
             nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.presentViewController(nav, animated: true, completion: nil)
-        } else if !userDefaults.boolForKey("passCheck"){
+            self.present(nav, animated: true, completion: nil)
+        } else if !userDefaults.bool(forKey: "passCheck"){
             //パスワードチェック呼び出し
             mPassInputDialog.showResult(3)
         } else {
@@ -564,36 +564,36 @@ class ContactViewController: UIViewController {
     }
     
     //CSVファイル読込
-    func showContactImportCSV(sender: UIButton){
+    func showContactImportCSV(_ sender: UIButton){
         mContactImportCSVDialog = ContactImportCSVDialog(parentView: self)
         mContactImportCSVDialog.showResult()
     }
     
     //情報(地震)
-    func showInfoEarthquake(sender: UIButton){
+    func showInfoEarthquake(_ sender: UIButton){
         mInfoDialog.showInfo("earthquake")
     }
     
     //情報（停電）
-    func showInfoBlackout(sender: UIButton){
+    func showInfoBlackout(_ sender: UIButton){
         mInfoDialog.showInfo("blackout")
     }
     
     //情報（道路）
-    func showInfoRoad(sender: UIButton){
+    func showInfoRoad(_ sender: UIButton){
         mInfoDialog.showInfo("road")
     }
     
     //連絡網
-    func showContactLoad(sender: UIButton){
+    func showContactLoad(_ sender: UIButton){
         //初期設定のままだと設定画面に遷移
-        if userDefaults.stringForKey("password") == "nil" {
+        if userDefaults.string(forKey: "password") == "nil" {
             //PasViewController呼び出し
             let data:PassViewController = PassViewController()
             let nav = UINavigationController(rootViewController: data)
             nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.presentViewController(nav, animated: true, completion: nil)
-        } else if !userDefaults.boolForKey("passCheck"){
+            self.present(nav, animated: true, completion: nil)
+        } else if !userDefaults.bool(forKey: "passCheck"){
             //パスワードチェック呼び出し
             mPassInputDialog.showResult(0)
         } else {
@@ -601,58 +601,58 @@ class ContactViewController: UIViewController {
             let data:ContactSearchViewController = ContactSearchViewController()
             let nav = UINavigationController(rootViewController: data)
             nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.presentViewController(nav, animated: true, completion: nil)
+            self.present(nav, animated: true, completion: nil)
         }
     }
     
     //留意事項
-    func showInfoCaution(sender: UIButton){
+    func showInfoCaution(_ sender: UIButton){
         mInfoDialog.showInfo("caution")
     }
     
     //防災ネット
-    func showInfoBousainet(sender: UIButton){
+    func showInfoBousainet(_ sender: UIButton){
         mBousainetDialog.showInfo()
     }
     
     //基礎データ入力画面遷移
-    func onClickbtnData(sender : UIButton){
+    func onClickbtnData(_ sender : UIButton){
         let data:DataViewController = DataViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     //震災画面遷移
-    func onClickbtnEarthquake(sender : UIButton){
+    func onClickbtnEarthquake(_ sender : UIButton){
         let data:ViewController = ViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     //風水害画面遷移
-    func onClickbtnTyphoon(sender : UIButton){
+    func onClickbtnTyphoon(_ sender : UIButton){
         let data:TyphoonViewController = TyphoonViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     //国民保護画面遷移
-    func onClickbtnKokuminhogo(sender : UIButton){
+    func onClickbtnKokuminhogo(_ sender : UIButton){
         let data:KokuminhogoViewController = KokuminhogoViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     //緊援隊画面遷移
-    func onClickbtnKinentai(sender : UIButton){
+    func onClickbtnKinentai(_ sender : UIButton){
         let data:KinentaiViewController = KinentaiViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

@@ -10,21 +10,21 @@ import UIKit
 
 class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     //メイン画面
-    let lblData         = UILabel(frame: CGRectZero)
-    let txtName         = UITextField(frame: CGRectZero)
-    let txtTel          = UITextField(frame: CGRectZero)
-    let txtMail         = UITextField(frame: CGRectZero)
-    let lblKubun        = UILabel(frame: CGRectZero)
-    let txtKubun        = UITextField(frame: CGRectZero)
-    let picKubun        = UIPickerView(frame: CGRectZero)
+    let lblData         = UILabel(frame: CGRect.zero)
+    let txtName         = UITextField(frame: CGRect.zero)
+    let txtTel          = UITextField(frame: CGRect.zero)
+    let txtMail         = UITextField(frame: CGRect.zero)
+    let lblKubun        = UILabel(frame: CGRect.zero)
+    let txtKubun        = UITextField(frame: CGRect.zero)
+    let picKubun        = UIPickerView(frame: CGRect.zero)
     let kubunArray: NSArray = ["１号招集","２号招集","３号招集","４号招集"]
-    let lblSyozoku0     = UILabel(frame: CGRectZero)
-    let txtSyozoku0     = UITextField(frame: CGRectZero)
-    let picSyozoku0     = UIPickerView(frame: CGRectZero)
+    let lblSyozoku0     = UILabel(frame: CGRect.zero)
+    let txtSyozoku0     = UITextField(frame: CGRect.zero)
+    let picSyozoku0     = UIPickerView(frame: CGRect.zero)
     let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
-    let lblSyozoku      = UILabel(frame: CGRectZero)
-    let txtSyozoku      = UITextField(frame: CGRectZero)
-    let picSyozoku      = UIPickerView(frame: CGRectZero)
+    let lblSyozoku      = UILabel(frame: CGRect.zero)
+    let txtSyozoku      = UITextField(frame: CGRect.zero)
+    let picSyozoku      = UIPickerView(frame: CGRect.zero)
     let syozokuArray: NSArray = [["総務課","人事課","施設課","予防課","規制課","警防課","司令課","救急課"],
                                  ["北本署","梅田","浮田","南森町","与力","大淀町","本庄"],
                                  ["都島本署","高倉","東野田"],
@@ -52,20 +52,20 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
                                  ["西成本署","海道","津守"],
                                  ["水上"],
                                  ["教育訓練センター"]]
-    let lblKinmu        = UILabel(frame: CGRectZero)
-    let txtKinmu        = UITextField(frame: CGRectZero)
-    let picKinmu        = UIPickerView(frame: CGRectZero)
+    let lblKinmu        = UILabel(frame: CGRect.zero)
+    let txtKinmu        = UITextField(frame: CGRect.zero)
+    let picKinmu        = UIPickerView(frame: CGRect.zero)
     let kinmuArray: NSArray = ["日勤","１部","２部"]
-    let btnSave         = UIButton(frame: CGRectZero)
-    let btnCancel       = UIButton(frame: CGRectZero)
+    let btnSave         = UIButton(frame: CGRect.zero)
+    let btnCancel       = UIButton(frame: CGRect.zero)
     //別クラスのインスタンス保持用変数
-    private var mInfoDialog: InfoDialog!
+    fileprivate var mInfoDialog: InfoDialog!
     //所属(大分類)のインデックス保存用
-    private var syozoku0Index : Int = 0
+    fileprivate var syozoku0Index : Int = 0
     //SQLite用
     internal var mDBHelper: DBHelper!
     //ContactUpdateSelectDialogから送られてくる各テキストフィールドに放り込むデータ保存用
-    private var mSelected: [String] = []
+    fileprivate var mSelected: [String] = []
     
     init(selected: [String]) {
         super.init(nibName: nil, bundle: nil)
@@ -86,49 +86,49 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         //データ修正ラベル
         lblData.text = "データ修正"
         lblData.adjustsFontSizeToFitWidth = true
-        lblData.textColor = UIColor.blackColor()
-        lblData.textAlignment = NSTextAlignment.Left
+        lblData.textColor = UIColor.black
+        lblData.textAlignment = NSTextAlignment.left
         lblData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblData)
         //名前テキストフィールド
         txtName.text = mSelected[0]
         txtName.adjustsFontSizeToFitWidth = true
-        txtName.textColor = UIColor.blackColor()
+        txtName.textColor = UIColor.black
         txtName.delegate = self
-        txtName.borderStyle = UITextBorderStyle.Bezel
+        txtName.borderStyle = UITextBorderStyle.bezel
         txtName.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtName)
         //電話番号テキストフィールド
         txtTel.text = mSelected[1]
         txtTel.adjustsFontSizeToFitWidth = true
-        txtTel.textColor = UIColor.blackColor()
+        txtTel.textColor = UIColor.black
         txtTel.delegate = self
-        txtTel.borderStyle = UITextBorderStyle.Bezel
+        txtTel.borderStyle = UITextBorderStyle.bezel
         txtTel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtTel)
         //メールアドレステキストフィールド
         txtMail.text = mSelected[2]
         txtMail.adjustsFontSizeToFitWidth = true
-        txtMail.textColor = UIColor.blackColor()
+        txtMail.textColor = UIColor.black
         txtMail.delegate = self
-        txtMail.borderStyle = UITextBorderStyle.Bezel
+        txtMail.borderStyle = UITextBorderStyle.bezel
         txtMail.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtMail)
         
         //pickerViewとともにポップアップするツールバーとボタンの設定
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
-        let doneItem = UIBarButtonItem(title:"選択", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.selectRow))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil) //小ワザ。上の選択ボタンを右寄せにするためのダミースペース
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 35))
+        let doneItem = UIBarButtonItem(title:"選択", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.selectRow))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil) //小ワザ。上の選択ボタンを右寄せにするためのダミースペース
         toolbar.setItems([flexibleSpace, doneItem], animated: true)
         
         //非常招集区分ラベル
         lblKubun.text = "■非常招集区分"
         lblKubun.adjustsFontSizeToFitWidth = true
-        lblKubun.textAlignment = NSTextAlignment.Left
+        lblKubun.textAlignment = NSTextAlignment.left
         lblKubun.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblKubun)
         //非常招集区分テキストフィールド
-        txtKubun.borderStyle = UITextBorderStyle.Bezel
+        txtKubun.borderStyle = UITextBorderStyle.bezel
         txtKubun.text = mSelected[3]
         txtKubun.inputView = picKubun //これでテキストフィールドとピッカービューを紐付け
         txtKubun.inputAccessoryView = toolbar //上で設定したポップアップと紐付け
@@ -144,11 +144,11 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         //所属(大分類)ラベル
         lblSyozoku0.text = "■所属(大分類)"
         lblSyozoku0.adjustsFontSizeToFitWidth = true
-        lblSyozoku0.textAlignment = NSTextAlignment.Left
+        lblSyozoku0.textAlignment = NSTextAlignment.left
         lblSyozoku0.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblSyozoku0)
         //所属(大分類)テキストフィールド
-        txtSyozoku0.borderStyle = UITextBorderStyle.Bezel
+        txtSyozoku0.borderStyle = UITextBorderStyle.bezel
         txtSyozoku0.text = mSelected[4]
         txtSyozoku0.inputView = picSyozoku0
         txtSyozoku0.inputAccessoryView = toolbar
@@ -164,11 +164,11 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         //所属(小分類)ラベル
         lblSyozoku.text = "■所属(小分類)"
         lblSyozoku.adjustsFontSizeToFitWidth = true
-        lblSyozoku.textAlignment = NSTextAlignment.Left
+        lblSyozoku.textAlignment = NSTextAlignment.left
         lblSyozoku.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblSyozoku)
         //所属(小分類)テキストフィールド
-        txtSyozoku.borderStyle = UITextBorderStyle.Bezel
+        txtSyozoku.borderStyle = UITextBorderStyle.bezel
         txtSyozoku.text = mSelected[5]
         txtSyozoku.inputView = picSyozoku
         txtSyozoku.inputAccessoryView = toolbar
@@ -184,11 +184,11 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         //勤務区分ラベル
         lblKinmu.text = "■勤務区分"
         lblKinmu.adjustsFontSizeToFitWidth = true
-        lblKinmu.textAlignment = NSTextAlignment.Left
+        lblKinmu.textAlignment = NSTextAlignment.left
         lblKinmu.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblKinmu)
         //勤務区分テキストフィールド
-        txtKinmu.borderStyle = UITextBorderStyle.Bezel
+        txtKinmu.borderStyle = UITextBorderStyle.bezel
         txtKinmu.text = mSelected[6]
         txtKinmu.inputView = picKinmu
         txtKinmu.inputAccessoryView = toolbar
@@ -202,25 +202,25 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         picKinmu.selectRow(0, inComponent:0, animated:false)
         
         //キャンセルボタン
-        btnCancel.backgroundColor = UIColor.blueColor()
+        btnCancel.backgroundColor = UIColor.blue
         btnCancel.layer.masksToBounds = true
-        btnCancel.setTitle("キャンセル", forState: UIControlState.Normal)
-        btnCancel.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        btnCancel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnCancel.setTitle("キャンセル", for: UIControlState())
+        btnCancel.setTitleColor(UIColor.white, for: UIControlState())
+        btnCancel.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnCancel.layer.cornerRadius = 8.0
         btnCancel.tag = 2
-        btnCancel.addTarget(self, action: #selector(self.onClickbtnCancel(_:)), forControlEvents: .TouchUpInside)
+        btnCancel.addTarget(self, action: #selector(self.onClickbtnCancel(_:)), for: .touchUpInside)
         btnCancel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnCancel)
         //データ登録ボタン
-        btnSave.backgroundColor = UIColor.redColor()
+        btnSave.backgroundColor = UIColor.red
         btnSave.layer.masksToBounds = true
-        btnSave.setTitle("登録", forState: UIControlState.Normal)
-        btnSave.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        btnSave.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnSave.setTitle("登録", for: UIControlState())
+        btnSave.setTitleColor(UIColor.white, for: UIControlState())
+        btnSave.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnSave.layer.cornerRadius = 8.0
         btnSave.tag = 1
-        btnSave.addTarget(self, action: #selector(self.onClickbtnSave(_:)), forControlEvents: .TouchUpInside)
+        btnSave.addTarget(self, action: #selector(self.onClickbtnSave(_:)), for: .touchUpInside)
         btnSave.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnSave)
         
@@ -229,7 +229,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //制約ひな型
-    func Constraint(item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .Equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    func Constraint(_ item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
         let ret = NSLayoutConstraint(
             item:       item,
             attribute:  attr,
@@ -247,97 +247,97 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         //制約
         self.view.addConstraints([
             //新規データ入力ラベル
-            Constraint(lblData, .Top, to:self.view, .Top, constant:28),
-            Constraint(lblData, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblData, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblData, .top, to:self.view, .top, constant:28),
+            Constraint(lblData, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblData, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //名前テキストフィールド
-            Constraint(txtName, .Top, to:lblData, .Bottom, constant:24),
-            Constraint(txtName, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(txtName, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtName, .top, to:lblData, .bottom, constant:24),
+            Constraint(txtName, .leading, to:self.view, .leading, constant:16),
+            Constraint(txtName, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //電話テキストフィールド
-            Constraint(txtTel, .Top, to:txtName, .Bottom, constant:24),
-            Constraint(txtTel, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(txtTel, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtTel, .top, to:txtName, .bottom, constant:24),
+            Constraint(txtTel, .leading, to:self.view, .leading, constant:16),
+            Constraint(txtTel, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //メールアドレステキストフィールド
-            Constraint(txtMail, .Top, to:txtTel, .Bottom, constant:24),
-            Constraint(txtMail, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(txtMail, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtMail, .top, to:txtTel, .bottom, constant:24),
+            Constraint(txtMail, .leading, to:self.view, .leading, constant:16),
+            Constraint(txtMail, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //非常招集区分ラベル
-            Constraint(lblKubun, .Top, to:txtMail, .Bottom, constant:24),
-            Constraint(lblKubun, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblKubun, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblKubun, .top, to:txtMail, .bottom, constant:24),
+            Constraint(lblKubun, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblKubun, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //非常招集区分テキストフィールド
-            Constraint(txtKubun, .Top, to:txtMail, .Bottom, constant:24),
-            Constraint(txtKubun, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtKubun, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtKubun, .top, to:txtMail, .bottom, constant:24),
+            Constraint(txtKubun, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtKubun, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //所属(大分類)ラベル
-            Constraint(lblSyozoku0, .Top, to:lblKubun, .Bottom, constant:24),
-            Constraint(lblSyozoku0, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblSyozoku0, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblSyozoku0, .top, to:lblKubun, .bottom, constant:24),
+            Constraint(lblSyozoku0, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblSyozoku0, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //所属(大分類)テキストフィールド
-            Constraint(txtSyozoku0, .Top, to:lblKubun, .Bottom, constant:24),
-            Constraint(txtSyozoku0, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtSyozoku0, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtSyozoku0, .top, to:lblKubun, .bottom, constant:24),
+            Constraint(txtSyozoku0, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtSyozoku0, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //所属(小分類)ラベル
-            Constraint(lblSyozoku, .Top, to:lblSyozoku0, .Bottom, constant:24),
-            Constraint(lblSyozoku, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblSyozoku, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblSyozoku, .top, to:lblSyozoku0, .bottom, constant:24),
+            Constraint(lblSyozoku, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblSyozoku, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //所属(小分類)テキストフィールド
-            Constraint(txtSyozoku, .Top, to:lblSyozoku0, .Bottom, constant:24),
-            Constraint(txtSyozoku, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtSyozoku, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtSyozoku, .top, to:lblSyozoku0, .bottom, constant:24),
+            Constraint(txtSyozoku, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtSyozoku, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //勤務区分ラベル
-            Constraint(lblKinmu, .Top, to:lblSyozoku, .Bottom, constant:24),
-            Constraint(lblKinmu, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblKinmu, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblKinmu, .top, to:lblSyozoku, .bottom, constant:24),
+            Constraint(lblKinmu, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblKinmu, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //勤務区分テキストフィールド
-            Constraint(txtKinmu, .Top, to:lblSyozoku, .Bottom, constant:24),
-            Constraint(txtKinmu, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtKinmu, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtKinmu, .top, to:lblSyozoku, .bottom, constant:24),
+            Constraint(txtKinmu, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtKinmu, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //キャンセルボタン
-            Constraint(btnCancel, .Bottom, to:self.view, .Bottom, constant:-10),
-            Constraint(btnCancel, .Leading, to:self.view, .Leading, constant:8),
-            Constraint(btnCancel, .Trailing, to:self.view, .CenterX, constant:-8)
+            Constraint(btnCancel, .bottom, to:self.view, .bottom, constant:-10),
+            Constraint(btnCancel, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8)
             ])
         self.view.addConstraints([
             //登録ボタン
-            Constraint(btnSave, .Bottom, to:self.view, .Bottom, constant:-10),
-            Constraint(btnSave, .Leading, to:self.view, .CenterX, constant:8),
-            Constraint(btnSave, .Trailing, to:self.view, .Trailing, constant:-8),
+            Constraint(btnSave, .bottom, to:self.view, .bottom, constant:-10),
+            Constraint(btnSave, .leading, to:self.view, .centerX, constant:8),
+            Constraint(btnSave, .trailing, to:self.view, .trailing, constant:-8),
             ])
     }
     
     //表示例数
-    func numberOfComponentsInPickerView(pickerView: UIPickerView)-> Int{
+    func numberOfComponents(in pickerView: UIPickerView)-> Int{
         return 1
     }
     
     //表示行数
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int)-> Int{
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int)-> Int{
         //返す行数
         var rowNum: Int = 1
         switch pickerView.tag {
@@ -348,7 +348,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
             rowNum = syozoku0Array.count
             break
         case 3:
-            rowNum = syozokuArray[syozoku0Index].count
+            rowNum = (syozokuArray[syozoku0Index] as AnyObject).count
             break
         case 4:
             rowNum = kinmuArray.count
@@ -362,7 +362,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //表示内容
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String?{
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String?{
         //返す列
         var picComponent: String?
         switch pickerView.tag {
@@ -387,7 +387,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //選択時
-    func pickerView(pickerView: UIPickerView, didSelectRow row:Int, inComponent component:Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component:Int) {
         print("列:\(row)")
         switch pickerView.tag {
         case 1:
@@ -419,7 +419,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //登録ボタンクリック
-    func onClickbtnSave(sender : UIButton){
+    func onClickbtnSave(_ sender : UIButton){
         
         //DBに書き込み
         mDBHelper.update(txtName.text!, tel: txtTel.text!, mail: txtMail.text!, kubun: txtKubun.text!, syozoku0: txtSyozoku0.text!, syozoku: txtSyozoku.text!, kinmu: txtKinmu.text!, _id: mSelected[7])
@@ -428,11 +428,11 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         let data:ContactViewController = ContactViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     //キャンセルボタンクリック
-    func onClickbtnCancel(sender : UIButton){
+    func onClickbtnCancel(_ sender : UIButton){
         //KinentaiViewControllerのインスタンス生成
         let data:ContactViewController = ContactViewController()
         
@@ -441,7 +441,7 @@ class ContactUpdateViewController: UIViewController, UIPickerViewDelegate, UIPic
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         
         //画面遷移
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

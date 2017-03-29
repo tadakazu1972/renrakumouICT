@@ -47,23 +47,23 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
         mailViewController.setToRecipients(recipients)
         mailViewController.setMessageBody("メール本文", isHTML: false)
         
-        self.presentViewController(mailViewController, animated:true, completion:nil)
+        self.present(mailViewController, animated:true, completion:nil)
     }
     
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         
         switch result  {
-        case .Cancelled:
+        case .cancelled:
             break
-        case .Saved:
+        case .saved:
             break
-        case .Sent:
+        case .sent:
             break
-        case .Failed:
+        case .failed:
             break
         }
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
         
         //dataViewControllerのインスタンス生成
         let data:ViewController = ViewController()
@@ -73,6 +73,6 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         
         //画面遷移
-        self.presentViewController(nav, animated: true, completion: nil)
+        self.present(nav, animated: true, completion: nil)
     }
 }

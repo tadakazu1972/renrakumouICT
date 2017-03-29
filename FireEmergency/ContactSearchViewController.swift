@@ -10,21 +10,21 @@ import UIKit
 
 class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     //メイン画面
-    let lblData         = UILabel(frame: CGRectZero)
-    let btnSelectAll    = UIButton(frame: CGRectZero)
-    let lblSearch1      = UILabel(frame: CGRectZero)
-    let lblSearch2      = UILabel(frame: CGRectZero)
-    let lblKubun        = UILabel(frame: CGRectZero)
-    let txtKubun        = UITextField(frame: CGRectZero)
-    let picKubun        = UIPickerView(frame: CGRectZero)
+    let lblData         = UILabel(frame: CGRect.zero)
+    let btnSelectAll    = UIButton(frame: CGRect.zero)
+    let lblSearch1      = UILabel(frame: CGRect.zero)
+    let lblSearch2      = UILabel(frame: CGRect.zero)
+    let lblKubun        = UILabel(frame: CGRect.zero)
+    let txtKubun        = UITextField(frame: CGRect.zero)
+    let picKubun        = UIPickerView(frame: CGRect.zero)
     let kubunArray: NSArray = ["すべて","１号招集","２号招集","３号招集","４号招集"]
-    let lblSyozoku0     = UILabel(frame: CGRectZero)
-    let txtSyozoku0     = UITextField(frame: CGRectZero)
-    let picSyozoku0     = UIPickerView(frame: CGRectZero)
+    let lblSyozoku0     = UILabel(frame: CGRect.zero)
+    let txtSyozoku0     = UITextField(frame: CGRect.zero)
+    let picSyozoku0     = UIPickerView(frame: CGRect.zero)
     let syozoku0Array: NSArray = ["すべて","消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
-    let lblSyozoku      = UILabel(frame: CGRectZero)
-    let txtSyozoku      = UITextField(frame: CGRectZero)
-    let picSyozoku      = UIPickerView(frame: CGRectZero)
+    let lblSyozoku      = UILabel(frame: CGRect.zero)
+    let txtSyozoku      = UITextField(frame: CGRect.zero)
+    let picSyozoku      = UIPickerView(frame: CGRect.zero)
     let syozokuArray: NSArray = [["すべて"],
                                  ["すべて","総務課","人事課","施設課","予防課","規制課","警防課","司令課","救急課"],
                                  ["すべて","北本署","梅田","浮田","南森町","与力","大淀町","本庄"],
@@ -53,21 +53,21 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
                                  ["すべて","西成本署","海道","津守"],
                                  ["すべて","水上"],
                                  ["すべて","教育訓練センター"]]
-    let lblKinmu        = UILabel(frame: CGRectZero)
-    let txtKinmu        = UITextField(frame: CGRectZero)
-    let picKinmu        = UIPickerView(frame: CGRectZero)
+    let lblKinmu        = UILabel(frame: CGRect.zero)
+    let txtKinmu        = UITextField(frame: CGRect.zero)
+    let picKinmu        = UIPickerView(frame: CGRect.zero)
     let kinmuArray: NSArray = ["すべて","日勤","１部","２部"]
-    let btnSearch       = UIButton(frame: CGRectZero)
-    let btnCancel       = UIButton(frame: CGRectZero)
+    let btnSearch       = UIButton(frame: CGRect.zero)
+    let btnCancel       = UIButton(frame: CGRect.zero)
     //別クラスのインスタンス保持用変数
-    private var mInfoDialog: InfoDialog!
-    private var mContactLoadDialog2: ContactLoadDialog2!
+    fileprivate var mInfoDialog: InfoDialog!
+    fileprivate var mContactLoadDialog2: ContactLoadDialog2!
     //所属(大分類)のインデックス保存用
-    private var syozoku0Index : Int = 0
+    fileprivate var syozoku0Index : Int = 0
     //SQLite用
     internal var mDBHelper: DBHelper!
     //ContactUpdateSelectDialogから送られてくる各テキストフィールドに放り込むデータ保存用
-    private var mSelected: [String] = []
+    fileprivate var mSelected: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,47 +78,47 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         //連絡網ラベル
         lblData.text = "連絡網"
         lblData.adjustsFontSizeToFitWidth = true
-        lblData.textColor = UIColor.blackColor()
-        lblData.textAlignment = NSTextAlignment.Left
+        lblData.textColor = UIColor.black
+        lblData.textAlignment = NSTextAlignment.left
         lblData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblData)
         //全部選択ボタン
-        btnSelectAll.backgroundColor = UIColor.lightGrayColor()
+        btnSelectAll.backgroundColor = UIColor.lightGray
         btnSelectAll.layer.masksToBounds = true
-        btnSelectAll.setTitle("データ全件一覧表示", forState: UIControlState.Normal)
-        btnSelectAll.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        btnSelectAll.setTitleColor(UIColor.redColor(), forState: UIControlState.Highlighted)
+        btnSelectAll.setTitle("データ全件一覧表示", for: UIControlState())
+        btnSelectAll.setTitleColor(UIColor.black, for: UIControlState())
+        btnSelectAll.setTitleColor(UIColor.red, for: UIControlState.highlighted)
         btnSelectAll.layer.cornerRadius = 8.0
-        btnSelectAll.addTarget(self, action: #selector(self.onClickbtnSelectAll(_:)), forControlEvents: .TouchUpInside)
+        btnSelectAll.addTarget(self, action: #selector(self.onClickbtnSelectAll(_:)), for: .touchUpInside)
         btnSelectAll.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnSelectAll)
         //グループ検索ラベル
         lblSearch1.text = "■グループ検索"
         lblSearch1.adjustsFontSizeToFitWidth = true
-        lblSearch1.textAlignment = NSTextAlignment.Left
+        lblSearch1.textAlignment = NSTextAlignment.left
         lblSearch1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblSearch1)
         //グループ検索の説明文ラベル
         lblSearch2.text = "以下の条件を設定し「検索」を押してください"
         lblSearch2.adjustsFontSizeToFitWidth = true
-        lblSearch2.textAlignment = NSTextAlignment.Left
+        lblSearch2.textAlignment = NSTextAlignment.left
         lblSearch2.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblSearch2)
         
         //pickerViewとともにポップアップするツールバーとボタンの設定
-        let toolbar = UIToolbar(frame: CGRectMake(0, 0, 0, 35))
-        let doneItem = UIBarButtonItem(title:"選択", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(self.selectRow))
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil) //小ワザ。上の選択ボタンを右寄せにするためのダミースペース
+        let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 0, height: 35))
+        let doneItem = UIBarButtonItem(title:"選択", style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.selectRow))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil) //小ワザ。上の選択ボタンを右寄せにするためのダミースペース
         toolbar.setItems([flexibleSpace, doneItem], animated: true)
         
         //非常招集区分ラベル
         lblKubun.text = "・非常招集区分"
         lblKubun.adjustsFontSizeToFitWidth = true
-        lblKubun.textAlignment = NSTextAlignment.Left
+        lblKubun.textAlignment = NSTextAlignment.left
         lblKubun.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblKubun)
         //非常招集区分テキストフィールド
-        txtKubun.borderStyle = UITextBorderStyle.Bezel
+        txtKubun.borderStyle = UITextBorderStyle.bezel
         txtKubun.text = kubunArray[0] as? String
         txtKubun.inputView = picKubun //これでテキストフィールドとピッカービューを紐付け
         txtKubun.inputAccessoryView = toolbar //上で設定したポップアップと紐付け
@@ -134,11 +134,11 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         //所属(大分類)ラベル
         lblSyozoku0.text = "・所属(大分類)"
         lblSyozoku0.adjustsFontSizeToFitWidth = true
-        lblSyozoku0.textAlignment = NSTextAlignment.Left
+        lblSyozoku0.textAlignment = NSTextAlignment.left
         lblSyozoku0.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblSyozoku0)
         //所属(大分類)テキストフィールド
-        txtSyozoku0.borderStyle = UITextBorderStyle.Bezel
+        txtSyozoku0.borderStyle = UITextBorderStyle.bezel
         txtSyozoku0.text = syozoku0Array[0] as? String
         txtSyozoku0.inputView = picSyozoku0
         txtSyozoku0.inputAccessoryView = toolbar
@@ -154,11 +154,11 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         //所属(小分類)ラベル
         lblSyozoku.text = "・所属(小分類)"
         lblSyozoku.adjustsFontSizeToFitWidth = true
-        lblSyozoku.textAlignment = NSTextAlignment.Left
+        lblSyozoku.textAlignment = NSTextAlignment.left
         lblSyozoku.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblSyozoku)
         //所属(小分類)テキストフィールド
-        txtSyozoku.borderStyle = UITextBorderStyle.Bezel
+        txtSyozoku.borderStyle = UITextBorderStyle.bezel
         txtSyozoku.text = "すべて"
         txtSyozoku.inputView = picSyozoku
         txtSyozoku.inputAccessoryView = toolbar
@@ -174,11 +174,11 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         //勤務区分ラベル
         lblKinmu.text = "・勤務区分"
         lblKinmu.adjustsFontSizeToFitWidth = true
-        lblKinmu.textAlignment = NSTextAlignment.Left
+        lblKinmu.textAlignment = NSTextAlignment.left
         lblKinmu.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblKinmu)
         //勤務区分テキストフィールド
-        txtKinmu.borderStyle = UITextBorderStyle.Bezel
+        txtKinmu.borderStyle = UITextBorderStyle.bezel
         txtKinmu.text = kinmuArray[0] as? String
         txtKinmu.inputView = picKinmu
         txtKinmu.inputAccessoryView = toolbar
@@ -192,23 +192,23 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         picKinmu.selectRow(0, inComponent:0, animated:false)
         
         //キャンセルボタン
-        btnCancel.backgroundColor = UIColor.blueColor()
+        btnCancel.backgroundColor = UIColor.blue
         btnCancel.layer.masksToBounds = true
-        btnCancel.setTitle("キャンセル", forState: UIControlState.Normal)
-        btnCancel.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        btnCancel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnCancel.setTitle("キャンセル", for: UIControlState())
+        btnCancel.setTitleColor(UIColor.white, for: UIControlState())
+        btnCancel.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnCancel.layer.cornerRadius = 8.0
-        btnCancel.addTarget(self, action: #selector(self.onClickbtnCancel(_:)), forControlEvents: .TouchUpInside)
+        btnCancel.addTarget(self, action: #selector(self.onClickbtnCancel(_:)), for: .touchUpInside)
         btnCancel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnCancel)
         //検索ボタン
-        btnSearch.backgroundColor = UIColor.redColor()
+        btnSearch.backgroundColor = UIColor.red
         btnSearch.layer.masksToBounds = true
-        btnSearch.setTitle("検索", forState: UIControlState.Normal)
-        btnSearch.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        btnSearch.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnSearch.setTitle("検索", for: UIControlState())
+        btnSearch.setTitleColor(UIColor.white, for: UIControlState())
+        btnSearch.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnSearch.layer.cornerRadius = 8.0
-        btnSearch.addTarget(self, action: #selector(self.onClickbtnSearch(_:)), forControlEvents: .TouchUpInside)
+        btnSearch.addTarget(self, action: #selector(self.onClickbtnSearch(_:)), for: .touchUpInside)
         btnSearch.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnSearch)
         
@@ -217,7 +217,7 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //制約ひな型
-    func Constraint(item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .Equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    func Constraint(_ item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
         let ret = NSLayoutConstraint(
             item:       item,
             attribute:  attr,
@@ -235,97 +235,97 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
         //制約
         self.view.addConstraints([
             //新規データ入力ラベル
-            Constraint(lblData, .Top, to:self.view, .Top, constant:28),
-            Constraint(lblData, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblData, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblData, .top, to:self.view, .top, constant:28),
+            Constraint(lblData, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblData, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //全件一覧表示ボタン
-            Constraint(btnSelectAll, .Top, to:lblData, .Bottom, constant:24),
-            Constraint(btnSelectAll, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(btnSelectAll, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(btnSelectAll, .top, to:lblData, .bottom, constant:24),
+            Constraint(btnSelectAll, .leading, to:self.view, .leading, constant:16),
+            Constraint(btnSelectAll, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //グループ検索ラベル
-            Constraint(lblSearch1, .Top, to:btnSelectAll, .Bottom, constant:36),
-            Constraint(lblSearch1, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblSearch1, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(lblSearch1, .top, to:btnSelectAll, .bottom, constant:36),
+            Constraint(lblSearch1, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblSearch1, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //グループ検索の説明ラベル
-            Constraint(lblSearch2, .Top, to:lblSearch1, .Bottom, constant:24),
-            Constraint(lblSearch2, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblSearch2, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(lblSearch2, .top, to:lblSearch1, .bottom, constant:24),
+            Constraint(lblSearch2, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblSearch2, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //非常招集区分ラベル
-            Constraint(lblKubun, .Top, to:lblSearch2, .Bottom, constant:24),
-            Constraint(lblKubun, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblKubun, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblKubun, .top, to:lblSearch2, .bottom, constant:24),
+            Constraint(lblKubun, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblKubun, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //非常招集区分テキストフィールド
-            Constraint(txtKubun, .Top, to:lblSearch2, .Bottom, constant:24),
-            Constraint(txtKubun, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtKubun, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtKubun, .top, to:lblSearch2, .bottom, constant:24),
+            Constraint(txtKubun, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtKubun, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //所属(大分類)ラベル
-            Constraint(lblSyozoku0, .Top, to:lblKubun, .Bottom, constant:24),
-            Constraint(lblSyozoku0, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblSyozoku0, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblSyozoku0, .top, to:lblKubun, .bottom, constant:24),
+            Constraint(lblSyozoku0, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblSyozoku0, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //所属(大分類)テキストフィールド
-            Constraint(txtSyozoku0, .Top, to:lblKubun, .Bottom, constant:24),
-            Constraint(txtSyozoku0, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtSyozoku0, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtSyozoku0, .top, to:lblKubun, .bottom, constant:24),
+            Constraint(txtSyozoku0, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtSyozoku0, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //所属(小分類)ラベル
-            Constraint(lblSyozoku, .Top, to:lblSyozoku0, .Bottom, constant:24),
-            Constraint(lblSyozoku, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblSyozoku, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblSyozoku, .top, to:lblSyozoku0, .bottom, constant:24),
+            Constraint(lblSyozoku, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblSyozoku, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //所属(小分類)テキストフィールド
-            Constraint(txtSyozoku, .Top, to:lblSyozoku0, .Bottom, constant:24),
-            Constraint(txtSyozoku, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtSyozoku, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtSyozoku, .top, to:lblSyozoku0, .bottom, constant:24),
+            Constraint(txtSyozoku, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtSyozoku, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //勤務区分ラベル
-            Constraint(lblKinmu, .Top, to:lblSyozoku, .Bottom, constant:24),
-            Constraint(lblKinmu, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblKinmu, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblKinmu, .top, to:lblSyozoku, .bottom, constant:24),
+            Constraint(lblKinmu, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblKinmu, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //勤務区分テキストフィールド
-            Constraint(txtKinmu, .Top, to:lblSyozoku, .Bottom, constant:24),
-            Constraint(txtKinmu, .Leading, to:self.view, .CenterX, constant:0),
-            Constraint(txtKinmu, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtKinmu, .top, to:lblSyozoku, .bottom, constant:24),
+            Constraint(txtKinmu, .leading, to:self.view, .centerX, constant:0),
+            Constraint(txtKinmu, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //キャンセルボタン
-            Constraint(btnCancel, .Bottom, to:self.view, .Bottom, constant:-10),
-            Constraint(btnCancel, .Leading, to:self.view, .Leading, constant:8),
-            Constraint(btnCancel, .Trailing, to:self.view, .CenterX, constant:-8)
+            Constraint(btnCancel, .bottom, to:self.view, .bottom, constant:-10),
+            Constraint(btnCancel, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8)
             ])
         self.view.addConstraints([
             //検索ボタン
-            Constraint(btnSearch, .Bottom, to:self.view, .Bottom, constant:-10),
-            Constraint(btnSearch, .Leading, to:self.view, .CenterX, constant:8),
-            Constraint(btnSearch, .Trailing, to:self.view, .Trailing, constant:-8),
+            Constraint(btnSearch, .bottom, to:self.view, .bottom, constant:-10),
+            Constraint(btnSearch, .leading, to:self.view, .centerX, constant:8),
+            Constraint(btnSearch, .trailing, to:self.view, .trailing, constant:-8),
             ])
     }
     
     //表示例数
-    func numberOfComponentsInPickerView(pickerView: UIPickerView)-> Int{
+    func numberOfComponents(in pickerView: UIPickerView)-> Int{
         return 1
     }
     
     //表示行数
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int)-> Int{
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int)-> Int{
         //返す行数
         var rowNum: Int = 1
         switch pickerView.tag {
@@ -336,7 +336,7 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
             rowNum = syozoku0Array.count
             break
         case 3:
-            rowNum = syozokuArray[syozoku0Index].count
+            rowNum = (syozokuArray[syozoku0Index] as AnyObject).count
             break
         case 4:
             rowNum = kinmuArray.count
@@ -350,7 +350,7 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //表示内容
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String?{
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String?{
         //返す列
         var picComponent: String?
         switch pickerView.tag {
@@ -375,7 +375,7 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //選択時
-    func pickerView(pickerView: UIPickerView, didSelectRow row:Int, inComponent component:Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row:Int, inComponent component:Int) {
         print("列:\(row)")
         switch pickerView.tag {
         case 1:
@@ -407,14 +407,14 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //全件一覧表示ボタンクリック
-    func onClickbtnSelectAll(sender : UIButton){
+    func onClickbtnSelectAll(_ sender : UIButton){
         mDBHelper.selectAll()
         mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
         mContactLoadDialog2.showResult()
     }
     
     //検索ボタンクリック
-    func onClickbtnSearch(sender : UIButton){
+    func onClickbtnSearch(_ sender : UIButton){
         //DBにつないでselect文実行
         mDBHelper.select(txtKubun.text!, syozoku0: txtSyozoku0.text!, syozoku: txtSyozoku.text!, kinmu: txtKinmu.text!)
         mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
@@ -422,9 +422,9 @@ class ContactSearchViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     //キャンセルボタンクリック
-    func onClickbtnCancel(sender : UIButton){
+    func onClickbtnCancel(_ sender : UIButton){
         //自己を破棄し、呼び出し元へ遷移
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

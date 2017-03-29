@@ -10,15 +10,15 @@ import UIKit
 
 class TyphoonResultDialog {
     //ボタン押したら出るUIWindow
-    private var parent: TyphoonViewController!
-    private var win1: UIWindow!
-    private var text1: UITextView!
-    private var btnClose: UIButton!
+    fileprivate var parent: TyphoonViewController!
+    fileprivate var win1: UIWindow!
+    fileprivate var text1: UITextView!
+    fileprivate var btnClose: UIButton!
     //データ保存用
-    let userDefaults = NSUserDefaults.standardUserDefaults()
-    var mainStation: String!
-    var tsunamiStation: String!
-    var kubun: String!
+    let userDefaults = UserDefaults.standard
+    var mainStation: String = ""
+    var tsunamiStation: String = ""
+    var kubun: String = ""
     
     //コンストラクタ
     init(parentView: TyphoonViewController){
@@ -37,9 +37,9 @@ class TyphoonResultDialog {
     }
     
     //表示
-    func showResult(data :Int){
+    func showResult(_ data :Int){
         //勤務消防署が保存されている場合は呼び出して格納
-        if let _mainStation = userDefaults.stringForKey("mainStation"){
+        if let _mainStation = userDefaults.string(forKey: "mainStation"){
             if _mainStation == "消防局" || _mainStation == "教育訓練センター" {
                 mainStation = _mainStation
             } else {
@@ -47,7 +47,7 @@ class TyphoonResultDialog {
             }
         }
         //大津波・津波警報時参集指定署が保存されている場合は呼び出して格納
-        if let _tsunamiStation = userDefaults.stringForKey("tsunamiStation"){
+        if let _tsunamiStation = userDefaults.string(forKey: "tsunamiStation"){
             if _tsunamiStation == "消防局" || _tsunamiStation == "教育訓練センター" {
                 tsunamiStation = _tsunamiStation
             } else {
@@ -55,42 +55,42 @@ class TyphoonResultDialog {
             }
         }
         //非常招集区分を呼び出して格納
-        if let _kubun = userDefaults.stringForKey("kubun"){
+        if let _kubun = userDefaults.string(forKey: "kubun"){
             kubun = _kubun
         }
         //元の画面を暗く
         parent.view.alpha = 0.3
         //初期設定
         //Win1
-        win1.backgroundColor = UIColor.whiteColor()
-        win1.frame = CGRectMake(80,180,parent.view.frame.width-40,parent.view.frame.height-200)
-        win1.layer.position = CGPointMake(parent.view.frame.width/2, parent.view.frame.height/2)
+        win1.backgroundColor = UIColor.white
+        win1.frame = CGRect(x: 80,y: 180,width: parent.view.frame.width-40,height: parent.view.frame.height-200)
+        win1.layer.position = CGPoint(x: parent.view.frame.width/2, y: parent.view.frame.height/2)
         win1.alpha = 1.0
         win1.layer.cornerRadius = 10
         //KeyWindowにする
-        win1.makeKeyWindow()
+        win1.makeKey()
         //表示
         self.win1.makeKeyAndVisible()
         
         //TextView生成
-        text1.frame = CGRectMake(10,10, self.win1.frame.width - 20, self.win1.frame.height-60)
-        text1.backgroundColor = UIColor.clearColor()
-        text1.font = UIFont.systemFontOfSize(CGFloat(18))
-        text1.textColor = UIColor.blackColor()
-        text1.textAlignment = NSTextAlignment.Left
-        text1.editable = false
-        text1.scrollEnabled = true
-        text1.dataDetectorTypes = .Link
+        text1.frame = CGRect(x: 10,y: 10, width: self.win1.frame.width - 20, height: self.win1.frame.height-60)
+        text1.backgroundColor = UIColor.clear
+        text1.font = UIFont.systemFont(ofSize: CGFloat(18))
+        text1.textColor = UIColor.black
+        text1.textAlignment = NSTextAlignment.left
+        text1.isEditable = false
+        text1.isScrollEnabled = true
+        text1.dataDetectorTypes = .link
         
         //テキストの内容を場合分け
         switch data {
         //非常警備の基準（全て）
         case 11:
             //テキストファイル読込
-            let path = NSBundle.mainBundle().pathForResource("typhoon1", ofType: "txt")!
-            if let data = NSData(contentsOfFile: path){
+            let path = Bundle.main.path(forResource: "typhoon1", ofType: "txt")!
+            if let data = try? Data(contentsOf: URL(fileURLWithPath: path)){
                 if text1.text=="" { //これしないと毎回ファイルを読み込んでスクロールすると下とカブる
-                    text1.text = String(NSString(data: data, encoding: NSUTF8StringEncoding)!)
+                    text1.text = String(NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)
                 }
             } else {
                 text1.text = "ファイル読込エラー"
@@ -130,7 +130,7 @@ class TyphoonResultDialog {
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西淀川", "淀川", "東淀川", "東成", "生野", "旭", "城東", "鶴見", "住之江", "住吉", "東住吉", "平野", "消防局")
             //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
+            if gaitousyo.contains(userDefaults.string(forKey: "mainStation")!){
                 text1.text="■洪水警報\n\n第５非常警備(北、都島、福島、此花、中央、西淀川、淀川、東淀川、東成、生野、旭、城東、鶴見、住之江、住吉、東住吉、平野、消防局)\n\n\(mainStation)\n\n招集なし"
             } else {
                 text1.text="■洪水警報\n\n第５非常警備(北、都島、福島、此花、中央、西淀川、淀川、東淀川、東成、生野、旭、城東、鶴見、住之江、住吉、東住吉、平野、消防局)\n\nー\n\n招集なし"
@@ -141,7 +141,7 @@ class TyphoonResultDialog {
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
             let gaitousyo = Set(arrayLiteral: "此花", "港", "大正", "西淀川", "住之江", "水上", "消防局")
             //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
+            if gaitousyo.contains(userDefaults.string(forKey: "mainStation")!){
                 text1.text="■波浪警報\n\n第５非常警備(此花、港、大正、西淀川、住之江、水上、消防局)\n\n\(mainStation)\n\n招集なし"
             } else {
                 text1.text="■洪水警報\n\n第５非常警備(此花、港、大正、西淀川、住之江、水上、消防局)\n\nー\n\n招集なし"
@@ -152,7 +152,7 @@ class TyphoonResultDialog {
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西", "港", "大正", "浪速", "西淀川", "淀川", "住之江", "西成", "水上", "消防局")
             //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
+            if gaitousyo.contains(userDefaults.string(forKey: "mainStation")!){
                 text1.text="■高潮警報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\n\(mainStation)\n\n招集なし"
             } else {
                 text1.text="■高潮警報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\nー\n\n招集なし"
@@ -163,7 +163,7 @@ class TyphoonResultDialog {
             //勤務消防署がリストに該当するか判定　あえて大津波・津波警報時参集指定署ではないことに注意！
             let gaitousyo = Set(arrayLiteral: "北", "都島", "福島", "此花", "中央", "西", "港", "大正", "浪速", "西淀川", "淀川", "住之江", "西成", "水上", "消防局")
             //mainStationではすでに「消防署」の文字列を付け足してしまっているので上記リストとの比較はuserDefaultの格納値を使う
-            if gaitousyo.contains(userDefaults.stringForKey("mainStation")!){
+            if gaitousyo.contains(userDefaults.string(forKey: "mainStation")!){
                 text1.text="■高潮注意報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\n\(mainStation)\n\n招集なし"
             } else {
                 text1.text="■高潮注意報\n\n第５非常警備(北、都島、福島、此花、中央、西、港、大正、浪速、西淀川、淀川、住之江、西成、水上、消防局)\n\nー\n\n招集なし"
@@ -241,20 +241,20 @@ class TyphoonResultDialog {
         self.win1.addSubview(text1)
         
         //閉じるボタン生成
-        btnClose.frame = CGRectMake(0,0,100,30)
-        btnClose.backgroundColor = UIColor.orangeColor()
-        btnClose.setTitle("閉じる", forState: .Normal)
-        btnClose.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btnClose.frame = CGRect(x: 0,y: 0,width: 100,height: 30)
+        btnClose.backgroundColor = UIColor.orange
+        btnClose.setTitle("閉じる", for: UIControlState())
+        btnClose.setTitleColor(UIColor.white, for: UIControlState())
         btnClose.layer.masksToBounds = true
         btnClose.layer.cornerRadius = 10.0
-        btnClose.layer.position = CGPointMake(self.win1.frame.width/2, self.win1.frame.height-20)
-        btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), forControlEvents: .TouchUpInside)
+        btnClose.layer.position = CGPoint(x: self.win1.frame.width/2, y: self.win1.frame.height-20)
+        btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), for: .touchUpInside)
         self.win1.addSubview(btnClose)
     }
     
     //閉じる
-    @objc func onClickClose(sender: UIButton){
-        win1.hidden = true      //win1隠す
+    @objc func onClickClose(_ sender: UIButton){
+        win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
     }

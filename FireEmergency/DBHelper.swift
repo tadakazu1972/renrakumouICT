@@ -18,7 +18,7 @@ class DBHelper {
     }
     
     func connectDB(){
-        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let path = paths[0].stringByAppendingPathComponent("myrecord.db")
         db = FMDatabase(path: path)
     }
@@ -26,7 +26,7 @@ class DBHelper {
     func createTable(){
         db.open()
         let sql = "CREATE TABLE IF NOT EXISTS records(_id integer primary key autoincrement,name text,tel text,mail text,kubun text,syozoku0 text,syozoku text,kinmu text);"
-        let ret = db.executeUpdate(sql, withArgumentsInArray: nil)
+        let ret = db.executeUpdate(sql, withArgumentsIn: nil)
         if ret {
             print("テーブル作成　成功")
         } else {
@@ -35,25 +35,25 @@ class DBHelper {
         db.close()
     }
     
-    func insert(name: String, tel: String, mail: String, kubun: String, syozoku0: String, syozoku: String, kinmu: String){
+    func insert(_ name: String, tel: String, mail: String, kubun: String, syozoku0: String, syozoku: String, kinmu: String){
         let sql = "INSERT INTO records(name, tel, mail, kubun, syozoku0, syozoku, kinmu) VALUES(?, ?, ?, ?, ?, ?, ?);"
         db.open()
-        db.executeUpdate(sql, withArgumentsInArray: [name, tel, mail, kubun, syozoku0, syozoku, kinmu])
+        db.executeUpdate(sql, withArgumentsIn: [name, tel, mail, kubun, syozoku0, syozoku, kinmu])
         db.close()
     }
     
-    func update(name: String, tel: String, mail: String, kubun: String, syozoku0: String, syozoku: String, kinmu: String, _id: String){
+    func update(_ name: String, tel: String, mail: String, kubun: String, syozoku0: String, syozoku: String, kinmu: String, _id: String){
         let sql = "UPDATE records SET name = ?, tel = ?, mail = ?, kubun = ?, syozoku0 = ?, syozoku = ?, kinmu = ? WHERE _id = ?;"
         db.open()
-        db.executeUpdate(sql, withArgumentsInArray: [name, tel, mail, kubun, syozoku0, syozoku, kinmu, _id])
+        db.executeUpdate(sql, withArgumentsIn: [name, tel, mail, kubun, syozoku0, syozoku, kinmu, _id])
         print("DBの _id =\(_id)をupdateしました")
         db.close()
     }
     
-    func delete(_id: String){
+    func delete(_ _id: String){
         let sql = "DELETE FROM records WHERE _id = ?;"
         db.open()
-        db.executeUpdate(sql, withArgumentsInArray: [_id])
+        db.executeUpdate(sql, withArgumentsIn: [_id])
         db.close()        
     }
     
@@ -62,15 +62,15 @@ class DBHelper {
         resultArray.removeAll()
         let sql = "SELECT * FROM records ORDER BY _id;"
         db.open()
-        let results = db.executeQuery(sql, withArgumentsInArray: nil)
-        while results.next(){
-            let _name: String = results.stringForColumn("name")
-            let _tel: String = results.stringForColumn("tel")
-            let _mail: String = results.stringForColumn("mail")
-            let _kubun: String = results.stringForColumn("kubun")
-            let _syozoku0: String = results.stringForColumn("syozoku0")
-            let _syozoku: String = results.stringForColumn("syozoku")
-            let _kinmu: String = results.stringForColumn("kinmu")
+        let results = db.executeQuery(sql, withArgumentsIn: nil)
+        while (results?.next())!{
+            let _name: String = results!.string(forColumn: "name")
+            let _tel: String = results!.string(forColumn: "tel")
+            let _mail: String = results!.string(forColumn: "mail")
+            let _kubun: String = results!.string(forColumn: "kubun")
+            let _syozoku0: String = results!.string(forColumn: "syozoku0")
+            let _syozoku: String = results!.string(forColumn: "syozoku")
+            let _kinmu: String = results!.string(forColumn: "kinmu")
             resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu])
         }
         db.close()
@@ -82,22 +82,22 @@ class DBHelper {
         resultArray.removeAll()
         let sql = "SELECT * FROM records ORDER BY _id;"
         db.open()
-        let results = db.executeQuery(sql, withArgumentsInArray: nil)
-        while results.next(){
-            let _name: String = results.stringForColumn("name")
-            let _tel: String = results.stringForColumn("tel")
-            let _mail: String = results.stringForColumn("mail")
-            let _kubun: String = results.stringForColumn("kubun")
-            let _syozoku0: String = results.stringForColumn("syozoku0")
-            let _syozoku: String = results.stringForColumn("syozoku")
-            let _kinmu: String = results.stringForColumn("kinmu")
-            let _id: String = results.stringForColumn("_id")
+        let results = db.executeQuery(sql, withArgumentsIn: nil)
+        while (results?.next())!{
+            let _name: String = results!.string(forColumn: "name")
+            let _tel: String = results!.string(forColumn: "tel")
+            let _mail: String = results!.string(forColumn: "mail")
+            let _kubun: String = results!.string(forColumn: "kubun")
+            let _syozoku0: String = results!.string(forColumn: "syozoku0")
+            let _syozoku: String = results!.string(forColumn: "syozoku")
+            let _kinmu: String = results!.string(forColumn: "kinmu")
+            let _id: String = results!.string(forColumn: "_id")
             resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu, _id])
         }
         db.close()
     }
     
-    func select(kubun: String, syozoku0: String, syozoku: String, kinmu: String){
+    func select(_ kubun: String, syozoku0: String, syozoku: String, kinmu: String){
         //前の検索結果が残っているので全削除
         resultArray.removeAll()
 
@@ -120,15 +120,15 @@ class DBHelper {
         }
         let sql = "SELECT * FROM records where kubun " + kubunSQL + " and syozoku0 " + syozoku0SQL + " and syozoku " + syozokuSQL + " and kinmu " + kinmuSQL + " ORDER BY _id;"
         db.open()
-        let results = db.executeQuery(sql, withArgumentsInArray: nil)
-        while results.next(){
-            let _name: String = results.stringForColumn("name")
-            let _tel: String = results.stringForColumn("tel")
-            let _mail: String = results.stringForColumn("mail")
-            let _kubun: String = results.stringForColumn("kubun")
-            let _syozoku0: String = results.stringForColumn("syozoku0")
-            let _syozoku: String = results.stringForColumn("syozoku")
-            let _kinmu: String = results.stringForColumn("kinmu")
+        let results = db.executeQuery(sql, withArgumentsIn: nil)
+        while (results?.next())!{
+            let _name: String = results!.string(forColumn: "name")
+            let _tel: String = results!.string(forColumn: "tel")
+            let _mail: String = results!.string(forColumn: "mail")
+            let _kubun: String = results!.string(forColumn: "kubun")
+            let _syozoku0: String = results!.string(forColumn: "syozoku0")
+            let _syozoku: String = results!.string(forColumn: "syozoku")
+            let _kinmu: String = results!.string(forColumn: "kinmu")
             resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu])
         }
         db.close()

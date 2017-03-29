@@ -11,15 +11,15 @@ import UIKit
 class ContactImportCSVDialog: NSObject, UITableViewDelegate, UITableViewDataSource {
     
     //ボタン押したら出るUIWindow
-    private var parent: ContactViewController!
-    private var win1: UIWindow!
-    private var text1: UITextView!
-    private var table: UITableView!
+    fileprivate var parent: ContactViewController!
+    fileprivate var win1: UIWindow!
+    fileprivate var text1: UITextView!
+    fileprivate var table: UITableView!
     var result: [[String]] = []
-    private var btnClose: UIButton!
-    private var btnImport: UIButton!
+    fileprivate var btnClose: UIButton!
+    fileprivate var btnImport: UIButton!
     //CSVファイル読込成功フラグ
-    private var importFlag: Bool = false
+    fileprivate var importFlag: Bool = false
     
     //コンストラクタ
     init(parentView: ContactViewController){
@@ -48,44 +48,44 @@ class ContactImportCSVDialog: NSObject, UITableViewDelegate, UITableViewDataSour
         parent.view.alpha = 0.3
         //初期設定
         //Win1
-        win1.backgroundColor = UIColor.whiteColor()
-        win1.frame = CGRectMake(80,180,parent.view.frame.width-20,parent.view.frame.height-100)
-        win1.layer.position = CGPointMake(parent.view.frame.width/2, parent.view.frame.height/2)
+        win1.backgroundColor = UIColor.white
+        win1.frame = CGRect(x: 80,y: 180,width: parent.view.frame.width-20,height: parent.view.frame.height-100)
+        win1.layer.position = CGPoint(x: parent.view.frame.width/2, y: parent.view.frame.height/2)
         win1.alpha = 1.0
         win1.layer.cornerRadius = 10
         //KeyWindowにする
-        win1.makeKeyWindow()
+        win1.makeKey()
         //表示
         self.win1.makeKeyAndVisible()
         
         //TextView生成
-        text1.frame = CGRectMake(10,0, self.win1.frame.width - 20, self.win1.frame.height-60)
-        text1.backgroundColor = UIColor.clearColor()
-        text1.font = UIFont.systemFontOfSize(CGFloat(18))
-        text1.textColor = UIColor.blackColor()
-        text1.textAlignment = NSTextAlignment.Left
-        text1.editable = false
-        text1.scrollEnabled = true
-        text1.dataDetectorTypes = .Link
+        text1.frame = CGRect(x: 10,y: 0, width: self.win1.frame.width - 20, height: self.win1.frame.height-60)
+        text1.backgroundColor = UIColor.clear
+        text1.font = UIFont.systemFont(ofSize: CGFloat(18))
+        text1.textColor = UIColor.black
+        text1.textAlignment = NSTextAlignment.left
+        text1.isEditable = false
+        text1.isScrollEnabled = true
+        text1.dataDetectorTypes = .link
         text1.text=""
         
         //csvファイル読込
         let file_name = "fire.csv"
         var csvString = ""
-        if let dir : NSString = NSSearchPathForDirectoriesInDomains( NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true ).first {
+        if let dir : NSString = NSSearchPathForDirectoriesInDomains( FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true ).first! as NSString {
             
             text1.text="以下のCSVファイルを読込みます"
             
-            let path_file_name = dir.stringByAppendingPathComponent( file_name )
+            let path_file_name = dir.appendingPathComponent( file_name )
             
             do {
-                csvString = try String( contentsOfFile: path_file_name, encoding: NSUTF8StringEncoding )
+                csvString = try String( contentsOfFile: path_file_name, encoding: String.Encoding.utf8 )
             } catch let error as NSError {
                 //エラー処理
                 print(error.localizedDescription)
             }
             csvString.enumerateLines { (line, stop) -> () in
-                self.result.append(line.componentsSeparatedByString(","))
+                self.result.append(line.components(separatedBy: ","))
             }
             //フラグ変更
             importFlag = true 
@@ -97,50 +97,50 @@ class ContactImportCSVDialog: NSObject, UITableViewDelegate, UITableViewDataSour
         self.win1.addSubview(text1)
         
         //TableView生成
-        table.frame = CGRectMake(10, 41, self.win1.frame.width-20, self.win1.frame.height-60)
+        table.frame = CGRect(x: 10, y: 41, width: self.win1.frame.width-20, height: self.win1.frame.height-60)
         table.delegate = self
         table.dataSource = self
         table.estimatedRowHeight = 60 //下とあわせこの２行で複数表示されるときの間がひらくように
         table.rowHeight = UITableViewAutomaticDimension
-        table.registerClass(ContactCell1.self, forCellReuseIdentifier:"contactCell1")
-        table.separatorColor = UIColor.clearColor()
+        table.register(ContactCell1.self, forCellReuseIdentifier:"contactCell1")
+        table.separatorColor = UIColor.clear
         self.win1.addSubview(table)
         
-        func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat { return UITableViewAutomaticDimension }
+        func tableView(_ tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: IndexPath) -> CGFloat { return UITableViewAutomaticDimension }
         
         
         //閉じるボタン生成
-        btnClose.frame = CGRectMake(0,0,100,30)
-        btnClose.backgroundColor = UIColor.orangeColor()
-        btnClose.setTitle("閉じる", forState: .Normal)
-        btnClose.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btnClose.frame = CGRect(x: 0,y: 0,width: 100,height: 30)
+        btnClose.backgroundColor = UIColor.orange
+        btnClose.setTitle("閉じる", for: UIControlState())
+        btnClose.setTitleColor(UIColor.white, for: UIControlState())
         btnClose.layer.masksToBounds = true
         btnClose.layer.cornerRadius = 10.0
-        btnClose.layer.position = CGPointMake(self.win1.frame.width/2-60, self.win1.frame.height-20)
-        btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), forControlEvents: .TouchUpInside)
+        btnClose.layer.position = CGPoint(x: self.win1.frame.width/2-60, y: self.win1.frame.height-20)
+        btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), for: .touchUpInside)
         self.win1.addSubview(btnClose)
         
         //読込ボタン生成
-        btnImport.frame = CGRectMake(0,0,100,30)
-        btnImport.backgroundColor = UIColor.redColor()
-        btnImport.setTitle("読込", forState: .Normal)
-        btnImport.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btnImport.frame = CGRect(x: 0,y: 0,width: 100,height: 30)
+        btnImport.backgroundColor = UIColor.red
+        btnImport.setTitle("読込", for: UIControlState())
+        btnImport.setTitleColor(UIColor.white, for: UIControlState())
         btnImport.layer.masksToBounds = true
         btnImport.layer.cornerRadius = 10.0
-        btnImport.layer.position = CGPointMake(self.win1.frame.width/2+60, self.win1.frame.height-20)
-        btnImport.addTarget(self, action: #selector(self.onClickImport(_:)), forControlEvents: .TouchUpInside)
+        btnImport.layer.position = CGPoint(x: self.win1.frame.width/2+60, y: self.win1.frame.height-20)
+        btnImport.addTarget(self, action: #selector(self.onClickImport(_:)), for: .touchUpInside)
         self.win1.addSubview(btnImport)
     }
     
     //閉じる
-    @objc func onClickClose(sender: UIButton){
-        win1.hidden = true      //win1隠す
+    @objc func onClickClose(_ sender: UIButton){
+        win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
     }
     
     //読込
-    @objc func onClickImport(sender: UIButton){
+    @objc func onClickImport(_ sender: UIButton){
         //アラートメッセージ
         var msg: String = ""
         //ちゃんと読込成功してるのかチェックしてからDBにinsertする
@@ -156,27 +156,27 @@ class ContactImportCSVDialog: NSObject, UITableViewDelegate, UITableViewDataSour
         }
         
         //アラート表示
-        let alert = UIAlertController(title:"", message: msg, preferredStyle: UIAlertControllerStyle.Alert)
-        let alertCancel = UIAlertAction(title:"閉じる", style: UIAlertActionStyle.Cancel, handler:nil)
+        let alert = UIAlertController(title:"", message: msg, preferredStyle: UIAlertControllerStyle.alert)
+        let alertCancel = UIAlertAction(title:"閉じる", style: UIAlertActionStyle.cancel, handler:nil)
         alert.addAction(alertCancel)
-        parent.presentViewController(alert, animated:true, completion: nil)
+        parent.present(alert, animated:true, completion: nil)
         
         //ダイアログ消去
-        win1.hidden = true
+        win1.isHidden = true
         text1.text = ""
         parent.view.alpha = 1.0
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection sction:Int)-> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection sction:Int)-> Int {
         return self.result.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80 // セルの高さ
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)-> UITableViewCell {
-        let cell:ContactCell1 = table.dequeueReusableCellWithIdentifier("contactCell1")! as! ContactCell1
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
+        let cell:ContactCell1 = table.dequeueReusableCell(withIdentifier: "contactCell1")! as! ContactCell1
         cell.textLabel?.numberOfLines = 0 //これをしないと複数表示されない
         cell.name!.text = self.result[indexPath.row][0]
         cell.tel!.text  = self.result[indexPath.row][1]
@@ -189,7 +189,7 @@ class ContactImportCSVDialog: NSObject, UITableViewDelegate, UITableViewDataSour
     }
     
     //セルを選択
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("セルを選択 #\(indexPath.row)")
     }
     

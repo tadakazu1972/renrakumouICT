@@ -25,56 +25,56 @@ class ContactCellCheckbox: UITableViewCell, UITextViewDelegate {
     override init(style: UITableViewCellStyle, reuseIdentifier: String!){
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        checkbox = UIButton(frame: CGRectMake(0, 14, 28, 28))
-        checkbox?.tintColor = UIColor.redColor()
-        checkbox?.setImage(UIImage(named: "ic_check_box.png"), forState: UIControlState.Selected)
-        checkbox?.setImage(UIImage(named: "ic_check_box_outline_blank.png"), forState: UIControlState.Normal)
+        checkbox = UIButton(frame: CGRect(x: 0, y: 14, width: 28, height: 28))
+        checkbox?.tintColor = UIColor.red
+        checkbox?.setImage(UIImage(named: "ic_check_box.png"), for: UIControlState.selected)
+        checkbox?.setImage(UIImage(named: "ic_check_box_outline_blank.png"), for: UIControlState())
         self.contentView.addSubview(checkbox!)
         
-        name = UILabel(frame: CGRectMake(28, 0, 140, 24))
+        name = UILabel(frame: CGRect(x: 28, y: 0, width: 140, height: 24))
         name?.text = "nil"
-        name?.font = UIFont.systemFontOfSize(20)
+        name?.font = UIFont.systemFont(ofSize: 20)
         self.addSubview(name!)
         
-        tel = UITextView(frame: CGRectMake(141, -8, 160, 30))
+        tel = UITextView(frame: CGRect(x: 141, y: -8, width: 160, height: 30))
         tel?.text = "nil"
-        tel?.font = UIFont.systemFontOfSize(18)
-        tel?.userInteractionEnabled = true
-        tel?.dataDetectorTypes = .PhoneNumber
-        tel?.scrollEnabled = false
-        tel?.editable = false
-        tel?.selectable = true
+        tel?.font = UIFont.systemFont(ofSize: 18)
+        tel?.isUserInteractionEnabled = true
+        tel?.dataDetectorTypes = .phoneNumber
+        tel?.isScrollEnabled = false
+        tel?.isEditable = false
+        tel?.isSelectable = true
         tel?.delegate = self
         self.contentView.addSubview(tel!)
         
-        kubun = UILabel(frame: CGRectMake(28, 28, 60, 16))
+        kubun = UILabel(frame: CGRect(x: 28, y: 28, width: 60, height: 16))
         kubun?.text = "nil"
-        kubun?.font = UIFont.systemFontOfSize(12)
+        kubun?.font = UIFont.systemFont(ofSize: 12)
         self.contentView.addSubview(kubun!)
         
-        syozoku0 = UILabel(frame: CGRectMake(88, 28, 100, 16))
+        syozoku0 = UILabel(frame: CGRect(x: 88, y: 28, width: 100, height: 16))
         syozoku0?.text = "nil"
-        syozoku0?.font = UIFont.systemFontOfSize(14)
+        syozoku0?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(syozoku0!)
         
-        syozoku = UILabel(frame: CGRectMake(148, 28, 60, 16))
+        syozoku = UILabel(frame: CGRect(x: 148, y: 28, width: 60, height: 16))
         syozoku?.text = "nil"
-        syozoku?.font = UIFont.systemFontOfSize(14)
+        syozoku?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(syozoku!)
         
-        kinmu = UILabel(frame: CGRectMake(220, 28, 40, 16))
+        kinmu = UILabel(frame: CGRect(x: 220, y: 28, width: 40, height: 16))
         kinmu?.text = "nil"
-        kinmu?.font = UIFont.systemFontOfSize(14)
+        kinmu?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(kinmu!)
         
-        mail = UITextView(frame: CGRectMake(28, 44, 300, 24))
+        mail = UITextView(frame: CGRect(x: 28, y: 44, width: 300, height: 24))
         mail?.text = "nil"
-        mail?.font = UIFont.systemFontOfSize(14)
-        mail?.userInteractionEnabled = true
-        mail?.dataDetectorTypes = .Link
-        mail?.scrollEnabled = false
-        mail?.editable = false
-        mail?.selectable = true
+        mail?.font = UIFont.systemFont(ofSize: 14)
+        mail?.isUserInteractionEnabled = true
+        mail?.dataDetectorTypes = .link
+        mail?.isScrollEnabled = false
+        mail?.isEditable = false
+        mail?.isSelectable = true
         mail?.delegate = self
         self.contentView.addSubview(mail!)
     }

@@ -10,15 +10,15 @@ import UIKit
 
 class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
     //ボタン押したら出るUIWindow
-    private var parent: KinentaiViewController!
-    private var win1: UIWindow!
-    private var text1: UITextView!
-    private var collection: UICollectionView!
-    private var items:[String] = ["","","",""]
-    private var btnClose: UIButton!
-    private var mKinentaiResultDialog: KinentaiResultDialog!
+    fileprivate var parent: KinentaiViewController!
+    fileprivate var win1: UIWindow!
+    fileprivate var text1: UITextView!
+    fileprivate var collection: UICollectionView!
+    fileprivate var items:[String] = ["","","",""]
+    fileprivate var btnClose: UIButton!
+    fileprivate var mKinentaiResultDialog: KinentaiResultDialog!
     //自分が何番目のダイアログか保存用
-    private var mIndex: Int!
+    fileprivate var mIndex: Int!
     
     //コンストラクタ
     init(index: Int, parentView: KinentaiViewController){
@@ -26,10 +26,10 @@ class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionVie
         win1 = UIWindow()
         text1 = UITextView()
         let layout = UICollectionViewFlowLayout() //これがないとエラーになる
-        layout.itemSize = CGSizeMake(70,30) // Cellの大きさ
+        layout.itemSize = CGSize(width: 70,height: 30) // Cellの大きさ
         layout.sectionInset = UIEdgeInsetsMake(8, 8, 8, 8) //Cellのマージン
-        layout.headerReferenceSize = CGSizeMake(1,1) //セクション毎のヘッダーサイズ
-        collection = UICollectionView(frame: CGRectZero, collectionViewLayout: layout)
+        layout.headerReferenceSize = CGSize(width: 1,height: 1) //セクション毎のヘッダーサイズ
+        collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         btnClose = UIButton()
         mIndex = index
         
@@ -87,7 +87,7 @@ class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionVie
     }
     
     //セットIndex
-    func setIndex(index: Int){
+    func setIndex(_ index: Int){
         mIndex = index
     }
     
@@ -97,71 +97,71 @@ class KinentaiSelectDialog2: NSObject, UICollectionViewDelegate, UICollectionVie
         parent.view.alpha = 0.3
         //初期設定
         //Win1
-        win1.backgroundColor = UIColor.whiteColor()
-        win1.frame = CGRectMake(80,200,parent.view.frame.width-40,parent.view.frame.height-100)
-        win1.layer.position = CGPointMake(parent.view.frame.width/2, parent.view.frame.height/2)
+        win1.backgroundColor = UIColor.white
+        win1.frame = CGRect(x: 80,y: 200,width: parent.view.frame.width-40,height: parent.view.frame.height-100)
+        win1.layer.position = CGPoint(x: parent.view.frame.width/2, y: parent.view.frame.height/2)
         win1.alpha = 1.0
         win1.layer.cornerRadius = 10
         //KeyWindowにする
-        win1.makeKeyWindow()
+        win1.makeKey()
         //表示
         self.win1.makeKeyAndVisible()
         
         //TextView生成
-        text1.frame = CGRectMake(10, 0, self.win1.frame.width-20, 60)
-        text1.backgroundColor = UIColor.clearColor()
-        text1.font = UIFont.systemFontOfSize(CGFloat(18))
-        text1.textColor = UIColor.blackColor()
-        text1.textAlignment = NSTextAlignment.Left
-        text1.editable = false
+        text1.frame = CGRect(x: 10, y: 0, width: self.win1.frame.width-20, height: 60)
+        text1.backgroundColor = UIColor.clear
+        text1.font = UIFont.systemFont(ofSize: CGFloat(18))
+        text1.textColor = UIColor.black
+        text1.textAlignment = NSTextAlignment.left
+        text1.isEditable = false
         self.win1.addSubview(text1)
         
         //UICollectionView生成
-        collection.frame = CGRectMake(10,60, self.win1.frame.width-20, self.win1.frame.height-100)
-        collection.backgroundColor = UIColor.whiteColor()
+        collection.frame = CGRect(x: 10,y: 60, width: self.win1.frame.width-20, height: self.win1.frame.height-100)
+        collection.backgroundColor = UIColor.white
         collection.delegate = self
         collection.dataSource = self
-        collection.registerClass(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
+        collection.register(CustomUICollectionViewCell.self, forCellWithReuseIdentifier: "MyCell")
         self.win1.addSubview(collection)
         
         //閉じるボタン生成
-        btnClose.frame = CGRectMake(0,0,100,30)
-        btnClose.backgroundColor = UIColor.orangeColor()
-        btnClose.setTitle("閉じる", forState: .Normal)
-        btnClose.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        btnClose.frame = CGRect(x: 0,y: 0,width: 100,height: 30)
+        btnClose.backgroundColor = UIColor.orange
+        btnClose.setTitle("閉じる", for: UIControlState())
+        btnClose.setTitleColor(UIColor.white, for: UIControlState())
         btnClose.layer.masksToBounds = true
         btnClose.layer.cornerRadius = 10.0
-        btnClose.layer.position = CGPointMake(self.win1.frame.width/2, self.win1.frame.height-20)
-        btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), forControlEvents: .TouchUpInside)
+        btnClose.layer.position = CGPoint(x: self.win1.frame.width/2, y: self.win1.frame.height-20)
+        btnClose.addTarget(self, action: #selector(self.onClickClose(_:)), for: .touchUpInside)
         self.win1.addSubview(btnClose)
     }
     
     //閉じる
-    @objc func onClickClose(sender: UIButton){
-        win1.hidden = true      //win1隠す
+    @objc func onClickClose(_ sender: UIButton){
+        win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         parent.view.alpha = 1.0 //元の画面明るく
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int)-> Int {
         return self.items.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell: CustomUICollectionViewCell = collection.dequeueReusableCellWithReuseIdentifier("MyCell", forIndexPath: indexPath) as! CustomUICollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: CustomUICollectionViewCell = collection.dequeueReusableCell(withReuseIdentifier: "MyCell", for: indexPath) as! CustomUICollectionViewCell
         cell.textLabel?.text = self.items[indexPath.row]
         
         return cell
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("セルを選択 #\(indexPath.row)!")
         //csvファイルの結果呼び出し
         let itemNo: Int = indexPath.row + 1 //csvファイルのヘッダの分+1するのを忘れないように
         mKinentaiResultDialog = KinentaiResultDialog(parentView: parent)
         mKinentaiResultDialog.showResult(mIndex, item: itemNo)
         //自らのダイアログを消去しておく
-        win1.hidden = true      //win1隠す
+        win1.isHidden = true      //win1隠す
         text1.text = ""         //使い回しするのでテキスト内容クリア
         items = ["","","",""]
     }

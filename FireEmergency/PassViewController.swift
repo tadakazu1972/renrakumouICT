@@ -10,12 +10,12 @@ import UIKit
 
 class PassViewController: UIViewController, UITextFieldDelegate {
     //メイン画面
-    let lblPass         = UILabel(frame: CGRectZero)
-    let txtPass         = UITextField(frame: CGRectZero)
-    let btnSave         = UIButton(frame: CGRectZero)
-    let btnCancel       = UIButton(frame: CGRectZero)
+    let lblPass         = UILabel(frame: CGRect.zero)
+    let txtPass         = UITextField(frame: CGRect.zero)
+    let btnSave         = UIButton(frame: CGRect.zero)
+    let btnCancel       = UIButton(frame: CGRect.zero)
     //データ保存用
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,46 +23,46 @@ class PassViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //lblPass生成
         lblPass.text = "パスワード登録(変更不可)"
-        lblPass.textColor = UIColor.blackColor()
-        lblPass.textAlignment = NSTextAlignment.Left
+        lblPass.textColor = UIColor.black
+        lblPass.textAlignment = NSTextAlignment.left
         lblPass.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblPass)
         
         //テキストフィールド
         txtPass.placeholder = "文字種別、文字数制限なし"
         txtPass.adjustsFontSizeToFitWidth = true
-        txtPass.textColor = UIColor.blackColor()
+        txtPass.textColor = UIColor.black
         txtPass.delegate = self
-        txtPass.borderStyle = UITextBorderStyle.Bezel
+        txtPass.borderStyle = UITextBorderStyle.bezel
         txtPass.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(txtPass)
         
         //キャンセルボタン
-        btnCancel.backgroundColor = UIColor.blueColor()
+        btnCancel.backgroundColor = UIColor.blue
         btnCancel.layer.masksToBounds = true
-        btnCancel.setTitle("キャンセル", forState: UIControlState.Normal)
-        btnCancel.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        btnCancel.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnCancel.setTitle("キャンセル", for: UIControlState())
+        btnCancel.setTitleColor(UIColor.white, for: UIControlState())
+        btnCancel.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnCancel.layer.cornerRadius = 8.0
         btnCancel.tag = 2
-        btnCancel.addTarget(self, action: #selector(self.onClickbtnCancel(_:)), forControlEvents: .TouchUpInside)
+        btnCancel.addTarget(self, action: #selector(self.onClickbtnCancel(_:)), for: .touchUpInside)
         btnCancel.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnCancel)
         //データ登録ボタン
-        btnSave.backgroundColor = UIColor.redColor()
+        btnSave.backgroundColor = UIColor.red
         btnSave.layer.masksToBounds = true
-        btnSave.setTitle("登録", forState: UIControlState.Normal)
-        btnSave.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        btnSave.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        btnSave.setTitle("登録", for: UIControlState())
+        btnSave.setTitleColor(UIColor.white, for: UIControlState())
+        btnSave.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnSave.layer.cornerRadius = 8.0
         btnSave.tag = 1
-        btnSave.addTarget(self, action: #selector(self.onClickbtnSave(_:)), forControlEvents: .TouchUpInside)
+        btnSave.addTarget(self, action: #selector(self.onClickbtnSave(_:)), for: .touchUpInside)
         btnSave.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(btnSave)        
     }
     
     //制約ひな型
-    func Constraint(item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .Equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
+    func Constraint(_ item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {
         let ret = NSLayoutConstraint(
             item:       item,
             attribute:  attr,
@@ -80,44 +80,44 @@ class PassViewController: UIViewController, UITextFieldDelegate {
         //制約
         self.view.addConstraints([
             //text1
-            Constraint(lblPass, .Top, to:self.view, .Top, constant:100),
-            Constraint(lblPass, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(lblPass, .Width, to:self.view, .Width, multiplier:0.8, constant:0)
+            Constraint(lblPass, .top, to:self.view, .top, constant:100),
+            Constraint(lblPass, .leading, to:self.view, .leading, constant:16),
+            Constraint(lblPass, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
             //テキストフィールド
-            Constraint(txtPass, .Top, to:lblPass, .Bottom, constant:24),
-            Constraint(txtPass, .Leading, to:self.view, .Leading, constant:16),
-            Constraint(txtPass, .Trailing, to:self.view, .Trailing, constant:-16)
+            Constraint(txtPass, .top, to:lblPass, .bottom, constant:24),
+            Constraint(txtPass, .leading, to:self.view, .leading, constant:16),
+            Constraint(txtPass, .trailing, to:self.view, .trailing, constant:-16)
             ])
         self.view.addConstraints([
             //キャンセルボタン
-            Constraint(btnCancel, .Bottom, to:txtPass, .Bottom, constant:48),
-            Constraint(btnCancel, .Leading, to:self.view, .Leading, constant:8),
-            Constraint(btnCancel, .Trailing, to:self.view, .CenterX, constant:-8)
+            Constraint(btnCancel, .bottom, to:txtPass, .bottom, constant:48),
+            Constraint(btnCancel, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnCancel, .trailing, to:self.view, .centerX, constant:-8)
             ])
         self.view.addConstraints([
             //登録ボタン
-            Constraint(btnSave, .Bottom, to:txtPass, .Bottom, constant:48),
-            Constraint(btnSave, .Leading, to:self.view, .CenterX, constant:8),
-            Constraint(btnSave, .Trailing, to:self.view, .Trailing, constant:-8),
+            Constraint(btnSave, .bottom, to:txtPass, .bottom, constant:48),
+            Constraint(btnSave, .leading, to:self.view, .centerX, constant:8),
+            Constraint(btnSave, .trailing, to:self.view, .trailing, constant:-8),
             ])
     }
     
     //登録ボタンクリック
-    func onClickbtnSave(sender : UIButton){
+    func onClickbtnSave(_ sender : UIButton){
         //UserDefaultsに書き込み
         let pass: String = txtPass.text!
-        userDefaults.setObject(pass, forKey: "password")
+        userDefaults.set(pass, forKey: "password")
         
         //自己を破棄し、呼び出し元へ遷移
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     //キャンセルボタンクリック
-    func onClickbtnCancel(sender : UIButton){
+    func onClickbtnCancel(_ sender : UIButton){
         //自己を破棄し、呼び出し元へ遷移
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
