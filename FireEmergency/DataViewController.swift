@@ -290,6 +290,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.view.addConstraints([
             //勤務消防署PickerView
             Constraint(picKinmu, .top, to:lblKinmu, .top, constant:0),
+            Constraint(picKinmu, .centerX, to:self.view, .centerX, constant:0),
             Constraint(picKinmu, .height, to:self.view, .height, constant:0, multiplier:0.2)
             ])
         self.view.addConstraints([
@@ -301,6 +302,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.view.addConstraints([
             //大津波・津波警報時参集指定署PickerView
             Constraint(picTsunami, .top, to:lblTsunami, .top, constant:0),
+            Constraint(picTsunami, .centerX, to:self.view, .centerX, constant:0),
             Constraint(picTsunami, .height, to:self.view, .height, constant:0, multiplier:0.2)
             ])
         self.view.addConstraints([
@@ -312,6 +314,7 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         self.view.addConstraints([
             //非常招集区分PickerView
             Constraint(picKubun, .top, to:lblKubun, .top, constant:0),
+            Constraint(picKubun, .centerX, to:self.view, .centerX, constant:0),
             Constraint(picKubun, .height, to:self.view, .height, constant:0, multiplier:0.2)
             ])
         self.view.addConstraints([
@@ -395,6 +398,12 @@ class DataViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         userDefaults.set(tsunamiStationRow!, forKey:"tsunamiStationRow")
         userDefaults.set(kubun, forKey:"kubun")
         userDefaults.set(kubunRow!, forKey:"kubunRow")
+        
+        //アラート表示
+        let alert = UIAlertController(title:"", message: "登録しました", preferredStyle: UIAlertControllerStyle.alert)
+        let alertCancel = UIAlertAction(title:"閉じる", style: UIAlertActionStyle.cancel, handler:nil)
+        alert.addAction(alertCancel)
+        self.present(alert, animated:true, completion: nil)
     }
     
     //震災画面遷移
