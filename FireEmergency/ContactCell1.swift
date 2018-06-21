@@ -39,17 +39,17 @@ class ContactCell1: UITableViewCell {
         kubun?.font = UIFont.systemFont(ofSize: 16)
         self.contentView.addSubview(kubun!)
         
-        syozoku0 = UILabel(frame: CGRect(x: 68, y: 28, width: 100, height: 16))
+        syozoku0 = UILabel(frame: CGRect(x: 30, y: 28, width: 100, height: 16))
         syozoku0?.text = "nil"
         syozoku0?.font = UIFont.systemFont(ofSize: 16)
         self.contentView.addSubview(syozoku0!)
         
-        syozoku = UILabel(frame: CGRect(x: 160, y: 28, width: 60, height: 16))
+        syozoku = UILabel(frame: CGRect(x: 160, y: 28, width: 100, height: 16))
         syozoku?.text = "nil"
         syozoku?.font = UIFont.systemFont(ofSize: 16)
         self.contentView.addSubview(syozoku!)
         
-        kinmu = UILabel(frame: CGRect(x: 220, y: 28, width: 40, height: 16))
+        kinmu = UILabel(frame: CGRect(x: 280, y: 28, width: 80, height: 16))
         kinmu?.text = "nil"
         kinmu?.font = UIFont.systemFont(ofSize: 16)
         self.contentView.addSubview(kinmu!)

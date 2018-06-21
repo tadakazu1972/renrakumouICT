@@ -62,9 +62,6 @@ class ContactViewController: UIViewController {
         //初回起動判定
         if userDefaults.bool(forKey: "firstLaunch"){
             //初回起動時処理 一度も基礎データ入力されないorデータ入力画面でもスピナーをさわらない場合はセットされない=結果でnilが表示される　それを防止
-            userDefaults.set("消防局", forKey: "mainStation")
-            userDefaults.set("消防局", forKey: "tsunamiStation")
-            userDefaults.set("１号招集", forKey: "kubun")
             
             //２回目以降ではfalseに
             userDefaults.set(false, forKey: "firstLaunch")

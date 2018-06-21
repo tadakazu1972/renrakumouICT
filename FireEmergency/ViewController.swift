@@ -18,7 +18,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let lblKubun        = UILabel(frame: CGRect.zero)
     let txtKubun        = UITextField(frame: CGRect.zero)
     let picKubun        = UIPickerView(frame: CGRect.zero)
-    let kubunArray: NSArray = ["すべて","１号","２号","３号","４号"]
+    let kubunArray: NSArray = ["すべて","1","2","3","4"]
     let lblSyozoku0     = UILabel(frame: CGRect.zero)
     let txtSyozoku0     = UITextField(frame: CGRect.zero)
     let picSyozoku0     = UIPickerView(frame: CGRect.zero)
@@ -79,9 +79,10 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //初回起動判定
         if userDefaults.bool(forKey: "firstLaunch"){
             
+            /*
             //DBダミーデータ生成
             mDBHelper.insert("大阪　太郎",tel: "09066080765",mail: "tadakazu1972@gmail.com",kubun: "４号招集",syozoku0: "消防局",syozoku: "警防課",kinmu: "日勤")
-            mDBHelper.insert("難波　二郎",tel: "07077777777",mail: "ta-nakamichi@city.osaka.lg.jp",kubun: "３号招集",syozoku0: "北消防署",syozoku: "与力",kinmu: "１部")
+            mDBHelper.insert("難波　二郎",tel: "07077777777",mail: "ta-nakamichi@city.osaka.lg.jp",kubun: "３号招集",syozoku0: "北消防署",syozoku: "与力",kinmu: "１部")*/
             
             //２回目以降ではfalseに
             userDefaults.set(false, forKey: "firstLaunch")
@@ -126,7 +127,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         toolbar.setItems([flexibleSpace, doneItem], animated: true)
         
         //非常招集区分ラベル
-        lblKubun.text = "・非常招集区分"
+        lblKubun.text = "・○号"
         lblKubun.adjustsFontSizeToFitWidth = true
         lblKubun.textAlignment = NSTextAlignment.left
         lblKubun.translatesAutoresizingMaskIntoConstraints = false
@@ -210,7 +211,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //震度５強以上
         btnEarthquake1.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake1.layer.masksToBounds = true
-        btnEarthquake1.setTitle("震度５強以上", for: UIControlState())
+        btnEarthquake1.setTitle("震度6弱以上", for: UIControlState())
         btnEarthquake1.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquake1.setTitleColor(UIColor.red, for: UIControlState.highlighted)
         btnEarthquake1.tag=5
@@ -220,7 +221,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //震度５弱
         btnEarthquake2.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake2.layer.masksToBounds = true
-        btnEarthquake2.setTitle("震度５弱", for: UIControlState())
+        btnEarthquake2.setTitle("震度５強", for: UIControlState())
         btnEarthquake2.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquake2.tag=6
         btnEarthquake2.translatesAutoresizingMaskIntoConstraints = false
@@ -229,7 +230,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //震度４
         btnEarthquake3.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake3.layer.masksToBounds = true
-        btnEarthquake3.setTitle("震度４", for: UIControlState())
+        btnEarthquake3.setTitle("震度5弱", for: UIControlState())
         btnEarthquake3.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquake3.tag=7
         btnEarthquake3.translatesAutoresizingMaskIntoConstraints = false
@@ -238,7 +239,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //震度３以下
         btnEarthquake4.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquake4.layer.masksToBounds = true
-        btnEarthquake4.setTitle("震度３以下", for: UIControlState())
+        btnEarthquake4.setTitle("震度4", for: UIControlState())
         btnEarthquake4.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquake4.tag=8
         btnEarthquake4.translatesAutoresizingMaskIntoConstraints = false
@@ -278,7 +279,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //連絡網
         btnEarthquakeTel.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeTel.layer.masksToBounds = true
-        btnEarthquakeTel.setTitle("連絡網", for: UIControlState())
+        btnEarthquakeTel.setTitle("情報(天気)", for: UIControlState())
         btnEarthquakeTel.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquakeTel.tag=13
         btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
@@ -451,7 +452,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             //震度５強以上ボタン
             Constraint(btnEarthquake1, .top, to:lblKinmu, .bottom, constant:32),
             Constraint(btnEarthquake1, .leading, to:self.view, .leading, constant:8),
-            Constraint(btnEarthquake1, .width, to:self.view, .width, constant:0, multiplier:0.2)
+            Constraint(btnEarthquake1, .width, to:self.view, .width, constant:0, multiplier:0.3)
             ])
         self.view.addConstraints([
             //震度５弱ボタン
@@ -641,20 +642,33 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mContactLoadDialog2.showResult()
     }
     
-    //震度５強以上
+    //震度6弱以上
     func showSelectEarthquake1(_ sender: UIButton){
+        //DBにつないでselect文実行
+        mDBHelper.select2("1")
+        mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactLoadDialog2.showResult()
     }
     
-    //震度５弱
+    //震度５強
     func showSelectEarthquake2(_ sender: UIButton){
+        mDBHelper.select2("2")
+        mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactLoadDialog2.showResult()
     }
     
-    //震度４
+    //震度5弱
     func showSelectEarthquake3(_ sender: UIButton){
+        mDBHelper.select2("3")
+        mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactLoadDialog2.showResult()
     }
     
-    //震度３以下
+    //震度4
     func showSelectEarthquake4(_ sender: UIButton){
+        mDBHelper.select2("4")
+        mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactLoadDialog2.showResult()
     }
     
     //情報(地震)
@@ -667,12 +681,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         mInfoDialog.showInfo("road")
     }
     
-    //連絡網
+    //情報（天気）
     func showContactLoad(_ sender: UIButton){
-        let data:ContactViewController = ContactViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.present(nav, animated: true, completion: nil)
+        mInfoDialog.showInfo("weather")
     }
     
     //情報（停電）

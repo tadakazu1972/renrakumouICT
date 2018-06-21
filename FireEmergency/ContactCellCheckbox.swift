@@ -52,17 +52,17 @@ class ContactCellCheckbox: UITableViewCell, UITextViewDelegate {
         kubun?.font = UIFont.systemFont(ofSize: 12)
         self.contentView.addSubview(kubun!)
         
-        syozoku0 = UILabel(frame: CGRect(x: 88, y: 28, width: 100, height: 16))
+        syozoku0 = UILabel(frame: CGRect(x: 62, y: 28, width: 100, height: 16))
         syozoku0?.text = "nil"
         syozoku0?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(syozoku0!)
         
-        syozoku = UILabel(frame: CGRect(x: 148, y: 28, width: 60, height: 16))
+        syozoku = UILabel(frame: CGRect(x: 160, y: 28, width: 100, height: 16))
         syozoku?.text = "nil"
         syozoku?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(syozoku!)
         
-        kinmu = UILabel(frame: CGRect(x: 220, y: 28, width: 40, height: 16))
+        kinmu = UILabel(frame: CGRect(x: 260, y: 28, width: 80, height: 16))
         kinmu?.text = "nil"
         kinmu?.font = UIFont.systemFont(ofSize: 14)
         self.contentView.addSubview(kinmu!)

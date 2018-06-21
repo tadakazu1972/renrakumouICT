@@ -17,45 +17,22 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
     let lblKubun        = UILabel(frame: CGRect.zero)
     let txtKubun        = UITextField(frame: CGRect.zero)
     let picKubun        = UIPickerView(frame: CGRect.zero)
-    let kubunArray: NSArray = ["１号招集","２号招集","３号招集","４号招集"]
+    let kubunArray: NSArray = ["すべて","1","2","3","4"]
     let lblSyozoku0     = UILabel(frame: CGRect.zero)
     let txtSyozoku0     = UITextField(frame: CGRect.zero)
     let picSyozoku0     = UIPickerView(frame: CGRect.zero)
-    let syozoku0Array: NSArray = ["消防局","北","都島","福島","此花","中央","西","港","大正","天王寺","浪速","西淀川","淀川","東淀川","東成","生野","旭","城東","鶴見","住之江","阿倍野","住吉","東住吉","平野","西成","水上","教育訓練センター"]
+    let syozoku0Array: NSArray = ["すべて","企画担当","活用推進担当","システムマネジメント担当"]
     let lblSyozoku      = UILabel(frame: CGRect.zero)
     let txtSyozoku      = UITextField(frame: CGRect.zero)
     let picSyozoku      = UIPickerView(frame: CGRect.zero)
-    let syozokuArray: NSArray = [["総務課","人事課","施設課","予防課","規制課","警防課","司令課","救急課"],
-                                 ["北本署","梅田","浮田","南森町","与力","大淀町","本庄"],
-                                 ["都島本署","高倉","東野田"],
-                                 ["福島本署","上福島","海老江"],
-                                 ["此花本署","桜島","西九条"],
-                                 ["中央本署","東雲","道頓堀","南坂町","上町"],
-                                 ["西本署","江戸堀","新町"],
-                                 ["港本署","田中"],
-                                 ["大正本署","泉尾","鶴町"],
-                                 ["天王寺本署","元町"],
-                                 ["浪速本署","恵美須","立葉","浪速出張所"],
-                                 ["西淀川本署","佃","大和田","竹島"],
-                                 ["淀川本署","十三橋","加島","東三国"],
-                                 ["東淀川本署","豊里","小松","井高野","柴島","西淡路"],
-                                 ["東成本署","中本","深江"],
-                                 ["生野本署","勝山","中川","巽"],
-                                 ["旭本署","新森","赤川"],
-                                 ["城東本署","放出","中浜","関目"],
-                                 ["鶴見本署","今津","矢田"],
-                                 ["住之江本署","平林","加賀屋","南港"],
-                                 ["阿倍野本署","清明通","阪南"],
-                                 ["住吉本署","苅田","万代"],
-                                 ["東住吉本署","北田辺","杭全","矢田"],
-                                 ["平野本署","加美","長吉","喜連","加美正覚寺"],
-                                 ["西成本署","海道","津守"],
-                                 ["水上"],
-                                 ["教育訓練センター"]]
+    let syozokuArray: NSArray = [["すべて"],
+                                 ["すべて","企画グループ","支援グループ"],
+                                 ["すべて","活用推進グループ","基盤グループ"],
+                                 ["すべて","システムマネジメント担当"]]
     let lblKinmu        = UILabel(frame: CGRect.zero)
     let txtKinmu        = UITextField(frame: CGRect.zero)
     let picKinmu        = UIPickerView(frame: CGRect.zero)
-    let kinmuArray: NSArray = ["日勤","１部","２部"]
+    let kinmuArray: NSArray = ["すべて","本庁舎","阿波座センタービル","災害本部","阿倍野防災センター","北区役所","都島区役所","福島区役所","此花区役所","中央区役所","西区役所","港区役所","大正区役所","天王寺区役所","浪速区役所","西淀川区役所","淀川区役所","東淀川区役所","東成区役所","生野区役所","旭区役所","城東区役所","鶴見区役所","住之江区役所","阿倍野区役所","住吉区役所","東住吉区役所","平野区役所","西成区役所"]
     let btnSave         = UIButton(frame: CGRect.zero)
     let btnCancel       = UIButton(frame: CGRect.zero)
     //別クラスのインスタンス保持用変数
@@ -110,7 +87,7 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
         toolbar.setItems([flexibleSpace, doneItem], animated: true)
         
         //非常招集区分ラベル
-        lblKubun.text = "■非常招集区分"
+        lblKubun.text = "■○号(半角数字)"
         lblKubun.adjustsFontSizeToFitWidth = true
         lblKubun.textAlignment = NSTextAlignment.left
         lblKubun.translatesAutoresizingMaskIntoConstraints = false
@@ -130,7 +107,7 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
         picKubun.selectRow(0, inComponent:0, animated:false)
         
         //所属(大分類)ラベル
-        lblSyozoku0.text = "■所属(大分類)"
+        lblSyozoku0.text = "■担当"
         lblSyozoku0.adjustsFontSizeToFitWidth = true
         lblSyozoku0.textAlignment = NSTextAlignment.left
         lblSyozoku0.translatesAutoresizingMaskIntoConstraints = false
@@ -150,7 +127,7 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
         picSyozoku0.selectRow(0, inComponent:0, animated:false) //呼び出したrow値でピッカー初期化
 
         //所属(小分類)ラベル
-        lblSyozoku.text = "■所属(小分類)"
+        lblSyozoku.text = "■グループ"
         lblSyozoku.adjustsFontSizeToFitWidth = true
         lblSyozoku.textAlignment = NSTextAlignment.left
         lblSyozoku.translatesAutoresizingMaskIntoConstraints = false
@@ -170,7 +147,7 @@ class ContactNewViewController: UIViewController, UIPickerViewDelegate, UIPicker
         picSyozoku.selectRow(0, inComponent:0, animated:false)
         
         //勤務区分ラベル
-        lblKinmu.text = "■勤務区分"
+        lblKinmu.text = "■参集場所"
         lblKinmu.adjustsFontSizeToFitWidth = true
         lblKinmu.textAlignment = NSTextAlignment.left
         lblKinmu.translatesAutoresizingMaskIntoConstraints = false

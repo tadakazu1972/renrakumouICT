@@ -25,7 +25,7 @@ class DBHelper {
     
     func createTable(){
         db.open()
-        let sql = "CREATE TABLE IF NOT EXISTS records(_id integer primary key autoincrement,name text,tel text,mail text,kubun text,syozoku0 text,syozoku text,kinmu text);"
+        let sql = "CREATE TABLE IF NOT EXISTS records(_id integer primary key autoincrement,name text,tel text,mail text,kubun integer,syozoku0 text,syozoku text,kinmu text);"
         let ret = db.executeUpdate(sql, withArgumentsIn: nil)
         if ret {
             print("テーブル作成　成功")
@@ -104,7 +104,7 @@ class DBHelper {
         //SQL文作成準備
         var kubunSQL : String = "IS NOT NULL"
         if kubun != "すべて" {
-            kubunSQL = "='" + kubun + "'"
+            kubunSQL = ">=" + kubun
         }
         var syozoku0SQL : String = "IS NOT NULL"
         if syozoku0 != "すべて" {
@@ -118,6 +118,32 @@ class DBHelper {
         if kinmu != "すべて" {
             kinmuSQL = "='" + kinmu + "'"
         }
+        let sql = "SELECT * FROM records where kubun " + kubunSQL + " and syozoku0 " + syozoku0SQL + " and syozoku " + syozokuSQL + " and kinmu " + kinmuSQL + " ORDER BY _id;"
+        db.open()
+        let results = db.executeQuery(sql, withArgumentsIn: nil)
+        while (results?.next())!{
+            let _name: String = results!.string(forColumn: "name")
+            let _tel: String = results!.string(forColumn: "tel")
+            let _mail: String = results!.string(forColumn: "mail")
+            let _kubun: String = results!.string(forColumn: "kubun")
+            let _syozoku0: String = results!.string(forColumn: "syozoku0")
+            let _syozoku: String = results!.string(forColumn: "syozoku")
+            let _kinmu: String = results!.string(forColumn: "kinmu")
+            resultArray.append([_name, _tel, _mail, _kubun, _syozoku0, _syozoku, _kinmu])
+        }
+        db.close()
+    }
+    
+    //震度6弱以上検索
+    func select2(_ kubun: String){
+        //前の検索結果が残っているので全削除
+        resultArray.removeAll()
+        
+        //SQL文作成準備
+        let kubunSQL : String = ">=" + kubun
+        let syozoku0SQL : String = "IS NOT NULL"
+        let syozokuSQL : String = "IS NOT NULL"
+        let kinmuSQL : String = "IS NOT NULL"
         let sql = "SELECT * FROM records where kubun " + kubunSQL + " and syozoku0 " + syozoku0SQL + " and syozoku " + syozokuSQL + " and kinmu " + kinmuSQL + " ORDER BY _id;"
         db.open()
         let results = db.executeQuery(sql, withArgumentsIn: nil)
