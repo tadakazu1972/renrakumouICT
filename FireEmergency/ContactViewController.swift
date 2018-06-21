@@ -187,7 +187,7 @@ class ContactViewController: UIViewController {
         //連絡網
         btnEarthquakeTel.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
         btnEarthquakeTel.layer.masksToBounds = true
-        btnEarthquakeTel.setTitle("連絡網", for: UIControlState())
+        btnEarthquakeTel.setTitle("情報(天気)", for: UIControlState())
         btnEarthquakeTel.setTitleColor(UIColor.black, for: UIControlState())
         btnEarthquakeTel.tag=13
         btnEarthquakeTel.translatesAutoresizingMaskIntoConstraints = false
@@ -455,12 +455,9 @@ class ContactViewController: UIViewController {
         mInfoDialog.showInfo("road")
     }
     
-    //連絡網
+    //情報（天気）
     func showContactLoad(_ sender: UIButton){
-        let data:ContactViewController = ContactViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.present(nav, animated: true, completion: nil)
+        mInfoDialog.showInfo("weather")
     }
     
     //留意事項
