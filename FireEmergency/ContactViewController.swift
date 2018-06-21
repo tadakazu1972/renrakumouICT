@@ -12,9 +12,6 @@ class ContactViewController: UIViewController {
     //メイン画面
     let btnData         = UIButton(frame: CGRect.zero)
     let btnEarthquake   = UIButton(frame: CGRect.zero)
-    let btnTyphoon      = UIButton(frame: CGRect.zero)
-    let btnKokuminhogo  = UIButton(frame: CGRect.zero)
-    let btnKinentai     = UIButton(frame: CGRect.zero)
     let pad1            = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
     let pad2            = UIView(frame: CGRect.zero)
     let pad3            = UIView(frame: CGRect.zero)
@@ -46,15 +43,12 @@ class ContactViewController: UIViewController {
     //別クラスのインスタンス保持用変数
     fileprivate var mInfoDialog: InfoDialog!
     fileprivate var mBousainetDialog: BousainetDialog!
-    fileprivate var mEarthSelectDialog: EarthSelectDialog!
     fileprivate var mContactLoadDialog: ContactLoadDialog!
     fileprivate var mContactLoadDialog2: ContactLoadDialog2!
     fileprivate var mContactUpdateSelectDialog: ContactUpdateSelectDialog!
     fileprivate var mContactDeleteDialog: ContactDeleteDialog!
     fileprivate var mContactImportCSVDialog: ContactImportCSVDialog!
     fileprivate var mPassInputDialog: ContactPassInputDialog!
-    //結果表示用クラス保持用
-    internal var mEarthResultDialog: EarthResultDialog!
     //データ保存用
     let userDefaults = UserDefaults.standard
     //SQLite用
@@ -81,50 +75,14 @@ class ContactViewController: UIViewController {
         //基礎データ入力
         btnData.backgroundColor = UIColor.blue
         btnData.layer.masksToBounds = true
-        btnData.setTitle("基礎データ入力", for: UIControlState())
+        btnData.setTitle("トップへ戻る", for: UIControlState())
         btnData.setTitleColor(UIColor.white, for: UIControlState())
         btnData.setTitleColor(UIColor.black, for: UIControlState.highlighted)
         btnData.layer.cornerRadius = 8.0
         btnData.tag = 0
-        btnData.addTarget(self, action: #selector(ViewController.onClickbtnData(_:)), for: .touchUpInside)
         btnData.translatesAutoresizingMaskIntoConstraints = false
+        btnData.addTarget(self, action: #selector(self.onClickbtnData(_:)), for: .touchUpInside)
         self.view.addSubview(btnData)
-        //震災
-        btnEarthquake.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnEarthquake.layer.masksToBounds = true
-        btnEarthquake.setTitle("震災", for: UIControlState())
-        btnEarthquake.setTitleColor(UIColor.black, for: UIControlState())
-        btnEarthquake.tag=1
-        btnEarthquake.translatesAutoresizingMaskIntoConstraints = false
-        btnEarthquake.addTarget(self, action: #selector(self.onClickbtnEarthquake(_:)), for: .touchUpInside)
-        self.view.addSubview(btnEarthquake)
-        //風水害
-        btnTyphoon.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnTyphoon.layer.masksToBounds = true
-        btnTyphoon.setTitle("風水害", for: UIControlState())
-        btnTyphoon.setTitleColor(UIColor.black, for: UIControlState())
-        btnTyphoon.tag=2
-        btnTyphoon.addTarget(self, action: #selector(self.onClickbtnTyphoon(_:)), for: .touchUpInside)
-        btnTyphoon.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(btnTyphoon)
-        //国民保護
-        btnKokuminhogo.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnKokuminhogo.layer.masksToBounds = true
-        btnKokuminhogo.setTitle("国民保", for: UIControlState())
-        btnKokuminhogo.setTitleColor(UIColor.black, for: UIControlState())
-        btnKokuminhogo.tag=3
-        btnKokuminhogo.addTarget(self, action: #selector(self.onClickbtnKokuminhogo(_:)), for: .touchUpInside)
-        btnKokuminhogo.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(btnKokuminhogo)
-        //緊援隊
-        btnKinentai.backgroundColor = UIColor(red:0.85, green:0.85, blue:0.85, alpha:1.0)
-        btnKinentai.layer.masksToBounds = true
-        btnKinentai.setTitle("緊援隊", for: UIControlState())
-        btnKinentai.setTitleColor(UIColor.black, for: UIControlState())
-        btnKinentai.tag=4
-        btnKinentai.addTarget(self, action: #selector(self.onClickbtnKinentai(_:)), for: .touchUpInside)
-        btnKinentai.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(btnKinentai)
         //pad
         pad1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(pad1)
@@ -305,56 +263,8 @@ class ContactViewController: UIViewController {
             Constraint(btnData, .trailing, to:self.view, .trailingMargin, constant:8)
             ])
         self.view.addConstraints([
-            //pad1
-            Constraint(pad1, .top, to:btnData, .bottom, constant:8),
-            Constraint(pad1, .leading, to:self.view, .leading, constant:0),
-            Constraint(pad1, .width, to:self.view, .width, constant:0, multiplier:0.024)
-            ])
-        self.view.addConstraints([
-            //震災ボタン
-            Constraint(btnEarthquake, .top, to:btnData, .bottom, constant:8),
-            Constraint(btnEarthquake, .leading, to:pad1, .trailing, constant:0),
-            Constraint(btnEarthquake, .width, to:self.view, .width, constant:0, multiplier:0.22)
-            ])
-        self.view.addConstraints([
-            //pad2
-            Constraint(pad2, .top, to:btnData, .bottom, constant:8),
-            Constraint(pad2, .leading, to:btnEarthquake, .trailing, constant:0),
-            Constraint(pad2, .width, to:self.view, .width, constant:0, multiplier:0.024)
-            ])
-        self.view.addConstraints([
-            //風水害ボタン
-            Constraint(btnTyphoon, .top, to:btnData, .bottom, constant:8),
-            Constraint(btnTyphoon, .leading, to:pad2, .trailing, constant:0),
-            Constraint(btnTyphoon, .width, to:btnEarthquake, .width, constant:0)
-            ])
-        self.view.addConstraints([
-            //pad3
-            Constraint(pad3, .top, to:btnData, .bottom, constant:8),
-            Constraint(pad3, .leading, to:btnTyphoon, .trailing, constant:0),
-            Constraint(pad3, .width, to:self.view, .width, constant:0, multiplier:0.024)
-            ])
-        self.view.addConstraints([
-            //国民保護ボタン
-            Constraint(btnKokuminhogo, .top, to:btnData, .bottom ,constant:8),
-            Constraint(btnKokuminhogo, .leading, to:pad3, .trailing, constant:0),
-            Constraint(btnKokuminhogo, .width, to:btnEarthquake, .width, constant:0)
-            ])
-        self.view.addConstraints([
-            //pad4
-            Constraint(pad4, .top, to:btnData, .bottom, constant:8),
-            Constraint(pad4, .leading, to:btnKokuminhogo, .trailing, constant:0),
-            Constraint(pad4, .width, to:self.view, .width, constant:0, multiplier:0.024)
-            ])
-        self.view.addConstraints([
-            //緊援隊ボタン
-            Constraint(btnKinentai, .top, to:btnData, .bottom, constant:8),
-            Constraint(btnKinentai, .leading, to:pad4, .trailing, constant:0),
-            Constraint(btnKinentai, .width, to:btnEarthquake, .width, constant:0)
-            ])
-        self.view.addConstraints([
             //padY1
-            Constraint(padY1, .top, to:btnEarthquake, .bottom, constant:0),
+            Constraint(padY1, .top, to:btnData, .bottom, constant:0),
             Constraint(padY1, .leading, to:self.view, .leading, constant:0),
             Constraint(padY1, .height, to:self.view, .height, constant:0, multiplier:0.05)
             ])
@@ -500,21 +410,9 @@ class ContactViewController: UIViewController {
     
     //一覧
     func showSelectContact1(_ sender: UIButton){
-        //初期設定のままだと設定画面に遷移
-        if userDefaults.string(forKey: "password") == "nil" {
-            //PasViewController呼び出し
-            let data:PassViewController = PassViewController()
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.present(nav, animated: true, completion: nil)
-        } else if !userDefaults.bool(forKey: "passCheck"){
-            //パスワードチェック呼び出し
-            mPassInputDialog.showResult(0)
-        } else {
-            mDBHelper.selectAll()
-            mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
-            mContactLoadDialog2.showResult()
-        }
+        mDBHelper.selectAll()
+        mContactLoadDialog2 = ContactLoadDialog2(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactLoadDialog2.showResult()
     }
     
     //新規
@@ -527,40 +425,16 @@ class ContactViewController: UIViewController {
     
     //修正
     func showSelectContactUpdate(_ sender: UIButton){
-        //初期設定のままだと設定画面に遷移
-        if userDefaults.string(forKey: "password") == "nil" {
-            //PasViewController呼び出し
-            let data:PassViewController = PassViewController()
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.present(nav, animated: true, completion: nil)
-        } else if !userDefaults.bool(forKey: "passCheck"){
-            //パスワードチェック呼び出し
-            mPassInputDialog.showResult(2)
-        } else {
-            mDBHelper.selectAll2() //_idを含む呼び出す。後でその_idをもって上書きするデータを指定するから。
-            mContactUpdateSelectDialog = ContactUpdateSelectDialog(parentView: self, resultFrom: mDBHelper.resultArray)
-            mContactUpdateSelectDialog.showResult()
-        }
+        mDBHelper.selectAll2() //_idを含む呼び出す。後でその_idをもって上書きするデータを指定するから。
+        mContactUpdateSelectDialog = ContactUpdateSelectDialog(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactUpdateSelectDialog.showResult()
     }
     
     //削除
     func showSelectContactDelete(_ sender: UIButton){
-        //初期設定のままだと設定画面に遷移
-        if userDefaults.string(forKey: "password") == "nil" {
-            //PasViewController呼び出し
-            let data:PassViewController = PassViewController()
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.present(nav, animated: true, completion: nil)
-        } else if !userDefaults.bool(forKey: "passCheck"){
-            //パスワードチェック呼び出し
-            mPassInputDialog.showResult(3)
-        } else {
-            mDBHelper.selectAll2() //_idを含む2を呼び出し
-            mContactDeleteDialog = ContactDeleteDialog(parentView: self, resultFrom: mDBHelper.resultArray)
-            mContactDeleteDialog.showResult()
-        }
+        mDBHelper.selectAll2() //_idを含む2を呼び出し
+        mContactDeleteDialog = ContactDeleteDialog(parentView: self, resultFrom: mDBHelper.resultArray)
+        mContactDeleteDialog.showResult()
     }
     
     //CSVファイル読込
@@ -586,23 +460,10 @@ class ContactViewController: UIViewController {
     
     //連絡網
     func showContactLoad(_ sender: UIButton){
-        //初期設定のままだと設定画面に遷移
-        if userDefaults.string(forKey: "password") == "nil" {
-            //PasViewController呼び出し
-            let data:PassViewController = PassViewController()
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.present(nav, animated: true, completion: nil)
-        } else if !userDefaults.bool(forKey: "passCheck"){
-            //パスワードチェック呼び出し
-            mPassInputDialog.showResult(0)
-        } else {
-            //合っていれば表示
-            let data:ContactSearchViewController = ContactSearchViewController()
-            let nav = UINavigationController(rootViewController: data)
-            nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-            self.present(nav, animated: true, completion: nil)
-        }
+        let data:ContactViewController = ContactViewController()
+        let nav = UINavigationController(rootViewController: data)
+        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
+        self.present(nav, animated: true, completion: nil)
     }
     
     //留意事項
@@ -617,39 +478,7 @@ class ContactViewController: UIViewController {
     
     //基礎データ入力画面遷移
     func onClickbtnData(_ sender : UIButton){
-        let data:DataViewController = DataViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.present(nav, animated: true, completion: nil)
-    }
-    
-    //震災画面遷移
-    func onClickbtnEarthquake(_ sender : UIButton){
         let data:ViewController = ViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.present(nav, animated: true, completion: nil)
-    }
-    
-    //風水害画面遷移
-    func onClickbtnTyphoon(_ sender : UIButton){
-        let data:TyphoonViewController = TyphoonViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.present(nav, animated: true, completion: nil)
-    }
-    
-    //国民保護画面遷移
-    func onClickbtnKokuminhogo(_ sender : UIButton){
-        let data:KokuminhogoViewController = KokuminhogoViewController()
-        let nav = UINavigationController(rootViewController: data)
-        nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
-        self.present(nav, animated: true, completion: nil)
-    }
-    
-    //緊援隊画面遷移
-    func onClickbtnKinentai(_ sender : UIButton){
-        let data:KinentaiViewController = KinentaiViewController()
         let nav = UINavigationController(rootViewController: data)
         nav.setNavigationBarHidden(true, animated: false) //これをいれないとNavigationBarが表示されてうざい
         self.present(nav, animated: true, completion: nil)
