@@ -88,7 +88,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         lblData.text = "ICT戦略室災害時連絡網"
         lblData.adjustsFontSizeToFitWidth = true
         lblData.textColor = UIColor.black
-        lblData.textAlignment = NSTextAlignment.left
+        lblData.font = UIFont.boldSystemFont(ofSize: UIFont.labelFontSize)
+        lblData.textAlignment = NSTextAlignment.center
         lblData.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(lblData)
         //全部選択ボタン
@@ -305,8 +306,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.view.addConstraints([
             //新規データ入力ラベル
             Constraint(lblData, .top, to:self.view, .top, constant:28),
-            Constraint(lblData, .leading, to:self.view, .leading, constant:16),
-            Constraint(lblData, .width, to:self.view, .width, constant:0, multiplier:0.8)
+            Constraint(lblData, .centerX, to:self.view, .centerX, constant:0),
+            Constraint(lblData, .width, to:self.view, .width, constant:0)
             ])
         self.view.addConstraints([
             //全件一覧表示ボタン

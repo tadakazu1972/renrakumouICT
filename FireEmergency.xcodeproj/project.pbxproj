@@ -42,6 +42,19 @@
 		59D8AEF61E6131C800A3EDE2 /* ic_check_box_outline_blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 59D8AEF41E6131C800A3EDE2 /* ic_check_box_outline_blank.png */; };
 		59D8AEF71E6131C800A3EDE2 /* ic_check_box.png in Resources */ = {isa = PBXBuildFile; fileRef = 59D8AEF51E6131C800A3EDE2 /* ic_check_box.png */; };
 		59D8AEF91E61A16300A3EDE2 /* ContactImportCSVDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8AEF81E61A16300A3EDE2 /* ContactImportCSVDialog.swift */; };
+		921EF26020DBA28500D1B2D0 /* Guide22Dialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921EF25F20DBA28400D1B2D0 /* Guide22Dialog.swift */; };
+		921EF28220DBA5DB00D1B2D0 /* guide222.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF27920DBA5DA00D1B2D0 /* guide222.png */; };
+		921EF28320DBA5DB00D1B2D0 /* guide225.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF27A20DBA5DA00D1B2D0 /* guide225.png */; };
+		921EF28420DBA5DB00D1B2D0 /* guide229.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF27B20DBA5DA00D1B2D0 /* guide229.png */; };
+		921EF28520DBA5DB00D1B2D0 /* guide227.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF27C20DBA5DA00D1B2D0 /* guide227.png */; };
+		921EF28620DBA5DB00D1B2D0 /* guide228.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF27D20DBA5DB00D1B2D0 /* guide228.png */; };
+		921EF28720DBA5DB00D1B2D0 /* guide221.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF27E20DBA5DB00D1B2D0 /* guide221.png */; };
+		921EF28820DBA5DB00D1B2D0 /* guide223.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF27F20DBA5DB00D1B2D0 /* guide223.png */; };
+		921EF28920DBA5DB00D1B2D0 /* guide224.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF28020DBA5DB00D1B2D0 /* guide224.png */; };
+		921EF28A20DBA5DB00D1B2D0 /* guide226.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF28120DBA5DB00D1B2D0 /* guide226.png */; };
+		921EF28E20DBA5F100D1B2D0 /* guide2211.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF28B20DBA5F100D1B2D0 /* guide2211.png */; };
+		921EF28F20DBA5F100D1B2D0 /* guide2210.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF28C20DBA5F100D1B2D0 /* guide2210.png */; };
+		921EF29020DBA5F100D1B2D0 /* guide2212.png in Resources */ = {isa = PBXBuildFile; fileRef = 921EF28D20DBA5F100D1B2D0 /* guide2212.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +102,19 @@
 		59D8AEF41E6131C800A3EDE2 /* ic_check_box_outline_blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box_outline_blank.png; sourceTree = "<group>"; };
 		59D8AEF51E6131C800A3EDE2 /* ic_check_box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_check_box.png; sourceTree = "<group>"; };
 		59D8AEF81E61A16300A3EDE2 /* ContactImportCSVDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactImportCSVDialog.swift; sourceTree = "<group>"; };
+		921EF25F20DBA28400D1B2D0 /* Guide22Dialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Guide22Dialog.swift; sourceTree = "<group>"; };
+		921EF27920DBA5DA00D1B2D0 /* guide222.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide222.png; sourceTree = "<group>"; };
+		921EF27A20DBA5DA00D1B2D0 /* guide225.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide225.png; sourceTree = "<group>"; };
+		921EF27B20DBA5DA00D1B2D0 /* guide229.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide229.png; sourceTree = "<group>"; };
+		921EF27C20DBA5DA00D1B2D0 /* guide227.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide227.png; sourceTree = "<group>"; };
+		921EF27D20DBA5DB00D1B2D0 /* guide228.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide228.png; sourceTree = "<group>"; };
+		921EF27E20DBA5DB00D1B2D0 /* guide221.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide221.png; sourceTree = "<group>"; };
+		921EF27F20DBA5DB00D1B2D0 /* guide223.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide223.png; sourceTree = "<group>"; };
+		921EF28020DBA5DB00D1B2D0 /* guide224.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide224.png; sourceTree = "<group>"; };
+		921EF28120DBA5DB00D1B2D0 /* guide226.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide226.png; sourceTree = "<group>"; };
+		921EF28B20DBA5F100D1B2D0 /* guide2211.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide2211.png; sourceTree = "<group>"; };
+		921EF28C20DBA5F100D1B2D0 /* guide2210.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide2210.png; sourceTree = "<group>"; };
+		921EF28D20DBA5F100D1B2D0 /* guide2212.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = guide2212.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +176,8 @@
 				594DDA481D9747110078EE72 /* caution.txt */,
 				598AC8DE1D850AE6006842C8 /* AppDelegate.swift */,
 				597FD1151E2113E50011ABB1 /* ViewController.swift */,
-				597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */,
 				597FD1471E33218B0011ABB1 /* ContactViewController.swift */,
+				597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */,
 				597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */,
 				5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */,
 				59D8AEDE1E59224700A3EDE2 /* ContactNewViewController.swift */,
@@ -167,6 +193,19 @@
 				5960EB771E46C52900D1917A /* DBHelper.swift */,
 				594DDA4A1D9F50D40078EE72 /* InfoDialog.swift */,
 				597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */,
+				921EF25F20DBA28400D1B2D0 /* Guide22Dialog.swift */,
+				921EF27E20DBA5DB00D1B2D0 /* guide221.png */,
+				921EF28C20DBA5F100D1B2D0 /* guide2210.png */,
+				921EF28B20DBA5F100D1B2D0 /* guide2211.png */,
+				921EF28D20DBA5F100D1B2D0 /* guide2212.png */,
+				921EF27920DBA5DA00D1B2D0 /* guide222.png */,
+				921EF27F20DBA5DB00D1B2D0 /* guide223.png */,
+				921EF28020DBA5DB00D1B2D0 /* guide224.png */,
+				921EF27A20DBA5DA00D1B2D0 /* guide225.png */,
+				921EF28120DBA5DB00D1B2D0 /* guide226.png */,
+				921EF27C20DBA5DA00D1B2D0 /* guide227.png */,
+				921EF27D20DBA5DB00D1B2D0 /* guide228.png */,
+				921EF27B20DBA5DA00D1B2D0 /* guide229.png */,
 				598AC8E21D850AE6006842C8 /* Main.storyboard */,
 				598AC8E81D850AE6006842C8 /* Assets.xcassets */,
 				598AC8EA1D850AE6006842C8 /* LaunchScreen.storyboard */,
@@ -249,11 +288,23 @@
 			files = (
 				594DDA491D9747110078EE72 /* caution.txt in Resources */,
 				598AC8EC1D850AE6006842C8 /* LaunchScreen.storyboard in Resources */,
+				921EF28E20DBA5F100D1B2D0 /* guide2211.png in Resources */,
+				921EF28720DBA5DB00D1B2D0 /* guide221.png in Resources */,
+				921EF28420DBA5DB00D1B2D0 /* guide229.png in Resources */,
+				921EF29020DBA5F100D1B2D0 /* guide2212.png in Resources */,
 				598AC8E91D850AE6006842C8 /* Assets.xcassets in Resources */,
+				921EF28920DBA5DB00D1B2D0 /* guide224.png in Resources */,
 				598AC8E41D850AE6006842C8 /* Main.storyboard in Resources */,
 				5960E6121E45F8D000D1917A /* Info.plist in Resources */,
+				921EF28F20DBA5F100D1B2D0 /* guide2210.png in Resources */,
+				921EF28620DBA5DB00D1B2D0 /* guide228.png in Resources */,
+				921EF28820DBA5DB00D1B2D0 /* guide223.png in Resources */,
+				921EF28220DBA5DB00D1B2D0 /* guide222.png in Resources */,
+				921EF28A20DBA5DB00D1B2D0 /* guide226.png in Resources */,
 				59D8AEF71E6131C800A3EDE2 /* ic_check_box.png in Resources */,
+				921EF28520DBA5DB00D1B2D0 /* guide227.png in Resources */,
 				597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */,
+				921EF28320DBA5DB00D1B2D0 /* guide225.png in Resources */,
 				59D8AEF61E6131C800A3EDE2 /* ic_check_box_outline_blank.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +332,7 @@
 				59D8AEE11E59AF5F00A3EDE2 /* ContactUpdateSelectDialog.swift in Sources */,
 				5960EB781E46C52900D1917A /* DBHelper.swift in Sources */,
 				59D8AEF91E61A16300A3EDE2 /* ContactImportCSVDialog.swift in Sources */,
+				921EF26020DBA28500D1B2D0 /* Guide22Dialog.swift in Sources */,
 				5960E60D1E45F8D000D1917A /* FMDatabase.m in Sources */,
 				597FD14A1E3329E00011ABB1 /* ContactLoadDialog.swift in Sources */,
 				597FD1481E33218B0011ABB1 /* ContactViewController.swift in Sources */,

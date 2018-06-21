@@ -22,6 +22,7 @@ class ContactViewController: UIViewController {
     let btnContact3     = UIButton(frame: CGRect.zero)
     let btnContact4     = UIButton(frame: CGRect.zero)
     let btnContact5     = UIButton(frame: CGRect.zero)
+    let btnGuide        = UIButton(frame: CGRect.zero)
     let padY1           = UIView(frame: CGRect.zero) //ボタンの間にはさむ見えないpaddingがわり
     let padY2           = UIView(frame: CGRect.zero)
     let padY3           = UIView(frame: CGRect.zero)
@@ -49,6 +50,7 @@ class ContactViewController: UIViewController {
     fileprivate var mContactDeleteDialog: ContactDeleteDialog!
     fileprivate var mContactImportCSVDialog: ContactImportCSVDialog!
     fileprivate var mPassInputDialog: ContactPassInputDialog!
+    fileprivate var mGuide22Dialog: Guide22Dialog!
     //データ保存用
     let userDefaults = UserDefaults.standard
     //SQLite用
@@ -69,7 +71,7 @@ class ContactViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(red:1.0, green:1.0, blue:1.0, alpha:1.0)
         //Button生成
-        //基礎データ入力
+        //トップへ戻るボタン
         btnData.backgroundColor = UIColor.blue
         btnData.layer.masksToBounds = true
         btnData.setTitle("トップへ戻る", for: UIControlState())
@@ -141,6 +143,16 @@ class ContactViewController: UIViewController {
         btnContact5.translatesAutoresizingMaskIntoConstraints = false
         btnContact5.addTarget(self, action: #selector(self.showContactImportCSV(_:)), for: .touchUpInside)
         self.view.addSubview(btnContact5)
+        //CSVファイル読み込ませ説明書ボタン
+        btnGuide.backgroundColor = UIColor.orange
+        btnGuide.layer.masksToBounds = true
+        btnGuide.setTitle("CSVファイル読み込ませ説明書", for: UIControlState())
+        btnGuide.setTitleColor(UIColor.white, for: UIControlState())
+        btnGuide.setTitleColor(UIColor.black, for: UIControlState.highlighted)
+        btnGuide.layer.cornerRadius = 8.0
+        btnGuide.translatesAutoresizingMaskIntoConstraints = false
+        btnGuide.addTarget(self, action: #selector(self.showGuide(_:)), for: .touchUpInside)
+        self.view.addSubview(btnGuide)
         //垂直方向のpad
         padY1.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(padY1)
@@ -231,6 +243,7 @@ class ContactViewController: UIViewController {
         mInfoDialog = InfoDialog(parentView: self) //このViewControllerを渡してあげる
         mBousainetDialog = BousainetDialog(parentView: self)
         mPassInputDialog = ContactPassInputDialog(parentView: self)
+        mGuide22Dialog = Guide22Dialog(parentView: self)
         
         //passCheckをfalseで初期化
         userDefaults.set(false, forKey: "passCheck")
@@ -268,7 +281,7 @@ class ContactViewController: UIViewController {
         self.view.addConstraints([
             //連絡網データ操作ラベル
             Constraint(lblContact, .bottom, to:padY2, .top, constant:8),
-            Constraint(lblContact, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(lblContact, .centerX, to:self.view, .centerX, constant:0),
             Constraint(lblContact, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
@@ -280,7 +293,7 @@ class ContactViewController: UIViewController {
         self.view.addConstraints([
             //一覧ボタン
             Constraint(btnContact1, .bottom, to:padY3, .top, constant:0),
-            Constraint(btnContact1, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact1, .centerX, to:self.view, .centerX, constant:0),
             Constraint(btnContact1, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
@@ -292,7 +305,7 @@ class ContactViewController: UIViewController {
         self.view.addConstraints([
             //新規ボタン
             Constraint(btnContact2, .bottom, to:padY4, .top, constant:0),
-            Constraint(btnContact2, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact2, .centerX, to:self.view, .centerX, constant:0),
             Constraint(btnContact2, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
@@ -304,7 +317,7 @@ class ContactViewController: UIViewController {
         self.view.addConstraints([
             //修正ボタン Y座標の中心
             Constraint(btnContact3, .centerY, to:self.view, .centerY, constant:0),
-            Constraint(btnContact3, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact3, .centerX, to:self.view, .centerX, constant:0),
             Constraint(btnContact3, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
@@ -316,7 +329,7 @@ class ContactViewController: UIViewController {
         self.view.addConstraints([
             //削除ボタン
             Constraint(btnContact4, .top, to:padY5, .bottom, constant:0),
-            Constraint(btnContact4, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact4, .centerX, to:self.view, .centerX, constant:0),
             Constraint(btnContact4, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
@@ -328,7 +341,7 @@ class ContactViewController: UIViewController {
         self.view.addConstraints([
             //CSVファイル読込ボタン
             Constraint(btnContact5, .top, to:padY6, .bottom, constant:0),
-            Constraint(btnContact5, .centerX, to:self.view, .centerX, constant:8),
+            Constraint(btnContact5, .centerX, to:self.view, .centerX, constant:0),
             Constraint(btnContact5, .width, to:self.view, .width, constant:0, multiplier:0.8)
             ])
         self.view.addConstraints([
@@ -336,6 +349,12 @@ class ContactViewController: UIViewController {
             Constraint(pad21, .bottom, to:btnEarthquakeTel, .top, constant:-8),
             Constraint(pad21, .leading, to:self.view, .leading, constant:0),
             Constraint(pad21, .width, to:self.view, .width, constant:0, multiplier:0.024)
+            ])
+        self.view.addConstraints([
+            //CSVファイル読み込ませ説明書ボタン
+            Constraint(btnGuide, .top, to:btnContact5, .bottom, constant:20),
+            Constraint(btnGuide, .leading, to:self.view, .leading, constant:8),
+            Constraint(btnGuide, .trailing, to:self.view, .trailingMargin, constant:8)
             ])
         self.view.addConstraints([
             //情報(地震)ボタン
@@ -438,6 +457,11 @@ class ContactViewController: UIViewController {
     func showContactImportCSV(_ sender: UIButton){
         mContactImportCSVDialog = ContactImportCSVDialog(parentView: self)
         mContactImportCSVDialog.showResult()
+    }
+    
+    //CSVファイル読み込ませ説明書　表示
+    func showGuide(_ sender: UIButton){
+        mGuide22Dialog.showInfo()
     }
     
     //情報(地震)
