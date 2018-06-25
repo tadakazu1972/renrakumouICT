@@ -23,7 +23,6 @@
 		5960EB7C1E47443500D1917A /* ContactLoadDialog2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */; };
 		597FD1161E2113E50011ABB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1151E2113E50011ABB1 /* ViewController.swift */; };
 		597FD1201E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */; };
-		597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */ = {isa = PBXBuildFile; fileRef = 597FD1231E2B210C0011ABB1 /* riku7.csv */; };
 		597FD1461E2F053F0011ABB1 /* BousainetDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */; };
 		597FD1481E33218B0011ABB1 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1471E33218B0011ABB1 /* ContactViewController.swift */; };
 		597FD14A1E3329E00011ABB1 /* ContactLoadDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */; };
@@ -81,7 +80,6 @@
 		5960EB7B1E47443500D1917A /* ContactLoadDialog2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactLoadDialog2.swift; sourceTree = "<group>"; };
 		597FD1151E2113E50011ABB1 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		597FD11F1E2A7AAA0011ABB1 /* CustomUICollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUICollectionViewCell.swift; sourceTree = "<group>"; };
-		597FD1231E2B210C0011ABB1 /* riku7.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = riku7.csv; sourceTree = "<group>"; };
 		597FD1451E2F053F0011ABB1 /* BousainetDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BousainetDialog.swift; sourceTree = "<group>"; };
 		597FD1471E33218B0011ABB1 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		597FD1491E3329E00011ABB1 /* ContactLoadDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactLoadDialog.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 			children = (
 				59D8AEF41E6131C800A3EDE2 /* ic_check_box_outline_blank.png */,
 				59D8AEF51E6131C800A3EDE2 /* ic_check_box.png */,
-				597FD1231E2B210C0011ABB1 /* riku7.csv */,
 				594DDA481D9747110078EE72 /* caution.txt */,
 				598AC8DE1D850AE6006842C8 /* AppDelegate.swift */,
 				597FD1151E2113E50011ABB1 /* ViewController.swift */,
@@ -303,7 +300,6 @@
 				921EF28A20DBA5DB00D1B2D0 /* guide226.png in Resources */,
 				59D8AEF71E6131C800A3EDE2 /* ic_check_box.png in Resources */,
 				921EF28520DBA5DB00D1B2D0 /* guide227.png in Resources */,
-				597FD1241E2B210C0011ABB1 /* riku7.csv in Resources */,
 				921EF28320DBA5DB00D1B2D0 /* guide225.png in Resources */,
 				59D8AEF61E6131C800A3EDE2 /* ic_check_box_outline_blank.png in Resources */,
 			);
