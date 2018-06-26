@@ -40,11 +40,13 @@ class MailViewController: UIViewController, MFMailComposeViewControllerDelegate 
         
         let mailViewController = MFMailComposeViewController()
         //let recipients = ["tadakazu1972@gmail.com"]
+        let toRecipients = ["ba0034@city.osaka.lg.jp"]
         let recipients = mAddressArray
         
         mailViewController.mailComposeDelegate = self
         mailViewController.setSubject("緊急連絡")
-        mailViewController.setToRecipients(recipients)
+        mailViewController.setToRecipients(toRecipients)
+        mailViewController.setBccRecipients(recipients)
         mailViewController.setMessageBody("メール本文", isHTML: false)
         
         self.present(mailViewController, animated:true, completion:nil)
